@@ -8,15 +8,31 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/drawer": "^6.1.8",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
     "expo": "~43.0.0",
+    "expo-app-loading": "~1.2.1",
+    "expo-linking": "~2.4.2",
+    "expo-splash-screen": "~0.13.4",
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.3",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.8.0",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@types/jest": "^27.0.2",
+    "@types/react": "^17.0.32",
+    "@types/react-native": "^0.66.0",
+    "@types/react-test-renderer": "^17.0.1",
+    "typescript": "^4.4.4"
   },
   "private": true
 }
