@@ -2,6 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import * as React from "react";
 import {
+  Image,
   Platform,
   SafeAreaView,
   ScrollView,
@@ -11,7 +12,8 @@ import {
 } from "react-native";
 import Colors from "../../constants/colors";
 import SearchBarInput from "../../components/inputs/SearchBarInput";
-import { SearchBar } from "react-native-screens";
+import HomeCard from "../../components/cards/HomeCard";
+import QuarterlyLessons from "../../components/cards/QuarterlyLessons"
 
 interface Props {}
 
@@ -24,15 +26,29 @@ const Home: React.FC<Props> = () => {
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
       >
+        {/* Header */}
         <View style={styles.contentWrapper}>
           <View>
-            <Feather name="menu" size={24} color="black" />
+            <Feather
+              name="menu"
+              size={24}
+              color="black"
+              onPress={() => navigation.openDrawer()}
+            />
             <View style={styles.textGreetingWrapper}>
               <Text style={styles.textGreeting}>Good Morning</Text>
               <Text style={styles.textName}>Tristan Listanco</Text>
             </View>
             <View style={styles.searchBarWrapper}>
-            <SearchBarInput/>
+              <SearchBarInput />
+
+              {/* Content */}
+              <HomeCard />
+              <Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
+              <QuarterlyLessons/>
+              <QuarterlyLessons/>
+              <QuarterlyLessons/>
+              <QuarterlyLessons/>
             </View>
           </View>
         </View>
@@ -49,12 +65,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   contentWrapper: {
-    marginTop: Platform.OS === "ios" ? 35 : 50,
+    marginTop: Platform.OS === "ios" ? 15 : 50,
     marginLeft: 25,
     marginRight: 25,
   },
   textGreetingWrapper: {
-    paddingTop: Platform.OS === "ios" ? 11 : 15,
+    paddingTop: Platform.OS === "ios" ? 20 : 15,
   },
   textGreeting: {
     fontFamily: "Proxima-Nova-Medium",
@@ -67,6 +83,12 @@ const styles = StyleSheet.create({
     fontSize: 36,
   },
   searchBarWrapper: {
-   paddingTop: 15,
+    paddingTop: 15,
+  },
+
+  textQuarterlyLessons: {
+    fontFamily: "Proxima-Nova-Bold",
+    fontSize: 18,
+    marginTop: 15,
   },
 });

@@ -21,7 +21,7 @@ export default function App() {
     return (
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
+          name="Homes"
           component={Home}
           options={{
             headerShown: false,
