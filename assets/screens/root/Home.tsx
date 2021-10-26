@@ -1,5 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
   Image,
@@ -21,11 +22,13 @@ const Home: React.FC<Props> = () => {
   const navigation = useNavigation<any>();
   console.log("HomeView Initialized");
   return (
+    
     <SafeAreaView style={styles.container}>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
       >
+         <StatusBar style="auto" />
         {/* Header */}
         <View style={styles.contentWrapper}>
           <View>
