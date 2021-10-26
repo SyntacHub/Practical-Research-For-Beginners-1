@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     backgroundColor: Colors.lightGreen,
     borderRadius: 11,
-    marginVertical: 12,
+    marginVertical: 8,
   },
 });
