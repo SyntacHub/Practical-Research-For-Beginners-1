@@ -1,24 +1,49 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import * as React from "react";
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import Colors from "../../constants/colors";
 
 interface Props {}
 
 const Feedback: React.FC<Props> = () => {
   const navigation = useNavigation<any>();
-  console.log("HomeView Initialized");
+  console.log("Feedback Initialized");
   return (
     <SafeAreaView  style={styles.container} >
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
       >
-        <View>
+        <StatusBar style="auto"/>
+        {/* Header */}
+        <View style={styles.contentWrapper}>
           <View>
-            <Feather name="menu" size={24} color="black" />
-            <Text>This is </Text>
-            <Text>Subtopics</Text>
+            <Feather
+              name="menu"
+              size={24}
+              color="black"
+              onPress={() => navigation.openDrawer()}
+            />
+            <View style={styles.textGreetingWrapper}>
+              <Text style={styles.textGreeting}>Providing </Text>
+              <Text style={styles.textName}>Feedback</Text>
+            </View>
+            <View style={styles.searchBarWrapper}>
+            
+
+              {/* Content */}
+              
+          
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -31,9 +56,33 @@ export default Feedback;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
-    marginBottom: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    backgroundColor: Colors.background,
+  },
+  contentWrapper: {
+    marginTop: Platform.OS === "ios" ? 15 : 50,
+    marginLeft: 25,
+    marginRight: 25,
+  },
+  textGreetingWrapper: {
+    paddingTop: Platform.OS === "ios" ? 20 : 15,
+  },
+  textGreeting: {
+    fontFamily: "Proxima-Nova-Medium",
+    color: Colors.textLight,
+    fontSize: 24,
+  },
+  textName: {
+    fontFamily: "Proxima-Nova-Bold",
+    color: Colors.text,
+    fontSize: 36,
+  },
+  searchBarWrapper: {
+    paddingTop: 15,
+  },
+
+  textQuarterlyLessons: {
+    fontFamily: "Proxima-Nova-Bold",
+    fontSize: 18,
+    marginTop: 15,
   },
 });
