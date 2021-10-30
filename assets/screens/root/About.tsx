@@ -18,7 +18,7 @@ interface Props {}
 
 const Faqs: React.FC<Props> = () => {
   const navigation = useNavigation<any>();
-  console.log("FaqsView Initialized");
+  console.log("AboutView Initialized");
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView

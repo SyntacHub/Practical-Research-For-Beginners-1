@@ -1,11 +1,10 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
-import Discord from "../../components/svg/discord";
 
 interface Props {}
 
-const AboutCard: React.FC<Props> = () => {
+const FeedbackCard: React.FC<Props> = () => {
 	return (
 		<View style={styles.container}>
 			<View
@@ -15,49 +14,36 @@ const AboutCard: React.FC<Props> = () => {
 					alignItems: "center",
 				}}
 			>
-				<View style={{ flexDirection: "column", width: "60%", marginTop: 5 }}>
+				<View style={{ flexDirection: "column", width: "50%", marginTop: 5 }}>
 					<Text
 						style={{
 							width: "100%",
 							marginLeft: 10,
 							fontFamily: "Proxima-Nova-Bold",
 							lineHeight: 30,
-							fontSize: 25,
+							fontSize: 20,
 							color: Colors.background,
 						}}
 					>
-						Practical Research For Beginners
-					</Text>
-					<Text
-						style={{
-							fontFamily: "Proxima-Nova-Medium",
-							width: "100%",
-							marginLeft: 10,
-							fontSize: 15,
-							marginTop: 10,
-							color: Colors.textLight,
-						}}
-					>
-						Version 1.0.0
+						Found Some Issues? Send a Report
 					</Text>
 				</View>
 				<Image
-					style={{ width: "40%", borderRadius: 20 }}
-					source={require("../../images/ic_launcher.png")}
+					style={{ width: "50%" }}
+					source={require("../../images/feedback.png")}
 				/>
 			</View>
 		</View>
 	);
 };
-
-export default AboutCard;
-
+export default FeedbackCard;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		marginTop: 15,
 		paddingHorizontal: 15,
-		paddingVertical: 25,
-		backgroundColor: "#3E6647",
+		paddingVertical: 10,
+		backgroundColor: Colors.bluebg,
 		borderRadius: 23,
 		marginVertical: 5,
 	},
