@@ -5375,6 +5375,11 @@ react-native-screens@~3.8.0:
   dependencies:
     warn-once "^0.1.0"
 
+react-native-sfsymbols@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-sfsymbols/-/react-native-sfsymbols-1.2.0.tgz#dab069f1cd0d14c5ccfa10604c7e1731ad05bfcc"
+  integrity sha512-IQIqpw13eB7OeWl5hndefyWHdjfNPWIbxawd4FSpw7NMAmRnDUCt08t5MZv83IEMaExdt3mIbYuSWmuxjicMJA==
+
 react-native-svg-transformer@^0.14.3:
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/react-native-svg-transformer/-/react-native-svg-transformer-0.14.3.tgz#43c8e176f5a11f16f39b87a64018e0ac090ffbdb"
