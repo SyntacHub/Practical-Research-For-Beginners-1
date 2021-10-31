@@ -31,8 +31,6 @@
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
-    <key>LSApplicationCategoryType</key>
-    <string>public.app-category.education</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>
@@ -73,7 +71,6 @@
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
-
     <false/>
   </dict>
 </plist>
