@@ -1,7 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import Colors from "../../constants/colors";
+import Colors from "../../constants/Colors";
 import * as React from "react";
 import {
   Platform,

@@ -10,7 +10,7 @@ import {
 	Text,
 	View,
 } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../../constants/Colors";
 import FeedbackCard from "../../components/cards/FeedbackCard";
 
 interface Props {}

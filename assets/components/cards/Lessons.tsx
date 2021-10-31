@@ -3,9 +3,10 @@ import { Feather } from "@expo/vector-icons";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 
+
 interface Props {}
 
-const QuarterlyLessons: React.FC<Props> = () => {
+const QuarterlyLessons = (props:any) => {
 	return (
 		<View style={styles.container}>
 			<View
@@ -24,14 +25,14 @@ const QuarterlyLessons: React.FC<Props> = () => {
 					/>
 
 					<View style={{ flexDirection: "column", marginLeft: 15 }}>
-						<Text
+						<Text 
 							style={{
 								fontFamily: "Proxima-Nova-Bold",
 								fontSize: 18,
 								color: Colors.secondaryGreen,
 							}}
 						>
-							Research Topic
+							{props.topictitle}
 						</Text>
 						<Text
 							style={{

@@ -1,7 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../../constants/Colors";
 
 interface Props {
   text?: string;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 
 interface Props {}
