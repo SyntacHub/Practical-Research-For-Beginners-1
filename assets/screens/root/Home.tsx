@@ -11,7 +11,7 @@ import {
 	Text,
 	View,
 } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../../constants/Colors"
 import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
 import QuarterlyLessons from "../../components/cards/Lessons";
