@@ -41,6 +41,7 @@ const Acknowledgements: React.FC<Props> = () => {
 				<View style={{ alignSelf: "center", alignItems: "center" }}>
 					<Text
 						style={{
+							color: Colors.textLighterGray,
 							fontFamily: "Proxima-Nova-Bold",
 							fontSize: 15,
 						}}
@@ -49,6 +50,7 @@ const Acknowledgements: React.FC<Props> = () => {
 					</Text>
 					<Text
 						style={{
+							color:Colors.textLighterGray,
 							fontFamily: "Proxima-Nova-Bold",
 							fontSize: 15,
 						}}

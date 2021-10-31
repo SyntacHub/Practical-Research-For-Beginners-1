@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation,DrawerActions } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
@@ -16,11 +16,13 @@ import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
 import QuarterlyLessons from "../../components/cards/Lessons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import IntroModal from "../../screens/Modal/IntroModal";
 
 interface Props {}
 
-const Home: React.FC<Props> = (props: any) => {
+const Home:React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
+	
 	console.log("HomeView Initialized");
 	return (
 		<SafeAreaView style={styles.container}>
@@ -46,7 +48,10 @@ const Home: React.FC<Props> = (props: any) => {
 							<SearchBarInput />
 
 							{/* Content */}
-							<HomeCard />
+							<HomeCard
+						
+							
+							/>
 							<Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
 							<TouchableOpacity>
 								<QuarterlyLessons 

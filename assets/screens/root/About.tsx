@@ -11,12 +11,12 @@ import {
   Text,
   View,
 } from "react-native";
-import About from "../../components/cards/AboutCard";
+import AboutCard from "../../components/cards/AboutCard";
 import Acknowledgements from "../../components/cards/AcknowledgementCard"
 
 interface Props {}
 
-const Faqs: React.FC<Props> = () => {
+const About: React.FC<Props> = () => {
   const navigation = useNavigation<any>();
   console.log("AboutView Initialized");
   return (
@@ -44,7 +44,7 @@ const Faqs: React.FC<Props> = () => {
 
               {/* Content */}
         
-              <About/>
+              <AboutCard/>
               <Acknowledgements/>
 
               
@@ -58,7 +58,7 @@ const Faqs: React.FC<Props> = () => {
   
   };
   
-export default Faqs;
+export default About;
 
 const styles = StyleSheet.create({
   container: {

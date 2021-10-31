@@ -1,10 +1,14 @@
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {TransitionPresets} from '@react-navigation/stack'
 import Colors from "../../constants/Colors";
 
 interface Props {}
 
-const HomeCard: React.FC<Props> = () => {
+const HomeCard = () => {
+  const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row",justifyContent:'center' }}>
@@ -21,7 +25,11 @@ const HomeCard: React.FC<Props> = () => {
         >
           What do you want to learn Today?
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+     onPress={()=> navigation.navigate("Modal")}
+       
+
+        >
             <Text style={styles.getStarted}>Get Started</Text> 
         </TouchableOpacity>
         </View>
