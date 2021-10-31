@@ -18,30 +18,31 @@ import IntroModal from "./assets/screens/Modal/IntroModal";
 import Lesson from "./assets/screens/root/Lesson";
 import { Modal, View } from "react-native";
 import { RootStackParamList } from "./types";
-import { Transition, Transitioning } from "react-native-reanimated";
+
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
 	const RootStack = createNativeStackNavigator<RootStackParamList>();
 	const Drawer = createDrawerNavigator();
-	const screenOptions = {
-		headerShown: false,
-	};
+	
 
 	function Root() {
 		return (
 			<RootStack.Navigator
-				initialRouteName="Home"
-				screenOptions={({ route }) => {
+				initialRouteName="Root"
+				screenOptions={() => {
 					return {
 						gestureEnabled: true,
 						cardOverlayEnabled: true,
-						...TransitionPresets.ModalPresentationIOS,
-					};
+						...TransitionPresets.ModalPresentationIOS
+					}
 				}}
-				mode="modal"
-        headerMode="none"
+				
+				
+			
 			>
+				
+				<RootStack.Screen name="Modal" options={{headerShown:false,presentation:"modal"}}  component={IntroModal} />
 				<RootStack.Screen
 					name="Root"
 					component={Home}
@@ -49,7 +50,6 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
-				<RootStack.Screen name="Modal" component={IntroModal} />
 				<RootStack.Screen
 					name="Subtopics"
 					component={Subtopics}
