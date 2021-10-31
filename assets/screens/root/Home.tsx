@@ -15,6 +15,7 @@ import Colors from "../../constants/colors";
 import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
 import QuarterlyLessons from "../../components/cards/QuarterlyLessons"
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface Props {}
 
@@ -48,7 +49,10 @@ const Home: React.FC<Props> = () => {
               {/* Content */}
               <HomeCard />
               <Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
+              <TouchableOpacity>
               <QuarterlyLessons/>
+              </TouchableOpacity>
+              
               <QuarterlyLessons/>
               <QuarterlyLessons/>
               <QuarterlyLessons/>

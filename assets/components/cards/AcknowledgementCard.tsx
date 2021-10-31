@@ -29,32 +29,32 @@ const Acknowledgements: React.FC<Props> = () => {
 					fontFamily: "Proxima-Nova-Bold",
 					fontSize: 20,
 					color: Colors.darkGray,
-					marginTop: 25
+					marginTop: 25,
 				}}
 			>
 				Others
 			</Text>
 			<Credits />
 			<Credits />
-			
-
 
 			<View style={{ marginTop: 50 }}>
-				<View style={{ alignSelf: "center",alignItems:'center'}}>
+				<View style={{ alignSelf: "center", alignItems: "center" }}>
 					<Text
 						style={{
 							fontFamily: "Proxima-Nova-Bold",
 							fontSize: 15,
-					
 						}}
 					>
 						Iligan City National High School
 					</Text>
-					<Text style={{
+					<Text
+						style={{
 							fontFamily: "Proxima-Nova-Bold",
 							fontSize: 15,
-					
-						}}>Copyright 2021</Text>
+						}}
+					>
+						Copyright 2021
+					</Text>
 				</View>
 			</View>
 		</View>

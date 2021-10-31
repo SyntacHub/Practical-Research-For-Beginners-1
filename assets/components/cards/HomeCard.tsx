@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 15,
     backgroundColor: Colors.primaryGreen,
     borderRadius: 23,
     marginVertical: 12,

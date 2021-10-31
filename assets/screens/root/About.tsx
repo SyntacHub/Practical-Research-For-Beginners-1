@@ -46,6 +46,8 @@ const Faqs: React.FC<Props> = () => {
         
               <About/>
               <Acknowledgements/>
+
+              
           
             </View>
           </View>
