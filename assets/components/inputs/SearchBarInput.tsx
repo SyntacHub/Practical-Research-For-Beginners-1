@@ -16,7 +16,7 @@ const SearchBarInput: React.FC<Props> = ({ text, setText }) => {
         <Text
           style={{
             marginLeft: 32,
-            fontFamily: "Proxima-Nova-Medium",
+            fontFamily: "SFProDisplay-Medium",
             lineHeight: 30,
             fontSize: 16,
             color: Colors.textLight,

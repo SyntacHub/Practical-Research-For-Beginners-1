@@ -20,7 +20,7 @@ const AboutCard: React.FC<Props> = () => {
 						style={{
 							width: "100%",
 							marginLeft: 10,
-							fontFamily: "Proxima-Nova-Bold",
+							fontFamily: "SFProDisplay-Bold",
 							lineHeight: 30,
 							fontSize: 25,
 							color: Colors.background,
@@ -30,11 +30,11 @@ const AboutCard: React.FC<Props> = () => {
 					</Text>
 					<Text
 						style={{
-							fontFamily: "Proxima-Nova-Medium",
+							fontFamily: "SFProDisplay-Medium",
 							width: "100%",
 							marginLeft: 10,
 							fontSize: 15,
-							marginTop: 10,
+							marginTop: 15,
 							color: Colors.textLight,
 						}}
 					>

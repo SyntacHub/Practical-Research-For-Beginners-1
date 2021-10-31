@@ -17,7 +17,7 @@ const HomeCard = () => {
           style={{
             width: "100%",
             marginLeft: 15,
-            fontFamily: "Proxima-Nova-Bold",
+            fontFamily: "SFProDisplay-Bold",
             lineHeight: 30,
             fontSize: 20,
             color: Colors.background,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderRadius: 5,
     overflow: "hidden",
-    fontFamily: "Proxima-Nova-Bold",
+    fontFamily: "SFProDisplay-Medium",
     fontSize: 15,
     color: Colors.background,
     backgroundColor: Colors.darkGreen,

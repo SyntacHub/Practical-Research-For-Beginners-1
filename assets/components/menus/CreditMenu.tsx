@@ -18,16 +18,16 @@ const Credits: React.FC<Props> = () => {
 						name="user"
 						size={24}
 						color="black"
-						style={{ marginTop: 5 }}
+						style={{ marginTop: 7 }}
 					/>
 					<View style={{ flexDirection: "column", marginLeft: 20 }}>
-						<Text style={{ fontFamily: "Proxima-Nova-Bold", fontSize: 18 }}>
+						<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 18 }}>
 							Tristan E. Listanco
 						</Text>
 						<Text
 							style={{
-								fontFamily: "Proxima-Nova-Medium",
-								marginTop: 2,
+								fontFamily: "SFProDisplay-Medium",
+								marginTop: 5,
 								color: Colors.textLighterGray,
 							}}
 						>

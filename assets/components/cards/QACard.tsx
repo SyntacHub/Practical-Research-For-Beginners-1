@@ -13,16 +13,16 @@ const QACard: React.FC<Props> = () => {
         <View style={{ flexDirection: "row" }}>
           <Feather name="help-circle" size={24} color="black" />
           <View style={{ flexDirection: "column",marginLeft:15 }}>
-            <Text style={{fontFamily:"Proxima-Nova-Medium",color:Colors.textLight}}>QUESTION</Text>
-            <Text style={{fontFamily:"Proxima-Nova-Medium",fontSize: 15}}>Sample Question</Text>
+            <Text style={{fontFamily:"SFProDisplay-Medium",color:Colors.textLight}}>QUESTION</Text>
+            <Text style={{fontFamily:"SFProDisplay-Medium",fontSize: 15}}>Sample Question</Text>
           </View>
         </View>
 
         <View style={{ flexDirection: "row", marginTop: 20 }}>
           <Feather name="message-square" size={24} color="black" />
           <View style={{ flexDirection: "column", marginLeft: 15 }}>
-            <Text style={{fontFamily:"Proxima-Nova-Medium",color:Colors.textLight}}>ANSWER</Text>
-            <Text style={{fontFamily:"Proxima-Nova-Medium",fontSize:15}}>Sample Answer</Text>
+            <Text style={{fontFamily:"SFProDisplay-Medium",color:Colors.textLight}}>ANSWER</Text>
+            <Text style={{fontFamily:"SFProDisplay-Medium",fontSize:15}}>Sample Answer</Text>
           </View>
         </View>
       </View>

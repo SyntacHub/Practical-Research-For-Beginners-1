@@ -14,7 +14,7 @@ const FaqCard: React.FC<Props> = () => {
             style={{
               width: "100%",
               marginLeft: 10,
-              fontFamily: "Proxima-Nova-Bold",
+              fontFamily: "SFProDisplay-Bold",
               lineHeight: 30,
               fontSize: 20,
               color: Colors.background,

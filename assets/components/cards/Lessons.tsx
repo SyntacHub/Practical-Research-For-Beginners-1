@@ -18,7 +18,7 @@ const QuarterlyLessons = (props:any) => {
 			>
 				<View style={{ flexDirection: "row" }}>
 					<Feather
-						style={{ marginTop: 5 }}
+						style={{ marginTop: 10 }}
 						name="book"
 						size={24}
 						color="black"
@@ -27,7 +27,7 @@ const QuarterlyLessons = (props:any) => {
 					<View style={{ flexDirection: "column", marginLeft: 15 }}>
 						<Text 
 							style={{
-								fontFamily: "Proxima-Nova-Bold",
+								fontFamily: "SFProDisplay-Bold",
 								fontSize: 18,
 								color: Colors.secondaryGreen,
 							}}
@@ -36,8 +36,9 @@ const QuarterlyLessons = (props:any) => {
 						</Text>
 						<Text
 							style={{
-								fontFamily: "Proxima-Nova-Medium",
-								fontSize: 12,
+								marginTop: 5,
+								fontFamily: "SFProDisplay-Medium",
+								fontSize: 15,
 								color: Colors.text,
 							}}
 						>

@@ -11,7 +11,7 @@ const Acknowledgements: React.FC<Props> = () => {
 			<Text
 				style={{
 					marginLeft: 10,
-					fontFamily: "Proxima-Nova-Bold",
+					fontFamily: "SFProDisplay-Bold",
 					fontSize: 20,
 					color: Colors.darkGray,
 				}}
@@ -26,7 +26,7 @@ const Acknowledgements: React.FC<Props> = () => {
 			<Text
 				style={{
 					marginLeft: 10,
-					fontFamily: "Proxima-Nova-Bold",
+					fontFamily: "SFProDisplay-Bold",
 					fontSize: 20,
 					color: Colors.darkGray,
 					marginTop: 25,
@@ -42,7 +42,7 @@ const Acknowledgements: React.FC<Props> = () => {
 					<Text
 						style={{
 							color: Colors.textLighterGray,
-							fontFamily: "Proxima-Nova-Bold",
+							fontFamily: "SFProDisplay-Bold",
 							fontSize: 15,
 						}}
 					>
@@ -51,7 +51,7 @@ const Acknowledgements: React.FC<Props> = () => {
 					<Text
 						style={{
 							color:Colors.textLighterGray,
-							fontFamily: "Proxima-Nova-Bold",
+							fontFamily: "SFProDisplay-Bold",
 							fontSize: 15,
 						}}
 					>

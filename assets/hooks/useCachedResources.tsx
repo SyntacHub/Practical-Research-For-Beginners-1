@@ -15,8 +15,10 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Feather.font,
-          "Proxima-Nova-Medium": require("../fonts/Proxima-Nova-Medium.otf"),
-          "Proxima-Nova-Bold": require("../fonts/Proxima-Nova-Bold.otf"),
+          "SFProDisplay-Regular" : require("../fonts/SFProDisplay-Regular.ttf"),
+          "SFProDisplay-Bold" : require("../fonts/SFProDisplay-Bold.ttf"),
+          "SFProDisplay-Medium" : require("../fonts/SFProDisplay-Medium.ttf"),
+          "SFProDisplay-Black" : require("../fonts/SFProDisplay-Black.ttf")
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

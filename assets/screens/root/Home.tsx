@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import { useNavigation,DrawerActions } from "@react-navigation/native";
+import { useNavigation, DrawerActions } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
@@ -11,7 +11,7 @@ import {
 	Text,
 	View,
 } from "react-native";
-import Colors from "../../constants/Colors"
+import Colors from "../../constants/Colors";
 import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
 import QuarterlyLessons from "../../components/cards/Lessons";
@@ -20,9 +20,9 @@ import IntroModal from "../../screens/Modal/IntroModal";
 
 interface Props {}
 
-const Home:React.FC<Props> = () => {
+const Home: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
-	
+
 	console.log("HomeView Initialized");
 	return (
 		<SafeAreaView style={styles.container}>
@@ -48,30 +48,16 @@ const Home:React.FC<Props> = () => {
 							<SearchBarInput />
 
 							{/* Content */}
-							<HomeCard
-						
-							
-							/>
+							<HomeCard />
 							<Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
 							<TouchableOpacity>
-								<QuarterlyLessons 
-                topictitle='Scientific Attitude'
-                            
-                />
+								<QuarterlyLessons topictitle="Scientific Attitude" />
 							</TouchableOpacity>
 
-							<QuarterlyLessons 
-              topictitle="Science Process Skills"
-              />
-							<QuarterlyLessons 
-              topictitle="Identifying Variables"
-              />
-							<QuarterlyLessons
-              topictitle="Research Questions"
-               />
-               <QuarterlyLessons
-              topictitle="Formulating Hypothesis"
-               />
+							<QuarterlyLessons topictitle="Science Process Skills" />
+							<QuarterlyLessons topictitle="Identifying Variables" />
+							<QuarterlyLessons topictitle="Research Questions" />
+							<QuarterlyLessons topictitle="Formulating Hypothesis" />
 						</View>
 					</View>
 				</View>
@@ -96,21 +82,21 @@ const styles = StyleSheet.create({
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
 	textGreeting: {
-		fontFamily: "Proxima-Nova-Medium",
+		fontFamily: "SFProDisplay-Bold",
 		color: Colors.textLight,
-		fontSize: 24,
+		fontSize: 25,
 	},
 	textName: {
-		fontFamily: "Proxima-Nova-Bold",
+		fontFamily: "SFProDisplay-Bold",
 		color: Colors.text,
-		fontSize: 36,
+		fontSize: 35,
 	},
 	searchBarWrapper: {
 		paddingTop: 15,
 	},
 
 	textQuarterlyLessons: {
-		fontFamily: "Proxima-Nova-Bold",
+		fontFamily: "SFProDisplay-Bold",
 		fontSize: 18,
 		marginTop: 15,
 	},

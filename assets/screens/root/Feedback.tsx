@@ -69,24 +69,24 @@ const styles = StyleSheet.create({
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
 	textGreeting: {
-		fontFamily: "Proxima-Nova-Medium",
+		fontFamily: "SFProDisplay-Bold",
 		color: Colors.textLight,
-		fontSize: 24,
+		fontSize: 30,
 	},
 	textName: {
-		fontFamily: "Proxima-Nova-Bold",
+		fontFamily: "SFProDisplay-Bold",
 		color: Colors.text,
-		fontSize: 36,
+		fontSize: 40,
 	},
 
 	textQuarterlyLessons: {
-		fontFamily: "Proxima-Nova-Bold",
+		fontFamily: "SFProDisplay-Bold",
 		fontSize: 18,
 		marginTop: 15,
 	},
 	feedbackdesc: {
 		marginTop: 10,
-		fontFamily: "Proxima-Nova-Bold",
+		fontFamily: "SFProDisplay-Medium",
 		fontSize: 15,
 		paddingHorizontal: 10,
 		lineHeight: 20,
