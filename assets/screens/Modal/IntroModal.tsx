@@ -16,12 +16,12 @@ const IntroModal = () => {
 				<View style={{ flexDirection: "row" }}>
 					<View style={{ flexDirection: "column" }}>
 
-					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 20 }}>
+					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 25 }}>
 						Offline Access
 					</Text>
 					<Text style={{ fontFamily: "SFProDisplay-Medium", fontSize: 15 }}>Potangina mo Jessah ang ganda mooo.Hindi ko maexplain yung personality mo</Text>
 
-					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 20 }}>
+					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 25 }}>
 						Offline Access
 					</Text>
 					<Text style={{ fontFamily: "SFProDisplay-Medium", fontSize: 15 }}>Potangina mo Jessah ang ganda mooo.Hindi ko maexplain yung personality mo</Text>
