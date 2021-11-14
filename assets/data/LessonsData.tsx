@@ -1,7 +1,7 @@
 const researchTopics = [
 	{
 		id: '1',
-		title: "Scientific Attitude",
+		title: "Scientific Attitudes",
 		topicDuration: "5 hrs",
 	},
 
