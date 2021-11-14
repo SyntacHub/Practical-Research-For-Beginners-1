@@ -8,13 +8,13 @@ const researchTopics = [
 	{
 		id: '2',
 		title: "Scientific Process Skills",
-		topicDuration: "5 hrs",
+		topicDuration: "3 hrs",
 	},
 
 	{
 		id: '3',
 		title: "Identifying Variables",
-		topicDuration: "5 hrs",
+		topicDuration: "7 hrs",
 	},
 
 	{
