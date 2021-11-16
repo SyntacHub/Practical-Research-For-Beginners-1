@@ -42,7 +42,7 @@ const QuarterlyLessons = (props:any) => {
 								color: Colors.text,
 							}}
 						>
-							Est. Time Frame
+							{props.est}
 						</Text>
 					</View>
 				</View>
