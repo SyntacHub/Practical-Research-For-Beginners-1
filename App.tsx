@@ -58,7 +58,7 @@ export default function App() {
 				/>
 				<RootStack.Screen
 					name="SourceModal"
-					options={{ headerShown: false,presentation:'modal'}}
+					options={{ headerShown: false}}
 					component={SourceModal}
 				/>
 			</RootStack.Navigator>
