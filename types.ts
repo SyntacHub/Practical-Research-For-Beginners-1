@@ -16,6 +16,7 @@ export type RootStackParamList = {
   Home: undefined;
   Lesson: undefined;
   Modal: undefined;
+  SourceModal: undefined;
   Subtopics: undefined;
   
  
@@ -39,9 +40,7 @@ export type DrawerStackScreenProps<Screen extends keyof DrawerStackParamList> =
 
 export type BottomTabParamList = {
   Home: undefined;
-  Notification: undefined;
-  PharmacyMap: undefined;
-  Medications: undefined;
+  
 };
 
 export type RootTabScreenProps<Screen extends keyof BottomTabParamList> =
