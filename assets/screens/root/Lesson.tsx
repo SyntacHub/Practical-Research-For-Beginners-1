@@ -10,6 +10,7 @@ import {
 	Text,
 	Image,
 	View,
+	TouchableOpacity,
 } from "react-native";
 
 interface Props {
@@ -32,13 +33,19 @@ const Lesson: React.FC<Props> = ({ route }) => {
 					<View
 						style={{ flexDirection: "row", justifyContent: "space-between" }}
 					>
-						<Feather
-							name="arrow-left"
-							size={24}
-							color="black"
-							onPress={() => navigation.goBack()}
-						/>
-						<Feather name="book" size={24} color="black" />
+						<TouchableOpacity>
+							<Feather
+								name="arrow-left"
+								size={24}
+								color="black"
+								onPress={() => navigation.goBack()}
+							/>
+						</TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => navigation.navigate("SourceModal")}
+						>
+							<Feather name="book" size={24} color="black" />
+						</TouchableOpacity>
 					</View>
 
 					<View style={styles.textGreetingWrapper}>
@@ -64,13 +71,47 @@ const Lesson: React.FC<Props> = ({ route }) => {
 						style={{ resizeMode: "contain", width: "75%" }}
 					/>
 				</View>
-				<View
-					style={{
-						backgroundColor: Colors.purple,
-					}}
-				>
-					<Feather name="book" size={24} color="black" />
-				</View>
+				<TouchableOpacity>
+					<View
+						style={{
+							backgroundColor: Colors.bluebg,
+							position: "absolute",
+							paddingHorizontal: 15,
+							paddingVertical: 15,
+							borderRadius: 15,
+							marginTop: -50,
+							marginLeft: 285,
+						}}
+					>
+						<Feather name="alert-octagon" size={20} color="black" />
+					</View>
+				</TouchableOpacity>
+
+				{/*Content 2*/}
+
+				<Text style={styles.header}>Sample Text</Text>
+				<Text style={styles.body}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
+					libero optio deserunt, cum quae quaerat maxime rem amet quas?
+					Accusantium, dolores.
+				</Text>
+
+				<Text style={styles.header}>Sample Text</Text>
+				<Text style={styles.body}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
+					libero optio deserunt, cum quae quaerat maxime rem amet quas?
+					Accusantium, dolores.
+				</Text>
+
+				<Text style={styles.header}>Sample Text</Text>
+				<Text style={styles.body}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
+					libero optio deserunt, cum quae quaerat maxime rem amet quas?
+					Accusantium, dolores.
+				</Text>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -103,5 +144,17 @@ const styles = StyleSheet.create({
 	},
 	topicImage: {
 		alignSelf: "center",
+	},
+	header: {
+		marginTop: 15,
+		paddingHorizontal: 20,
+		fontFamily: "SFProDisplay-Bold",
+		fontSize: 20,
+	},
+	body: {
+		marginTop: 10,
+		paddingHorizontal: 20,
+		fontFamily: "SFProDisplay-Regular",
+		fontSize: 15,
 	},
 });

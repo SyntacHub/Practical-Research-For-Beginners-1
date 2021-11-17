@@ -5,6 +5,7 @@ const researchTopics = [
 		topicDuration: "4 to 5 hrs",
 		topicIndex:"Quarter 1 Lesson 1",
 		topicImage:require('../../assets/images/identifying-variable.png')
+		
 	},
 
 	{

@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Colors from "../../constants/Colors";
 import FeedbackCard from "../../components/cards/FeedbackCard";
+import * as Linking from 'expo-linking';
 
 interface Props {}
 
