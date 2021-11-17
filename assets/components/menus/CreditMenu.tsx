@@ -3,9 +3,9 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/Colors";
 import { Feather } from "@expo/vector-icons";
 
-interface Props {}
 
-const Credits: React.FC<Props> = () => {
+
+const Credits = (props:any) => {
 	return (
 		<View
 			style={{
@@ -22,7 +22,7 @@ const Credits: React.FC<Props> = () => {
 					/>
 					<View style={{ flexDirection: "column", marginLeft: 20 }}>
 						<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 18 }}>
-							Tristan E. Listanco
+							{props.name}
 						</Text>
 						<Text
 							style={{
@@ -31,7 +31,7 @@ const Credits: React.FC<Props> = () => {
 								color: Colors.textLighterGray,
 							}}
 						>
-							Head Developer & Designer
+							{props.role}
 						</Text>
 					</View>
 				</View>

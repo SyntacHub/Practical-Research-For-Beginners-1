@@ -18,10 +18,9 @@ const Acknowledgements: React.FC<Props> = () => {
 			>
 				Acknowledgements
 			</Text>
-			<Credits />
-			<Credits />
-			<Credits />
-			<Credits />
+			<Credits name="Tristan Listanco" role="Head Developer / UI Designer" />
+			<Credits name="Nel Marie Iglupas" role="Research Teacher"/>
+			<Credits name="Mel Obina" role="Research Teacher in Grade 7"/>
 
 			<Text
 				style={{

@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Colors from "../../constants/Colors";
 
 const IntroModal = () => {
 	return (
@@ -7,7 +8,7 @@ const IntroModal = () => {
 			<View
 				style={{ flexDirection: "column", marginTop: 30, alignItems: "center" }}
 			>
-				<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 30 }}>
+				<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 30,color:Colors.primaryGreen}}>
 					Practical Research
 				</Text>
 				<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 30 }}>
@@ -16,12 +17,12 @@ const IntroModal = () => {
 				<View style={{ flexDirection: "row" }}>
 					<View style={{ flexDirection: "column" }}>
 
-					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 20 }}>
-						Offline Access
+					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 25 }}>
+						Description Sample Here 
 					</Text>
 					<Text style={{ fontFamily: "SFProDisplay-Medium", fontSize: 15 }}>Potangina mo Jessah ang ganda mooo.Hindi ko maexplain yung personality mo</Text>
 
-					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 20 }}>
+					<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 25 }}>
 						Offline Access
 					</Text>
 					<Text style={{ fontFamily: "SFProDisplay-Medium", fontSize: 15 }}>Potangina mo Jessah ang ganda mooo.Hindi ko maexplain yung personality mo</Text>

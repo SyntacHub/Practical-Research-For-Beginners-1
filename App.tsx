@@ -51,8 +51,8 @@ export default function App() {
 					}}
 				/>
 				<RootStack.Screen
-					name="Subtopics"
-					component={Subtopics}
+					name="Lesson"
+					component={Lesson}
 					options={{
 						headerShown: false,
 					}}

@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import { useNavigation, DrawerActions } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
@@ -14,14 +14,72 @@ import {
 import Colors from "../../constants/Colors";
 import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
-import QuarterlyLessons from "../../components/cards/Lessons";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import IntroModal from "../../screens/Modal/IntroModal";
+import researchTopics from "../../data/LessonsData";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
 interface Props {}
 
 const Home: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
+	const renderItem = ({ item }: { item: any }) => {
+		return (
+			<TouchableOpacity
+			key={item.id}
+			onPress={() =>
+				navigation.navigate("Lesson", {
+					item: item,
+				})
+			}
+			>
+				<View style={styles.menu}>
+					<View
+						style={{
+							flexDirection: "row",
+							justifyContent: "space-between",
+							alignItems: "center",
+						}}
+					>
+						<View style={{ flexDirection: "row" }}>
+							<Feather
+								style={{ marginTop: 10 }}
+								name="book"
+								size={24}
+								color="black"
+							/>
+
+							<View style={{ flexDirection: "column", marginLeft: 15 }}>
+								<Text
+									style={{
+										fontFamily: "SFProDisplay-Bold",
+										fontSize: 18,
+										color: Colors.secondaryGreen,
+									}}
+								>
+									{item.title}
+								</Text>
+								<Text
+									style={{
+										marginTop: 5,
+										fontFamily: "SFProDisplay-Medium",
+										fontSize: 15,
+										color: Colors.text,
+									}}
+								>
+									{item.topicDuration}
+								</Text>
+							</View>
+						</View>
+
+						<Feather
+							name="arrow-right"
+							size={24}
+							color={Colors.secondaryGreen}
+						/>
+					</View>
+				</View>
+			</TouchableOpacity>
+		);
+	};
 
 	console.log("HomeView Initialized");
 	return (
@@ -51,13 +109,12 @@ const Home: React.FC<Props> = () => {
 							<HomeCard />
 							<Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
 							<TouchableOpacity>
-								<QuarterlyLessons topictitle="Scientific Attitude" />
+								<FlatList
+									data={researchTopics}
+									renderItem={renderItem}
+									keyExtractor={(item) => item.id}
+								/>
 							</TouchableOpacity>
-
-							<QuarterlyLessons topictitle="Science Process Skills" />
-							<QuarterlyLessons topictitle="Identifying Variables" />
-							<QuarterlyLessons topictitle="Research Questions" />
-							<QuarterlyLessons topictitle="Formulating Hypothesis" />
 						</View>
 					</View>
 				</View>
@@ -99,5 +156,13 @@ const styles = StyleSheet.create({
 		fontFamily: "SFProDisplay-Bold",
 		fontSize: 18,
 		marginTop: 15,
+	},
+	menu: {
+		flex: 1,
+		paddingHorizontal: 20,
+		paddingVertical: 16,
+		backgroundColor: Colors.lightGreen,
+		borderRadius: 11,
+		marginVertical: 8,
 	},
 });
