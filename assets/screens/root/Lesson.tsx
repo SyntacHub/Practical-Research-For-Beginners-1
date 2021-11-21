@@ -1,14 +1,15 @@
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Feather,FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
-import researchTopics from "../../data/LessonsData";
+
 import React, { useCallback, useMemo, useRef } from "react";
-import {
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import BottomSheet, {
+	BottomSheetScrollView,
 	BottomSheetBackdrop,
 	BottomSheetModal,
-	BottomSheetModalProvider,
+  BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-
 import {
 	Platform,
 	SafeAreaView,
@@ -23,7 +24,6 @@ import {
 
 interface Props {
 	route: any;
-	sources: any;
 }
 
 const Lesson: React.FC<Props> = ({ route }) => {
@@ -31,10 +31,10 @@ const Lesson: React.FC<Props> = ({ route }) => {
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 	const handleOpenPress = () => bottomSheetModalRef.current.present();
-
+	const handleClosePress = () => bottomSheetModalRef.current?.close();
 	// variables
 	const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
-	
+	const insets = useSafeAreaInsets();
 
 	//render
 	const renderBackdrop = useCallback(
@@ -47,12 +47,6 @@ const Lesson: React.FC<Props> = ({ route }) => {
 		),
 		[]
 	);
-	const renderItem = ({ item:item }: { item: any }) => {
-		return (
-			<Text>{item.source1}</Text>
-		);
-	};
-
 	// callbacks
 	const handleSheetChanges = useCallback((index: number) => {
 		console.log("handleSheetChanges", index);
@@ -80,6 +74,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity
+						
 						>
 							<Feather
 								name="book"
@@ -157,40 +152,28 @@ const Lesson: React.FC<Props> = ({ route }) => {
 
 				{/* Modal */}
 				<BottomSheetModalProvider>
-					<View style={styles.container}>
-						<BottomSheetModal
-							ref={bottomSheetModalRef}
-							index={1}
-							backdropComponent={renderBackdrop}
-							snapPoints={snapPoints}
-							onChange={handleSheetChanges}
-						>
-							<View style={styles.bottomSheetContainer}>
-								<View style={{ flexDirection: "column" }}>
-									<Text
-										style={{ fontFamily: "SFProDisplay-Medium", fontSize: 20 }}
-									>
-										References used in
-									</Text>
-									<Text
-										style={{ fontFamily: "SFProDisplay-Bold", fontSize: 25 }}
-									>
-										{item.title}
-									</Text>
-									<Text>{item.source}</Text>
+      <View style={styles.container}>
+        
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+					backdropComponent={renderBackdrop}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <View style={styles.bottomSheetContainer}>
+						<View style={{flexDirection:'column'}}>
+						<Text style={{fontFamily:"SFProDisplay-Medium",fontSize: 20,}}>References used in</Text>
+						<Text style={{fontFamily:"SFProDisplay-Bold",fontSize:25}}>{item.title}</Text>
+						</View>
 
-									<TouchableOpacity>
-								<FlatList
-									data={researchTopics}
-									renderItem={renderItem}
-									keyExtractor={(item) => item.id}
-								/>
-							</TouchableOpacity>
-								</View>
-							</View>
-						</BottomSheetModal>
-					</View>
-				</BottomSheetModalProvider>
+						<Text>{item.source1}</Text>
+
+						
+          </View>
+        </BottomSheetModal>
+      </View>
+    </BottomSheetModalProvider>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -247,8 +230,8 @@ const styles = StyleSheet.create({
 	},
 	bottomSheetContainer: {
 		flex: 1,
-
-		alignContent: "space-between",
+		flexDirection:'row',
+		alignContent: 'space-between',
 		alignItems: "flex-start",
 		paddingHorizontal: 20,
 	},

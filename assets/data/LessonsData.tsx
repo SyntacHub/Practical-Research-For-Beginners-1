@@ -6,6 +6,11 @@ const researchTopics = [
 		topicIndex:"Quarter 1 Lesson 1",
 		topicImage:require('../../assets/images/identifying-variable.png'),
 		source1:"Smack my Ass like a Drum"
+	
+		
+		
+
+		
 	},
 
 	{
