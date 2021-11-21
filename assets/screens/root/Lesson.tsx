@@ -1,16 +1,14 @@
-import { Feather,AntDesign } from "@expo/vector-icons";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
-
+import researchTopics from "../../data/LessonsData";
 import React, { useCallback, useMemo, useRef } from "react";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import BottomSheet, {
-	BottomSheetScrollView,
+import {
 	BottomSheetBackdrop,
 	BottomSheetModal,
-  BottomSheetModalProvider,
+	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import lessonSources from "../../data/LessonsSources";
+
 import {
 	Platform,
 	SafeAreaView,
@@ -25,6 +23,7 @@ import {
 
 interface Props {
 	route: any;
+	sources: any;
 }
 
 const Lesson: React.FC<Props> = ({ route }) => {
@@ -32,10 +31,10 @@ const Lesson: React.FC<Props> = ({ route }) => {
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 	const handleOpenPress = () => bottomSheetModalRef.current.present();
-	const handleClosePress = () => bottomSheetModalRef.current?.close();
+
 	// variables
-	const snapPoints = useMemo(() => ["25%", "50%", "75%", "100%"], []);
-	const insets = useSafeAreaInsets();
+	const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
+	
 
 	//render
 	const renderBackdrop = useCallback(
@@ -48,6 +47,12 @@ const Lesson: React.FC<Props> = ({ route }) => {
 		),
 		[]
 	);
+	const renderItem = ({ item:item }: { item: any }) => {
+		return (
+			<Text>{item.source1}</Text>
+		);
+	};
+
 	// callbacks
 	const handleSheetChanges = useCallback((index: number) => {
 		console.log("handleSheetChanges", index);
@@ -75,7 +80,6 @@ const Lesson: React.FC<Props> = ({ route }) => {
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity
-						
 						>
 							<Feather
 								name="book"
@@ -121,7 +125,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 							marginLeft: 285,
 						}}
 					>
-						<Feather name="alert-octagon" size={20} color="black" />
+						<FontAwesome name="pencil" size={20} color="black" />
 					</View>
 				</TouchableOpacity>
 
@@ -153,22 +157,40 @@ const Lesson: React.FC<Props> = ({ route }) => {
 
 				{/* Modal */}
 				<BottomSheetModalProvider>
-      <View style={styles.container}>
-        
-        <BottomSheetModal
-          ref={bottomSheetModalRef}
-          index={1}
-					backdropComponent={renderBackdrop}
-          snapPoints={snapPoints}
-          onChange={handleSheetChanges}
-        >
-          <View style={styles.contentContainer}>
-            <Text>Awesome 🎉</Text>
-						<AntDesign name="closecircle" size={24} color="black" onPress={handleClosePress} />
-          </View>
-        </BottomSheetModal>
-      </View>
-    </BottomSheetModalProvider>
+					<View style={styles.container}>
+						<BottomSheetModal
+							ref={bottomSheetModalRef}
+							index={1}
+							backdropComponent={renderBackdrop}
+							snapPoints={snapPoints}
+							onChange={handleSheetChanges}
+						>
+							<View style={styles.bottomSheetContainer}>
+								<View style={{ flexDirection: "column" }}>
+									<Text
+										style={{ fontFamily: "SFProDisplay-Medium", fontSize: 20 }}
+									>
+										References used in
+									</Text>
+									<Text
+										style={{ fontFamily: "SFProDisplay-Bold", fontSize: 25 }}
+									>
+										{item.title}
+									</Text>
+									<Text>{item.source}</Text>
+
+									<TouchableOpacity>
+								<FlatList
+									data={researchTopics}
+									renderItem={renderItem}
+									keyExtractor={(item) => item.id}
+								/>
+							</TouchableOpacity>
+								</View>
+							</View>
+						</BottomSheetModal>
+					</View>
+				</BottomSheetModalProvider>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -221,10 +243,13 @@ const styles = StyleSheet.create({
 	},
 	customModal: {
 		backgroundColor: "white",
-		borderRadius: 25,
+		borderRadius: 15,
 	},
-	contentContainer: {
+	bottomSheetContainer: {
 		flex: 1,
-		alignItems: "center",
+
+		alignContent: "space-between",
+		alignItems: "flex-start",
+		paddingHorizontal: 20,
 	},
 });

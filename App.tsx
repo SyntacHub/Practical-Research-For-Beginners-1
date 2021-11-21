@@ -15,7 +15,6 @@ import Faqs from "./assets/screens/root/Faqs";
 import About from "./assets/screens/root/About";
 import Subtopics from "./assets/screens/root/Subtopics";
 import IntroModal from "./assets/screens/Modal/IntroModal";
-import SourceModal from "./assets/screens/Modal/SourceModal";
 import Lesson from "./assets/screens/root/Lesson";
 import { Modal, View } from "react-native";
 import { RootStackParamList } from "./types";
@@ -56,11 +55,7 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
-				<RootStack.Screen
-					name="SourceModal"
-					options={{ headerShown: false}}
-					component={SourceModal}
-				/>
+			
 			</RootStack.Navigator>
 		);
 	}
