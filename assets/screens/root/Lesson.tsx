@@ -1,14 +1,12 @@
-import { Feather,FontAwesome } from "@expo/vector-icons";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
 
 import React, { useCallback, useMemo, useRef } from "react";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import BottomSheet, {
-	BottomSheetScrollView,
+import BottomSheet,{
 	BottomSheetBackdrop,
 	BottomSheetModal,
-  BottomSheetModalProvider,
+	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 import {
 	Platform,
@@ -19,22 +17,27 @@ import {
 	Image,
 	View,
 	TouchableOpacity,
-	FlatList,
+	
 } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import researchTopics from "../../data/LessonsData";
+
 
 interface Props {
 	route: any;
+	props: any;
 }
 
-const Lesson: React.FC<Props> = ({ route }) => {
+const Lesson: React.FC<Props> = ({ route,props }) => {
 	const navigation = useNavigation<any>();
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 	const handleOpenPress = () => bottomSheetModalRef.current.present();
-	const handleClosePress = () => bottomSheetModalRef.current?.close();
+
 	// variables
-	const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
-	const insets = useSafeAreaInsets();
+	const snapPoints = useMemo(() => ["20%","40%", "60%"], []);
+	const sheetRef = useRef<BottomSheet>(null);
+	
 
 	//render
 	const renderBackdrop = useCallback(
@@ -47,10 +50,20 @@ const Lesson: React.FC<Props> = ({ route }) => {
 		),
 		[]
 	);
+	const renderItem = ({item}:{item:any}) => {
+		return (
+			<View style={styles.modalmenu}>
+				<Text>{item.source}</Text>
+			</View>
+			
+		);
+	};
+	
 	// callbacks
 	const handleSheetChanges = useCallback((index: number) => {
 		console.log("handleSheetChanges", index);
 	}, []);
+	
 
 	console.log(item);
 	console.log("Lesson Initialized");
@@ -73,9 +86,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 								onPress={() => navigation.goBack()}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity
-						
-						>
+						<TouchableOpacity>
 							<Feather
 								name="book"
 								size={24}
@@ -152,28 +163,32 @@ const Lesson: React.FC<Props> = ({ route }) => {
 
 				{/* Modal */}
 				<BottomSheetModalProvider>
-      <View style={styles.container}>
-        
-        <BottomSheetModal
-          ref={bottomSheetModalRef}
-          index={1}
-					backdropComponent={renderBackdrop}
-          snapPoints={snapPoints}
-          onChange={handleSheetChanges}
-        >
-          <View style={styles.bottomSheetContainer}>
-						<View style={{flexDirection:'column'}}>
-						<Text style={{fontFamily:"SFProDisplay-Medium",fontSize: 20,}}>References used in</Text>
-						<Text style={{fontFamily:"SFProDisplay-Bold",fontSize:25}}>{item.title}</Text>
-						</View>
+					<View style={styles.container}>
+						<BottomSheetModal
+							ref={bottomSheetModalRef}
+							index={1}
+							backdropComponent={renderBackdrop}
+							snapPoints={snapPoints}
+							onChange={handleSheetChanges}
+						>
+							<View style={styles.bottomSheetContainer}>
+								<View style={{ flexDirection: "column",marginTop:10}}>
+									<Text
+										style={{ fontFamily: "SFProDisplay-Bold", fontSize: 35 }}
+									>
+										References
+									</Text>
+									<FlatList
+									data={researchTopics}
+									renderItem={renderItem}
+									keyExtractor={(item) => item.id}
+								/>
 
-						<Text>{item.source1}</Text>
-
-						
-          </View>
-        </BottomSheetModal>
-      </View>
-    </BottomSheetModalProvider>
+								</View>
+							</View>
+						</BottomSheetModal>
+					</View>
+				</BottomSheetModalProvider>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -230,9 +245,17 @@ const styles = StyleSheet.create({
 	},
 	bottomSheetContainer: {
 		flex: 1,
-		flexDirection:'row',
-		alignContent: 'space-between',
+		width:"100%",
 		alignItems: "flex-start",
 		paddingHorizontal: 20,
+	},
+	modalmenu: {
+		flex: 1,
+				paddingHorizontal: 20,
+				paddingVertical: 16,
+				backgroundColor: Colors.lightGreen,
+				borderRadius: 11,
+				marginVertical: 8,
+				alignSelf:'stretch'
 	},
 });

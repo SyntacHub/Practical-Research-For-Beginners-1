@@ -5,10 +5,8 @@ const researchTopics = [
 		topicDuration: "4 to 5 hrs",
 		topicIndex:"Quarter 1 Lesson 1",
 		topicImage:require('../../assets/images/identifying-variable.png'),
-		source1:"Smack my Ass like a Drum"
+		source:"Source1244444444444444444444444444",
 	
-		
-		
 
 		
 	},
@@ -19,7 +17,7 @@ const researchTopics = [
 		topicDuration: "3 to 4 hrs",
 		topicIndex:"Quarter 1 Lesson 2",
 		topicImage:require('../../assets/images/identifying-variable.png'),
-		source1:"Slurp that dick till it come"
+		source:"Source2",
 	},
 
 	{
@@ -28,7 +26,7 @@ const researchTopics = [
 		topicDuration: "7 to 8 hrs",
 		topicIndex:"Quarter 1 Lesson 3",
 		topicImage:require('../../assets/images/identifying-variable.png'),
-		source1:"Smack my Ass like a Drum"
+		source:"Source3",
 		
 	},
 
@@ -40,7 +38,8 @@ const researchTopics = [
 		topicDuration: "5 to 5.2 hrs",
 		topicIndex:"Quarter 2 Lesson 2",
 		topicImage:require('../../assets/images/identifying-variable.png'),
-		source1:"Smack my Ass like a Drum"
+		
+
 	},
 
 	{
@@ -49,7 +48,8 @@ const researchTopics = [
 		topicDuration: "5 to 5.1 hrs",
 		topicIndex:"Quarter 3 Lesson 1",
 		topicImage:require('../images/identifying-variable.png'),
-		source1:"Smack my Ass like a Drum"
+		
+
 	},
 
 	{
@@ -58,7 +58,8 @@ const researchTopics = [
 		topicDuration: "5 hrs",
 		topicIndex:"Quarter 4 Lesson 1",
 		topicImage:require('../images/identifying-variable.png'),
-		source1:"Smack my Ass like a Drum"
+		
+
 	},
 
 	{
@@ -67,7 +68,7 @@ const researchTopics = [
 		topicDuration: "5 hrs",
 		topicIndex:"Quarter 4 Lesson 2",
 		topicImage:require('../images/identifying-variable.png'),
-		source1:"Some Source Here"
+
 	},
 ];
 export default researchTopics;

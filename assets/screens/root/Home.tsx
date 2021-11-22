@@ -14,6 +14,7 @@ import {
 import Colors from "../../constants/Colors";
 import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
+import QuizCard from "../../components/cards/QuizCard";
 import researchTopics from "../../data/LessonsData";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
@@ -106,7 +107,15 @@ const Home: React.FC<Props> = () => {
 							<SearchBarInput />
 
 							{/* Content */}
+							<ScrollView
+							horizontal={true}
+							>
 							<HomeCard />
+							<QuizCard />
+							</ScrollView>
+							
+					
+							
 							<Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
 							<TouchableOpacity>
 								<FlatList
