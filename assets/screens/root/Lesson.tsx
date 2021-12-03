@@ -15,11 +15,11 @@ import {
 	StyleSheet,
 	Text,
 	Image,
+	FlatList,
 	View,
 	TouchableOpacity,
 	
 } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
 import researchTopics from "../../data/LessonsData";
 
 
@@ -28,11 +28,11 @@ interface Props {
 	props: any;
 }
 
-const Lesson: React.FC<Props> = ({ route,props }) => {
+const Lesson: React.FC<Props> = ({ route }) => {
 	const navigation = useNavigation<any>();
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-	const handleOpenPress = () => bottomSheetModalRef.current.present();
+	
 
 	// variables
 	const snapPoints = useMemo(() => ["20%","40%", "60%"], []);
@@ -91,7 +91,6 @@ const Lesson: React.FC<Props> = ({ route,props }) => {
 								name="book"
 								size={24}
 								color="black"
-								onPress={handleOpenPress}
 							/>
 						</TouchableOpacity>
 					</View>
@@ -131,7 +130,7 @@ const Lesson: React.FC<Props> = ({ route,props }) => {
 							marginLeft: 285,
 						}}
 					>
-						<FontAwesome name="pencil" size={20} color="black" />
+						<Feather name="volume-2" size={20} color="black" />
 					</View>
 				</TouchableOpacity>
 

@@ -21,9 +21,11 @@ const HomeCard = () => {
 							color: Colors.background,
 						}}
 					>
-						What do you want to learn Today?
+						Test Your Knowledge in Research
 					</Text>
-					<TouchableOpacity onPress={() => navigation.navigate("Modal")}>
+					<TouchableOpacity
+						onPress={() => navigation.navigate("Quiz")} 
+					>
 						<Text style={styles.getStarted}>Get Started</Text>
 					</TouchableOpacity>
 				</View>

@@ -15,9 +15,7 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<DrawerStackParamList>;
   Home: undefined;
   Lesson: undefined;
-  Modal: undefined;
-  SourceModal: undefined;
-  Subtopics: undefined;
+  Quiz:undefined;
   
  
 };
