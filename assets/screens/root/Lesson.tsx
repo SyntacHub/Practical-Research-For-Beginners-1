@@ -257,4 +257,5 @@ const styles = StyleSheet.create({
 				marginVertical: 8,
 				alignSelf:'stretch'
 	},
+	
 });

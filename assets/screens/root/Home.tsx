@@ -7,6 +7,8 @@ import {
 	Platform,
 	SafeAreaView,
 	ScrollView,
+	FlatList,
+	TouchableOpacity,
 	StyleSheet,
 	Text,
 	View,
@@ -14,7 +16,7 @@ import {
 import Colors from "../../constants/Colors";
 import HomeCard from "../../components/cards/HomeCard";
 import researchTopics from "../../data/LessonsData";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+
 
 interface Props {}
 
@@ -110,6 +112,7 @@ const Home: React.FC<Props> = () => {
 								<FlatList
 									data={researchTopics}
 									renderItem={renderItem}
+								
 									keyExtractor={(item) => item.id}
 								/>
 							</TouchableOpacity>
