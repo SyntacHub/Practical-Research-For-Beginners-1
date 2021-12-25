@@ -51,7 +51,7 @@ const Quiz = ({navigation}) => {
           elevation: 4,
           paddingHorizontal: 20,
         }}>
-        <Text style={{fontSize: 20, color: Colors.black}}>Quiz App</Text>
+        <Text style={{fontSize: 20, color: Colors.black}}>Practical Research </Text>
       </View>
 
       {/* Quiz list */}
@@ -92,7 +92,7 @@ const Quiz = ({navigation}) => {
                 backgroundColor: Colors.primary + '20',
               }}
               onPress={() => {
-                navigation.navigate('PlayQuizScreen', {
+                navigation.navigate('PlayQuiz', {
                   quizId: quiz.id,
                 });
               }}>
@@ -102,18 +102,7 @@ const Quiz = ({navigation}) => {
         )}
       />
 
-      {/* Button */}
-      <FormButton
-        labelText="Create Quiz"
-        style={{
-          position: 'absolute',
-          bottom: 20,
-          right: 20,
-          borderRadius: 50,
-          paddingHorizontal: 30,
-        }}
-        handleOnPress={() => navigation.navigate('CreateQuizScreen')}
-      />
+      
     </SafeAreaView>
   );
 };
