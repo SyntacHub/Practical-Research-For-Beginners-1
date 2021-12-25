@@ -5,6 +5,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
+import auth from '@react-native-firebase/auth';
+import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
 import Feedback from "./assets/screens/root/Feedback";
 import Faqs from "./assets/screens/root/Faqs";
 import About from "./assets/screens/root/About";
@@ -41,6 +43,13 @@ export default function App() {
 				<RootStack.Screen
 					name="Quiz"
 					component={Quiz}
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<RootStack.Screen
+					name="PlayQuiz"
+					component={PlayQuizScreen}
 					options={{
 						headerShown: false,
 					}}

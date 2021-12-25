@@ -10,7 +10,17 @@ const Colors = {
   lightGreen:"#CDEAD3",
   lightGray:"#F5F5F5",
   purple:"#454EAD",
-  bluebg:"#5BC1CF"
+  bluebg:"#5BC1CF",
+
+  primary: '#4630EB',
+  secondary: '#000020',
+
+  success: '#00C851',
+  error: '#ff4444',
+
+  black: '#171717',
+  white: '#FFFFFF',
+  border: '#F5F5F7',
   
 
 };
