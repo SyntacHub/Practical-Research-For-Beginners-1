@@ -1,23 +1,17 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import useCachedResources from "./assets/hooks/useCachedResources";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-	createStackNavigator,
-	TransitionPresets,
-} from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
+import auth from '@react-native-firebase/auth';
+import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
 import Feedback from "./assets/screens/root/Feedback";
 import Faqs from "./assets/screens/root/Faqs";
 import About from "./assets/screens/root/About";
-import Subtopics from "./assets/screens/root/Subtopics";
-import IntroModal from "./assets/screens/Modal/IntroModal";
-import SourceModal from "./assets/screens/Modal/SourceModal";
+import Quiz from "./assets/screens/root/Quiz";
 import Lesson from "./assets/screens/root/Lesson";
-import { Modal, View } from "react-native";
 import { RootStackParamList } from "./types";
 
 export default function App() {
@@ -29,19 +23,8 @@ export default function App() {
 		return (
 			<RootStack.Navigator
 				initialRouteName="Root"
-				screenOptions={() => {
-					return {
-						gestureEnabled: true,
-						cardOverlayEnabled: true,
-						...TransitionPresets.ModalPresentationIOS,
-					};
-				}}
 			>
-				<RootStack.Screen
-					name="Modal"
-					options={{ headerShown: false, presentation: "modal" }}
-					component={IntroModal}
-				/>
+				
 				<RootStack.Screen
 					name="Root"
 					component={Home}
@@ -49,6 +32,7 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
+				
 				<RootStack.Screen
 					name="Lesson"
 					component={Lesson}
@@ -57,10 +41,20 @@ export default function App() {
 					}}
 				/>
 				<RootStack.Screen
-					name="SourceModal"
-					options={{ headerShown: false}}
-					component={SourceModal}
+					name="Quiz"
+					component={Quiz}
+					options={{
+						headerShown: false,
+					}}
 				/>
+				<RootStack.Screen
+					name="PlayQuiz"
+					component={PlayQuizScreen}
+					options={{
+						headerShown: false,
+					}}
+				/>
+			
 			</RootStack.Navigator>
 		);
 	}

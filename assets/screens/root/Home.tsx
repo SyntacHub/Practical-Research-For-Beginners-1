@@ -7,15 +7,16 @@ import {
 	Platform,
 	SafeAreaView,
 	ScrollView,
+	FlatList,
+	TouchableOpacity,
 	StyleSheet,
 	Text,
 	View,
 } from "react-native";
 import Colors from "../../constants/Colors";
-import SearchBarInput from "../../components/inputs/SearchBarInput";
 import HomeCard from "../../components/cards/HomeCard";
 import researchTopics from "../../data/LessonsData";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+
 
 interface Props {}
 
@@ -24,12 +25,12 @@ const Home: React.FC<Props> = () => {
 	const renderItem = ({ item }: { item: any }) => {
 		return (
 			<TouchableOpacity
-			key={item.id}
-			onPress={() =>
-				navigation.navigate("Lesson", {
-					item: item,
-				})
-			}
+				key={item.id}
+				onPress={() =>
+					navigation.navigate("Lesson", {
+						item: item,
+					})
+				}
 			>
 				<View style={styles.menu}>
 					<View
@@ -51,7 +52,7 @@ const Home: React.FC<Props> = () => {
 								<Text
 									style={{
 										fontFamily: "SFProDisplay-Bold",
-										fontSize: 18,
+										fontSize: 22,
 										color: Colors.secondaryGreen,
 									}}
 								>
@@ -61,20 +62,17 @@ const Home: React.FC<Props> = () => {
 									style={{
 										marginTop: 5,
 										fontFamily: "SFProDisplay-Medium",
-										fontSize: 15,
+										fontSize: 14,
 										color: Colors.text,
+										marginRight:20,
 									}}
 								>
-									{item.topicDuration}
+									{item.courseDesc}
 								</Text>
 							</View>
 						</View>
 
-						<Feather
-							name="arrow-right"
-							size={24}
-							color={Colors.secondaryGreen}
-						/>
+						
 					</View>
 				</View>
 			</TouchableOpacity>
@@ -103,15 +101,18 @@ const Home: React.FC<Props> = () => {
 							<Text style={styles.textName}>Tristan Listanco</Text>
 						</View>
 						<View style={styles.searchBarWrapper}>
-							<SearchBarInput />
+						
 
 							{/* Content */}
+
 							<HomeCard />
+
 							<Text style={styles.textQuarterlyLessons}>Quarterly Lessons</Text>
 							<TouchableOpacity>
 								<FlatList
 									data={researchTopics}
 									renderItem={renderItem}
+								
 									keyExtractor={(item) => item.id}
 								/>
 							</TouchableOpacity>
