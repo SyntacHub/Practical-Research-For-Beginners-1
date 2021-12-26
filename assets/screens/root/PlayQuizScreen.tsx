@@ -106,7 +106,7 @@ const PlayQuizScreen = ({navigation, route}) => {
       style={{
         flex: 1,
         position: 'relative',
-        marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+       
       }}>
       <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
       {/* Top Bar */}
@@ -128,7 +128,7 @@ const PlayQuizScreen = ({navigation, route}) => {
         />
 
         {/* Title */}
-        <Text style={{fontSize: 16, marginLeft: 10}}>{title}</Text>
+        <Text style={{fontSize: 16, marginLeft: 10,fontFamily:"SFProDisplay-Bold"}}>{title}</Text>
 
         {/* Correct and incorrect count */}
         <View
@@ -154,7 +154,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               size={14}
               style={{color: Colors.white}}
             />
-            <Text style={{color: Colors.white, marginLeft: 6}}>
+            <Text style={{color: Colors.white, marginLeft: 6,fontFamily:"SFProDisplay-Medium"}}>
               {correctCount}
             </Text>
           </View>
@@ -176,7 +176,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               size={14}
               style={{color: Colors.white}}
             />
-            <Text style={{color: Colors.white, marginLeft: 6}}>
+            <Text style={{color: Colors.white, marginLeft: 6,fontFamily:"SFProDisplay-Medium"}}>
               {incorrectCount}
             </Text>
           </View>
@@ -189,6 +189,7 @@ const PlayQuizScreen = ({navigation, route}) => {
         style={{
           flex: 1,
           backgroundColor: Colors.background,
+          
         }}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.question}
@@ -202,7 +203,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               borderRadius: 2,
             }}>
             <View style={{padding: 20}}>
-              <Text style={{fontSize: 16}}>
+              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Medium"}}>
                 {index + 1}. {item.question}
               </Text>
               {item.imageUrl != '' ? (
@@ -262,6 +263,7 @@ const PlayQuizScreen = ({navigation, route}) => {
                       marginRight: 16,
                       borderRadius: 25,
                       color: getOptionTextColor(item, option),
+                      fontFamily:"SFProDisplay-Medium",
                     }}>
                     {optionIndex + 1}
                   </Text>
