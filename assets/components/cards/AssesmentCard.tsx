@@ -5,7 +5,7 @@ import Colors from "../../constants/Colors";
 
 interface Props {}
 
-const HomeCard = () => {
+const AssesmentCard = () => {
 	const navigation = useNavigation<any>();
 	return (
 		<View style={styles.container}>
@@ -14,52 +14,37 @@ const HomeCard = () => {
 					<Text
 						style={{
 							width: "100%",
-							marginLeft: 15,
-							fontFamily: "SFProDisplay-Bold",
-							lineHeight: 30,
-							fontSize: 20,
+                            paddingVertical:10,
+							fontFamily: "SFProDisplay-Black",
+							lineHeight: 33,
+							fontSize: 19,
 							color: Colors.background,
 						}}
 					>
-						Test Your Knowledge in Research
+						“All the luck in the world, all wished for you.”
 					</Text>
-					<TouchableOpacity
-						onPress={() => navigation.navigate("Quiz")} 
-					>
-						<Text style={styles.getStarted}>Get Started</Text>
-					</TouchableOpacity>
+				
 				</View>
 				<Image
 					style={{ width: "50%" }}
-					source={require("../../images/homeCard.png")}
+					source={require("../../images/assesment_image.png")}
 				/>
+                
 			</View>
 		</View>
 	);
 };
 
-export default HomeCard;
+export default AssesmentCard;
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingHorizontal: 16,
-		paddingVertical: 15,
-		backgroundColor: Colors.primaryGreen,
+		paddingVertical: 5,
+		backgroundColor: '#50BA9A',
 		borderRadius: 23,
 		marginVertical: 12,
 	},
-	getStarted: {
-		width: "80%",
-		marginLeft: 15,
-		marginTop: 15,
-		paddingVertical: 10,
-		textAlign: "center",
-		borderRadius: 5,
-		overflow: "hidden",
-		fontFamily: "SFProDisplay-Medium",
-		fontSize: 15,
-		color: Colors.background,
-		backgroundColor: Colors.darkGreen,
-	},
+	
 });

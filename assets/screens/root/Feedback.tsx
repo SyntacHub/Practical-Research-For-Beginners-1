@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
+	NativeModules,
 	Platform,
 	SafeAreaView,
 	ScrollView,
@@ -18,7 +19,9 @@ interface Props {}
 
 const Feedback: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
-	console.log("Feedback Initialized");
+	const { StatusBarManager } = NativeModules;
+	const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView
@@ -27,7 +30,9 @@ const Feedback: React.FC<Props> = () => {
 			>
 				<StatusBar style="auto" />
 				{/* Header */}
-				<View style={styles.contentWrapper}>
+				<View style={{marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+		marginLeft: 25,
+		marginRight: 25,}}>
 					<View>
 						<Feather
 							name="menu"
@@ -52,6 +57,8 @@ const Feedback: React.FC<Props> = () => {
 			</ScrollView>
 		</SafeAreaView>
 	);
+
+	
 };
 
 export default Feedback;
@@ -62,9 +69,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.background,
 	},
 	contentWrapper: {
-		marginTop: Platform.OS === "ios" ? 15 : 50,
-		marginLeft: 25,
-		marginRight: 25,
+		
 	},
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,

@@ -7,12 +7,14 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  Platform,
+  NativeModules,
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import {getQuestionsByQuizId, getQuizById} from '../../utils/database';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FormButton from '../../components/cards/FormButton';
-import ResultModal from '../../components/cards/ResultModal';
+import FormButton from '../../components/buttons/FormButton';
+import ResultModal from '../../components/modals/ResultModal';
 
 
 
@@ -94,11 +96,17 @@ const PlayQuizScreen = ({navigation, route}) => {
     }
   };
 
+  const { StatusBarManager } = NativeModules;
+  const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+
+
+
   return (
     <SafeAreaView
       style={{
         flex: 1,
         position: 'relative',
+        marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
       }}>
       <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
       {/* Top Bar */}
