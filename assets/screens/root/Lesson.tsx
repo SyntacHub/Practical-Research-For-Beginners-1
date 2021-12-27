@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 
 import React, { useCallback, useMemo, useRef } from "react";
 import BottomSheet, {

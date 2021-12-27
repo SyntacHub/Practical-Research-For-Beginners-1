@@ -22,6 +22,7 @@
     "expo": "~43.0.0",
     "expo-app-loading": "~1.2.1",
     "expo-linking": "~2.4.2",
+    "expo-permissions": "^13.1.0",
     "expo-speech": "~10.0.3",
     "expo-splash-screen": "~0.13.5",
     "expo-status-bar": "~1.1.0",
@@ -54,6 +55,7 @@
     "@types/react-native": "~0.64.12",
     "@types/react-native-vector-icons": "^6.4.10",
     "@types/react-test-renderer": "^17.0.1",
+    "react-native-unimodules": "^0.7.0",
     "redux-devtools": "^3.7.0",
     "typescript": "~4.3.5"
   },

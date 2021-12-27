@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Modal, TouchableOpacity} from 'react-native';
-import Colors from '../../constants/Colors';
+import Colors from '../../constants/colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const ResultModal = ({

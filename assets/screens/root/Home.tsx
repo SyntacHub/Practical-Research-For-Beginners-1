@@ -13,7 +13,7 @@ import {
 	View,
 	NativeModules,
 } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 import HomeCard from "../../components/cards/HomeCard";
 import researchTopics from "../../data/LessonsData";
 

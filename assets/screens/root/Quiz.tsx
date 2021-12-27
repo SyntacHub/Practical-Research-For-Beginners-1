@@ -13,9 +13,8 @@ import {
 	StyleSheet,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 import { getQuizzes } from "../../utils/database";
-import AttemptLimitReached from "../../components/modals/AttemptLimitReachedModal";
 import AssesmentCard from "../../components/cards/AssesmentCard";
 
 const Quiz = ({ navigation }) => {
@@ -82,10 +81,15 @@ const Quiz = ({ navigation }) => {
 					/>
 				</TouchableOpacity>
 				<TouchableOpacity>
-					<Feather name="rotate-cw" size={24} color="black" handleOnPress={() => {
-              // Show Result modal
-              setIsResultModalVisible(true);
-            }} />
+					<Feather
+						name="rotate-cw"
+						size={24}
+						color="black"
+						handleOnPress={() => {
+							// Show Result modal
+							setIsResultModalVisible(true);
+						}}
+					/>
 				</TouchableOpacity>
 			</View>
 
@@ -115,7 +119,7 @@ const Quiz = ({ navigation }) => {
 							padding: 20,
 							borderRadius: 5,
 							marginVertical: 5,
-							
+
 							flexDirection: "row",
 							alignItems: "center",
 							justifyContent: "space-between",
@@ -124,11 +128,21 @@ const Quiz = ({ navigation }) => {
 						}}
 					>
 						<View style={{ flex: 1, paddingRight: 10 }}>
-							<Text style={{ fontSize: 18, color: Colors.black ,fontFamily:"SFProDisplay-Bold" }}>
+							<Text
+								style={{
+									fontSize: 18,
+									color: Colors.black,
+									fontFamily: "SFProDisplay-Bold",
+								}}
+							>
 								{quiz.title}
 							</Text>
 							{quiz.description != "" ? (
-								<Text style={{ opacity: 0.5,fontFamily:"SFProDisplay-Medium"}}>{quiz.description}</Text>
+								<Text
+									style={{ opacity: 0.5, fontFamily: "SFProDisplay-Medium" }}
+								>
+									{quiz.description}
+								</Text>
 							) : null}
 						</View>
 						<TouchableOpacity
@@ -144,12 +158,18 @@ const Quiz = ({ navigation }) => {
 								});
 							}}
 						>
-							<Text style={{ color: Colors.primary , fontFamily:"SFProDisplay-Black" }}>Play</Text>
+							<Text
+								style={{
+									color: Colors.primary,
+									fontFamily: "SFProDisplay-Black",
+								}}
+							>
+								Play
+							</Text>
 						</TouchableOpacity>
 					</View>
 				)}
 			/>
-			 
 		</SafeAreaView>
 	);
 };

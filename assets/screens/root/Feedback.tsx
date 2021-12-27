@@ -11,7 +11,7 @@ import {
 	Text,
 	View,
 } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 import FeedbackCard from "../../components/cards/FeedbackCard";
 import * as Linking from 'expo-linking';
 

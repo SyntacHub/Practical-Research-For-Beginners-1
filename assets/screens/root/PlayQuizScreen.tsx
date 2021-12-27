@@ -10,7 +10,7 @@ import {
   Platform,
   NativeModules,
 } from 'react-native';
-import Colors from '../../constants/Colors';
+import Colors from '../../constants/colors';
 import {getQuestionsByQuizId, getQuizById} from '../../utils/database';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FormButton from '../../components/buttons/FormButton';
