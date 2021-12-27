@@ -22,6 +22,7 @@ const PlayQuizScreen = ({navigation, route}) => {
   const [currentQuizId, setCurrentQuizId] = useState(route.params.quizId);
   const [title, setTitle] = useState('');
   const [questions, setQuestions] = useState([]);
+  const [attempted,setAttempted]=useState([]);
 
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
@@ -48,12 +49,17 @@ const PlayQuizScreen = ({navigation, route}) => {
     // Get Questions for current quiz
     const questions = await getQuestionsByQuizId(currentQuizId);
 
+
+    
+
+
     // Transform and shuffle options
     let tempQuestions = [];
     await questions.docs.forEach(async res => {
       let question = res.data();
 
       // Create Single array of all options and shuffle it
+  
       question.allOptions = shuffleArray([
         ...question.incorrect_answers,
         question.correct_answer,
@@ -68,7 +74,7 @@ const PlayQuizScreen = ({navigation, route}) => {
     getQuizAndQuestionDetails();
   }, []);
 
-  const getOptionBgColor = (currentQuestion, currentOption) => {
+  const getOptionBgColor = (currentQuestion:any, currentOption:any) => {
     if (currentQuestion.selectedOption) {
       if (currentOption == currentQuestion.selectedOption) {
         if (currentOption == currentQuestion.correct_answer) {
@@ -97,7 +103,6 @@ const PlayQuizScreen = ({navigation, route}) => {
   };
 
   const { StatusBarManager } = NativeModules;
-  const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
 
 
 
@@ -203,7 +208,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               borderRadius: 2,
             }}>
             <View style={{padding: 20}}>
-              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Medium"}}>
+              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold"}}>
                 {index + 1}. {item.question}
               </Text>
               {item.imageUrl != '' ? (
@@ -267,7 +272,7 @@ const PlayQuizScreen = ({navigation, route}) => {
                     }}>
                     {optionIndex + 1}
                   </Text>
-                  <Text style={{color: getOptionTextColor(item, option)}}>
+                  <Text style={{color: getOptionTextColor(item, option), fontFamily:"SFProDisplay-Medium",}}>
                     {option}
                   </Text>
                 </TouchableOpacity>

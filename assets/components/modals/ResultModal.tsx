@@ -16,6 +16,7 @@ const ResultModal = ({
     <Modal
       animationType={'slide'}
       transparent={true}
+      hardwareAccelerated={true}
       visible={isModalVisible}
       onRequestClose={handleOnClose}>
       <View
@@ -29,7 +30,7 @@ const ResultModal = ({
           style={{
             backgroundColor: Colors.white,
             width: '90%',
-            borderRadius: 5,
+            borderRadius: 10,
             padding: 40,
             alignItems: 'center',
           }}>

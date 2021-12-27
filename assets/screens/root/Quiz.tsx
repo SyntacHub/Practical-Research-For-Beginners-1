@@ -7,6 +7,7 @@ import {
 	FlatList,
 	TouchableOpacity,
 	Platform,
+	Modal,
 	NativeModules,
 	Alert,
 	StyleSheet,
@@ -14,11 +15,14 @@ import {
 import { Feather } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 import { getQuizzes } from "../../utils/database";
+import AttemptLimitReached from "../../components/modals/AttemptLimitReachedModal";
 import AssesmentCard from "../../components/cards/AssesmentCard";
 
 const Quiz = ({ navigation }) => {
 	const [allQuizzes, setAllQuizzes] = useState([]);
 	const [refreshing, setRefreshing] = useState(false);
+	const [modalVisible, setModalVisible] = useState(false);
+	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
 
 	const getAllQuizzes = async () => {
 		setRefreshing(true);
@@ -78,7 +82,10 @@ const Quiz = ({ navigation }) => {
 					/>
 				</TouchableOpacity>
 				<TouchableOpacity>
-					<Feather name="rotate-cw" size={24} color="black" />
+					<Feather name="rotate-cw" size={24} color="black" handleOnPress={() => {
+              // Show Result modal
+              setIsResultModalVisible(true);
+            }} />
 				</TouchableOpacity>
 			</View>
 
@@ -142,6 +149,7 @@ const Quiz = ({ navigation }) => {
 					</View>
 				)}
 			/>
+			 
 		</SafeAreaView>
 	);
 };
