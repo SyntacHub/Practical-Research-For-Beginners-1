@@ -11,11 +11,11 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		50995B1151BA4562A2022DDA /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EFB64391D84283847B7EC2 /* noop-file.swift */; };
-		630F094F2779731000A0E835 /* google-services.json in Resources */ = {isa = PBXBuildFile; fileRef = 630F094E2779731000A0E835 /* google-services.json */; };
+		63AFCA63277B269F00034F36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63AFCA62277B269F00034F36 /* GoogleService-Info.plist */; };
 		96905EF65AED1B983A6B3ABC /* libPods-ICNHSResearchGrade7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-ICNHSResearchGrade7.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		F0EF05C5226F400AA2BAA671 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388560E7B39471687D75714 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,13 +26,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ICNHSResearchGrade7/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ICNHSResearchGrade7/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ICNHSResearchGrade7/main.m; sourceTree = "<group>"; };
+		3388560E7B39471687D75714 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "ICNHSResearchGrade7/noop-file.swift"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-ICNHSResearchGrade7.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ICNHSResearchGrade7.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		630F094E2779731000A0E835 /* google-services.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "google-services.json"; sourceTree = "<group>"; };
+		63AFCA62277B269F00034F36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-ICNHSResearchGrade7.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICNHSResearchGrade7.debug.xcconfig"; path = "Target Support Files/Pods-ICNHSResearchGrade7/Pods-ICNHSResearchGrade7.debug.xcconfig"; sourceTree = "<group>"; };
-		7126BBAB52D34373AFA1CD15 /* ICNHSResearchGrade7-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "ICNHSResearchGrade7-Bridging-Header.h"; path = "ICNHSResearchGrade7/ICNHSResearchGrade7-Bridging-Header.h"; sourceTree = "<group>"; };
+		748E10B6CFDF409F86DA66D2 /* ICNHSResearchGrade7-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "ICNHSResearchGrade7-Bridging-Header.h"; path = "ICNHSResearchGrade7/ICNHSResearchGrade7-Bridging-Header.h"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-ICNHSResearchGrade7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICNHSResearchGrade7.release.xcconfig"; path = "Target Support Files/Pods-ICNHSResearchGrade7/Pods-ICNHSResearchGrade7.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ICNHSResearchGrade7/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B9EFB64391D84283847B7EC2 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "ICNHSResearchGrade7/noop-file.swift"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ICNHSResearchGrade7/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -61,8 +61,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				B9EFB64391D84283847B7EC2 /* noop-file.swift */,
-				7126BBAB52D34373AFA1CD15 /* ICNHSResearchGrade7-Bridging-Header.h */,
+				3388560E7B39471687D75714 /* noop-file.swift */,
+				748E10B6CFDF409F86DA66D2 /* ICNHSResearchGrade7-Bridging-Header.h */,
 			);
 			name = ICNHSResearchGrade7;
 			sourceTree = "<group>";
@@ -86,7 +86,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				630F094E2779731000A0E835 /* google-services.json */,
+				63AFCA62277B269F00034F36 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* ICNHSResearchGrade7 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -155,7 +155,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				B154347743B5BE336EFB580D /* [CP-User] [RNFB] Core Configuration */,
+				82BD53CF277B13BCD4EC38B4 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -172,7 +172,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = NSA2PC5U28;
@@ -204,8 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
+				63AFCA63277B269F00034F36 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				630F094F2779731000A0E835 /* google-services.json in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +305,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ICNHSResearchGrade7/Pods-ICNHSResearchGrade7-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B154347743B5BE336EFB580D /* [CP-User] [RNFB] Core Configuration */ = {
+		82BD53CF277B13BCD4EC38B4 /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,7 +347,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				50995B1151BA4562A2022DDA /* noop-file.swift in Sources */,
+				F0EF05C5226F400AA2BAA671 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +364,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NSA2PC5U28;
 				ENABLE_BITCODE = NO;
-				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
@@ -374,8 +373,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-lc++",
-					"-Objc",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icnhs.researchapp;
 				PRODUCT_NAME = ICNHSResearchGrade7;
@@ -396,14 +395,13 @@
 				CODE_SIGN_ENTITLEMENTS = ICNHSResearchGrade7/ICNHSResearchGrade7.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NSA2PC5U28;
-				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = ICNHSResearchGrade7/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-lc++",
-					"-Objc",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icnhs.researchapp;
 				PRODUCT_NAME = ICNHSResearchGrade7;
@@ -437,7 +435,6 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -496,7 +493,6 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -521,7 +517,6 @@
 				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

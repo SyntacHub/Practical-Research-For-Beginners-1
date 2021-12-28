@@ -1,9 +1,9 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
+#import <Firebase.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <Firebase.h>
 #import <React/RCTLinkingManager.h>
 #import <React/RCTConvert.h>
 

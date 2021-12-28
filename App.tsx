@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
+import { Permissions } from 'expo';
 import auth from '@react-native-firebase/auth';
 import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
 import Feedback from "./assets/screens/root/Feedback";

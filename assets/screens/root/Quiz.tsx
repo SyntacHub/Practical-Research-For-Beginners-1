@@ -71,7 +71,7 @@ const Quiz = ({ navigation }) => {
 				barStyle={"dark-content"}
 				hidden={false}
 			/>
-			<View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+			<View style={{ flexDirection: "row", justifyContent: "space-between",marginTop:15 }}>
 				<TouchableOpacity>
 					<Feather
 						name="arrow-left"
