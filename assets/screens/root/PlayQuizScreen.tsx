@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Platform,
   NativeModules,
+  Alert,
 } from 'react-native';
 import Colors from '../../constants/colors';
 import {getQuestionsByQuizId, getQuizById} from '../../utils/database';
@@ -23,6 +24,8 @@ const PlayQuizScreen = ({navigation, route}) => {
   const [title, setTitle] = useState('');
   const [questions, setQuestions] = useState([]);
   const [attempted,setAttempted]=useState([]);
+
+
 
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
@@ -103,6 +106,19 @@ const PlayQuizScreen = ({navigation, route}) => {
   };
 
   const { StatusBarManager } = NativeModules;
+  const exitPrompt = () =>
+		Alert.alert(
+			"Confirmation",
+			"Do you want to exit the current exam? You will loose 1 Attempt ",
+			[
+				{
+					text: "No",
+					onPress: () => console.log("Cancel Pressed"),
+					style: "cancel",
+				},
+				{ text: "Yes", onPress: () => navigation.goBack() },
+			]
+		);
 
 
 
@@ -129,7 +145,7 @@ const PlayQuizScreen = ({navigation, route}) => {
         <MaterialIcons
           name="arrow-back"
           size={24}
-          onPress={() => navigation.goBack()}
+          onPress={exitPrompt}
         />
 
         {/* Title */}
