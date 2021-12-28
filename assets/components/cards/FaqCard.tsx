@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 import Discord from "../svg/discord";
 
 interface Props {}

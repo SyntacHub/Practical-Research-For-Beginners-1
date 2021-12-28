@@ -1,7 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 import * as React from "react";
 import {
 	Platform,
@@ -12,6 +12,7 @@ import {
 	FlatList,
 	TouchableOpacity,
 	View,
+	NativeModules,
 } from "react-native";
 import AboutCard from "../../components/cards/AboutCard";
 import Acknowledgements from "../../data/AcknowledgementsData";
@@ -104,7 +105,8 @@ const About: React.FC<Props> = () => {
 		);
 	};
 
-	console.log("AboutView Initialized");
+	const { StatusBarManager } = NativeModules;
+	const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView
@@ -113,7 +115,7 @@ const About: React.FC<Props> = () => {
 			>
 				<StatusBar style="auto" />
 				{/* Header */}
-				<View style={styles.contentWrapper}>
+				<View style={{marginLeft: 25, marginRight: 25,marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT}}>
 					<View>
 						<Feather
 							name="menu"

@@ -1,9 +1,9 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 
 import React, { useCallback, useMemo, useRef } from "react";
-import BottomSheet,{
+import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetModal,
 	BottomSheetModalProvider,
@@ -18,10 +18,9 @@ import {
 	FlatList,
 	View,
 	TouchableOpacity,
-	
+	NativeModules,
 } from "react-native";
 import researchTopics from "../../data/LessonsData";
-
 
 interface Props {
 	route: any;
@@ -32,12 +31,10 @@ const Lesson: React.FC<Props> = ({ route }) => {
 	const navigation = useNavigation<any>();
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-	
 
 	// variables
-	const snapPoints = useMemo(() => ["20%","40%", "60%"], []);
+	const snapPoints = useMemo(() => ["20%", "40%", "60%"], []);
 	const sheetRef = useRef<BottomSheet>(null);
-	
 
 	//render
 	const renderBackdrop = useCallback(
@@ -50,31 +47,39 @@ const Lesson: React.FC<Props> = ({ route }) => {
 		),
 		[]
 	);
-	const renderItem = ({item}:{item:any}) => {
+	const renderItem = ({ item }: { item: any }) => {
 		return (
 			<View style={styles.modalmenu}>
 				<Text>{item.source}</Text>
 			</View>
-			
 		);
 	};
-	
+
 	// callbacks
 	const handleSheetChanges = useCallback((index: number) => {
 		console.log("handleSheetChanges", index);
 	}, []);
-	
 
 	console.log(item);
-	console.log("Lesson Initialized");
+
+	const { StatusBarManager } = NativeModules;
+	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
 		<SafeAreaView style={styles.container}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
+				style={{backgroundColor: Colors.background}}
 			>
 				{/* Header */}
-				<View style={styles.contentWrapper}>
+				<View
+					style={{
+						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+						marginLeft: 25,
+						marginRight: 25,
+						
+					}}
+				>
 					<View
 						style={{ flexDirection: "row", justifyContent: "space-between" }}
 					>
@@ -87,11 +92,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity>
-							<Feather
-								name="book"
-								size={24}
-								color="black"
-							/>
+							<Feather name="book" size={24} color="black" />
 						</TouchableOpacity>
 					</View>
 
@@ -171,18 +172,17 @@ const Lesson: React.FC<Props> = ({ route }) => {
 							onChange={handleSheetChanges}
 						>
 							<View style={styles.bottomSheetContainer}>
-								<View style={{ flexDirection: "column",marginTop:10}}>
+								<View style={{ flexDirection: "column", marginTop: 10 }}>
 									<Text
 										style={{ fontFamily: "SFProDisplay-Bold", fontSize: 35 }}
 									>
 										References
 									</Text>
 									<FlatList
-									data={researchTopics}
-									renderItem={renderItem}
-									keyExtractor={(item) => item.id}
-								/>
-
+										data={researchTopics}
+										renderItem={renderItem}
+										keyExtractor={(item) => item.id}
+									/>
 								</View>
 							</View>
 						</BottomSheetModal>
@@ -196,15 +196,8 @@ const Lesson: React.FC<Props> = ({ route }) => {
 export default Lesson;
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: "column",
-	},
-	contentWrapper: {
-		marginTop: Platform.OS === "ios" ? 15 : 50,
-		marginLeft: 25,
-		marginRight: 25,
-	},
+	container: {},
+	contentWrapper: {},
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
@@ -244,18 +237,17 @@ const styles = StyleSheet.create({
 	},
 	bottomSheetContainer: {
 		flex: 1,
-		width:"100%",
+		width: "100%",
 		alignItems: "flex-start",
 		paddingHorizontal: 20,
 	},
 	modalmenu: {
 		flex: 1,
-				paddingHorizontal: 20,
-				paddingVertical: 16,
-				backgroundColor: Colors.lightGreen,
-				borderRadius: 11,
-				marginVertical: 8,
-				alignSelf:'stretch'
+		paddingHorizontal: 20,
+		paddingVertical: 16,
+		backgroundColor: Colors.lightGreen,
+		borderRadius: 11,
+		marginVertical: 8,
+		alignSelf: "stretch",
 	},
-	
 });

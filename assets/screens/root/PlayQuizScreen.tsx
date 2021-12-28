@@ -7,12 +7,14 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  Platform,
+  NativeModules,
 } from 'react-native';
-import Colors from '../../constants/Colors';
+import Colors from '../../constants/colors';
 import {getQuestionsByQuizId, getQuizById} from '../../utils/database';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FormButton from '../../components/cards/FormButton';
-import ResultModal from '../../components/cards/ResultModal';
+import FormButton from '../../components/buttons/FormButton';
+import ResultModal from '../../components/modals/ResultModal';
 
 
 
@@ -20,6 +22,7 @@ const PlayQuizScreen = ({navigation, route}) => {
   const [currentQuizId, setCurrentQuizId] = useState(route.params.quizId);
   const [title, setTitle] = useState('');
   const [questions, setQuestions] = useState([]);
+  const [attempted,setAttempted]=useState([]);
 
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
@@ -46,12 +49,17 @@ const PlayQuizScreen = ({navigation, route}) => {
     // Get Questions for current quiz
     const questions = await getQuestionsByQuizId(currentQuizId);
 
+
+    
+
+
     // Transform and shuffle options
     let tempQuestions = [];
     await questions.docs.forEach(async res => {
       let question = res.data();
 
       // Create Single array of all options and shuffle it
+  
       question.allOptions = shuffleArray([
         ...question.incorrect_answers,
         question.correct_answer,
@@ -66,7 +74,7 @@ const PlayQuizScreen = ({navigation, route}) => {
     getQuizAndQuestionDetails();
   }, []);
 
-  const getOptionBgColor = (currentQuestion, currentOption) => {
+  const getOptionBgColor = (currentQuestion:any, currentOption:any) => {
     if (currentQuestion.selectedOption) {
       if (currentOption == currentQuestion.selectedOption) {
         if (currentOption == currentQuestion.correct_answer) {
@@ -94,11 +102,16 @@ const PlayQuizScreen = ({navigation, route}) => {
     }
   };
 
+  const { StatusBarManager } = NativeModules;
+
+
+
   return (
     <SafeAreaView
       style={{
         flex: 1,
         position: 'relative',
+       
       }}>
       <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
       {/* Top Bar */}
@@ -120,7 +133,7 @@ const PlayQuizScreen = ({navigation, route}) => {
         />
 
         {/* Title */}
-        <Text style={{fontSize: 16, marginLeft: 10}}>{title}</Text>
+        <Text style={{fontSize: 16, marginLeft: 10,fontFamily:"SFProDisplay-Bold"}}>{title}</Text>
 
         {/* Correct and incorrect count */}
         <View
@@ -146,7 +159,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               size={14}
               style={{color: Colors.white}}
             />
-            <Text style={{color: Colors.white, marginLeft: 6}}>
+            <Text style={{color: Colors.white, marginLeft: 6,fontFamily:"SFProDisplay-Medium"}}>
               {correctCount}
             </Text>
           </View>
@@ -168,7 +181,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               size={14}
               style={{color: Colors.white}}
             />
-            <Text style={{color: Colors.white, marginLeft: 6}}>
+            <Text style={{color: Colors.white, marginLeft: 6,fontFamily:"SFProDisplay-Medium"}}>
               {incorrectCount}
             </Text>
           </View>
@@ -181,6 +194,7 @@ const PlayQuizScreen = ({navigation, route}) => {
         style={{
           flex: 1,
           backgroundColor: Colors.background,
+          
         }}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.question}
@@ -194,7 +208,7 @@ const PlayQuizScreen = ({navigation, route}) => {
               borderRadius: 2,
             }}>
             <View style={{padding: 20}}>
-              <Text style={{fontSize: 16}}>
+              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold"}}>
                 {index + 1}. {item.question}
               </Text>
               {item.imageUrl != '' ? (
@@ -254,10 +268,11 @@ const PlayQuizScreen = ({navigation, route}) => {
                       marginRight: 16,
                       borderRadius: 25,
                       color: getOptionTextColor(item, option),
+                      fontFamily:"SFProDisplay-Medium",
                     }}>
                     {optionIndex + 1}
                   </Text>
-                  <Text style={{color: getOptionTextColor(item, option)}}>
+                  <Text style={{color: getOptionTextColor(item, option), fontFamily:"SFProDisplay-Medium",}}>
                     {option}
                   </Text>
                 </TouchableOpacity>

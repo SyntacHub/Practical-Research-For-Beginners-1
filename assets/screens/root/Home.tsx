@@ -1,19 +1,19 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import {
-	Image,
 	Platform,
 	SafeAreaView,
 	ScrollView,
 	FlatList,
 	TouchableOpacity,
+	StatusBar,
 	StyleSheet,
 	Text,
 	View,
+	NativeModules,
 } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../constants/colors";
 import HomeCard from "../../components/cards/HomeCard";
 import researchTopics from "../../data/LessonsData";
 
@@ -79,16 +79,20 @@ const Home: React.FC<Props> = () => {
 		);
 	};
 
-	console.log("HomeView Initialized");
+	const { StatusBarManager } = NativeModules;
+	const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+
+
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView style={styles.container} >
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
+				style={{backgroundColor: Colors.background}}
 			>
-				<StatusBar style="auto" />
+				 <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
 				{/* Header */}
-				<View style={styles.contentWrapper}>
+				<View style={{marginLeft: 25, marginRight: 25,marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT}}>
 					<View>
 						<Feather
 							name="menu"
@@ -130,11 +134,10 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Colors.background,
+		
 	},
 	contentWrapper: {
-		marginTop: Platform.OS === "ios" ? 15 : 50,
-		marginLeft: 25,
-		marginRight: 25,
+		
 	},
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
