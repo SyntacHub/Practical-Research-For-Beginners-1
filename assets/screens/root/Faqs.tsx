@@ -51,10 +51,7 @@ const Faqs: React.FC<Props> = () => {
 						<View style={styles.searchBarWrapper}>
 							{/* Content */}
 							<FaqCard />
-							<QACard />
-							<QACard />
-							<QACard />
-							<QACard />
+							
 						</View>
 					</View>
 				</View>

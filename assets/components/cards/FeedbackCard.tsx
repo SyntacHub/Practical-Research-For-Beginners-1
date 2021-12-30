@@ -17,15 +17,15 @@ const FeedbackCard: React.FC<Props> = () => {
 				<View style={{ flexDirection: "column", width: "50%", marginTop: 5 }}>
 					<Text
 						style={{
-							width: "100%",
+							
 							marginLeft: 10,
-							fontFamily: "SFProDisplay-Bold",
-							lineHeight: 30,
+							fontFamily: "SFProDisplay-Black",
+							lineHeight: 25,
 							fontSize: 20,
-							color: Colors.background,
+							color: "#1E5952",
 						}}
 					>
-						Found Some Issues? Send a Report
+					Saw some Issues? Create a Feedback Report 
 					</Text>
 				</View>
 				<Image
@@ -33,6 +33,11 @@ const FeedbackCard: React.FC<Props> = () => {
 					source={require("../../images/feedback.png")}
 				/>
 			</View>
+			<TouchableOpacity
+				onPress={() => console.log("Discord Button Initialized")}
+			>
+				<Text style={styles.getStarted}>How to Report?</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
@@ -41,10 +46,23 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		marginTop: 15,
+		paddingVertical:15,
 		paddingHorizontal: 15,
-		paddingVertical: 10,
-		backgroundColor: Colors.bluebg,
+		backgroundColor: "#00BFA8",
 		borderRadius: 23,
 		marginVertical: 5,
+	},
+	getStarted: {
+		width: "50%",
+		marginLeft: 10,
+		marginTop: 1,
+		paddingVertical: 10,
+		textAlign: "center",
+		borderRadius: 5,
+		overflow: "hidden",
+		fontFamily: "SFProDisplay-Bold",
+		fontSize: 15,
+		color: Colors.background,
+		backgroundColor: "#276B63",
 	},
 });

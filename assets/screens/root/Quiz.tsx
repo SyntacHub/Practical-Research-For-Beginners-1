@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback,useMemo,useRef } from "react";
 import {
 	View,
 	Text,
@@ -6,12 +6,20 @@ import {
 	StatusBar,
 	FlatList,
 	TouchableOpacity,
+	ScrollView,
 	Platform,
 	Modal,
+	Image,
 	NativeModules,
 	Alert,
 	StyleSheet,
+	Button,
 } from "react-native";
+import BottomSheet,{
+  BottomSheetModal,
+	BottomSheetBackdrop,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
 import { Feather } from "@expo/vector-icons";
 import Colors from "../../constants/colors";
 import { getQuizzes } from "../../utils/database";
@@ -22,6 +30,31 @@ const Quiz = ({ navigation }) => {
 	const [refreshing, setRefreshing] = useState(false);
 	const [modalVisible, setModalVisible] = useState(false);
 	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
+
+// ref
+const bottomSheetRef = useRef<BottomSheetModal>(null);
+
+// variables
+const snapPoints = useMemo(() => ['25%', '50%',"75%"], []);
+
+// callbacks
+const handlePresentModalPress = useCallback(() => {
+	bottomSheetRef.current?.present();
+}, []);
+const handleSheetChanges = useCallback((index: number) => {
+	console.log('handleSheetChanges', index);
+}, []);
+// renders
+const renderBackdrop = useCallback(
+	props => (
+		<BottomSheetBackdrop
+			{...props}
+			disappearsOnIndex={1}
+			appearsOnIndex={2}
+		/>
+	),
+	[]
+);
 
 	const getAllQuizzes = async () => {
 		setRefreshing(true);
@@ -62,33 +95,38 @@ const Quiz = ({ navigation }) => {
 			style={{
 				flex: 1,
 				marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-				marginLeft: 25,
-				marginRight: 25,
+				backgroundColor: Colors.background
 			}}
 		>
-			<StatusBar
+			<ScrollView
+				contentInsetAdjustmentBehavior="automatic"
+				showsVerticalScrollIndicator={false}
+				style={{marginLeft:25,marginRight:25}}
+				
+			>
+				<StatusBar
 				backgroundColor={Colors.background}
 				barStyle={"dark-content"}
 				hidden={false}
 			/>
-			<View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+			<View style={{ flexDirection: "row", justifyContent: "space-between",marginTop:15 }}>
 				<TouchableOpacity>
 					<Feather
 						name="arrow-left"
 						size={24}
 						color="black"
-						onPress={() => navigation.goBack()}
+						onPress={exitPrompt}
 					/>
 				</TouchableOpacity>
 				<TouchableOpacity>
 					<Feather
-						name="rotate-cw"
+						name="info"
 						size={24}
 						color="black"
-						handleOnPress={() => {
+						
 							// Show Result modal
-							setIsResultModalVisible(true);
-						}}
+							onPress={handlePresentModalPress}
+						
 					/>
 				</TouchableOpacity>
 			</View>
@@ -169,7 +207,30 @@ const Quiz = ({ navigation }) => {
 						</TouchableOpacity>
 					</View>
 				)}
+				
 			/>
+			</ScrollView>
+			<BottomSheetModalProvider>
+      <View style={{marginLeft:25,marginRight:25,padding:24}}>
+       
+        <BottomSheetModal
+          ref={bottomSheetRef}
+          index={1}
+					backdropComponent={renderBackdrop}
+          snapPoints={snapPoints}
+				
+				
+          onChange={handleSheetChanges}
+        >
+          <View style={styles.contentContainer}>
+            <Text style={{fontFamily:"SFProDisplay-Bold",fontSize:20}}>Research Assesments 🎉</Text>
+						<Text style={{fontFamily:"SFProDisplay-Medium"}}>Version 1.0.0</Text>
+						<Image source={require("../../images/ic_school.png")} style={{resizeMode:'contain',width:"60%"}}/>
+						<Text style={{fontFamily:"SFProDisplay-Medium"}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae illo rerum eaque cum possimus excepturi dolore alias dolorum commodi nesciunt delectus neque doloremque dolores, vitae quas et quam quibusdam ut facilis assumenda quia. Odio, amet?</Text>
+          </View>
+        </BottomSheetModal>
+      </View>
+    </BottomSheetModalProvider>
 		</SafeAreaView>
 	);
 };
@@ -188,6 +249,18 @@ const styles = StyleSheet.create({
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
+	contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+		marginLeft:25,
+		marginRight:25,
+  },
+	modalContainer: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+  },
 });
 
 export default Quiz;
