@@ -1,11 +1,11 @@
 import React from "react";
 import useCachedResources from "./assets/hooks/useCachedResources";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer,DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
-import { Permissions } from 'expo';
+import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 import auth from '@react-native-firebase/auth';
 import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
 import Feedback from "./assets/screens/root/Feedback";
@@ -14,11 +14,13 @@ import About from "./assets/screens/root/About";
 import Quiz from "./assets/screens/root/Quiz";
 import Lesson from "./assets/screens/root/Lesson";
 import { RootStackParamList } from "./types";
+import react from "react";
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
 	const RootStack = createNativeStackNavigator<RootStackParamList>();
 	const Drawer = createDrawerNavigator();
+	const scheme = useColorScheme();
 
 	function Root() {
 		return (
@@ -64,8 +66,9 @@ export default function App() {
 		return null;
 	} else {
 		return (
-			<SafeAreaProvider>
-				<NavigationContainer>
+			<AppearanceProvider>
+					<SafeAreaProvider>
+				<NavigationContainer theme={scheme ==="dark"? DarkTheme : DefaultTheme}>
 					<Drawer.Navigator
 						initialRouteName="Root"
 						screenOptions={{ headerShown: false }}
@@ -77,6 +80,8 @@ export default function App() {
 					</Drawer.Navigator>
 				</NavigationContainer>
 			</SafeAreaProvider>
+			</AppearanceProvider>
+		
 		);
 	}
 }

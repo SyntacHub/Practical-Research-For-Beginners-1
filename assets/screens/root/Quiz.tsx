@@ -6,6 +6,7 @@ import {
 	StatusBar,
 	FlatList,
 	TouchableOpacity,
+	ScrollView,
 	Platform,
 	Modal,
 	Image,
@@ -94,11 +95,16 @@ const renderBackdrop = useCallback(
 			style={{
 				flex: 1,
 				marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-				marginLeft: 25,
-				marginRight: 25,
+				backgroundColor: Colors.background
 			}}
 		>
-			<StatusBar
+			<ScrollView
+				contentInsetAdjustmentBehavior="automatic"
+				showsVerticalScrollIndicator={false}
+				style={{marginLeft:25,marginRight:25}}
+				
+			>
+				<StatusBar
 				backgroundColor={Colors.background}
 				barStyle={"dark-content"}
 				hidden={false}
@@ -203,21 +209,24 @@ const renderBackdrop = useCallback(
 				)}
 				
 			/>
-			 <BottomSheetModalProvider>
-      <View style={styles.container}>
+			</ScrollView>
+			<BottomSheetModalProvider>
+      <View style={{marginLeft:25,marginRight:25,padding:24}}>
        
         <BottomSheetModal
           ref={bottomSheetRef}
           index={1}
 					backdropComponent={renderBackdrop}
           snapPoints={snapPoints}
+				
+				
           onChange={handleSheetChanges}
         >
           <View style={styles.contentContainer}>
             <Text style={{fontFamily:"SFProDisplay-Bold",fontSize:20}}>Research Assesments 🎉</Text>
 						<Text style={{fontFamily:"SFProDisplay-Medium"}}>Version 1.0.0</Text>
 						<Image source={require("../../images/ic_school.png")} style={{resizeMode:'contain',width:"60%"}}/>
-						<Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae illo rerum eaque cum possimus excepturi dolore alias dolorum commodi nesciunt delectus neque doloremque dolores, vitae quas et quam quibusdam ut facilis assumenda quia. Odio, amet?</Text>
+						<Text style={{fontFamily:"SFProDisplay-Medium"}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae illo rerum eaque cum possimus excepturi dolore alias dolorum commodi nesciunt delectus neque doloremque dolores, vitae quas et quam quibusdam ut facilis assumenda quia. Odio, amet?</Text>
           </View>
         </BottomSheetModal>
       </View>
@@ -243,6 +252,8 @@ const styles = StyleSheet.create({
 	contentContainer: {
     flex: 1,
     alignItems: 'center',
+		marginLeft:25,
+		marginRight:25,
   },
 	modalContainer: {
     flex: 1,

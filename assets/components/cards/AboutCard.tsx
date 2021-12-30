@@ -20,10 +20,10 @@ const AboutCard: React.FC<Props> = () => {
 						style={{
 							width: "100%",
 							marginLeft: 10,
-							fontFamily: "SFProDisplay-Bold",
+							fontFamily: "SFProDisplay-Black",
 							lineHeight: 30,
-							fontSize: 25,
-							color: Colors.background,
+							fontSize: 24,
+							color: "#B8F1AF",
 						}}
 					>
 						Practical Research For Beginners
@@ -35,7 +35,7 @@ const AboutCard: React.FC<Props> = () => {
 							marginLeft: 10,
 							fontSize: 15,
 							marginTop: 15,
-							color: Colors.textLight,
+							color: "#B8F1AF",
 						}}
 					>
 						Version 1.0.0

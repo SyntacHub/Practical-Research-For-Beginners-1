@@ -48,9 +48,7 @@ const Feedback: React.FC<Props> = () => {
 						{/* Content */}
 						<FeedbackCard />
 						<Text style={styles.feedbackdesc}>
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-							Obcaecati, blanditiis! Lorem ipsum dolor sit amet consectetur,
-							adipisicing elit. Dolorum, saepe!
+							Your Feedback means important to our apps and to our other users.
 						</Text>
 					</View>
 				</View>

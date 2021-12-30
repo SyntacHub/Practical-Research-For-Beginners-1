@@ -15,7 +15,7 @@ const HomeCard = () => {
 						style={{
 							width: "100%",
 							marginLeft: 15,
-							fontFamily: "SFProDisplay-Bold",
+							fontFamily: "SFProDisplay-Black",
 							lineHeight: 30,
 							fontSize: 20,
 							color: Colors.background,
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingHorizontal: 16,
-		paddingVertical: 15,
-		backgroundColor: Colors.primaryGreen,
+		paddingVertical: 10,
+		backgroundColor: "#4E8D5C",
 		borderRadius: 23,
 		marginVertical: 12,
 	},

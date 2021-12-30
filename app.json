@@ -18,7 +18,9 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.icnhs.researchapp"
+      "bundleIdentifier": "com.icnhs.researchapp",
+      
+      "userInterfaceStyle": "automatic"
     },
     "android": {
       "adaptiveIcon": {

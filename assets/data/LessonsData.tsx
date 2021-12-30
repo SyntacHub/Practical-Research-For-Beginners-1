@@ -1,4 +1,5 @@
 const researchTopics = [
+	
 	{
 		id: "1",
 		title: "Scientific Attitude",
