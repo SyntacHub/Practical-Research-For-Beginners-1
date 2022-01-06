@@ -16,12 +16,15 @@ import { getQuestionsByQuizId, getQuizById } from "../../utils/database";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FormButton from "../../components/buttons/FormButton";
 import ResultModal from "../../components/modals/ResultModal";
+import { useTheme } from "../../theme/ThemeProvider";
+import { color } from "react-native-reanimated";
 
 const PlayQuizScreen = ({ navigation, route }) => {
 	const [currentQuizId, setCurrentQuizId] = useState(route.params.quizId);
 	const [title, setTitle] = useState("");
 	const [questions, setQuestions] = useState([]);
 	const [attempted, setAttempted] = useState([]);
+	const { colors, isDark } = useTheme();
 
 	const [correctCount, setCorrectCount] = useState(0);
 	const [incorrectCount, setIncorrectCount] = useState(0);
@@ -118,7 +121,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 			style={{
 				flex: 1,
 				position: "relative",
-        backgroundColor:Colors.background
+        backgroundColor:colors.background
 			}}
 		>
 			<StatusBar backgroundColor={Colors.white} barStyle={"dark-content"} />
@@ -136,7 +139,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				}}
 			>
 				{/* Back Icon */}
-				<MaterialIcons name="arrow-back" size={24} onPress={exitPrompt} />
+				<MaterialIcons name="arrow-back" size={24} style={{color:colors.text}} onPress={exitPrompt} />
 
 				{/* Correct and incorrect count */}
 				<View
@@ -212,6 +215,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				style={{
 					fontSize: 30,
 					fontFamily: "SFProDisplay-Bold",
+					color:colors.text
           
 				}}
 			>
@@ -234,7 +238,6 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				data={questions}
 				style={{
 					flex: 1,
-					backgroundColor: Colors.background,
 					marginLeft: 25,
 					marginRight: 25,
 				}}
@@ -245,13 +248,13 @@ const PlayQuizScreen = ({ navigation, route }) => {
 						style={{
 							marginTop: 14,
 							marginHorizontal: 10,
-							backgroundColor: Colors.white,
+							backgroundColor: colors.elevated,
 							elevation: 2,
-							borderRadius: 15,
+							borderRadius: 20,
 						}}
 					>
 						<View style={{ padding: 20 }}>
-							<Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold" }}>
+							<Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold",color:colors.text }}>
 								{index + 1}. {item.question}
 							</Text>
 							{item.imageUrl != "" ? (
