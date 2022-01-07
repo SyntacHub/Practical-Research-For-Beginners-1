@@ -13,6 +13,7 @@ import {
 	SafeAreaView,
 	ScrollView,
 	StyleSheet,
+	StatusBar,
 	Text,
 	Image,
 	FlatList,
@@ -21,6 +22,7 @@ import {
 	NativeModules,
 } from "react-native";
 import researchTopics from "../../data/LessonsData";
+import { useTheme } from "../../theme/ThemeProvider";
 
 interface Props {
 	route: any;
@@ -29,6 +31,7 @@ interface Props {
 
 const Lesson: React.FC<Props> = ({ route }) => {
 	const navigation = useNavigation<any>();
+	const { colors, isDark } = useTheme();
 	const { item } = route.params;
 	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -60,24 +63,27 @@ const Lesson: React.FC<Props> = ({ route }) => {
 		console.log("handleSheetChanges", index);
 	}, []);
 
-	console.log(item);
+
 
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
-				style={{backgroundColor: Colors.background}}
+				style={{ backgroundColor: colors.background }}
 			>
+				<StatusBar
+					animated
+					barStyle={isDark ? "light-content" : "dark-content"}
+				/>
 				{/* Header */}
 				<View
 					style={{
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
 						marginLeft: 25,
 						marginRight: 25,
-						
 					}}
 				>
 					<View
@@ -87,17 +93,25 @@ const Lesson: React.FC<Props> = ({ route }) => {
 							<Feather
 								name="arrow-left"
 								size={24}
-								color="black"
+								style={{ color: colors.text }}
 								onPress={() => navigation.goBack()}
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity>
-							<Feather name="book" size={24} color="black" />
+							<Feather name="book" size={24} style={{color:colors.text}} />
 						</TouchableOpacity>
 					</View>
 
 					<View style={styles.textGreetingWrapper}>
-						<Text style={styles.textTitle}>{item.title} </Text>
+						<Text
+							style={{
+								fontFamily: "SFProDisplay-Bold",
+								color: colors.text,
+								fontSize: 30,
+							}}
+						>
+							{item.title}
+						</Text>
 						<Text style={styles.textTopicIndex}>{item.topicIndex}</Text>
 					</View>
 				</View>
@@ -108,7 +122,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 						flexDirection: "row",
 						justifyContent: "center",
 						alignItems: "center",
-						backgroundColor: Colors.lightGreen,
+						backgroundColor: colors.primaryteal,
 						marginHorizontal: 20,
 						marginVertical: 20,
 						borderRadius: 15,
@@ -119,42 +133,81 @@ const Lesson: React.FC<Props> = ({ route }) => {
 						style={{ resizeMode: "contain", width: "75%" }}
 					/>
 				</View>
-				<TouchableOpacity>
-					<View
-						style={{
-							backgroundColor: Colors.bluebg,
-							position: "absolute",
-							paddingHorizontal: 15,
-							paddingVertical: 15,
-							borderRadius: 15,
-							marginTop: -50,
-							marginLeft: 285,
-						}}
-					>
-						<Feather name="volume-2" size={20} color="black" />
-					</View>
-				</TouchableOpacity>
 
 				{/*Content 2*/}
 
-				<Text style={styles.header}>Sample Text</Text>
-				<Text style={styles.body}>
+				<Text
+					style={{
+						marginTop: 15,
+						paddingHorizontal: 20,
+						fontFamily: "SFProDisplay-Bold",
+						fontSize: 20,
+						color: colors.text,
+					}}
+				>
+					Sample Text
+				</Text>
+				<Text
+					style={{
+						marginTop: 10,
+						paddingHorizontal: 20,
+						fontFamily: "SFProDisplay-Regular",
+						fontSize: 15,
+						color: colors.text,
+					}}
+				>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
 					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
 					libero optio deserunt, cum quae quaerat maxime rem amet quas?
 					Accusantium, dolores.
 				</Text>
 
-				<Text style={styles.header}>Sample Text</Text>
-				<Text style={styles.body}>
+				<Text
+					style={{
+						marginTop: 15,
+						paddingHorizontal: 20,
+						fontFamily: "SFProDisplay-Bold",
+						fontSize: 20,
+						color: colors.text,
+					}}
+				>
+					Sample Text
+				</Text>
+				<Text
+					style={{
+						marginTop: 10,
+						paddingHorizontal: 20,
+						fontFamily: "SFProDisplay-Regular",
+						fontSize: 15,
+						color: colors.text,
+					}}
+				>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
 					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
 					libero optio deserunt, cum quae quaerat maxime rem amet quas?
 					Accusantium, dolores.
 				</Text>
 
-				<Text style={styles.header}>Sample Text</Text>
-				<Text style={styles.body}>
+				<Text
+					style={{
+						marginTop: 15,
+						paddingHorizontal: 20,
+						fontFamily: "SFProDisplay-Bold",
+						fontSize: 20,
+						color: colors.text,
+					}}
+				>
+					Sample Text
+				</Text>
+				<Text
+					style={{
+						marginTop: 10,
+						paddingHorizontal: 20,
+						fontFamily: "SFProDisplay-Regular",
+						fontSize: 15,
+						color: colors.text,
+					}}
+				>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
 					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
 					libero optio deserunt, cum quae quaerat maxime rem amet quas?
@@ -163,7 +216,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 
 				{/* Modal */}
 				<BottomSheetModalProvider>
-					<View style={styles.container}>
+					<View >
 						<BottomSheetModal
 							ref={bottomSheetModalRef}
 							index={1}
@@ -196,8 +249,6 @@ const Lesson: React.FC<Props> = ({ route }) => {
 export default Lesson;
 
 const styles = StyleSheet.create({
-	container: {},
-	contentWrapper: {},
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
@@ -206,35 +257,16 @@ const styles = StyleSheet.create({
 		color: Colors.textLight,
 		fontSize: 18,
 	},
-	textTitle: {
-		fontFamily: "SFProDisplay-Bold",
-		color: Colors.text,
-		fontSize: 30,
-	},
 	topicImage: {
 		alignSelf: "center",
 	},
-	header: {
-		marginTop: 15,
-		paddingHorizontal: 20,
-		fontFamily: "SFProDisplay-Bold",
-		fontSize: 20,
-	},
-	body: {
-		marginTop: 10,
-		paddingHorizontal: 20,
-		fontFamily: "SFProDisplay-Regular",
-		fontSize: 15,
-	},
+	
 	title: {
 		fontFamily: "SFProDisplay-Bold",
 		fontSize: 26,
 		marginBottom: 16,
 	},
-	customModal: {
-		backgroundColor: "white",
-		borderRadius: 15,
-	},
+
 	bottomSheetContainer: {
 		flex: 1,
 		width: "100%",

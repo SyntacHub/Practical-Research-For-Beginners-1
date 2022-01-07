@@ -1,12 +1,19 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
-
+import { useTheme } from "../../theme/ThemeProvider";
 interface Props {}
 
 const FeedbackCard: React.FC<Props> = () => {
+	const { colors, isDark } = useTheme();
 	return (
-		<View style={styles.container}>
+		<View style={{flex: 1,
+			marginTop: 15,
+			paddingVertical:15,
+			paddingHorizontal: 15,
+			backgroundColor: colors.primaryteal,
+			borderRadius: 23,
+			marginVertical: 5,}}>
 			<View
 				style={{
 					flexDirection: "row",
@@ -44,13 +51,7 @@ const FeedbackCard: React.FC<Props> = () => {
 export default FeedbackCard;
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		marginTop: 15,
-		paddingVertical:15,
-		paddingHorizontal: 15,
-		backgroundColor: "#00BFA8",
-		borderRadius: 23,
-		marginVertical: 5,
+		
 	},
 	getStarted: {
 		width: "50%",

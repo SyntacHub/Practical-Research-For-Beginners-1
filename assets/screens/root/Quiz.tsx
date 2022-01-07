@@ -1,60 +1,70 @@
-import React, { useState, useEffect,useCallback,useMemo,useRef } from "react";
+import React, {
+	useState,
+	useEffect,
+	useCallback,
+	useMemo,
+	useRef,
+} from "react";
 import {
 	View,
 	Text,
 	SafeAreaView,
 	StatusBar,
 	FlatList,
+	Modal,
+	Alert,
 	TouchableOpacity,
 	ScrollView,
 	Platform,
-	Modal,
 	Image,
 	NativeModules,
-	Alert,
 	StyleSheet,
-	Button,
 } from "react-native";
-import BottomSheet,{
-  BottomSheetModal,
+import BottomSheet, {
+	BottomSheetModal,
 	BottomSheetBackdrop,
-  BottomSheetModalProvider,
-} from '@gorhom/bottom-sheet';
+	BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+import Animated, {
+  useAnimatedStyle,
+  interpolateColor,
+} from "react-native-reanimated";
 import { Feather } from "@expo/vector-icons";
-import Colors from "../../constants/colors";
 import { getQuizzes } from "../../utils/database";
 import AssesmentCard from "../../components/cards/AssesmentCard";
+import { useTheme } from "../../theme/ThemeProvider";
 
 const Quiz = ({ navigation }) => {
 	const [allQuizzes, setAllQuizzes] = useState([]);
 	const [refreshing, setRefreshing] = useState(false);
 	const [modalVisible, setModalVisible] = useState(false);
 	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
+	const { colors, isDark } = useTheme();
 
-// ref
-const bottomSheetRef = useRef<BottomSheetModal>(null);
+	// ref
+	const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-// variables
-const snapPoints = useMemo(() => ['25%', '50%',"75%"], []);
+	// variables
+	const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
 
-// callbacks
-const handlePresentModalPress = useCallback(() => {
-	bottomSheetRef.current?.present();
-}, []);
-const handleSheetChanges = useCallback((index: number) => {
-	console.log('handleSheetChanges', index);
-}, []);
-// renders
-const renderBackdrop = useCallback(
-	props => (
-		<BottomSheetBackdrop
-			{...props}
-			disappearsOnIndex={1}
-			appearsOnIndex={2}
-		/>
-	),
-	[]
-);
+	// callbacks
+	const handlePresentModalPress = useCallback(() => {
+		bottomSheetRef.current?.present();
+	}, []);
+	const handleSheetChanges = useCallback((index: number) => {
+		console.log("handleSheetChanges", index);
+	}, []);
+	// renders
+	const renderBackdrop = useCallback(
+		(props) => (
+			<BottomSheetBackdrop
+				{...props}
+				disappearsOnIndex={1}
+				appearsOnIndex={2}
+			/>
+		),
+		[]
+	);
 
 	const getAllQuizzes = async () => {
 		setRefreshing(true);
@@ -76,191 +86,207 @@ const renderBackdrop = useCallback(
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
-	const exitPrompt = () =>
-		Alert.alert(
-			"Confirmation",
-			"Do you want to exit the exam? Your Progress will not be saved",
-			[
-				{
-					text: "Cancel",
-					onPress: () => console.log("Cancel Pressed"),
-					style: "cancel",
-				},
-				{ text: "OK", onPress: () => navigation.goBack() },
-			]
-		);
-
 	return (
 		<SafeAreaView
 			style={{
 				flex: 1,
-				marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-				backgroundColor: Colors.background
+				backgroundColor: colors.background,
 			}}
 		>
+			<StatusBar
+				animated
+				barStyle={isDark ? "light-content" : "dark-content"}
+			/>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
-				style={{marginLeft:25,marginRight:25}}
-				
+				style={{ marginLeft: 25, marginRight: 25 }}
 			>
-				<StatusBar
-				backgroundColor={Colors.background}
-				barStyle={"dark-content"}
-				hidden={false}
-			/>
-			<View style={{ flexDirection: "row", justifyContent: "space-between",marginTop:15 }}>
-				<TouchableOpacity>
-					<Feather
-						name="arrow-left"
-						size={24}
-						color="black"
-						onPress={exitPrompt}
-					/>
-				</TouchableOpacity>
-				<TouchableOpacity>
-					<Feather
-						name="info"
-						size={24}
-						color="black"
-						
+				<View
+					style={{
+						flexDirection: "row",
+						justifyContent: "space-between",
+						marginTop: 15,
+					}}
+				>
+					<TouchableOpacity>
+						<Feather
+							name="arrow-left"
+							size={24}
+							style={{ color: colors.text }}
+							onPress={() => navigation.goBack()}
+						/>
+					</TouchableOpacity>
+					<TouchableOpacity>
+						<Feather
+							name="info"
+							size={24}
+							style={{ color: colors.text }}
 							// Show Result modal
 							onPress={handlePresentModalPress}
-						
-					/>
-				</TouchableOpacity>
-			</View>
+						/>
+					</TouchableOpacity>
+				</View>
 
-			<View style={styles.textGreetingWrapper}>
-				<Text style={styles.textTitle}>Research Assesments </Text>
-				<Text style={styles.textTopicIndex}>Updated on December 23, 2021</Text>
-			</View>
-			<AssesmentCard />
-			<Text
-				style={{ fontFamily: "SFProDisplay-Bold", fontSize: 18, marginTop: 15 }}
-			>
-				All Research Assesments
-			</Text>
-
-			{/* Quiz list */}
-			<FlatList
-				data={allQuizzes}
-				onRefresh={getAllQuizzes}
-				refreshing={refreshing}
-				showsVerticalScrollIndicator={false}
-				style={{
-					paddingVertical: 10,
-				}}
-				renderItem={({ item: quiz }) => (
-					<View
+				<View style={styles.textGreetingWrapper}>
+					<Text
 						style={{
-							padding: 20,
-							borderRadius: 5,
-							marginVertical: 5,
-
-							flexDirection: "row",
-							alignItems: "center",
-							justifyContent: "space-between",
-							backgroundColor: Colors.white,
-							elevation: 2,
+							fontFamily: "SFProDisplay-Bold",
+							color: colors.text,
+							fontSize: 30,
 						}}
 					>
-						<View style={{ flex: 1, paddingRight: 10 }}>
-							<Text
-								style={{
-									fontSize: 18,
-									color: Colors.black,
-									fontFamily: "SFProDisplay-Bold",
-								}}
-							>
-								{quiz.title}
-							</Text>
-							{quiz.description != "" ? (
-								<Text
-									style={{ opacity: 0.5, fontFamily: "SFProDisplay-Medium" }}
-								>
-									{quiz.description}
-								</Text>
-							) : null}
-						</View>
-						<TouchableOpacity
+						Research Assesments{" "}
+					</Text>
+					<Text
+						style={{
+							fontFamily: "SFProDisplay-Medium",
+							fontSize: 18,
+							color: colors.text,
+						}}
+					>
+						Updated on December 23, 2021
+					</Text>
+				</View>
+				<AssesmentCard />
+				<Text
+					style={{
+						fontFamily: "SFProDisplay-Bold",
+						fontSize: 18,
+						marginTop: 15,
+						color: colors.text,
+					}}
+				>
+					All Research Assesments
+				</Text>
+
+				{/* Quiz list */}
+				<FlatList
+					data={allQuizzes}
+					onRefresh={getAllQuizzes}
+					refreshing={refreshing}
+					showsVerticalScrollIndicator={false}
+					style={{
+						paddingVertical: 10,
+					}}
+					renderItem={({ item: quiz }) => (
+						<View
 							style={{
-								paddingVertical: 10,
-								paddingHorizontal: 30,
-								borderRadius: 50,
-								backgroundColor: Colors.primary + "20",
-							}}
-							onPress={() => {
-								navigation.navigate("PlayQuiz", {
-									quizId: quiz.id,
-								});
+								padding: 20,
+								borderRadius: 5,
+								marginVertical: 5,
+
+								flexDirection: "row",
+								alignItems: "center",
+								justifyContent: "space-between",
+								backgroundColor: colors.elevated,
+								elevation: 2,
 							}}
 						>
-							<Text
+							<View style={{ flex: 1, paddingRight: 10 }}>
+								<Text
+									style={{
+										fontSize: 18,
+										color: colors.text,
+										fontFamily: "SFProDisplay-Bold",
+									}}
+								>
+									{quiz.title}
+								</Text>
+								{quiz.description != "" ? (
+									<Text
+										style={{
+											opacity: 0.8,
+											marginTop: 5,
+											fontFamily: "SFProDisplay-Medium",
+											color: colors.heading5,
+										}}
+									>
+										{quiz.description}
+									</Text>
+								) : null}
+							</View>
+							<TouchableOpacity
 								style={{
-									color: Colors.primary,
-									fontFamily: "SFProDisplay-Black",
+									paddingVertical: 10,
+									paddingHorizontal: 30,
+									borderRadius: 50,
+									backgroundColor: colors.primarygreen + "20",
+								}}
+								onPress={() => {
+									navigation.navigate("PlayQuiz", {
+										quizId: quiz.id,
+									});
 								}}
 							>
-								Play
-							</Text>
-						</TouchableOpacity>
-					</View>
-				)}
-				
-			/>
+								<Text
+									style={{
+										color: colors.primarygreen,
+										fontFamily: "SFProDisplay-Black",
+									}}
+								>
+									Play
+								</Text>
+							</TouchableOpacity>
+						</View>
+					)}
+				/>
 			</ScrollView>
 			<BottomSheetModalProvider>
-      <View style={{marginLeft:25,marginRight:25,padding:24}}>
-       
-        <BottomSheetModal
-          ref={bottomSheetRef}
-          index={1}
-					backdropComponent={renderBackdrop}
-          snapPoints={snapPoints}
-				
-				
-          onChange={handleSheetChanges}
-        >
-          <View style={styles.contentContainer}>
-            <Text style={{fontFamily:"SFProDisplay-Bold",fontSize:20}}>Research Assesments 🎉</Text>
-						<Text style={{fontFamily:"SFProDisplay-Medium"}}>Version 1.0.0</Text>
-						<Image source={require("../../images/ic_school.png")} style={{resizeMode:'contain',width:"60%"}}/>
-						<Text style={{fontFamily:"SFProDisplay-Medium"}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae illo rerum eaque cum possimus excepturi dolore alias dolorum commodi nesciunt delectus neque doloremque dolores, vitae quas et quam quibusdam ut facilis assumenda quia. Odio, amet?</Text>
-          </View>
-        </BottomSheetModal>
-      </View>
-    </BottomSheetModalProvider>
+				<View style={{ backgroundColor: colors.elevated }}>
+					<BottomSheetModal
+						ref={bottomSheetRef}
+						index={1}
+						backdropComponent={renderBackdrop}
+						snapPoints={snapPoints}
+						onChange={handleSheetChanges}
+					>
+						<View
+							style={{
+								flex: 1,
+								alignItems: "center",
+								marginLeft: 25,
+								marginRight: 25,
+								backgroundColor: colors.elevated,
+							}}
+						>
+							<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 20,color:colors.text}}>
+								Research Assesments 🎉
+							</Text>
+							<Text style={{ fontFamily: "SFProDisplay-Medium",color:colors.text }}>
+								Version 1.0.0
+							</Text>
+							<Image
+								source={require("../../images/ic_school.png")}
+								style={{ resizeMode: "contain", width: "60%" }}
+							/>
+							<Text style={{ fontFamily: "SFProDisplay-Medium",color:colors.text }}>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Repudiandae illo rerum eaque cum possimus excepturi dolore alias
+								dolorum commodi nesciunt delectus neque doloremque dolores,
+								vitae quas et quam quibusdam ut facilis assumenda quia. Odio,
+								amet?
+							</Text>
+						</View>
+					</BottomSheetModal>
+				</View>
+			</BottomSheetModalProvider>
 		</SafeAreaView>
 	);
 };
 
 const styles = StyleSheet.create({
-	textTopicIndex: {
-		fontFamily: "SFProDisplay-Medium",
-		color: Colors.textLight,
-		fontSize: 18,
-	},
-	textTitle: {
-		fontFamily: "SFProDisplay-Bold",
-		color: Colors.text,
-		fontSize: 30,
-	},
+
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
-	contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-		marginLeft:25,
-		marginRight:25,
-  },
+	
 	modalContainer: {
-    flex: 1,
-    padding: 24,
-    justifyContent: 'center',
-    backgroundColor: 'grey',
-  },
+		flex: 1,
+		padding: 24,
+		justifyContent: "center",
+		backgroundColor: "grey",
+	},
 });
 
 export default Quiz;

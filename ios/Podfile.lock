@@ -364,7 +364,7 @@ PODS:
     - EXJSONUtils
   - EXPermissions (13.1.0):
     - ExpoModulesCore
-  - Expo (43.0.0):
+  - Expo (43.0.4):
     - ExpoModulesCore
   - ExpoModulesCore (0.4.4):
     - React-Core
@@ -1058,7 +1058,7 @@ SPEC CHECKSUMS:
   EXKeepAwake: 8aa32396a5972d26e75e538603aad0f032396503
   EXManifests: 50e42e01335df4e54109dee7be5a91bfd37347db
   EXPermissions: f4c65fa770489cbf16ea17c3013a670671525014
-  Expo: f3357f1f9796d0b4d396d0be84c49933671db4ad
+  Expo: 363a3f3c60d5a1d4f8badb29a869005487f2d9e4
   ExpoModulesCore: 47b403a33ad73770c49d7559615b3ea121a36116
   EXSplashScreen: 57f329dbf25c5c12800feed79068a056453dc772
   EXStructuredHeaders: 873e7f329c2f6279c1b1e0229df59c9861560b53

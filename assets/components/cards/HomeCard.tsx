@@ -2,13 +2,24 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
+import { useTheme } from "../../theme/ThemeProvider";
 
 interface Props {}
 
 const HomeCard = () => {
 	const navigation = useNavigation<any>();
+	const { colors, isDark } = useTheme();
 	return (
-		<View style={styles.container}>
+		<View
+			style={{
+				flex: 1,
+				paddingHorizontal: 16,
+				paddingVertical: 10,
+				backgroundColor: colors.primarygreen,
+				borderRadius: 23,
+				marginVertical: 12,
+			}}
+		>
 			<View style={{ flexDirection: "row", justifyContent: "center" }}>
 				<View style={{ flexDirection: "column", width: "50%", marginTop: 5 }}>
 					<Text
@@ -23,9 +34,7 @@ const HomeCard = () => {
 					>
 						Test Your Knowledge in Research
 					</Text>
-					<TouchableOpacity
-						onPress={() => navigation.navigate("Quiz")} 
-					>
+					<TouchableOpacity onPress={() => navigation.navigate("Quiz")}>
 						<Text style={styles.getStarted}>Get Started</Text>
 					</TouchableOpacity>
 				</View>
@@ -41,14 +50,7 @@ const HomeCard = () => {
 export default HomeCard;
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		paddingHorizontal: 16,
-		paddingVertical: 10,
-		backgroundColor: "#4E8D5C",
-		borderRadius: 23,
-		marginVertical: 12,
-	},
+	container: {},
 	getStarted: {
 		width: "80%",
 		marginLeft: 15,
