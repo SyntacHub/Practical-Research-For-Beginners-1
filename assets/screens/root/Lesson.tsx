@@ -63,12 +63,12 @@ const Lesson: React.FC<Props> = ({ route }) => {
 		console.log("handleSheetChanges", index);
 	}, []);
 
-	console.log(item);
+
 
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
-		<SafeAreaView>
+		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}

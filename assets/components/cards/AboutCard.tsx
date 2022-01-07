@@ -43,7 +43,7 @@ const AboutCard: React.FC<Props> = () => {
 				</View>
 				<Image
 					style={{ width: "40%", borderRadius: 20 }}
-					source={require("../../images/ic_launcher.png")}
+					source={require("../../images/app_icon.png")}
 				/>
 			</View>
 		</View>

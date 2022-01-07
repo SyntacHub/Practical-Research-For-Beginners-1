@@ -2,12 +2,19 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 import Discord from "../svg/discord";
+import { useTheme } from "../../theme/ThemeProvider";
 
 interface Props {}
 
 const FaqCard: React.FC<Props> = () => {
+	const { colors, isDark } = useTheme();
 	return (
-		<View style={styles.container}>
+		<View style={{flex: 1,
+			paddingHorizontal: 15,
+			paddingVertical: 25,
+			backgroundColor: colors.primarypurple,
+			borderRadius: 23,
+			marginVertical: 5,}}>
 			<View
 				style={{
 					flexDirection: "row",
@@ -43,14 +50,7 @@ const FaqCard: React.FC<Props> = () => {
 export default FaqCard;
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		paddingHorizontal: 15,
-		paddingVertical: 25,
-		backgroundColor: "#4D63D3",
-		borderRadius: 23,
-		marginVertical: 5,
-	},
+	
 	getStarted: {
 		width: "50%",
 		marginLeft: 15,

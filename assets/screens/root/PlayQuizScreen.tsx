@@ -81,10 +81,10 @@ const PlayQuizScreen = ({ navigation, route }) => {
 					return Colors.error;
 				}
 			} else {
-				return Colors.white;
+				return colors.elevated;
 			}
 		} else {
-			return Colors.white;
+			return colors.elevated;
 		}
 	};
 
@@ -93,10 +93,10 @@ const PlayQuizScreen = ({ navigation, route }) => {
 			if (currentOption == currentQuestion.selectedOption) {
 				return Colors.white;
 			} else {
-				return Colors.black;
+				return colors.heading5;
 			}
 		} else {
-			return Colors.black;
+			return colors.heading5;
 		}
 	};
 
@@ -121,10 +121,13 @@ const PlayQuizScreen = ({ navigation, route }) => {
 			style={{
 				flex: 1,
 				position: "relative",
-        backgroundColor:colors.background
+				backgroundColor: colors.background,
 			}}
 		>
-			<StatusBar backgroundColor={Colors.white} barStyle={"dark-content"} />
+			<StatusBar
+				animated
+				barStyle={isDark ? "light-content" : "dark-content"}
+			/>
 			{/* Top Bar */}
 			<View
 				style={{
@@ -133,13 +136,18 @@ const PlayQuizScreen = ({ navigation, route }) => {
 					justifyContent: "space-between",
 					marginLeft: 25,
 					marginRight: 25,
-          marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-				
+					marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+
 					elevation: 4,
 				}}
 			>
 				{/* Back Icon */}
-				<MaterialIcons name="arrow-back" size={24} style={{color:colors.text}} onPress={exitPrompt} />
+				<MaterialIcons
+					name="arrow-back"
+					size={24}
+					style={{ color: colors.text }}
+					onPress={exitPrompt}
+				/>
 
 				{/* Correct and incorrect count */}
 				<View
@@ -210,28 +218,26 @@ const PlayQuizScreen = ({ navigation, route }) => {
 			</View>
 
 			{/* Header */}
-      <View style={{marginHorizontal:25,marginTop:20,marginBottom:15}}>
-      <Text
-				style={{
-					fontSize: 30,
-					fontFamily: "SFProDisplay-Bold",
-					color:colors.text
-          
-				}}
-			>
-				{title}
-			</Text>
-			<Text
-				style={{
-					fontFamily: "SFProDisplay-Medium",
-					color: Colors.textLight,
-					fontSize: 18,
-				}}
-			>
-				Remaining Attempts : 2 Remaining
-			</Text>
-      </View>
-			
+			<View style={{ marginHorizontal: 25, marginTop: 20, marginBottom: 15 }}>
+				<Text
+					style={{
+						fontSize: 30,
+						fontFamily: "SFProDisplay-Bold",
+						color: colors.text,
+					}}
+				>
+					{title}
+				</Text>
+				<Text
+					style={{
+						fontFamily: "SFProDisplay-Medium",
+						color: Colors.textLight,
+						fontSize: 18,
+					}}
+				>
+					Remaining Attempts : 2 Remaining
+				</Text>
+			</View>
 
 			{/* Questions and Options list */}
 			<FlatList
@@ -250,11 +256,17 @@ const PlayQuizScreen = ({ navigation, route }) => {
 							marginHorizontal: 10,
 							backgroundColor: colors.elevated,
 							elevation: 2,
-							borderRadius: 20,
+							borderRadius: 10,
 						}}
 					>
-						<View style={{ padding: 20 }}>
-							<Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold",color:colors.text }}>
+						<View style={{ padding: 20, borderRadius: 10 }}>
+							<Text
+								style={{
+									fontSize: 16,
+									fontFamily: "SFProDisplay-Bold",
+									color: colors.text,
+								}}
+							>
 								{index + 1}. {item.question}
 							</Text>
 							{item.imageUrl != "" ? (
@@ -268,7 +280,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 										height: 150,
 										marginTop: 20,
 										marginLeft: "10%",
-										borderRadius: 1,
+										borderRadius: 10,
 									}}
 								/>
 							) : null}
@@ -282,7 +294,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 										paddingVertical: 14,
 										paddingHorizontal: 20,
 										borderTopWidth: 1,
-										borderColor: Colors.border,
+										borderColor: colors.heading5,
 										backgroundColor: getOptionBgColor(item, option),
 										flexDirection: "row",
 										alignItems: "center",
@@ -313,7 +325,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 											borderColor: Colors.border,
 											textAlign: "center",
 											marginRight: 16,
-											borderRadius: 25,
+											borderRadius: 5,
 											color: getOptionTextColor(item, option),
 											fontFamily: "SFProDisplay-Medium",
 										}}

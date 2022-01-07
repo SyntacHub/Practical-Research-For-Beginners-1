@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import * as React from "react";
+import React,{useState} from "react";
 import {
 	Platform,
 	SafeAreaView,
@@ -14,6 +14,7 @@ import {
 	NativeModules,
 } from "react-native";
 import Colors from "../../constants/colors";
+
 import HomeCard from "../../components/cards/HomeCard";
 import researchTopics from "../../data/LessonsData";
 import { useTheme } from "../../theme/ThemeProvider";
@@ -21,6 +22,7 @@ import { Switch } from "../../components/buttons/ThemeSwitch";
 
 const Home: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
+	const [refreshing, setRefreshing] = useState(false);
 	const { colors, isDark } = useTheme();
 	const renderItem = ({ item }: { item: any }) => {
 		return (
@@ -50,7 +52,7 @@ const Home: React.FC<{}> = () => {
 						}}
 					>
 						<View style={{ flexDirection: "row" }}>
-							<View style={{backgroundColor:colors.primarygreen+"20",borderRadius:10,paddingHorizontal:10,marginVertical:7,}}>
+							<View style={{backgroundColor:colors.primarygreen+"20",borderRadius:10,paddingHorizontal:10,marginVertical:7}}>
 							<Feather
 								style={{ marginTop:12,color:colors.primarygreen,alignItems:'center' }}
 								name="book"
@@ -63,7 +65,7 @@ const Home: React.FC<{}> = () => {
 								<Text
 									style={{
 										fontFamily: "SFProDisplay-Bold",
-										fontSize: 22,
+										fontSize: 20,
 										color: colors.text,
 									}}
 								>
@@ -150,13 +152,14 @@ const Home: React.FC<{}> = () => {
 							>
 								All Research 1 Lessons
 							</Text>
-							<TouchableOpacity>
+							
 								<FlatList
 									data={researchTopics}
 									renderItem={renderItem}
+									refreshing={refreshing}
 									keyExtractor={(item) => item.id}
 								/>
-							</TouchableOpacity>
+							
 						</View>
 					</View>
 				</View>

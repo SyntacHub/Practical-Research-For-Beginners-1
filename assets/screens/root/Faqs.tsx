@@ -1,6 +1,5 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
 import Colors from "../../constants/colors";
 import * as React from "react";
 import {
@@ -8,27 +7,32 @@ import {
 	Platform,
 	SafeAreaView,
 	ScrollView,
+	StatusBar,
 	StyleSheet,
 	Text,
 	View,
 } from "react-native";
 import FaqCard from "../../components/cards/FaqCard";
-import QACard from "../../components/cards/QACard";
+import { useTheme } from "../../theme/ThemeProvider";
 
 interface Props {}
 
 const Faqs: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
+	const { colors, isDark } = useTheme();
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
 			>
-				<StatusBar style="auto" />
+				<StatusBar
+					animated
+					barStyle={isDark ? "light-content" : "dark-content"}
+				/>
 				{/* Header */}
 				<View
 					style={{
@@ -41,17 +45,24 @@ const Faqs: React.FC<Props> = () => {
 						<Feather
 							name="menu"
 							size={24}
-							color="black"
+							style={{color:colors.text}}
 							onPress={() => navigation.openDrawer()}
 						/>
 						<View style={styles.textGreetingWrapper}>
 							<Text style={styles.textGreeting}>Frequently Asked</Text>
-							<Text style={styles.textName}>Questions</Text>
+							<Text
+								style={{
+									fontFamily: "SFProDisplay-Bold",
+									color: colors.text,
+									fontSize: 36,
+								}}
+							>
+								Questions
+							</Text>
 						</View>
 						<View style={styles.searchBarWrapper}>
 							{/* Content */}
 							<FaqCard />
-							
 						</View>
 					</View>
 				</View>
@@ -63,10 +74,7 @@ const Faqs: React.FC<Props> = () => {
 export default Faqs;
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: Colors.background,
-	},
+	container: {},
 	contentWrapper: {},
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
@@ -76,11 +84,7 @@ const styles = StyleSheet.create({
 		color: Colors.textLight,
 		fontSize: 24,
 	},
-	textName: {
-		fontFamily: "SFProDisplay-Bold",
-		color: Colors.text,
-		fontSize: 36,
-	},
+	textName: {},
 	searchBarWrapper: {
 		paddingTop: 15,
 	},

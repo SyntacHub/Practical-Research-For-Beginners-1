@@ -1,23 +1,23 @@
 const Others = [
   {
     id:"1",
-    title:"Opensource License",
-    desc:"View opensource licenses used"
+    title:"Opensource Licenses",
+    desc:"Updated 2021-10-12"
   },
   {
     id:"2",
-    title:"Letter of Acknowledgement",
-    desc:"Acknowledgement letter from the School"
+    title:"Message from the Dev",
+    desc:"Updated: <null>"
   },
   {
     id:'3',
     title:"End User License Agreement",
-    desc:"User's term and conditions in using this app"
+    desc:"Updated: <null>"
   },
   {
     id:'4',
     title:"Memorandum of Agreement",
-    desc:"The agreement of the developer and the school"
+    desc:"Updated: <null>"
   },
 ];
 export default Others;
