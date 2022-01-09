@@ -15,18 +15,99 @@ import {
 } from "react-native";
 import Colors from "../../constants/colors";
 import LabToolsCard from "../../components/cards/LabtoolsCard";
-
+import LabToolsData from "../../data/LabToolsData";
 import { useTheme } from "../../theme/ThemeProvider";
+import { Image } from "react-native-svg";
 interface Props {
 	route: any;
 	props: any;
 }
+
+
 
 const Labtools: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+
+	const renderItem = ({ item }: { item: any }) => {
+		return(
+			<TouchableOpacity
+			key={item.id}
+			onPress={() =>
+				navigation.navigate("LabtoolsDetail", {
+					item: item,
+				})
+			}
+		>
+			<View
+				style={{
+					flex: 1,
+					paddingHorizontal: 20,
+					paddingVertical: 15,
+					backgroundColor: colors.elevated,
+					borderRadius: 11,
+					marginVertical: 8,
+				}}
+			>
+				<View
+					style={{
+						flexDirection: "row",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}
+				>
+					<View style={{ flexDirection: "row" }}>
+						<View
+							style={{
+								backgroundColor: colors.primarygreen + "20",
+								borderRadius: 10,
+								paddingHorizontal: 10,
+								justifyContent: "center",
+								alignItems: "center",
+								marginVertical: 7,
+							}}
+						>
+							<Feather
+								style={{
+									color: colors.primarygreen,
+								}}
+								name="book"
+								size={24}
+							/>
+						</View>
+	
+						<View style={{ flexDirection: "column", marginLeft: 15 }}>
+							<Text
+								style={{
+									fontFamily: "SFProDisplay-Bold",
+									fontSize: 20,
+									color: colors.text,
+								}}
+							>
+								{item.labtool_name}
+							</Text>
+							<Text
+								style={{
+									marginTop: 5,
+									fontFamily: "SFProDisplay-Medium",
+									fontSize: 13,
+									color: colors.heading5,
+									marginRight: 20,
+								}}
+							>
+								{item.labtool_desc}
+							</Text>
+						</View>
+					</View>
+				</View>
+			</View>
+		</TouchableOpacity>
+		);
+	}
+
+
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
@@ -42,7 +123,7 @@ const Labtools: React.FC<{}> = () => {
 				<View
 					style={{
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-						marginHorizontal:21
+						marginHorizontal: 21,
 					}}
 				>
 					<View
@@ -58,7 +139,7 @@ const Labtools: React.FC<{}> = () => {
 						</TouchableOpacity>
 					</View>
 
-					<View style={styles.textGreetingWrapper}>
+					<View>
 						<Text
 							style={{
 								fontFamily: "SFProDisplay-Medium",
@@ -79,17 +160,40 @@ const Labtools: React.FC<{}> = () => {
 						</Text>
 					</View>
 
-					{/*Content 1 */}
-					<LabToolsCard/>
+					{/*Card Content*/}
+					<LabToolsCard />
+					{/*LabTools desc*/}
+					<Text
+						style={{
+							fontFamily: "SFProDisplay-Medium",
+							color: colors.heading5,
+							marginVertical: 15,
+						}}
+					>
+						Augmented Reality (AR) uses resources heavily like Camera,CPU,GPU
+						and Neural Engine. Device’s battery life will be shortened during an
+						extended period of time using Augmented Reality.
+					</Text>
+					<Text
+						style={{
+							fontFamily: "SFProDisplay-Bold",
+							fontSize: 18,
+							marginTop: 30,
+							color: colors.text,
+						}}
+					>
+						All Common Laboratory Tools
+					</Text>
+					<FlatList
+						data={LabToolsData}
+						renderItem={renderItem}
+						keyExtractor={(item) => item.id}
+					/>
 				</View>
+				
 			</ScrollView>
 		</SafeAreaView>
 	);
 };
 export default Labtools;
-const styles = StyleSheet.create({
-	textGreetingWrapper: {
-		paddingTop: Platform.OS === "ios" ? 20 : 15,
-	},
-	textTopicIndex: {},
-});
+const styles = StyleSheet.create({});
