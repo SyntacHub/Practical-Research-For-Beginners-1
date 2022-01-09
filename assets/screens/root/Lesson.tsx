@@ -1,7 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/colors";
-
 import React, { useCallback, useMemo, useRef } from "react";
 import BottomSheet, {
 	BottomSheetBackdrop,
@@ -82,8 +81,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 				<View
 					style={{
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-						marginLeft: 25,
-						marginRight: 25,
+						paddingHorizontal:21,
 					}}
 				>
 					<View

@@ -14,6 +14,7 @@ import Faqs from "./assets/screens/root/Faqs";
 import About from "./assets/screens/root/About";
 import Quiz from "./assets/screens/root/Quiz";
 import Lesson from "./assets/screens/root/Lesson";
+import Labtools from "./assets/screens/root/Labtools";
 import { RootStackParamList } from "./types";
 
 
@@ -36,7 +37,13 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
-				
+				<RootStack.Screen
+					name="Labtools"
+					component={Labtools}
+					options={{
+						headerShown: false,
+					}}
+				/>
 				<RootStack.Screen
 					name="Lesson"
 					component={Lesson}
@@ -76,8 +83,6 @@ export default function App() {
 						screenOptions={{ headerShown: false }}
 					>
 						<Drawer.Screen name="Home" component={Root} />
-						<Drawer.Screen name="Feedback" component={Feedback} />
-						<Drawer.Screen name="FAQs" component={Faqs} />
 						<Drawer.Screen name="About" component={About} />
 					</Drawer.Navigator>
 				</NavigationContainer>

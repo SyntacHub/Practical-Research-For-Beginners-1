@@ -17,6 +17,7 @@ export type RootStackParamList = {
   Lesson: undefined;
   Quiz:undefined;
   PlayQuiz:undefined;
+  Labtools:undefined;
   
  
 };
