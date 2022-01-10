@@ -219,16 +219,16 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 				</Text>
         <TouchableOpacity
         onPress={() => {
-          const url = 'https://developer.apple.com/augmented-reality/quick-look/models/cupandsaucer/cup_saucer_set.usdz';
+          const url = `${item.labtool_ar_link}`;
           const localFile = `${RNFS.DocumentDirectoryPath}/${url.split('/').pop()}`;
-      
+  
           const options = {
             fromUrl: url,
             toFile: localFile,
             background: true, // Continue the download in the background after the app terminates (iOS only)
             discretionary: true, // Allow the OS to control the timing and speed of the download to improve perceived performance  (iOS only)
             cacheable: true, // Whether the download can be stored in the shared NSURLCache (iOS only, defaults to true)
-            begin: (res) => {},
+         
             
          }
       
