@@ -43,6 +43,7 @@ const About: React.FC<Props> = () => {
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
+									justifyContent:'center',
 									paddingHorizontal: 10,
 									paddingVertical: 5,
 								}}
@@ -204,6 +205,7 @@ const About: React.FC<Props> = () => {
 								style={{
 									backgroundColor: colors.elevated,
 									paddingVertical: 5,
+									justifyContent:'center',
 									paddingHorizontal: 10,
 									borderRadius: 15,
 									marginTop: 5,
@@ -212,8 +214,10 @@ const About: React.FC<Props> = () => {
 								<Text
 									style={{
 										paddingHorizontal: 10,
+
 										fontFamily: "SFProDisplay-Bold",
 										fontSize: 14,
+										marginTop:15,
 										color: colors.text,
 									}}
 								>

@@ -1,22 +1,24 @@
 import React from "react";
 import useCachedResources from "./assets/hooks/useCachedResources";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
-import {ThemeProvider} from './assets/theme/ThemeProvider';
-import auth from '@react-native-firebase/auth';
+import { ThemeProvider } from "./assets/theme/ThemeProvider";
+import auth from "@react-native-firebase/auth";
 import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
 import About from "./assets/screens/root/About";
 import Quiz from "./assets/screens/root/Quiz";
 import Lesson from "./assets/screens/root/Lesson";
+import CustomDrawer from "./assets/components/Sidebar";
 import Labtools from "./assets/screens/root/Labtools";
 import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
 import Assistant from "./assets/screens/root/Assistant";
 import { RootStackParamList } from "./types";
 
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
@@ -26,10 +28,7 @@ export default function App() {
 
 	function Root() {
 		return (
-			<RootStack.Navigator
-				initialRouteName="Root"
-			>
-				
+			<RootStack.Navigator initialRouteName="Root">
 				<RootStack.Screen
 					name="Root"
 					component={Home}
@@ -79,7 +78,6 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
-			
 			</RootStack.Navigator>
 		);
 	}
@@ -90,21 +88,32 @@ export default function App() {
 		return (
 			<AppearanceProvider>
 				<ThemeProvider>
-				<SafeAreaProvider>
-				<NavigationContainer>
-					<Drawer.Navigator
-						initialRouteName="Root"
-						screenOptions={{ headerShown: false }}
-					>
-						<Drawer.Screen name="Home" component={Root} />
-						<Drawer.Screen name="About" component={About} />
-					</Drawer.Navigator>
-				</NavigationContainer>
-			</SafeAreaProvider>
+					<SafeAreaProvider>
+						<NavigationContainer>
+							<Drawer.Navigator
+								initialRouteName="Root"
+								screenOptions={{ headerShown: false }}
+								drawerContent={(props) => <CustomDrawer {...props} />}
+							>
+								<Drawer.Screen
+									name="Home"
+									component={Root}
+									options={{
+										drawerIcon: ({ color }) => (
+											<Ionicons name="information-circle-outline" size={22} color={color} />
+										),
+									}}
+								/>
+								<Drawer.Screen name="About" component={About}options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name="info" size={22} color={color} />
+          ),
+        }}/>
+							</Drawer.Navigator>
+						</NavigationContainer>
+					</SafeAreaProvider>
 				</ThemeProvider>
-				
 			</AppearanceProvider>
-		
 		);
 	}
 }

@@ -13,6 +13,7 @@ const LabtoolsCardMenu = () => {
     <TouchableOpacity style={{
       backgroundColor: "#C0D88D" + "60",
       width: "50%",
+			alignSelf: 'flex-start',
       borderRadius: 15,
       paddingVertical: 15,
       paddingHorizontal: 15,

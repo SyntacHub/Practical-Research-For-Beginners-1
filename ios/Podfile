@@ -26,6 +26,8 @@ target 'ICNHSResearchGrade7' do
 
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
+  pod 'TouchID', :path => '../node_modules/react-native-touch-id'
+
   post_install do |installer|
     react_native_post_install(installer)
 

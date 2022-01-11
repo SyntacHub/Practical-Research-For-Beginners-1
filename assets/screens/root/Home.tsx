@@ -20,7 +20,7 @@ import researchTopics from "../../data/LessonsData";
 import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../../components/cards/LabtoolsCardMenu";
 import { useTheme } from "../../theme/ThemeProvider";
-import { Switch } from "../../components/buttons/ThemeSwitch";
+
 
 const Home: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
@@ -41,6 +41,7 @@ const Home: React.FC<{}> = () => {
 						flex: 1,
 						paddingHorizontal: 20,
 						paddingVertical: 15,
+						justifyContent:'center',
 						backgroundColor: colors.elevated,
 						borderRadius: 11,
 						marginVertical: 8,
@@ -53,7 +54,7 @@ const Home: React.FC<{}> = () => {
 							alignItems: "center",
 						}}
 					>
-						<View style={{ flexDirection: "row" }}>
+						<View style={{ flexDirection: "row",justifyContent:'center' }}>
 							<View
 								style={{
 									backgroundColor: colors.primarygreen + "20",
@@ -137,7 +138,7 @@ const Home: React.FC<{}> = () => {
 								style={{ color: colors.text }}
 								onPress={() => navigation.openDrawer()}
 							/>
-							<Switch />
+							
 						</View>
 
 						<View style={styles.textGreetingWrapper}>

@@ -41,9 +41,11 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct ICNHSResearchApp1WidgetsEntryView : View {
+  
     var entry: Provider.Entry
 
     var body: some View {
+      
         Text("Practical Research For Beginners")
         Text("Widgetkit Test on iOS 15")
         .background(Color.green)
