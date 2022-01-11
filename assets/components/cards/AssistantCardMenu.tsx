@@ -18,7 +18,11 @@ const ResearchAssistantCardMenu = () => {
 			marginRight:15,
 			paddingVertical: 15,
 			paddingHorizontal: 14,
-		}}>
+		}}
+		onPress={() =>
+      navigation.navigate("Assistant")
+    }
+		>
 		
 			<View
 				style={{

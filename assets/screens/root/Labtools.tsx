@@ -122,7 +122,7 @@ const Labtools: React.FC<{}> = () => {
 				{/* Header */}
 				<View
 					style={{
-						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+						marginTop: Platform.OS === "ios" ? 20 : STATUSBAR_HEIGHT,
 						marginHorizontal: 21,
 					}}
 				>
@@ -139,7 +139,7 @@ const Labtools: React.FC<{}> = () => {
 						</TouchableOpacity>
 					</View>
 
-					<View>
+					<View style={{marginTop:15}}>
 						<Text
 							style={{
 								fontFamily: "SFProDisplay-Medium",
@@ -167,10 +167,12 @@ const Labtools: React.FC<{}> = () => {
 						style={{
 							fontFamily: "SFProDisplay-Medium",
 							color: colors.heading5,
-							marginVertical: 15,
+							marginVertical: 5,
+							fontSize:15,
+							marginHorizontal:15,
 						}}
 					>
-						Augmented Reality (AR) uses resources heavily like Camera,CPU,GPU
+					  Augmented Reality (AR) uses resources heavily like Camera,CPU,GPU
 						and Neural Engine. Device’s battery life will be shortened during an
 						extended period of time using Augmented Reality.
 					</Text>
@@ -178,7 +180,7 @@ const Labtools: React.FC<{}> = () => {
 						style={{
 							fontFamily: "SFProDisplay-Bold",
 							fontSize: 18,
-							marginTop: 30,
+							marginTop: 25,
 							color: colors.text,
 						}}
 					>

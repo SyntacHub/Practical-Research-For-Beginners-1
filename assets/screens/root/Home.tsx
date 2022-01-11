@@ -206,11 +206,9 @@ const styles = StyleSheet.create({
 		color: Colors.textLight,
 		fontSize: 25,
 	},
-	textName: {},
 	searchBarWrapper: {
 		paddingTop: 15,
 	},
 
-	textQuarterlyLessons: {},
-	menu: {},
+
 });
