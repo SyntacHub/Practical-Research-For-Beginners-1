@@ -9,11 +9,12 @@ import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 import {ThemeProvider} from './assets/theme/ThemeProvider';
 import auth from '@react-native-firebase/auth';
 import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
-import Feedback from "./assets/screens/root/Feedback";
-import Faqs from "./assets/screens/root/Faqs";
 import About from "./assets/screens/root/About";
 import Quiz from "./assets/screens/root/Quiz";
 import Lesson from "./assets/screens/root/Lesson";
+import Labtools from "./assets/screens/root/Labtools";
+import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
+import Assistant from "./assets/screens/root/Assistant";
 import { RootStackParamList } from "./types";
 
 
@@ -36,10 +37,30 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
-				
+				<RootStack.Screen
+					name="Labtools"
+					component={Labtools}
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<RootStack.Screen
+					name="LabtoolsDetail"
+					component={LabtoolsDetail}
+					options={{
+						headerShown: false,
+					}}
+				/>
 				<RootStack.Screen
 					name="Lesson"
 					component={Lesson}
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<RootStack.Screen
+					name="Assistant"
+					component={Assistant}
 					options={{
 						headerShown: false,
 					}}
@@ -76,8 +97,6 @@ export default function App() {
 						screenOptions={{ headerShown: false }}
 					>
 						<Drawer.Screen name="Home" component={Root} />
-						<Drawer.Screen name="Feedback" component={Feedback} />
-						<Drawer.Screen name="FAQs" component={Faqs} />
 						<Drawer.Screen name="About" component={About} />
 					</Drawer.Navigator>
 				</NavigationContainer>

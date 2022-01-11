@@ -134,8 +134,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 					flexDirection: "row",
 					alignItems: "center",
 					justifyContent: "space-between",
-					marginLeft: 25,
-					marginRight: 25,
+					paddingHorizontal: 21,
 					marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
 
 					elevation: 4,
@@ -244,8 +243,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				data={questions}
 				style={{
 					flex: 1,
-					marginLeft: 25,
-					marginRight: 25,
+					marginHorizontal:21,
 				}}
 				showsVerticalScrollIndicator={false}
 				keyExtractor={(item) => item.question}

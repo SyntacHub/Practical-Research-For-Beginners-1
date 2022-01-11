@@ -16,6 +16,8 @@ import {
 } from "react-native";
 import AboutCard from "../../components/cards/AboutCard";
 import Acknowledgements from "../../data/AcknowledgementsData";
+import FeedbackCardMenu from "../../components/cards/FeedbackCardMenu";
+import FaqCardMenu from "../../components/cards/FaqCardMenu";
 import Others from "../../data/OthersData";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -156,8 +158,7 @@ const About: React.FC<Props> = () => {
 				{/* Header */}
 				<View
 					style={{
-						marginLeft: 25,
-						marginRight: 25,
+						marginHorizontal:21,
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
 					}}
 				>
@@ -186,11 +187,26 @@ const About: React.FC<Props> = () => {
 							<AboutCard />
 							<View
 								style={{
+									flexWrap:'nowrap',
+									height: 180,
+									flex:1,
+									marginTop:15,
+									paddingHorizontal: 15,
+									justifyContent: "center",
+									flexDirection: "row",
+									
+								}}
+							>
+								<FeedbackCardMenu />
+								<FaqCardMenu/>
+							</View>
+							<View
+								style={{
 									backgroundColor: colors.elevated,
-									paddingVertical: 20,
+									paddingVertical: 5,
 									paddingHorizontal: 10,
 									borderRadius: 15,
-									marginTop: 10,
+									marginTop: 5,
 								}}
 							>
 								<Text
