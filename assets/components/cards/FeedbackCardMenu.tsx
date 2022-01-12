@@ -59,7 +59,7 @@ const FeedbackCardMenu = () => {
 					opacity: 0.6,
 				}}
 			>
-				Get some help on a specific topic in research
+				Send your feedback and reports in our email
 			</Text>
 		
 		</TouchableOpacity>

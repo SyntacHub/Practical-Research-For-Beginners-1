@@ -3,6 +3,7 @@ import useCachedResources from "./assets/hooks/useCachedResources";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { TransitionPresets } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
@@ -17,18 +18,32 @@ import Labtools from "./assets/screens/root/Labtools";
 import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
 import Assistant from "./assets/screens/root/Assistant";
 import { RootStackParamList } from "./types";
-
+import { useTheme } from "./assets/theme/ThemeProvider";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import WhatsNewModal from "./assets/components/modals/WhatsNewModal";
+
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
 	const RootStack = createNativeStackNavigator<RootStackParamList>();
+
 	const Drawer = createDrawerNavigator();
 	const scheme = useColorScheme();
+	const { colors, isDark } = useTheme();
 
 	function Root() {
 		return (
-			<RootStack.Navigator initialRouteName="Root">
+			<RootStack.Navigator
+				initialRouteName="Root"
+				screenOptions={() => {
+					return {
+						gestureEnabled: true,
+						cardOverlayEnabled: true,
+						...TransitionPresets.ModalPresentationIOS,
+					};
+				}}
+			>
+				
 				<RootStack.Screen
 					name="Root"
 					component={Home}
@@ -78,9 +93,15 @@ export default function App() {
 						headerShown: false,
 					}}
 				/>
+				<RootStack.Screen
+					name="Modal"
+					options={{ headerShown: false, presentation: "modal" }}
+					component={WhatsNewModal}
+				/>
 			</RootStack.Navigator>
 		);
 	}
+
 
 	if (!isLoadingComplete) {
 		return null;
@@ -99,16 +120,28 @@ export default function App() {
 									name="Home"
 									component={Root}
 									options={{
-										drawerIcon: ({ color }) => (
-											<Ionicons name="information-circle-outline" size={22} color={color} />
+										drawerIcon: () => (
+											<Ionicons
+												name="home"
+												size={25}
+												color={colors.primarygreen}
+											/>
 										),
 									}}
 								/>
-								<Drawer.Screen name="About" component={About}options={{
-          drawerIcon: ({color}) => (
-            <Ionicons name="info" size={22} color={color} />
-          ),
-        }}/>
+								<Drawer.Screen
+									name="About"
+									component={About}
+									options={{
+										drawerIcon: () => (
+											<Ionicons
+												name="information"
+												size={25}
+												color={colors.primarypurple}
+											/>
+										),
+									}}
+								/>
 							</Drawer.Navigator>
 						</NavigationContainer>
 					</SafeAreaProvider>

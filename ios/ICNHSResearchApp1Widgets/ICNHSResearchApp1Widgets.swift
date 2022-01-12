@@ -46,9 +46,20 @@ struct ICNHSResearchApp1WidgetsEntryView : View {
 
     var body: some View {
       
-        Text("Practical Research For Beginners")
+      VStack {
+        
+        Text(" ICNHS Practical Research For Beginners")
+          Spacer()
+          .foregroundColor(Color.white)
         Text("Widgetkit Test on iOS 15")
-        .background(Color.green)
+        Spacer()
+          .foregroundColor(Color.white)
+      }
+      Color.green.edgesIgnoringSafeArea(.all)
+      
+
+        
+        
     }
 }
 
@@ -61,7 +72,7 @@ struct ICNHSResearchApp1Widgets: Widget {
             ICNHSResearchApp1WidgetsEntryView(entry: entry)
         }
         .configurationDisplayName("Continue Reading")
-        .description("Pick-up from where you left off in lessons and tutroials.")
+        .description("Quickly access recently viewed lessons.")
     }
 }
 

@@ -20,6 +20,7 @@ export type RootStackParamList = {
   Labtools:undefined;
   LabtoolsDetail:undefined;
   Assistant:undefined;
+  Modal:undefined;
   
  
 };

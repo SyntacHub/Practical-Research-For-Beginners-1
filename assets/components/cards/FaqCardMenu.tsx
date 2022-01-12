@@ -18,7 +18,10 @@ const FaqCardMenu = () => {
 			
 			paddingVertical: 15,
 			paddingHorizontal: 14,
-		}}>
+		}}
+		onPress={()=> navigation.navigate("Modal")}
+		>
+			
 		
 			<View
 				style={{
@@ -56,7 +59,7 @@ const FaqCardMenu = () => {
 					opacity: 0.6,
 				}}
 			>
-				Get some help on a specific topic in research
+				View Frequently Asked Questions 
 			</Text>
 		
 		</TouchableOpacity>

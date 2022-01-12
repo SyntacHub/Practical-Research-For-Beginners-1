@@ -28,11 +28,10 @@ const About: React.FC<Props> = () => {
 	const { colors, isDark } = useTheme();
 	const renderItem = ({ item }: { item: any }) => {
 		return (
-			<TouchableOpacity>
+			<TouchableOpacity >
 				<View
 					style={{
 						flexDirection: "row",
-						overflow: "hidden",
 					}}
 				>
 					<View style={{ flexDirection: "column", marginTop: 5 }}>
@@ -44,6 +43,7 @@ const About: React.FC<Props> = () => {
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
 									justifyContent:'center',
+									alignItems:'center',
 									paddingHorizontal: 10,
 									paddingVertical: 5,
 								}}
@@ -53,9 +53,8 @@ const About: React.FC<Props> = () => {
 									size={26}
 									color="black"
 									style={{
-										marginTop: 5,
 										color: colors.primarygreen,
-										alignItems: "center",
+						
 									}}
 								/>
 							</View>
@@ -105,6 +104,8 @@ const About: React.FC<Props> = () => {
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
+									justifyContent:'center',
+									alignItems:'center',
 									paddingHorizontal: 10,
 									paddingVertical: 5,
 								}}
@@ -114,7 +115,6 @@ const About: React.FC<Props> = () => {
 									size={24}
 									color="black"
 									style={{
-										marginTop: 5,
 										color: colors.primarygreen,
 										alignItems: "center",
 									}}
