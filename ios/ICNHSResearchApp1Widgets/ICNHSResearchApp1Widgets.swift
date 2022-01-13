@@ -35,15 +35,33 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
+struct TipsWidgetData {
+let quoteDescription: String
+let quoteTitle: String
+let quoteTitle2:String
+  
+}
+
+extension TipsWidgetData {
+  static let previewData = TipsWidgetData(
+    quoteDescription:"To be a productive student researcher you must be dedicated towards your work and hobbies.Struggles are part of our life...",
+    quoteTitle:"be a Good Student Researcher",
+    quoteTitle2:"NO IMAGE FOUND"
+  
+    
+  )
+}
+
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
 }
 
 struct ICNHSResearchApp1WidgetsEntryView : View {
+  @Environment(\.widgetFamily)var widgetFamily
   
-    var entry: Provider.Entry
- 
+  var entry: Provider.Entry
+  let data: TipsWidgetData
 
     var body: some View {
       ZStack{
@@ -54,22 +72,33 @@ struct ICNHSResearchApp1WidgetsEntryView : View {
                 .init(color: Color(#colorLiteral(red: 0.04491317272186279, green: 0.8291666507720947, blue: 0.35861465334892273, alpha: 1)), location: 1)]),
                     startPoint: UnitPoint(x: -0.21935484526773896, y: 1.4677419489792682),
                     endPoint: UnitPoint(x: 0.7516129073618478, y: -0.1612903088663047))
+        
         HStack {
           VStack(alignment:.leading){
             Text("How to")
               .foregroundColor(.white)
-              .font(.title2)
-              .bold()
+              .font(Font.system(size:24,weight:.bold, design:.default ))
+
               
               .minimumScaleFactor(0.8)
-            Text("be a Good Researcher")
-              .font(.headline)
-              .bold()
+            Text(data.quoteTitle)
+              .font(Font.system(size:22,weight:.bold, design:.default ))
+              .foregroundColor(.white)
+             
               .opacity(0.5)
           }
           .padding(.all)
+          if widgetFamily == .systemMedium,
+             let quoteDescription = data.quoteDescription {
+            Text(quoteDescription)
+              .font(.subheadline)
+          }
+          
         }
         Spacer(minLength: 0)
+        
+        
+        
       }
       
 }
@@ -80,18 +109,14 @@ struct ICNHSResearchApp1Widgets: Widget {
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            ICNHSResearchApp1WidgetsEntryView(entry: entry)
+          ICNHSResearchApp1WidgetsEntryView(entry: entry, data: TipsWidgetData.previewData)
         }
         .configurationDisplayName("Research Tips")
         .description("Get the most of Research with helpful hints and hidden tools")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
-struct ICNHSResearchApp1Widgets_Previews: PreviewProvider {
-    static var previews: some View {
-        ICNHSResearchApp1WidgetsEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
+
 }
 
