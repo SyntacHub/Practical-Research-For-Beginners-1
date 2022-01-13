@@ -40,8 +40,11 @@ export default function App() {
 						gestureEnabled: true,
 						cardOverlayEnabled: true,
 						...TransitionPresets.ModalPresentationIOS,
+						
+
 					};
 				}}
+				
 			>
 				
 				<RootStack.Screen
@@ -97,6 +100,8 @@ export default function App() {
 					name="Modal"
 					options={{ headerShown: false, presentation: "modal" }}
 					component={WhatsNewModal}
+					
+					
 				/>
 			</RootStack.Navigator>
 		);
@@ -114,6 +119,7 @@ export default function App() {
 							<Drawer.Navigator
 								initialRouteName="Root"
 								screenOptions={{ headerShown: false }}
+							
 								drawerContent={(props) => <CustomDrawer {...props} />}
 							>
 								<Drawer.Screen

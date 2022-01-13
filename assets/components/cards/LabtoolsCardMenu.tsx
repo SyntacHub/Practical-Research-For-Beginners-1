@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Feather, Entypo } from "@expo/vector-icons";
+import { Text, TouchableOpacity, View } from "react-native";
+import {  Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
 interface Props {}

@@ -43,24 +43,35 @@ struct SimpleEntry: TimelineEntry {
 struct ICNHSResearchApp1WidgetsEntryView : View {
   
     var entry: Provider.Entry
+ 
 
     var body: some View {
-      
-      VStack {
-        
-        Text(" ICNHS Practical Research For Beginners")
-          Spacer()
-          .foregroundColor(Color.white)
-        Text("Widgetkit Test on iOS 15")
-        Spacer()
-          .foregroundColor(Color.white)
+      ZStack{
+        LinearGradient(
+                    gradient: Gradient(stops: [
+                .init(color: Color(#colorLiteral(red: 0.2819444537162781, green: 0.9666666388511658, blue: 0.3915000557899475, alpha: 1)), location: 0),
+                .init(color: Color(#colorLiteral(red: 0, green: 0.4124999940395355, blue: 0.1650000363588333, alpha: 1)), location: 1),
+                .init(color: Color(#colorLiteral(red: 0.04491317272186279, green: 0.8291666507720947, blue: 0.35861465334892273, alpha: 1)), location: 1)]),
+                    startPoint: UnitPoint(x: -0.21935484526773896, y: 1.4677419489792682),
+                    endPoint: UnitPoint(x: 0.7516129073618478, y: -0.1612903088663047))
+        HStack {
+          VStack(alignment:.leading){
+            Text("How to")
+              .foregroundColor(.white)
+              .font(.title2)
+              .bold()
+              
+              .minimumScaleFactor(0.8)
+            Text("be a Good Researcher")
+              .font(.headline)
+              .bold()
+              .opacity(0.5)
+          }
+          .padding(.all)
+        }
+        Spacer(minLength: 0)
       }
-      Color.green.edgesIgnoringSafeArea(.all)
       
-
-        
-        
-    }
 }
 
 @main
@@ -71,8 +82,8 @@ struct ICNHSResearchApp1Widgets: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             ICNHSResearchApp1WidgetsEntryView(entry: entry)
         }
-        .configurationDisplayName("Continue Reading")
-        .description("Quickly access recently viewed lessons.")
+        .configurationDisplayName("Research Tips")
+        .description("Get the most of Research with helpful hints and hidden tools")
     }
 }
 
@@ -82,3 +93,5 @@ struct ICNHSResearchApp1Widgets_Previews: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+}
+

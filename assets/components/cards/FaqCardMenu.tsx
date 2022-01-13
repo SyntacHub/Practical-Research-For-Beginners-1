@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
-interface Props {}
+
 
 const FaqCardMenu = () => {
 	const navigation = useNavigation<any>();

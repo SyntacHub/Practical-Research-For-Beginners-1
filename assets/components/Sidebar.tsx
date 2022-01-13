@@ -17,9 +17,9 @@ import { Switch } from "../components/buttons/ThemeSwitch";
 function CustomDrawer(props: any) {
 	const { colors, isDark } = useTheme();
 	return (
-		<View style={{ flex: 1, backgroundColor: colors.background }}>
+		<View style={{ flex: 1, backgroundColor: colors.elevated }}>
 			<View
-				style={{ flex: 1, backgroundColor: colors.background, paddingTop: 10 }}
+				style={{ flex: 1, backgroundColor: colors.elevated, paddingTop: 10 }}
 			>
 				<Text
 					style={{

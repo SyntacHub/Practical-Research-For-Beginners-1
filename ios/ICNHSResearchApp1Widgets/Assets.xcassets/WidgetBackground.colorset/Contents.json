@@ -8,17 +8,9 @@
       "idiom" : "universal"
     },
     {
-      "color" : {
-        "platform" : "ios",
-        "reference" : "systemGreenColor"
-      },
       "idiom" : "iphone"
     },
     {
-      "color" : {
-        "platform" : "ios",
-        "reference" : "systemGreenColor"
-      },
       "idiom" : "ipad"
     }
   ],
