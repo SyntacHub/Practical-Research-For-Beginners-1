@@ -21,14 +21,15 @@ import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../../components/cards/LabtoolsCardMenu";
 import { useTheme } from "../../theme/ThemeProvider";
 
-const Tips: React.FC<{}> = () => {
+const Analytics: React.FC<{}> = () => {
   return(
     <View>
       <Text>
-      Hello Research Tips
+      Hello Research Analytics
       </Text>
+      
     </View>
   )
 
 }
-export default Tips;
+export default Analytics;

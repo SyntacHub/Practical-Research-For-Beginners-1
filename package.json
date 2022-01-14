@@ -31,6 +31,7 @@
     "react-native": "0.64.3",
     "react-native-appearance": "^0.3.4",
     "react-native-async-storage": "^0.0.1",
+    "react-native-feather": "^1.1.2",
     "react-native-file-viewer": "^2.1.5",
     "react-native-fs": "^2.18.0",
     "react-native-gesture-handler": "^1.10.3",

@@ -48,6 +48,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Enabling Face ID allows you quick and secure access to your account.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ConfigurationIntent</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -76,7 +82,5 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSFaceIDUsageDescription</key>
-<string>Enabling Face ID allows you quick and secure access to your account.</string>
 </dict>
 </plist>

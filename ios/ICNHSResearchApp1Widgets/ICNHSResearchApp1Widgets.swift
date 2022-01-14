@@ -82,7 +82,7 @@ struct ICNHSResearchApp1WidgetsEntryView : View {
               
               .minimumScaleFactor(0.8)
             Text(data.quoteTitle)
-              .font(Font.system(size:22,weight:.bold, design:.default ))
+              .font(Font.system(size:20,weight:.bold, design:.default ))
               .foregroundColor(.white)
              
               .opacity(0.5)
@@ -92,6 +92,7 @@ struct ICNHSResearchApp1WidgetsEntryView : View {
              let quoteDescription = data.quoteDescription {
             Text(quoteDescription)
               .font(.subheadline)
+              .foregroundColor(.white)
           }
           
         }

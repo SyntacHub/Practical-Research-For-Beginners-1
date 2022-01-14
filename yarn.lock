@@ -6365,6 +6365,11 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-feather@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-feather/-/react-native-feather-1.1.2.tgz#da055f8bd56db74c1b5009dc470536a11ef1d5c4"
+  integrity sha512-qBc0+XegKkX4JV6ykgScasguEV3RdlbYp9IrCMnbozngOgJ7vi76pyRpb+dnZ1AZVkYsbYnpdA9JXeP7EJbMCA==
+
 react-native-file-viewer@^2.1.5:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/react-native-file-viewer/-/react-native-file-viewer-2.1.5.tgz#cd4544f573108e79002b5c7e1ebfce4371885250"

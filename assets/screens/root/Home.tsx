@@ -1,4 +1,4 @@
-import { Feather, Entypo } from "@expo/vector-icons";
+import { Feather} from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
@@ -142,7 +142,7 @@ const Home: React.FC<{}> = () => {
 						</View>
 
 						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Good Morning</Text>
+							<Text style={styles.textGreeting}>Practical Research Grade 7</Text>
 							<Text
 								style={{
 									fontFamily: "SFProDisplay-Bold",
@@ -150,7 +150,7 @@ const Home: React.FC<{}> = () => {
 									fontSize: 35,
 								}}
 							>
-								Tristan Listanco
+								Lesson Dashboard
 							</Text>
 						</View>
 						<View style={styles.searchBarWrapper}>
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
 	textGreeting: {
 		fontFamily: "SFProDisplay-Bold",
 		color: Colors.textLight,
-		fontSize: 25,
+		fontSize: 23,
 	},
 	searchBarWrapper: {
 		paddingTop: 15,

@@ -19,9 +19,10 @@ import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
 import Assistant from "./assets/screens/root/Assistant";
 import { RootStackParamList } from "./types";
 import { useTheme } from "./assets/theme/ThemeProvider";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Tips from "./assets/screens/root/Tips";
+import Analytics from "./assets/screens/root/Analytics";
+import * as Icon from "react-native-feather";
 import WhatsNewModal from "./assets/components/modals/WhatsNewModal";
-
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
@@ -40,13 +41,9 @@ export default function App() {
 						gestureEnabled: true,
 						cardOverlayEnabled: true,
 						...TransitionPresets.ModalPresentationIOS,
-						
-
 					};
 				}}
-				
 			>
-				
 				<RootStack.Screen
 					name="Root"
 					component={Home}
@@ -100,13 +97,10 @@ export default function App() {
 					name="Modal"
 					options={{ headerShown: false, presentation: "modal" }}
 					component={WhatsNewModal}
-					
-					
 				/>
 			</RootStack.Navigator>
 		);
 	}
-
 
 	if (!isLoadingComplete) {
 		return null;
@@ -119,33 +113,54 @@ export default function App() {
 							<Drawer.Navigator
 								initialRouteName="Root"
 								screenOptions={{ headerShown: false }}
-							
 								drawerContent={(props) => <CustomDrawer {...props} />}
 							>
 								<Drawer.Screen
 									name="Home"
+								
 									component={Root}
 									options={{
-										drawerIcon: () => (
-											<Ionicons
-												name="home"
-												size={25}
-												color={colors.primarygreen}
-											/>
-										),
+										drawerIcon: () => <Icon.Home color={colors.primarygreen} width={30} height={30} />,
+										drawerActiveTintColor: "#34C759",
+										drawerActiveBackgroundColor: "#34C759" + 40,
+										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:colors.primarygreen}
+										
 									}}
 								/>
+
+								<Drawer.Screen
+									name="Analytics"
+									component={Analytics}
+									options={{
+										drawerIcon: () => (
+											<Icon.Activity color={colors.primaryteal}width={30} height={30} />
+										),
+
+										drawerActiveTintColor: colors.primaryteal,
+										drawerActiveBackgroundColor: colors.primaryteal + 70,
+										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:colors.primaryteal}
+									}}
+								/>
+
+								<Drawer.Screen
+									name="Tips"
+									component={Tips}
+									options={{
+										drawerIcon: () => <Icon.Tool color={"#5AC8FA"}width={30} height={30} />,
+										drawerActiveTintColor: "#5AC8FA",
+										drawerActiveBackgroundColor: "#5AC8FA" + 70,
+										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:'#5AC8FA'}
+									}}
+								/>
+
 								<Drawer.Screen
 									name="About"
 									component={About}
 									options={{
-										drawerIcon: () => (
-											<Ionicons
-												name="information"
-												size={25}
-												color={colors.primarypurple}
-											/>
-										),
+										drawerIcon: () => <Icon.Info color={"#FF2D55"} width={30} height={30}/>,
+										drawerActiveTintColor: "#FF2D55",
+										drawerActiveBackgroundColor: "#FF2D55" + 70,
+										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:'#FF2D55'}
 									}}
 								/>
 							</Drawer.Navigator>
