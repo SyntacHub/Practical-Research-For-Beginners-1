@@ -24,6 +24,7 @@ import { useTheme } from "../../theme/ThemeProvider";
 const WhatsNewModal = (props: any) => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
+	
 	return (
 		<View
 			style={{

@@ -46,7 +46,7 @@ function CustomDrawer(props: any) {
 				</Text> 
 				</View>
 			<View
-				style={{ flex: 1, backgroundColor: colors.background, paddingTop: 10,paddingLeft:10, }}
+				style={{ flex: 1, backgroundColor: colors.background, paddingTop: 10,paddingLeft:10,alignContent:'space-between' }}
 			>
 				
 				
@@ -56,7 +56,7 @@ function CustomDrawer(props: any) {
 			</View>
 			</ScrollView>
 
-			<View style={{ padding: 20 , flexDirection:"row",alignItems:'center',alignContent:'space-around'}}>
+			<View style={{ padding: 20 , flexDirection:"row",alignItems:'center',alignContent:'space-between'}}>
         <Text style={{color: colors.heading5,fontFamily:"SFProDisplay-Medium"}}>Dark Mode</Text>
 					<Switch />
 			

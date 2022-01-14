@@ -129,7 +129,7 @@ export default function App() {
 								/>
 
 								<Drawer.Screen
-									name="Analytics"
+									name="Statistics"
 									component={Analytics}
 									options={{
 										drawerIcon: () => (

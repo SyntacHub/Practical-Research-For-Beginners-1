@@ -28,6 +28,8 @@ target 'ICNHSResearchGrade7' do
 
   pod 'TouchID', :path => '../node_modules/react-native-touch-id'
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   post_install do |installer|
     react_native_post_install(installer)
 

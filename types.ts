@@ -31,7 +31,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 export type DrawerStackParamList = {
   Home: undefined;
   Tips:undefined;
-  Analytics:undefined;
+  Statistics:undefined;
   About: undefined;
 };
 
