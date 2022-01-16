@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -18,7 +18,10 @@ const FeedbackCardMenu = () => {
 			marginRight:15,
 			paddingVertical: 15,
 			paddingHorizontal: 14,
-		}}>
+		}} 
+		onPress={() => Linking.openURL('mailto:tannyencina@gmail.com?subject=Practical Research For Beginners Feedback Report&body=My Feedback Report')}
+		
+		>
 		
 			<View
 				style={{
@@ -56,7 +59,7 @@ const FeedbackCardMenu = () => {
 					opacity: 0.6,
 				}}
 			>
-				Get some help on a specific topic in research
+				Send your feedback and reports in our email
 			</Text>
 		
 		</TouchableOpacity>

@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
-interface Props {}
+
 
 const FaqCardMenu = () => {
 	const navigation = useNavigation<any>();
@@ -18,7 +18,10 @@ const FaqCardMenu = () => {
 			
 			paddingVertical: 15,
 			paddingHorizontal: 14,
-		}}>
+		}}
+		onPress={()=> navigation.navigate("Modal")}
+		>
+			
 		
 			<View
 				style={{
@@ -56,7 +59,7 @@ const FaqCardMenu = () => {
 					opacity: 0.6,
 				}}
 			>
-				Get some help on a specific topic in research
+				View Frequently Asked Questions 
 			</Text>
 		
 		</TouchableOpacity>

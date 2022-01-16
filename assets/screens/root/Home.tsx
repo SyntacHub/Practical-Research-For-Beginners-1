@@ -1,4 +1,4 @@
-import { Feather, Entypo } from "@expo/vector-icons";
+import { Feather} from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
@@ -20,7 +20,7 @@ import researchTopics from "../../data/LessonsData";
 import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../../components/cards/LabtoolsCardMenu";
 import { useTheme } from "../../theme/ThemeProvider";
-import { Switch } from "../../components/buttons/ThemeSwitch";
+
 
 const Home: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
@@ -41,6 +41,7 @@ const Home: React.FC<{}> = () => {
 						flex: 1,
 						paddingHorizontal: 20,
 						paddingVertical: 15,
+						justifyContent:'center',
 						backgroundColor: colors.elevated,
 						borderRadius: 11,
 						marginVertical: 8,
@@ -53,7 +54,7 @@ const Home: React.FC<{}> = () => {
 							alignItems: "center",
 						}}
 					>
-						<View style={{ flexDirection: "row" }}>
+						<View style={{ flexDirection: "row",justifyContent:'center' }}>
 							<View
 								style={{
 									backgroundColor: colors.primarygreen + "20",
@@ -137,11 +138,11 @@ const Home: React.FC<{}> = () => {
 								style={{ color: colors.text }}
 								onPress={() => navigation.openDrawer()}
 							/>
-							<Switch />
+							
 						</View>
 
 						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Good Morning</Text>
+							<Text style={styles.textGreeting}>Practical Research Grade 7</Text>
 							<Text
 								style={{
 									fontFamily: "SFProDisplay-Bold",
@@ -149,7 +150,7 @@ const Home: React.FC<{}> = () => {
 									fontSize: 35,
 								}}
 							>
-								Tristan Listanco
+								Lesson Dashboard
 							</Text>
 						</View>
 						<View style={styles.searchBarWrapper}>
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
 	textGreeting: {
 		fontFamily: "SFProDisplay-Bold",
 		color: Colors.textLight,
-		fontSize: 25,
+		fontSize: 23,
 	},
 	searchBarWrapper: {
 		paddingTop: 15,

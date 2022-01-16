@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Feather, Entypo } from "@expo/vector-icons";
+import { Text, TouchableOpacity, View } from "react-native";
+import {  Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
 interface Props {}
@@ -13,6 +13,7 @@ const LabtoolsCardMenu = () => {
     <TouchableOpacity style={{
       backgroundColor: "#C0D88D" + "60",
       width: "50%",
+			alignSelf: 'flex-start',
       borderRadius: 15,
       paddingVertical: 15,
       paddingHorizontal: 15,

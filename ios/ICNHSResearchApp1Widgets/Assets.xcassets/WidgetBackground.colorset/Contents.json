@@ -6,6 +6,12 @@
         "reference" : "systemGreenColor"
       },
       "idiom" : "universal"
+    },
+    {
+      "idiom" : "iphone"
+    },
+    {
+      "idiom" : "ipad"
     }
   ],
   "info" : {

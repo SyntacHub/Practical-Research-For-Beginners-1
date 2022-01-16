@@ -20,6 +20,7 @@ export type RootStackParamList = {
   Labtools:undefined;
   LabtoolsDetail:undefined;
   Assistant:undefined;
+  Modal:undefined;
   
  
 };
@@ -29,8 +30,8 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 
 export type DrawerStackParamList = {
   Home: undefined;
-  Feedback: undefined;
-  FAQs: undefined;
+  Tips:undefined;
+  Statistics:undefined;
   About: undefined;
 };
 

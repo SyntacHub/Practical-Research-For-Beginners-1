@@ -25,6 +25,7 @@ import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import TouchID from 'react-native-touch-id';
 import Animated, {
   useAnimatedStyle,
   interpolateColor,
