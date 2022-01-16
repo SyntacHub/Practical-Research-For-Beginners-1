@@ -104,7 +104,7 @@ struct ICNHSResearchApp1WidgetsEntryView : View {
       
 }
 
-@main
+
 struct ICNHSResearchApp1Widgets: Widget {
     let kind: String = "ICNHSResearchApp1Widgets"
 
@@ -117,6 +117,7 @@ struct ICNHSResearchApp1Widgets: Widget {
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
+
 
 
 }
