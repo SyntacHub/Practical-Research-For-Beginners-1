@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -8,41 +8,45 @@ interface Props {}
 
 const HomeCard = () => {
 	const navigation = useNavigation<any>();
+	const screenWidth = Dimensions.get("window").width;
+	let bigCardWidth = screenWidth-40;
+	if (screenWidth>=768){
+		bigCardWidth = (screenWidth-50)/1;
+	}
+	let contentHeadings = undefined;
+	if (screenWidth>=768){
+		contentHeadings = 25
+	}
+	contentHeadings =20
 	const { colors, isDark } = useTheme();
 	return (
 		<View
 			style={{
-				flex: 1,
-				paddingHorizontal: 16,
-				paddingVertical: 10,
+				flexDirection:'row',
+				justifyContent:'center',
 				backgroundColor: colors.primarygreen,
+				maxWidth:bigCardWidth,
+				paddingHorizontal:20,
+				paddingVertical:10,
 				borderRadius: 23,
 				marginVertical: 12,
 			}}
+			
 		>
-			<View style={{ flexDirection: "row", justifyContent: "center" }}>
-				<View style={{ flexDirection: "column", width: "50%", marginTop: 5 }}>
-					<Text
-						style={{
-							width: "100%",
-							marginLeft: 15,
-							fontFamily: "SFProDisplay-Black",
-							lineHeight: 30,
-							fontSize: 20,
-							color: Colors.background,
-						}}
-					>
-						Test Your Knowledge in Research
-					</Text>
-					<TouchableOpacity onPress={() => navigation.navigate("Quiz")}>
+			<View style={{ flexDirection: "row",overflow:'hidden',width:"60%",alignItems:'center',flex:1 }}>
+				<View style={{flexDirection:'column'}}>
+				<Text style={{fontFamily:"SFProDisplay-Black",fontSize:contentHeadings,color:Colors.white}} >Test your Knowledge in Research</Text>
+				<TouchableOpacity onPress={() => navigation.navigate("Quiz")}>
 						<Text style={styles.getStarted}>Get Started</Text>
 					</TouchableOpacity>
 				</View>
-				<Image
-					style={{ width: "50%" }}
-					source={require("../../images/homeCard.png")}
-				/>
+				
 			</View>
+			<Image
+					style={{flex:1}}
+					source={require("../../images/homeCard.png")}
+					resizeMode="contain"
+				/>
 		</View>
 	);
 };
@@ -52,12 +56,11 @@ export default HomeCard;
 const styles = StyleSheet.create({
 	container: {},
 	getStarted: {
-		width: "80%",
-		marginLeft: 15,
+
 		marginTop: 15,
 		paddingVertical: 10,
 		textAlign: "center",
-		borderRadius: 5,
+		borderRadius: 10,
 		overflow: "hidden",
 		fontFamily: "SFProDisplay-Medium",
 		fontSize: 15,

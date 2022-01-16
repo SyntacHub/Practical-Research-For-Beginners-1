@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import {  Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -9,10 +9,17 @@ interface Props {}
 const LabtoolsCardMenu = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
+	const screenWidth = Dimensions.get("window").width;
+	let bigCardWidth = screenWidth-40;
+	if (screenWidth>=768){
+		bigCardWidth = (screenWidth-60)/2;
+	}
+	
 	return (
     <TouchableOpacity style={{
+			flex:1,
       backgroundColor: "#C0D88D" + "60",
-      width: "50%",
+			width:screenWidth/2.5,
 			alignSelf: 'flex-start',
       borderRadius: 15,
       paddingVertical: 15,

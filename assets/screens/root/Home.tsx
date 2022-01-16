@@ -12,6 +12,7 @@ import {
 	Text,
 	View,
 	NativeModules,
+	Dimensions,
 } from "react-native";
 import Colors from "../../constants/colors";
 
@@ -54,12 +55,12 @@ const Home: React.FC<{}> = () => {
 							alignItems: "center",
 						}}
 					>
-						<View style={{ flexDirection: "row",justifyContent:'center' }}>
+						<View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
 							<View
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
-									paddingHorizontal: 10,
+									padding:15,
 									justifyContent: "center",
 									alignItems: "center",
 									marginVertical: 7,
@@ -70,7 +71,7 @@ const Home: React.FC<{}> = () => {
 										color: colors.primarygreen,
 									}}
 									name="book"
-									size={24}
+									size={25}
 								/>
 							</View>
 
@@ -105,6 +106,13 @@ const Home: React.FC<{}> = () => {
 
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+	const screenWidth = Dimensions.get("window").width;
+	let paddingsize = undefined;
+	if (screenWidth>=768){
+	 paddingsize= 20
+	}
+	
+		
 
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
@@ -159,11 +167,10 @@ const Home: React.FC<{}> = () => {
 							<HomeCard />
 							<View
 								style={{
-									flexWrap:'nowrap',
-									height: 180,
 									flex:1,
-									paddingHorizontal: 15,
-									justifyContent: "center",
+									alignContent:'space-around',
+									justifyContent:'center',
+									paddingHorizontal:paddingsize,
 									flexDirection: "row",
 									
 								}}
@@ -209,6 +216,7 @@ const styles = StyleSheet.create({
 	},
 	searchBarWrapper: {
 		paddingTop: 15,
+	
 	},
 
 
