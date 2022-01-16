@@ -128,19 +128,7 @@ export default function App() {
 									}}
 								/>
 
-								<Drawer.Screen
-									name="Statistics"
-									component={Analytics}
-									options={{
-										drawerIcon: () => (
-											<Icon.Activity color={colors.primaryteal}width={30} height={30} />
-										),
-
-										drawerActiveTintColor: colors.primaryteal,
-										drawerActiveBackgroundColor: colors.primaryteal + 70,
-										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:colors.primaryteal}
-									}}
-								/>
+								
 
 								<Drawer.Screen
 									name="Tips"

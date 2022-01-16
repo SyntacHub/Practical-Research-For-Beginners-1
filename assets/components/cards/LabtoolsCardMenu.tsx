@@ -34,7 +34,7 @@ const LabtoolsCardMenu = () => {
 				style={{
 					backgroundColor: colors.elevated,
 					height: "25%",
-					borderRadius: 30,
+					borderRadius: 20/2,
 					width: "30%",
 					opacity: 0.4,
 					justifyContent: "center",
