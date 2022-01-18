@@ -1,9 +1,9 @@
 import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
-
-export const createQuiz = (currentQuizId: string | undefined, title: any, description: any) => {
+export const createQuiz = (currentQuizId: string | undefined, title: any, description: any,attemps:number) => {
   return firestore().collection('Quizzes').doc(currentQuizId).set({
     title,
     description,
+    attemps,
   });
 };
 

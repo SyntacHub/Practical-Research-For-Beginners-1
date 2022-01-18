@@ -19,6 +19,7 @@ import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
 import Assistant from "./assets/screens/root/Assistant";
 import { RootStackParamList } from "./types";
 import { useTheme } from "./assets/theme/ThemeProvider";
+import Login from "./assets/screens/Auth/Login";
 import Tips from "./assets/screens/root/Tips";
 import Analytics from "./assets/screens/root/Analytics";
 import * as Icon from "react-native-feather";
@@ -44,6 +45,13 @@ export default function App() {
 					};
 				}}
 			>
+				<RootStack.Screen
+					name="Login"
+					component={Login}
+					options={{
+						headerShown: false,
+					}}
+				/>
 				<RootStack.Screen
 					name="Root"
 					component={Home}
@@ -118,7 +126,7 @@ export default function App() {
 								<Drawer.Screen
 									name="Home"
 								
-									component={Root}
+									component={Login}
 									options={{
 										drawerIcon: () => <Icon.Home color={colors.primarygreen} width={30} height={30} />,
 										drawerActiveTintColor: "#34C759",

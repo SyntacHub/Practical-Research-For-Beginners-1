@@ -14,6 +14,7 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<DrawerStackParamList>;
   Home: undefined;
+  Login:undefined;
   Lesson: undefined;
   Quiz:undefined;
   PlayQuiz:undefined;
