@@ -17,7 +17,7 @@ import { useTheme } from "../theme/ThemeProvider";
 
 interface Props {}
 const WelcomeScreen: React.FC<Props> = () => {
-	const imagebg = require("../../images/loginbg.jpg");
+	const imagebg = require("../images/loginbg.jpg");
 	const navigation = useNavigation<any>();
 	const screenheight = Dimensions.get("window").height;
 	const screenwidth = Dimensions.get("window").width;
@@ -38,12 +38,12 @@ const WelcomeScreen: React.FC<Props> = () => {
 				<View style={{flexDirection:'row'}}>
 				<Image
 					style={{ borderRadius: 20, marginHorizontal: 21, width: "20%",marginTop:30 }}
-					source={require("../../images/app_icon.png")}
+					source={require("../images/app_icon.png")}
 					resizeMode="contain"
 				/>
 				<Image
 					style={{ borderRadius:20,marginTop:-25,width:screenwidth/5}}
-					source={require("../../images/ic_school.png")}
+					source={require("../images/ic_school.png")}
 					resizeMode="contain"
 				/>
 				</View>

@@ -1,5 +1,4 @@
 import { Feather} from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import React, { useState,useEffect} from "react";
 import {
 	Platform,
@@ -16,6 +15,7 @@ import {
 	AsyncStorage,
 } from "react-native";
 import Colors from "../constants/colors";
+import {signOut} from '../utils/auth';
 
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
@@ -23,6 +23,7 @@ import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
 import { useTheme } from "../theme/ThemeProvider";
 import { useToast } from "react-native-toast-notifications";
+import { Switch } from "../components/buttons/ThemeSwitch";
 interface Props {
 	route: any;
 	navigation:any;
@@ -37,30 +38,13 @@ const Home:React.FC<Props>  = ({navigation}) => {
 
 	useEffect(() => {
 		navigation.navigate("Modal")
-    toast.show("Login Success!!");
+		
+    
   }, []);
 
-	const checkIfNeedOpenModal = async () => {
-    try {
-      const isFirstOpen = await AsyncStorage.getItem('IS_FIRST_OPEN');
-      if (!isFirstOpen || isFirstOpen !== 'true') { // Check if key IS_FIRST_OPEN doesnt have value or not 'true'
-        // isFirstOpen is null or not 'true' so this is first time app open
+	
 
-        setWhatsNewModalVisible('true')
-      }
-     } catch (error) {
-			 console.log(error)
-       // Error retrieving data
-     }
-  }
-
-	const saveModalOpen = async () => {
-    try {
-      await AsyncStorage.setItem('IS_FIRST_OPEN', 'true');
-    } catch (error) {
-      // Error saving data
-    }
-  }
+	
 	
 	const renderItem = ({ item }: { item: any }) => {
 		return (
@@ -181,6 +165,16 @@ const Home:React.FC<Props>  = ({navigation}) => {
 								style={{ color: colors.text }}
 								onPress={() => navigation.openDrawer()}
 							/>
+							<Text
+          style={{
+            fontSize: 20,
+            padding: 10,
+            color: Colors.error,
+          }}
+          onPress={signOut}>
+          Logout
+        </Text>
+							<Switch/>
 							
 						</View>
 

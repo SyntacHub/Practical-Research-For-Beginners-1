@@ -1,33 +1,28 @@
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, Alert} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import FormButton from '../components/buttons/FormButton';
 import FormInput from '../components/inputs/FormInput';
 import {Colors} from '../constants/colors';
-import {signUp} from '../utils/auth';
+import {signIn} from '../utils/auth';
 interface Props{
-  navigation:any,
+	navigation:any
 }
-const SignUpScreen:React.FC<Props> = ({navigation}) => {
+
+const SignInScreen:React.FC<Props> = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleOnSubmit = () => {
-    if (email != '' && password != '' && confirmPassword != '') {
-      if (password == confirmPassword) {
-        //   SignUp
-        signUp(email, password);
-      } else {
-        Alert.alert('password did not match');
-      }
+    if (email != '' && password != '') {
+      signIn(email, password);
     }
   };
 
   return (
     <SafeAreaView
       style={{
-        flex: 1,
         backgroundColor: Colors.white,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
         padding: 20,
@@ -40,7 +35,7 @@ const SignUpScreen:React.FC<Props> = ({navigation}) => {
           fontWeight: 'bold',
           marginVertical: 32,
         }}>
-        Sign Up
+        Sign In
       </Text>
 
       {/* Email */}
@@ -61,33 +56,24 @@ const SignUpScreen:React.FC<Props> = ({navigation}) => {
         secureTextEntry={true}
       />
 
-      {/* Confirm Password */}
-      <FormInput
-        labelText="Confirm Password"
-        placeholderText="enter your password again"
-        onChangeText={value => setConfirmPassword(value)}
-        value={confirmPassword}
-        secureTextEntry={true}
-      />
-
       {/* Submit button */}
       <FormButton
-        labelText="Sign up"
+        labelText="Submit"
         handleOnPress={handleOnSubmit}
         style={{width: '100%'}}
       />
 
       {/* Footer */}
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
-        <Text>Already have an account?</Text>
+        <Text>Don't have an account?</Text>
         <Text
           style={{marginLeft: 4, color: Colors.primary}}
-          onPress={() => navigation.navigate('SignInScreen')}>
-          Sign in
+          onPress={() => navigation.navigate('SignUpScreen')}>
+          Create account
         </Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default SignUpScreen;
+export default SignInScreen;

@@ -100,8 +100,7 @@ const Quiz:React.FC<Props> = ({ navigation }) => {
 							name="info"
 							size={24}
 							style={{ color: colors.text }}
-							// Show Result modal
-							onPress={handlePresentModalPress}
+
 						/>
 					</TouchableOpacity>
 				</View>
