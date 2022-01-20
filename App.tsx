@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { TransitionPresets } from "@react-navigation/stack";
+import { ToastProvider } from 'react-native-toast-notifications'
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "./assets/screens/root/Home";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
@@ -19,11 +20,14 @@ import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
 import Assistant from "./assets/screens/root/Assistant";
 import { RootStackParamList } from "./types";
 import { useTheme } from "./assets/theme/ThemeProvider";
-import Login from "./assets/screens/Auth/Login";
+import Login from "./assets/screens/Auth/WelcomeScreen";
 import Tips from "./assets/screens/root/Tips";
 import Analytics from "./assets/screens/root/Analytics";
 import * as Icon from "react-native-feather";
 import WhatsNewModal from "./assets/components/modals/WhatsNewModal";
+import SignUp from "./assets/screens/Auth/SignUp";
+import WelcomeScreen from "./assets/screens/Auth/WelcomeScreen";
+import SignUpScreen from "./assets/screens/Auth/SignUp";
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
@@ -36,7 +40,7 @@ export default function App() {
 	function Root() {
 		return (
 			<RootStack.Navigator
-				initialRouteName="Root"
+				initialRouteName="Login"
 				screenOptions={() => {
 					return {
 						gestureEnabled: true,
@@ -47,7 +51,14 @@ export default function App() {
 			>
 				<RootStack.Screen
 					name="Login"
-					component={Login}
+					component={WelcomeScreen}
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<RootStack.Screen
+					name="SignUp"
+					component={SignUpScreen}
 					options={{
 						headerShown: false,
 					}}
@@ -114,6 +125,7 @@ export default function App() {
 		return null;
 	} else {
 		return (
+      <ToastProvider>
 			<AppearanceProvider>
 				<ThemeProvider>
 					<SafeAreaProvider>
@@ -125,27 +137,39 @@ export default function App() {
 							>
 								<Drawer.Screen
 									name="Home"
-								
-									component={Login}
+									component={Root}
 									options={{
-										drawerIcon: () => <Icon.Home color={colors.primarygreen} width={30} height={30} />,
+										drawerIcon: () => (
+											<Icon.Home
+												color={colors.primarygreen}
+												width={30}
+												height={30}
+											/>
+										),
 										drawerActiveTintColor: "#34C759",
 										drawerActiveBackgroundColor: "#34C759" + 40,
-										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:colors.primarygreen}
-										
+										drawerLabelStyle: {
+											fontFamily: "SFProDisplay-Bold",
+											fontSize: 20,
+											color: colors.primarygreen,
+										},
 									}}
 								/>
-
-								
 
 								<Drawer.Screen
 									name="Tips"
 									component={Tips}
 									options={{
-										drawerIcon: () => <Icon.Tool color={"#5AC8FA"}width={30} height={30} />,
+										drawerIcon: () => (
+											<Icon.Tool color={"#5AC8FA"} width={30} height={30} />
+										),
 										drawerActiveTintColor: "#5AC8FA",
 										drawerActiveBackgroundColor: "#5AC8FA" + 70,
-										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:'#5AC8FA'}
+										drawerLabelStyle: {
+											fontFamily: "SFProDisplay-Bold",
+											fontSize: 20,
+											color: "#5AC8FA",
+										},
 									}}
 								/>
 
@@ -153,10 +177,16 @@ export default function App() {
 									name="About"
 									component={About}
 									options={{
-										drawerIcon: () => <Icon.Info color={"#FF2D55"} width={30} height={30}/>,
+										drawerIcon: () => (
+											<Icon.Info color={"#FF2D55"} width={30} height={30} />
+										),
 										drawerActiveTintColor: "#FF2D55",
 										drawerActiveBackgroundColor: "#FF2D55" + 70,
-										drawerLabelStyle:{fontFamily:"SFProDisplay-Bold" ,fontSize:20,color:'#FF2D55'}
+										drawerLabelStyle: {
+											fontFamily: "SFProDisplay-Bold",
+											fontSize: 20,
+											color: "#FF2D55",
+										},
 									}}
 								/>
 							</Drawer.Navigator>
@@ -164,6 +194,7 @@ export default function App() {
 					</SafeAreaProvider>
 				</ThemeProvider>
 			</AppearanceProvider>
+      </ToastProvider>
 		);
 	}
 }

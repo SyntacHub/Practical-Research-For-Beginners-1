@@ -18,16 +18,16 @@ import FormButton from "../../components/buttons/FormButton";
 import ResultModal from "../../components/modals/ResultModal";
 import AttemptLimitModal from "../../components/modals/AttemptLimitModal";
 import { useTheme } from "../../theme/ThemeProvider";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PlayQuizScreen = ({ navigation, route }) => {
 	const [currentQuizId, setCurrentQuizId] = useState(route.params.quizId);
 	const [title, setTitle] = useState("");
 	const [questions, setQuestions] = useState([]);
 	const [attempted, setAttempted] = useState(3);
-	const [attemptedUserValue,setattemptedUserValue] = useState("");
-	const [isAttemptLimitModalVisible,setisAttemptLimitModalVisible]= useState(false);
+	const [attemptedUserValue, setattemptedUserValue] = useState("");
+	const [isAttemptLimitModalVisible, setisAttemptLimitModalVisible] =
+		useState(false);
 	const { colors, isDark } = useTheme();
 
 	const [correctCount, setCorrectCount] = useState(0);
@@ -36,26 +36,22 @@ const PlayQuizScreen = ({ navigation, route }) => {
 
 	const storeData = async () => {
 		try {
-			attempted
-			await AsyncStorage.setItem('@storage_Key',"1")
+			attempted;
+			await AsyncStorage.setItem("@storage_Key", "1");
 		} catch (e) {
-			console.log(e)
+			console.log(e);
 		}
-	}
+	};
 	const getData = async () => {
 		try {
-			const value = await AsyncStorage.getItem('@storage_Key,1')
-			if(value !== null) {
-				setAttempted
+			const value = await AsyncStorage.getItem("@storage_Key,1");
+			if (value !== null) {
+				setAttempted;
 			}
-		} catch(e) {
+		} catch (e) {
 			// error reading value
 		}
-	}
-	
-	
-	
-
+	};
 
 	const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -95,19 +91,16 @@ const PlayQuizScreen = ({ navigation, route }) => {
 		setQuestions([...tempQuestions]);
 	};
 
-	useEffect(()=>{
-		if(attempted<=0){
+	useEffect(() => {
+		if (attempted <= 0) {
 			setIsResultModalVisible(false);
 			setisAttemptLimitModalVisible(true);
 		}
-	})
+	});
 
 	useEffect(() => {
 		getQuizAndQuestionDetails();
 	}, []);
-
-	
-	
 
 	const getOptionBgColor = (currentQuestion: any, currentOption: any) => {
 		if (currentQuestion.selectedOption) {
@@ -152,7 +145,6 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				{ text: "Yes", onPress: () => navigation.goBack() },
 			]
 		);
-		
 
 	return (
 		<SafeAreaView
@@ -281,7 +273,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				data={questions}
 				style={{
 					flex: 1,
-					marginHorizontal:21,
+					marginHorizontal: 21,
 				}}
 				showsVerticalScrollIndicator={false}
 				keyExtractor={(item) => item.question}
@@ -385,22 +377,15 @@ const PlayQuizScreen = ({ navigation, route }) => {
 					<FormButton
 						labelText="Submit"
 						style={{ margin: 10 }}
-						handleOnPress={()  => {
-
+						handleOnPress={() => {
 							// Show Result modal
-							setAttempted(attempted-1)
+							setAttempted(attempted - 1);
 
-							if(attempted<=0){
+							if (attempted <= 0) {
 								setisAttemptLimitModalVisible(true);
-							}else{
+							} else {
 								setIsResultModalVisible(true);
-							
 							}
-						
-							
-
-							
-							
 						}}
 					/>
 				)}
@@ -424,7 +409,6 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				}}
 				handleHome={() => {
 					navigation.goBack();
-				
 				}}
 			/>
 
@@ -435,7 +419,6 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				handleOnClose={() => {
 					setIsResultModalVisible(false);
 				}}
-				
 				handleHome={() => {
 					setIsResultModalVisible(false);
 				}}
