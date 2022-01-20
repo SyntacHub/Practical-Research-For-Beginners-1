@@ -8,7 +8,7 @@ export const ThemeContext = React.createContext({
     setScheme: () => {},
 });
 
-export const ThemeProvider = (props) => {
+export const ThemeProvider = (props: { children: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
     // Getting the device color theme, this will also work with react-native-web
     const colorScheme = useColorScheme(); // Can be dark | light | no-preference
 
@@ -28,7 +28,7 @@ export const ThemeProvider = (props) => {
         // Chaning color schemes according to theme
         colors: isDark ? darkColors : lightColors,
         // Overrides the isDark value will cause re-render inside the context.  
-        setScheme: (scheme) => setIsDark(scheme === "dark"),
+        setScheme: (scheme: string) => setIsDark(scheme === "dark"),
     };
 
   return (

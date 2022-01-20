@@ -2,16 +2,21 @@ import React from 'react';
 import {View, Text, Modal, TouchableOpacity} from 'react-native';
 import Colors from '../../constants/colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useTheme } from '../../theme/ThemeProvider';
+import { color } from 'react-native-reanimated';
 
 const ResultModal = ({
   isModalVisible,
   correctCount,
-  incorrectCount,
   totalCount,
+  incorrectCount,
   handleOnClose,
   handleRetry,
+  attemptsLeftCount,
   handleHome,
 }) => {
+  const { colors, isDark } = useTheme();
+  console.log(totalCount)
   return (
     <Modal
       animationType={'slide'}
@@ -28,13 +33,13 @@ const ResultModal = ({
         }}>
         <View
           style={{
-            backgroundColor: Colors.white,
+            backgroundColor: colors.elevated,
             width: '90%',
             borderRadius: 10,
             padding: 40,
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 28, color: Colors.black,fontFamily:"SFProDisplay-Bold",justifyContent:'center'}}>Assesment Results</Text>
+          <Text style={{fontSize: 28, color: colors.text,fontFamily:"SFProDisplay-Bold",justifyContent:'center'}}>Assesment Results</Text>
           <View
             style={{
               flexDirection: 'row',
@@ -45,17 +50,21 @@ const ResultModal = ({
               <Text style={{color: Colors.success, fontSize: 30,fontFamily:"SFProDisplay-Bold"}}>
                 {correctCount}
               </Text>
-              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold"}}>Correct</Text>
+              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold",color:colors.heading5}}>Correct</Text>
             </View>
             <View style={{alignItems: 'center', padding: 20}}>
               <Text style={{color: Colors.error, fontSize: 30,fontFamily:"SFProDisplay-Bold"}}>
                 {incorrectCount}
               </Text>
-              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold"}}>Incorrect</Text>
+              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold",color:colors.heading5}}>Incorrect</Text>
+              <Text style={{color: Colors.success, fontSize: 30,fontFamily:"SFProDisplay-Bold"}}>
+                {correctCount/totalCount*100 +"%"}
+              </Text>
+              <Text style={{fontSize: 16,fontFamily:"SFProDisplay-Bold",color:colors.heading5}}>Percentage</Text>
             </View>
           </View>
-          <Text style={{opacity: 0.8,fontFamily:"SFProDisplay-Medium"}}>
-            {totalCount - (incorrectCount + correctCount)} Unattempted
+          <Text style={{opacity: 0.8,fontFamily:"SFProDisplay-Medium",color:colors.heading5}}>
+            {attemptsLeftCount} Attempts Left
           </Text>
 
           {/* Try agian */}

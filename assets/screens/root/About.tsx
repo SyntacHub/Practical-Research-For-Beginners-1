@@ -13,6 +13,7 @@ import {
 	TouchableOpacity,
 	View,
 	NativeModules,
+	Dimensions,
 } from "react-native";
 import AboutCard from "../../components/cards/AboutCard";
 import Acknowledgements from "../../data/AcknowledgementsData";
@@ -26,15 +27,21 @@ interface Props {}
 const About: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
+	let paddingsize = undefined;
+	const screenWidth = Dimensions.get("window").width;
+	if (screenWidth>=768){
+	 paddingsize= 20
+	}
 	const renderItem = ({ item }: { item: any }) => {
 		return (
 			<TouchableOpacity >
 				<View
 					style={{
 						flexDirection: "row",
+
 					}}
 				>
-					<View style={{ flexDirection: "column", marginTop: 5 }}>
+					<View style={{ flexDirection: "column", marginVertical:5, }}>
 						<View
 							style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}
 						>
@@ -44,13 +51,12 @@ const About: React.FC<Props> = () => {
 									borderRadius: 10,
 									justifyContent:'center',
 									alignItems:'center',
-									paddingHorizontal: 10,
-									paddingVertical: 5,
+									padding:10,
 								}}
 							>
 								<Feather
 									name="user"
-									size={26}
+									size={30}
 									color="black"
 									style={{
 										color: colors.primarygreen,
@@ -106,14 +112,13 @@ const About: React.FC<Props> = () => {
 									borderRadius: 10,
 									justifyContent:'center',
 									alignItems:'center',
-									paddingHorizontal: 10,
-									paddingVertical: 5,
+								padding:15
 								}}
 							>
 								<Feather
 									name="book"
 									size={24}
-									color="black"
+								
 									style={{
 										color: colors.primarygreen,
 										alignItems: "center",
@@ -188,12 +193,11 @@ const About: React.FC<Props> = () => {
 							<AboutCard />
 							<View
 								style={{
-									flexWrap:'nowrap',
-									height: 180,
 									flex:1,
-									marginTop:15,
-									paddingHorizontal: 15,
-									justifyContent: "center",
+									alignContent:'space-around',
+									marginVertical:15,
+									justifyContent:'center',
+									paddingHorizontal:paddingsize,
 									flexDirection: "row",
 									
 								}}

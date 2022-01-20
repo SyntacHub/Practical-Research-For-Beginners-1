@@ -18,20 +18,25 @@ import { ScrollView } from "react-native-gesture-handler";
 
 function CustomDrawer(props: any) {
 	const { colors, isDark } = useTheme();
+	const text = isDark ? 'Good Night' : 'Good Morning';
+	const imagebg = isDark ? require('../images/nightbg.jpg') : require('../images/daybg.jpg');
 	return (
-		<View style={{ flex: 1, backgroundColor: colors.background }}>
+		<View style={{ flex: 1, backgroundColor: colors.elevated }}>
 			<ScrollView>
-			<View style={{backgroundColor:colors.primarygreen,paddingVertical:30,borderBottomRightRadius:25}}>
-				<Text
+			<ImageBackground style={{paddingVertical:50,borderBottomRightRadius:20,overflow:'hidden'}} source={imagebg} blurRadius={5}>
+				<View>
+				<Ionicons name="arrow-forward" size={24} color="black" />
+					<Text
 					style={{
-						fontFamily: "SFProDisplay-Black",
+						fontFamily: "SFProDisplay-Medium",
 						marginLeft: 20,
 						marginTop: 20,
 						fontSize: 20,
-            color: colors.heading5
+            color: colors.heading5,
+						opacity:0.5
 					}}
 				>
-					Good Morning
+					{text}
 				</Text>
 				<Text
 					style={{
@@ -39,18 +44,21 @@ function CustomDrawer(props: any) {
 						marginLeft: 20,
 						marginTop: 5,
 						fontSize: 30,
-            color: colors.text
+            color: colors.text,
+						opacity:0.8
 					}}
 				>
 					Tristan Listanco
 				</Text> 
 				</View>
+				
+				</ImageBackground>
 			<View
-				style={{ flex: 1, backgroundColor: colors.background, paddingTop: 10,paddingLeft:10,alignContent:'space-between' }}
+				style={{ flex: 1, backgroundColor: colors.elevated, paddingTop: 10,paddingLeft:10,alignContent:'space-between' }}
 			>
 				
 				
-				<View style={{ marginTop:60}}>
+				<View style={{ marginTop:30}}>
 					<DrawerItemList {...props}  />
 				</View>
 			</View>

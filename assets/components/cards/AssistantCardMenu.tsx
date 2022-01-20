@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -8,12 +8,25 @@ interface Props {}
 
 const ResearchAssistantCardMenu = () => {
 	const navigation = useNavigation<any>();
+	const screenWidth = Dimensions.get("window").width;
+	let bigCardWidth = screenWidth-40;
+	let smallCardWidth = screenWidth -20;
+	if (screenWidth>=768){
+		bigCardWidth = (screenWidth-60)/2;
+	}
+	if (screenWidth>-1024){
+		bigCardWidth = (screenWidth-80)/2;
+	}
+	if (smallCardWidth>=768){
+		smallCardWidth = (screenWidth/2.5)
+	}
 	const { colors, isDark } = useTheme();
 	return (
 		<TouchableOpacity style={{
+			flex:1,
 			backgroundColor: colors.primarygreen + "60",
 			borderRadius: 15,
-			width:"50%",
+			width:screenWidth/2.5,
 			alignSelf: 'flex-start',
 			marginRight:15,
 			paddingVertical: 15,
@@ -28,7 +41,7 @@ const ResearchAssistantCardMenu = () => {
 				style={{
 					backgroundColor: colors.elevated,
 					height: "25%",
-					borderRadius: 30,
+					borderRadius: 20/2,
 					width: "30%",
 					opacity: 0.4,
 					justifyContent: "center",
@@ -60,7 +73,7 @@ const ResearchAssistantCardMenu = () => {
 					opacity: 0.6,
 				}}
 			>
-				Get some help on a specific topic in research
+				Get some help on a specific topic 
 			</Text>
 		
 		</TouchableOpacity>

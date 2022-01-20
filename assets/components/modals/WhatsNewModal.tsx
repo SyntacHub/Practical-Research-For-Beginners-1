@@ -50,15 +50,15 @@ const WhatsNewModal = (props: any) => {
 				</Text>
 			
 				<WhatsNewItems
-					feature_name="Augmented Reality"
+					feature_name="Read and Learn on the GO!"
 					feature_desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ab cupiditate."
 				/>
 				<WhatsNewItems
-					feature_name="Augmented Reality"
+					feature_name="Experience the lab with AR"
 					feature_desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ab cupiditate."
 				/>
 				<WhatsNewItems
-					feature_name="Augmented Reality"
+					feature_name="Challenge Yourself in Research Assesments"
 					feature_desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ab cupiditate."
 				/>
 				<Text style={{paddingHorizontal:"30%",paddingVertical:"5%",backgroundColor:colors.primarygreen,marginTop:40,borderRadius:10,overflow:'hidden',fontFamily:"SFProDisplay-Bold",fontSize:20,color:'white'}}>Continue</Text>

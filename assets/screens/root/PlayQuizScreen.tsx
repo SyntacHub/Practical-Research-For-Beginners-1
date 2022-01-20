@@ -16,19 +16,42 @@ import { getQuestionsByQuizId, getQuizById } from "../../utils/database";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FormButton from "../../components/buttons/FormButton";
 import ResultModal from "../../components/modals/ResultModal";
+import AttemptLimitModal from "../../components/modals/AttemptLimitModal";
 import { useTheme } from "../../theme/ThemeProvider";
-import { color } from "react-native-reanimated";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PlayQuizScreen = ({ navigation, route }) => {
 	const [currentQuizId, setCurrentQuizId] = useState(route.params.quizId);
 	const [title, setTitle] = useState("");
 	const [questions, setQuestions] = useState([]);
-	const [attempted, setAttempted] = useState([]);
+	const [attempted, setAttempted] = useState(3);
+	const [attemptedUserValue, setattemptedUserValue] = useState("");
+	const [isAttemptLimitModalVisible, setisAttemptLimitModalVisible] =
+		useState(false);
 	const { colors, isDark } = useTheme();
 
 	const [correctCount, setCorrectCount] = useState(0);
 	const [incorrectCount, setIncorrectCount] = useState(0);
 	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
+
+	const storeData = async () => {
+		try {
+			attempted;
+			await AsyncStorage.setItem("@storage_Key", "1");
+		} catch (e) {
+			console.log(e);
+		}
+	};
+	const getData = async () => {
+		try {
+			const value = await AsyncStorage.getItem("@storage_Key,1");
+			if (value !== null) {
+				setAttempted;
+			}
+		} catch (e) {
+			// error reading value
+		}
+	};
 
 	const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -67,6 +90,13 @@ const PlayQuizScreen = ({ navigation, route }) => {
 
 		setQuestions([...tempQuestions]);
 	};
+
+	useEffect(() => {
+		if (attempted <= 0) {
+			setIsResultModalVisible(false);
+			setisAttemptLimitModalVisible(true);
+		}
+	});
 
 	useEffect(() => {
 		getQuizAndQuestionDetails();
@@ -234,7 +264,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 						fontSize: 18,
 					}}
 				>
-					Remaining Attempts : 2 Remaining
+					Quarter 1: Lesson 1
 				</Text>
 			</View>
 
@@ -243,7 +273,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				data={questions}
 				style={{
 					flex: 1,
-					marginHorizontal:21,
+					marginHorizontal: 21,
 				}}
 				showsVerticalScrollIndicator={false}
 				keyExtractor={(item) => item.question}
@@ -349,7 +379,13 @@ const PlayQuizScreen = ({ navigation, route }) => {
 						style={{ margin: 10 }}
 						handleOnPress={() => {
 							// Show Result modal
-							setIsResultModalVisible(true);
+							setAttempted(attempted - 1);
+
+							if (attempted <= 0) {
+								setisAttemptLimitModalVisible(true);
+							} else {
+								setIsResultModalVisible(true);
+							}
 						}}
 					/>
 				)}
@@ -360,6 +396,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				isModalVisible={isResultModalVisible}
 				correctCount={correctCount}
 				incorrectCount={incorrectCount}
+				attemptsLeftCount={attempted}
 				totalCount={questions.length}
 				handleOnClose={() => {
 					setIsResultModalVisible(false);
@@ -372,6 +409,17 @@ const PlayQuizScreen = ({ navigation, route }) => {
 				}}
 				handleHome={() => {
 					navigation.goBack();
+				}}
+			/>
+
+			{/* Result Modal */}
+			<AttemptLimitModal
+				isModalVisible={isAttemptLimitModalVisible}
+				attemptsLeftCount={attempted}
+				handleOnClose={() => {
+					setIsResultModalVisible(false);
+				}}
+				handleHome={() => {
 					setIsResultModalVisible(false);
 				}}
 			/>
