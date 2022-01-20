@@ -20,13 +20,8 @@ import {
 	NativeModules,
 	Dimensions,
 } from "react-native";
-import Colors from "../../constants/colors";
-
-import HomeCard from "../../components/cards/HomeCard";
-import researchTopics from "../../data/LessonsData";
-import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
-import LabtoolsCard from "../../components/cards/LabtoolsCardMenu";
-import { useTheme } from "../../theme/ThemeProvider";
+import Colors from "../constants/colors";
+import { useTheme } from "../theme/ThemeProvider";
 
 const Analytics: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();

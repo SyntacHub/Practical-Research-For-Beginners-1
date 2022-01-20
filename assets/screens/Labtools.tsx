@@ -13,20 +13,15 @@ import {
 	View,
 	NativeModules,
 } from "react-native";
-import Colors from "../../constants/colors";
-import LabToolsCard from "../../components/cards/LabtoolsCard";
-import LabToolsData from "../../data/LabToolsData";
-import { useTheme } from "../../theme/ThemeProvider";
-import { Image } from "react-native-svg";
-interface Props {
-	route: any;
-	props: any;
+import Colors from "../constants/colors";
+import LabToolsCard from "../components/cards/LabtoolsCard";
+import LabToolsData from "../data/LabToolsData";
+import { useTheme } from "../theme/ThemeProvider";
+interface Props{
+	navigation:any
 }
 
-
-
-const Labtools: React.FC<{}> = () => {
-	const navigation = useNavigation<any>();
+const Labtools:React.FC<Props> = ({navigation}) => {
 	const { colors, isDark } = useTheme();
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;

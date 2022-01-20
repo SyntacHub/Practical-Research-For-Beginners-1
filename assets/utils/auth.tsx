@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import {ToastAndroid} from 'react-native';
 
-export const signIn = (email, password) => {
+export const signIn = (email: string, password: string) => {
   auth()
     .signInWithEmailAndPassword(email, password)
     .then(() => {
@@ -12,7 +12,7 @@ export const signIn = (email, password) => {
     });
 };
 
-export const signUp = (email, password) => {
+export const signUp = (email: string, password: string) => {
   auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {

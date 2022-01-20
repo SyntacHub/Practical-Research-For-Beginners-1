@@ -1,13 +1,7 @@
-import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { useToast } from "react-native-toast-notifications";
-
 import {
-	Platform,
-	SafeAreaView,
-	ScrollView,
-	FlatList,
+
 	TouchableOpacity,
 	StatusBar,
 	StyleSheet,
@@ -18,12 +12,8 @@ import {
 	ImageBackground,
 	Image,
 } from "react-native";
-import Colors from "../../constants/colors";
 
-import HomeCard from "../../components/cards/HomeCard";
-import researchTopics from "../../data/LessonsData";
-import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
-import { useTheme } from "../../theme/ThemeProvider";
+import { useTheme } from "../theme/ThemeProvider";
 
 interface Props {}
 const WelcomeScreen: React.FC<Props> = () => {
@@ -31,11 +21,6 @@ const WelcomeScreen: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
 	const screenheight = Dimensions.get("window").height;
 	const screenwidth = Dimensions.get("window").width;
-	const { colors, isDark } = useTheme();
-
-
-
-
 	
 	return (
 		

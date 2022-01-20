@@ -1,12 +1,13 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../../constants/colors";
+import Colors from "../constants/colors";
 import React, { useCallback, useMemo, useRef } from "react";
 import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetModal,
 	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import AR from "../components/svg/AR";
 import {
 	Platform,
 	SafeAreaView,
@@ -20,52 +21,26 @@ import {
 	TouchableOpacity,
 	NativeModules,
 } from "react-native";
-import researchTopics from "../../data/LessonsData";
-import { useTheme } from "../../theme/ThemeProvider";
+import RNFS from "react-native-fs";
+import FileViewer from "react-native-file-viewer";
+
+import { useTheme } from "../theme/ThemeProvider";
 
 interface Props {
 	route: any;
 	props: any;
 }
 
-const Lesson: React.FC<Props> = ({ route }) => {
+const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
 	const { item } = route.params;
-	const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-
-	// variables
-	const snapPoints = useMemo(() => ["20%", "40%", "60%"], []);
-	const sheetRef = useRef<BottomSheet>(null);
-
-	//render
-	const renderBackdrop = useCallback(
-		(props) => (
-			<BottomSheetBackdrop
-				{...props}
-				disappearsOnIndex={1}
-				appearsOnIndex={2}
-			/>
-		),
-		[]
-	);
-	const renderItem = ({ item }: { item: any }) => {
-		return (
-			<View style={styles.modalmenu}>
-				<Text>{item.source}</Text>
-			</View>
-		);
-	};
-
-	// callbacks
-	const handleSheetChanges = useCallback((index: number) => {
-		console.log("handleSheetChanges", index);
-	}, []);
-
-
 
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+
+	
+
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
@@ -81,7 +56,7 @@ const Lesson: React.FC<Props> = ({ route }) => {
 				<View
 					style={{
 						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-						paddingHorizontal:21,
+						paddingHorizontal: 21,
 					}}
 				>
 					<View
@@ -95,9 +70,6 @@ const Lesson: React.FC<Props> = ({ route }) => {
 								onPress={() => navigation.goBack()}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity>
-							<Feather name="book" size={24} style={{color:colors.text}} />
-						</TouchableOpacity>
 					</View>
 
 					<View style={styles.textGreetingWrapper}>
@@ -108,32 +80,53 @@ const Lesson: React.FC<Props> = ({ route }) => {
 								fontSize: 30,
 							}}
 						>
-							{item.title}
+							{item.labtool_name}
 						</Text>
-						<Text style={styles.textTopicIndex}>{item.topicIndex}</Text>
+						<Text style={styles.textTopicIndex}>{item.labtool_categ}</Text>
 					</View>
 				</View>
 
 				{/*Content*/}
 				<View
 					style={{
-						flexDirection: "row",
 						justifyContent: "center",
 						alignItems: "center",
 						backgroundColor: colors.primaryteal,
 						marginHorizontal: 20,
+						height: 160,
 						marginVertical: 20,
 						borderRadius: 15,
 					}}
-				>
-					<Image
-						source={item.topicImage}
-						style={{ resizeMode: "contain", width: "75%" }}
-					/>
-				</View>
+				></View>
+				<TouchableOpacity
+					style={{
+						marginTop: -65,
+						alignItems: "flex-end",
+						paddingHorizontal: 40,
+					}}
+					onPress={() => {
+						const url = `${item.labtool_ar_link}`;
+						const localFile = `${RNFS.DocumentDirectoryPath}/${url
+							.split("/")
+							.pop()}`;
 
+						const options = {
+							fromUrl: url,
+							toFile: localFile,
+							background: true, // Continue the download in the background after the app terminates (iOS only)
+							discretionary: true, // Allow the OS to control the timing and speed of the download to improve perceived performance  (iOS only)
+							cacheable: true, // Whether the download can be stored in the shared NSURLCache (iOS only, defaults to true)
+						};
+
+						RNFS.downloadFile(options)
+							.promise.then(() => FileViewer.open(localFile))
+							.then(() => {})
+							.catch((error) => {});
+					}}
+				>
+					<AR />
+				</TouchableOpacity>
 				{/*Content 2*/}
-
 				<Text
 					style={{
 						marginTop: 15,
@@ -211,40 +204,12 @@ const Lesson: React.FC<Props> = ({ route }) => {
 					libero optio deserunt, cum quae quaerat maxime rem amet quas?
 					Accusantium, dolores.
 				</Text>
-
-				{/* Modal */}
-				<BottomSheetModalProvider>
-					<View >
-						<BottomSheetModal
-							ref={bottomSheetModalRef}
-							index={1}
-							backdropComponent={renderBackdrop}
-							snapPoints={snapPoints}
-							onChange={handleSheetChanges}
-						>
-							<View style={styles.bottomSheetContainer}>
-								<View style={{ flexDirection: "column", marginTop: 10 }}>
-									<Text
-										style={{ fontFamily: "SFProDisplay-Bold", fontSize: 35 }}
-									>
-										References
-									</Text>
-									<FlatList
-										data={researchTopics}
-										renderItem={renderItem}
-										keyExtractor={(item) => item.id}
-									/>
-								</View>
-							</View>
-						</BottomSheetModal>
-					</View>
-				</BottomSheetModalProvider>
 			</ScrollView>
 		</SafeAreaView>
 	);
 };
 
-export default Lesson;
+export default LabtoolsDetail;
 
 const styles = StyleSheet.create({
 	textGreetingWrapper: {
@@ -258,7 +223,7 @@ const styles = StyleSheet.create({
 	topicImage: {
 		alignSelf: "center",
 	},
-	
+
 	title: {
 		fontFamily: "SFProDisplay-Bold",
 		fontSize: 26,

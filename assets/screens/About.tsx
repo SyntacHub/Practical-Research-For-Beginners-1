@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../../constants/colors";
+import Colors from "../constants/colors";
 import * as React from "react";
 import {
 	Platform,
@@ -15,12 +15,12 @@ import {
 	NativeModules,
 	Dimensions,
 } from "react-native";
-import AboutCard from "../../components/cards/AboutCard";
-import Acknowledgements from "../../data/AcknowledgementsData";
-import FeedbackCardMenu from "../../components/cards/FeedbackCardMenu";
-import FaqCardMenu from "../../components/cards/FaqCardMenu";
-import Others from "../../data/OthersData";
-import { useTheme } from "../../theme/ThemeProvider";
+import AboutCard from "../components/cards/AboutCard";
+import Acknowledgements from "../data/AcknowledgementsData";
+import FeedbackCardMenu from "../components/cards/FeedbackCardMenu";
+import FaqCardMenu from "../components/cards/FaqCardMenu";
+import Others from "../data/OthersData";
+import { useTheme } from "../theme/ThemeProvider";
 
 interface Props {}
 

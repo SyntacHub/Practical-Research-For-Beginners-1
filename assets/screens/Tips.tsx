@@ -1,4 +1,4 @@
-import { Feather, Entypo } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
@@ -13,12 +13,14 @@ import {
 	View,
 	NativeModules,
 } from "react-native";
-import Colors from "../../constants/colors";
-import { useTheme } from "../../theme/ThemeProvider";
+import Colors from "../constants/colors";
+import { useTheme } from "../theme/ThemeProvider";
 
-const Assistant: React.FC<{}> = () => {
+const Tips: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
+	const { StatusBarManager } = NativeModules;
+	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
@@ -46,15 +48,15 @@ const Assistant: React.FC<{}> = () => {
 							}}
 						>
 							<Feather
-								name="arrow-left"
+								name="menu"
 								size={24}
 								style={{ color: colors.text }}
-								onPress={() => navigation.goBack()}
+								onPress={() => navigation.openDrawer()}
 							/>
 						</View>
 
 						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Research Assistant </Text>
+							<Text style={styles.textGreeting}>Practical Research 7</Text>
 							<Text
 								style={{
 									fontFamily: "SFProDisplay-Bold",
@@ -62,8 +64,10 @@ const Assistant: React.FC<{}> = () => {
 									fontSize: 35,
 								}}
 							>
-								
+								Research Tips 
 							</Text>
+              {/*Content*/}
+              
 						</View>
 					</View>
 				</View>
@@ -71,8 +75,7 @@ const Assistant: React.FC<{}> = () => {
 		</SafeAreaView>
 	);
 };
-export default Assistant;
-
+export default Tips;
 const styles = StyleSheet.create({
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,

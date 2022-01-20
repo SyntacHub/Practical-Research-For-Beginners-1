@@ -9,7 +9,7 @@ const FormButton = ({
   style,
   isPrimary = true,
   ...more
-}) => (
+}): JSX.Element => (
     <TouchableOpacity
         style={{
             paddingVertical: 10,

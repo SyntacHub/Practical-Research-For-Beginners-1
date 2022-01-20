@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useCachedResources from "./assets/hooks/useCachedResources";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -6,41 +6,42 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { TransitionPresets } from "@react-navigation/stack";
 import { ToastProvider } from 'react-native-toast-notifications'
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import Home from "./assets/screens/root/Home";
+import Home from "./assets/screens/Home";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 import { ThemeProvider } from "./assets/theme/ThemeProvider";
-import auth from "@react-native-firebase/auth";
-import PlayQuizScreen from "./assets/screens/root/PlayQuizScreen";
-import About from "./assets/screens/root/About";
-import Quiz from "./assets/screens/root/Quiz";
-import Lesson from "./assets/screens/root/Lesson";
+
+import PlayQuizScreen from "./assets/screens/PlayQuizScreen";
+import About from "./assets/screens/About";
+import Quiz from "./assets/screens/Quiz";
+import Lesson from "./assets/screens/Lesson";
 import CustomDrawer from "./assets/components/Sidebar";
-import Labtools from "./assets/screens/root/Labtools";
-import LabtoolsDetail from "./assets/screens/root/LabtoolsDetail";
-import Assistant from "./assets/screens/root/Assistant";
+import Labtools from "./assets/screens/Labtools";
+import LabtoolsDetail from "./assets/screens/LabtoolsDetail";
+import Assistant from "./assets/screens/Assistant";
 import { RootStackParamList } from "./types";
 import { useTheme } from "./assets/theme/ThemeProvider";
-import Login from "./assets/screens/Auth/WelcomeScreen";
-import Tips from "./assets/screens/root/Tips";
-import Analytics from "./assets/screens/root/Analytics";
+import Login from "./assets/screens/WelcomeScreen";
+import Tips from "./assets/screens/Tips";
+
 import * as Icon from "react-native-feather";
 import WhatsNewModal from "./assets/components/modals/WhatsNewModal";
-import SignUp from "./assets/screens/Auth/SignUp";
-import WelcomeScreen from "./assets/screens/Auth/WelcomeScreen";
-import SignUpScreen from "./assets/screens/Auth/SignUp";
+import SignUp from "./assets/screens/SignUp";
+import WelcomeScreen from "./assets/screens/WelcomeScreen";
+import SignUpScreen from "./assets/screens/SignUp";
 
 export default function App() {
 	const isLoadingComplete = useCachedResources();
 	const RootStack = createNativeStackNavigator<RootStackParamList>();
 
+
 	const Drawer = createDrawerNavigator();
 	const scheme = useColorScheme();
-	const { colors, isDark } = useTheme();
+	const { colors } = useTheme();
 
 	function Root() {
 		return (
 			<RootStack.Navigator
-				initialRouteName="Login"
+				initialRouteName="Root"
 				screenOptions={() => {
 					return {
 						gestureEnabled: true,
@@ -49,7 +50,7 @@ export default function App() {
 					};
 				}}
 			>
-				<RootStack.Screen
+				{/* <RootStack.Screen
 					name="Login"
 					component={WelcomeScreen}
 					options={{
@@ -62,7 +63,7 @@ export default function App() {
 					options={{
 						headerShown: false,
 					}}
-				/>
+				/> */}
 				<RootStack.Screen
 					name="Root"
 					component={Home}

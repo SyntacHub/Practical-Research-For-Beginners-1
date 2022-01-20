@@ -20,8 +20,10 @@ import {
 import Colors from "../../constants/colors";
 import HomeCard from "../../components/cards/HomeCard";
 import { useTheme } from "../../theme/ThemeProvider";
-import { signUp } from "../../utils/auth";
+import { signIn, signUp } from "../../utils/auth";
 import FormInput from "../../components/inputs/FormInput";
+import FormButton from "../../components/buttons/FormButton";
+import { useToast } from "react-native-toast-notifications";
 
 const SignUpScreen = () => {
 	const [email, setEmail] = useState("");
@@ -30,19 +32,20 @@ const SignUpScreen = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const imagebg = require("../../images/loginbg.jpg");
 	const screenheight = Dimensions.get("window").height;
+	const toast = useToast();
 	const screenwidth = Dimensions.get("window").width;
 	const { colors, isDark } = useTheme();
+	
 
 	const handleOnSubmit = () => {
-		if (email != "" && password != "" && confirmPassword != "") {
-			if (password == confirmPassword) {
-				//   SignUp
-				signUp(email, password);
-			} else {
-				Alert.alert("password did not match");
-			}
-		}
-	};
+    if (email != '' && password != '') {
+      signIn(email, password);
+			toast.show("SignUp Sucess!! Login In Now ");
+
+    }
+		console.log(email +"email")
+		console.log(password)
+  };
 	return (
 		<View style={{ flex: 1 }}>
 			<ImageBackground
@@ -99,11 +102,22 @@ const SignUpScreen = () => {
 					Complete Name
 				</Text>
 				<View style={{ flex: 1, alignItems: "center" }}>
-					<FormInput />
+					<FormInput 
+					labelText="Email"
+					placeholderText="enter your email"
+					onChangeText={value => setEmail(value)}
+					value={email}
+					keyboardType={'email-address'}
+					 />
 					<Text>Email Address</Text>
-					<FormInput />
-					<Text>Password</Text>
-					<FormInput />
+					<FormInput 
+					labelText="Password"
+					placeholderText="enter your password"
+					onChangeText={value => setPassword(value)}
+					value={password}
+					secureTextEntry={true}
+					/>
+					
 					<View
 						style={{
 							paddingHorizontal: 21,
@@ -112,26 +126,11 @@ const SignUpScreen = () => {
 							alignItems: "center",
 						}}
 					>
-						<TouchableOpacity onPress={()=>{
-              navigation.navigate("Root")
-            }}>
-							<Text
-								style={{
-									paddingHorizontal: 10,
-									paddingVertical: 15,
-									backgroundColor: "#3086EB",
-									width: screenwidth / 2,
-									textAlign: "center",
-									borderRadius: 10,
-									overflow: "hidden",
-									fontFamily: "SFProDisplay-Bold",
-									fontSize: 15,
-									color: "white",
-								}}
-							>
-								Sign up
-							</Text>
-						</TouchableOpacity>
+						<FormButton
+        labelText="Sign up"
+        handleOnPress={handleOnSubmit}
+        style={{width: '100%'}}
+      />
 					</View>
 				</View>
 			</ImageBackground>

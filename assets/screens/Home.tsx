@@ -15,18 +15,21 @@ import {
 	Dimensions,
 	AsyncStorage,
 } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../constants/colors";
 
-import HomeCard from "../../components/cards/HomeCard";
-import researchTopics from "../../data/LessonsData";
-import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
-import LabtoolsCard from "../../components/cards/LabtoolsCardMenu";
-import { useTheme } from "../../theme/ThemeProvider";
+import HomeCard from "../components/cards/HomeCard";
+import researchTopics from "../data/LessonsData";
+import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
+import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
+import { useTheme } from "../theme/ThemeProvider";
 import { useToast } from "react-native-toast-notifications";
+interface Props {
+	route: any;
+	navigation:any;
+}
 
 
-const Home: React.FC<{}> = () => {
-	const navigation = useNavigation<any>();
+const Home:React.FC<Props>  = ({navigation}) => {
 	const [refreshing, setRefreshing] = useState(false);
 	const { colors, isDark } = useTheme();
 	const toast = useToast();

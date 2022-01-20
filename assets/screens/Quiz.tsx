@@ -31,41 +31,18 @@ import Animated, {
   interpolateColor,
 } from "react-native-reanimated";
 import { Feather } from "@expo/vector-icons";
-import { getQuizzes } from "../../utils/database";
-import AssesmentCard from "../../components/cards/AssesmentCard";
-import { useTheme } from "../../theme/ThemeProvider";
-
-const Quiz = ({ navigation }) => {
+import { getQuizzes } from "../utils/database";
+import AssesmentCard from "../components/cards/AssesmentCard";
+import { useTheme } from "../theme/ThemeProvider";
+interface Props{
+	navigation:any
+}
+const Quiz:React.FC<Props> = ({ navigation }) => {
 	const [allQuizzes, setAllQuizzes] = useState([]);
 	const [refreshing, setRefreshing] = useState(false);
-	const [modalVisible, setModalVisible] = useState(false);
-	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
 	const { colors, isDark } = useTheme();
 
-	// ref
-	const bottomSheetRef = useRef<BottomSheetModal>(null);
-
-	// variables
-	const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
-
-	// callbacks
-	const handlePresentModalPress = useCallback(() => {
-		bottomSheetRef.current?.present();
-	}, []);
-	const handleSheetChanges = useCallback((index: number) => {
-		console.log("handleSheetChanges", index);
-	}, []);
-	// renders
-	const renderBackdrop = useCallback(
-		(props) => (
-			<BottomSheetBackdrop
-				{...props}
-				disappearsOnIndex={1}
-				appearsOnIndex={2}
-			/>
-		),
-		[]
-	);
+	
 
 	const getAllQuizzes = async () => {
 		setRefreshing(true);
@@ -233,45 +210,7 @@ const Quiz = ({ navigation }) => {
 					)}
 				/>
 			</ScrollView>
-			<BottomSheetModalProvider>
-				<View style={{ backgroundColor: colors.elevated }}>
-					<BottomSheetModal
-						ref={bottomSheetRef}
-						index={1}
-						backdropComponent={renderBackdrop}
-						snapPoints={snapPoints}
-						onChange={handleSheetChanges}
-					>
-						<View
-							style={{
-								flex: 1,
-								alignItems: "center",
-								marginLeft: 25,
-								marginRight: 25,
-								backgroundColor: colors.elevated,
-							}}
-						>
-							<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 20,color:colors.text}}>
-								Research Assesments 🎉
-							</Text>
-							<Text style={{ fontFamily: "SFProDisplay-Medium",color:colors.text }}>
-								Version 1.0.0
-							</Text>
-							<Image
-								source={require("../../images/ic_school.png")}
-								style={{ resizeMode: "contain", width: "60%" }}
-							/>
-							<Text style={{ fontFamily: "SFProDisplay-Medium",color:colors.text }}>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Repudiandae illo rerum eaque cum possimus excepturi dolore alias
-								dolorum commodi nesciunt delectus neque doloremque dolores,
-								vitae quas et quam quibusdam ut facilis assumenda quia. Odio,
-								amet?
-							</Text>
-						</View>
-					</BottomSheetModal>
-				</View>
-			</BottomSheetModalProvider>
+			
 		</SafeAreaView>
 	);
 };

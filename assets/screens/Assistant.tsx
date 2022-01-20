@@ -1,31 +1,22 @@
-import { Feather } from "@expo/vector-icons";
+import { Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
 	Platform,
 	SafeAreaView,
 	ScrollView,
-	FlatList,
-	TouchableOpacity,
 	StatusBar,
 	StyleSheet,
 	Text,
 	View,
 	NativeModules,
 } from "react-native";
-import Colors from "../../constants/colors";
+import Colors from "../constants/colors";
+import { useTheme } from "../theme/ThemeProvider";
 
-import HomeCard from "../../components/cards/HomeCard";
-import researchTopics from "../../data/LessonsData";
-import ResearchAssistantCard from "../../components/cards/AssistantCardMenu";
-import LabtoolsCard from "../../components/cards/LabtoolsCardMenu";
-import { useTheme } from "../../theme/ThemeProvider";
-
-const Tips: React.FC<{}> = () => {
+const Assistant: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
-	const { StatusBarManager } = NativeModules;
-	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
@@ -41,7 +32,7 @@ const Tips: React.FC<{}> = () => {
 				<View
 					style={{
 						paddingHorizontal: 21,
-						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
+						
 					}}
 				>
 					<View>
@@ -53,15 +44,15 @@ const Tips: React.FC<{}> = () => {
 							}}
 						>
 							<Feather
-								name="menu"
+								name="arrow-left"
 								size={24}
 								style={{ color: colors.text }}
-								onPress={() => navigation.openDrawer()}
+								onPress={() => navigation.goBack()}
 							/>
 						</View>
 
 						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Practical Research 7</Text>
+							<Text style={styles.textGreeting}>Research Assistant </Text>
 							<Text
 								style={{
 									fontFamily: "SFProDisplay-Bold",
@@ -69,10 +60,8 @@ const Tips: React.FC<{}> = () => {
 									fontSize: 35,
 								}}
 							>
-								Research Tips 
+								
 							</Text>
-              {/*Content*/}
-              
 						</View>
 					</View>
 				</View>
@@ -80,7 +69,8 @@ const Tips: React.FC<{}> = () => {
 		</SafeAreaView>
 	);
 };
-export default Tips;
+export default Assistant;
+
 const styles = StyleSheet.create({
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,

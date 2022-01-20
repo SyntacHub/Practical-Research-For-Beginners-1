@@ -11,21 +11,25 @@ import {
 	NativeModules,
 	Alert,
 } from "react-native";
-import Colors from "../../constants/colors";
-import { getQuestionsByQuizId, getQuizById } from "../../utils/database";
+import Colors from "../constants/colors";
+import { getQuestionsByQuizId, getQuizById } from "../utils/database";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import FormButton from "../../components/buttons/FormButton";
-import ResultModal from "../../components/modals/ResultModal";
-import AttemptLimitModal from "../../components/modals/AttemptLimitModal";
-import { useTheme } from "../../theme/ThemeProvider";
+import FormButton from "../components/buttons/FormButton";
+import ResultModal from "../components/modals/ResultModal";
+import AttemptLimitModal from "../components/modals/AttemptLimitModal";
+import { useTheme } from "../theme/ThemeProvider";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
+interface Props {
+	navigation:any,
+	route:any,
+}
 
-const PlayQuizScreen = ({ navigation, route }) => {
-	const [currentQuizId, setCurrentQuizId] = useState(route.params.quizId);
+const PlayQuizScreen:React.FC<Props> = ({ navigation,route }) => {
+	const [currentQuizId] = useState(route.params.quizId);
 	const [title, setTitle] = useState("");
 	const [questions, setQuestions] = useState([]);
 	const [attempted, setAttempted] = useState(3);
-	const [attemptedUserValue, setattemptedUserValue] = useState("");
 	const [isAttemptLimitModalVisible, setisAttemptLimitModalVisible] =
 		useState(false);
 	const { colors, isDark } = useTheme();
@@ -34,26 +38,9 @@ const PlayQuizScreen = ({ navigation, route }) => {
 	const [incorrectCount, setIncorrectCount] = useState(0);
 	const [isResultModalVisible, setIsResultModalVisible] = useState(false);
 
-	const storeData = async () => {
-		try {
-			attempted;
-			await AsyncStorage.setItem("@storage_Key", "1");
-		} catch (e) {
-			console.log(e);
-		}
-	};
-	const getData = async () => {
-		try {
-			const value = await AsyncStorage.getItem("@storage_Key,1");
-			if (value !== null) {
-				setAttempted;
-			}
-		} catch (e) {
-			// error reading value
-		}
-	};
+	
 
-	const shuffleArray = (array) => {
+	const shuffleArray = (array:any) => {
 		for (let i = array.length - 1; i > 0; i--) {
 			// Generate random number
 			let j = Math.floor(Math.random() * (i + 1));
@@ -75,7 +62,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 		const questions = await getQuestionsByQuizId(currentQuizId);
 
 		// Transform and shuffle options
-		let tempQuestions = [];
+		let tempQuestions: FirebaseFirestoreTypes.DocumentData[] = [];
 		await questions.docs.forEach(async (res) => {
 			let question = res.data();
 
@@ -118,7 +105,7 @@ const PlayQuizScreen = ({ navigation, route }) => {
 		}
 	};
 
-	const getOptionTextColor = (currentQuestion, currentOption) => {
+	const getOptionTextColor = (currentQuestion:any, currentOption:any) => {
 		if (currentQuestion.selectedOption) {
 			if (currentOption == currentQuestion.selectedOption) {
 				return Colors.white;
