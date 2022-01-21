@@ -14,6 +14,8 @@ import {
 import { useTheme } from "../theme/ThemeProvider";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Switch } from "../components/buttons/ThemeSwitch";
+import Colors from "../constants/colors";
+import {signOut} from '../utils/auth';
 import { ScrollView } from "react-native-gesture-handler";
 
 function CustomDrawer(props: any) {
@@ -63,10 +65,20 @@ function CustomDrawer(props: any) {
 				</View>
 			</View>
 			</ScrollView>
-
+			<View style={{flexDirection:'column'}}>
 			<View style={{ padding: 20 , flexDirection:"row",alignItems:'center',alignContent:'space-between'}}>
         <Text style={{color: colors.heading5,fontFamily:"SFProDisplay-Medium"}}>Dark Mode</Text>
 					<Switch />
+			</View>
+			<Text
+          style={{
+            fontSize: 20,
+            padding: 10,
+            color: Colors.error,
+          }}
+          onPress={signOut}>
+          Logout
+        </Text>
 			
 			</View>
 		</View>

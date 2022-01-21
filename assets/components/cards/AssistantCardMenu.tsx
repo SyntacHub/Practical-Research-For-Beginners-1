@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -33,7 +33,7 @@ const ResearchAssistantCardMenu = () => {
 			paddingHorizontal: 14,
 		}}
 		onPress={() =>
-      navigation.navigate("Assistant")
+      console.log("FEATURE UNAVAILABLE")
     }
 		>
 		

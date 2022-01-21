@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useColorScheme} from 'react-native-appearance';
-import {lightColors, darkColors} from '../theme/ColorThemes';
+import {lightColors, darkColors} from './ColorThemes';
 
 export const ThemeContext = React.createContext({
     isDark: false,
@@ -8,7 +8,7 @@ export const ThemeContext = React.createContext({
     setScheme: () => {},
 });
 
-export const ThemeProvider = (props: { children: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
+export const ThemeProvider = (props: { children: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }): JSX.Element => {
     // Getting the device color theme, this will also work with react-native-web
     const colorScheme = useColorScheme(); // Can be dark | light | no-preference
 
