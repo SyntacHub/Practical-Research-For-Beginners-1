@@ -14,7 +14,7 @@ import FormInput from "../components/inputs/FormInput";
 import { Colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { signIn } from "../utils/auth";
-import UserNotFoundModal from "../components/modals/UserNotFoundModal";
+import * as LocalAuthentication from 'expo-local-authentication';
 interface Props {
 	navigation: any;
 }
@@ -28,6 +28,7 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 
 	const handleOnSubmit = () => {
 		if (email != "" && password != "") {
+			LocalAuthentication.authenticateAsync()
 			signIn(email, password);
 		} else {
 		}

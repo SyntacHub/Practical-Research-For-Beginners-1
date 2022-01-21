@@ -348,10 +348,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (4.0.0):
     - ExpoModulesCore
-  - EXAppLoaderProvider (8.0.0)
   - EXConstants (12.1.3):
-    - ExpoModulesCore
-  - EXErrorRecovery (3.0.3):
     - ExpoModulesCore
   - EXFileSystem (13.0.3):
     - ExpoModulesCore
@@ -359,6 +356,8 @@ PODS:
     - ExpoModulesCore
   - EXJSONUtils (0.2.0)
   - EXKeepAwake (10.0.0):
+    - ExpoModulesCore
+  - EXLocalAuthentication (12.0.1):
     - ExpoModulesCore
   - EXManifests (0.2.2):
     - EXJSONUtils
@@ -812,35 +811,17 @@ PODS:
     - React
   - RNVectorIcons (9.0.0):
     - React-Core
-  - TouchID (4.4.1):
-    - React
-  - UMBarCodeScannerInterface (5.0.0)
-  - UMCameraInterface (5.0.0)
-  - UMConstantsInterface (5.0.0)
-  - UMCore (5.0.0)
-  - UMFaceDetectorInterface (5.0.0)
-  - UMFileSystemInterface (5.0.0)
-  - UMFontInterface (5.0.0)
-  - UMImageLoaderInterface (5.0.0)
-  - UMPermissionsInterface (5.0.0)
-  - UMReactNativeAdapter (5.0.0):
-    - React-Core
-    - UMCore
-    - UMFontInterface
-  - UMSensorsInterface (5.0.0)
-  - UMTaskManagerInterface (5.0.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
-  - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - EXLocalAuthentication (from `../node_modules/expo-local-authentication/ios`)
   - EXManifests (from `../node_modules/expo-manifests/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - Expo (from `../node_modules/expo/ios`)
@@ -893,19 +874,6 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
-  - TouchID (from `../node_modules/react-native-touch-id`)
-  - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
-  - UMCameraInterface (from `../node_modules/unimodules-camera-interface/ios`)
-  - UMConstantsInterface (from `../node_modules/unimodules-constants-interface/ios`)
-  - "UMCore (from `../node_modules/@unimodules/core/ios`)"
-  - UMFaceDetectorInterface (from `../node_modules/unimodules-face-detector-interface/ios`)
-  - UMFileSystemInterface (from `../node_modules/unimodules-file-system-interface/ios`)
-  - UMFontInterface (from `../node_modules/unimodules-font-interface/ios`)
-  - UMImageLoaderInterface (from `../node_modules/unimodules-image-loader-interface/ios`)
-  - UMPermissionsInterface (from `../node_modules/unimodules-permissions-interface/ios`)
-  - "UMReactNativeAdapter (from `../node_modules/@unimodules/react-native-adapter/ios`)"
-  - UMSensorsInterface (from `../node_modules/unimodules-sensors-interface/ios`)
-  - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -934,12 +902,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXApplication:
     :path: "../node_modules/expo-application/ios"
-  EXAppLoaderProvider:
-    :path: "../node_modules/expo-app-loader-provider/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
-  EXErrorRecovery:
-    :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
@@ -948,6 +912,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-json-utils/ios"
   EXKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
+  EXLocalAuthentication:
+    :path: "../node_modules/expo-local-authentication/ios"
   EXManifests:
     :path: "../node_modules/expo-manifests/ios"
   EXPermissions:
@@ -1048,32 +1014,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
-  TouchID:
-    :path: "../node_modules/react-native-touch-id"
-  UMBarCodeScannerInterface:
-    :path: "../node_modules/unimodules-barcode-scanner-interface/ios"
-  UMCameraInterface:
-    :path: "../node_modules/unimodules-camera-interface/ios"
-  UMConstantsInterface:
-    :path: "../node_modules/unimodules-constants-interface/ios"
-  UMCore:
-    :path: "../node_modules/@unimodules/core/ios"
-  UMFaceDetectorInterface:
-    :path: "../node_modules/unimodules-face-detector-interface/ios"
-  UMFileSystemInterface:
-    :path: "../node_modules/unimodules-file-system-interface/ios"
-  UMFontInterface:
-    :path: "../node_modules/unimodules-font-interface/ios"
-  UMImageLoaderInterface:
-    :path: "../node_modules/unimodules-image-loader-interface/ios"
-  UMPermissionsInterface:
-    :path: "../node_modules/unimodules-permissions-interface/ios"
-  UMReactNativeAdapter:
-    :path: "../node_modules/@unimodules/react-native-adapter/ios"
-  UMSensorsInterface:
-    :path: "../node_modules/unimodules-sensors-interface/ios"
-  UMTaskManagerInterface:
-    :path: "../node_modules/unimodules-task-manager-interface/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1083,13 +1023,12 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXApplication: 0e15240e4d125b62f1cae48759ffbbd32b9286a6
-  EXAppLoaderProvider: ebdb6bc2632c1ccadbe49f5e4104d8d690969c49
   EXConstants: 6d585d93723b18d7a8c283591a335609e3bc153e
-  EXErrorRecovery: ac2622400a32be84604591f70d0efff416e4b9a2
   EXFileSystem: 99aac7962c11c680681819dd9cbca24e20e5b1e7
   EXFont: 2e1c6fe726d008a039db80df95f48b4921b7fe59
   EXJSONUtils: f515cf71710855d7ba5bfc6752af3b9a6f6aad01
   EXKeepAwake: 8aa32396a5972d26e75e538603aad0f032396503
+  EXLocalAuthentication: c0ec9379a81c3c823a362382b6a2145e880d9840
   EXManifests: 50e42e01335df4e54109dee7be5a91bfd37347db
   EXPermissions: f4c65fa770489cbf16ea17c3013a670671525014
   Expo: 363a3f3c60d5a1d4f8badb29a869005487f2d9e4
@@ -1155,21 +1094,8 @@ SPEC CHECKSUMS:
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
-  TouchID: ba4c656d849cceabc2e4eef722dea5e55959ecf4
-  UMBarCodeScannerInterface: 3802c8574ef119c150701d679ab386e2266d6a54
-  UMCameraInterface: 985d301f688ed392f815728f0dd906ca34b7ccb1
-  UMConstantsInterface: bda5f8bd3403ad99e663eb3c4da685d063c5653c
-  UMCore: 7ab08669a8bb2e61f557c1fe9784521cb5aa28e3
-  UMFaceDetectorInterface: ce14e8e597f6a52aa66e4ab956cb5bff4fa8acf8
-  UMFileSystemInterface: 2ed004c9620f43f0b36b33c42ce668500850d6a4
-  UMFontInterface: 24fbc0a02ade6c60ad3ee3e2b5d597c8dcfc3208
-  UMImageLoaderInterface: 3976a14c588341228881ff75970fbabf122efca4
-  UMPermissionsInterface: 2abf9f7f4aa7110e27beaf634a7deda2d50ff3d7
-  UMReactNativeAdapter: 230406e3335a8dbd4c9c0e654488a1cf3b44552f
-  UMSensorsInterface: d708a892ef1500bdd9fc3ff03f7836c66d1634d3
-  UMTaskManagerInterface: a98e37a576a5220bf43b8faf33cfdc129d2f441d
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
-PODFILE CHECKSUM: f16ce5542b3dec6fe18a99ecb0dc78efbca95ccd
+PODFILE CHECKSUM: 1e027da2450d6ed4709b70eaaa065ef10c14247b
 
 COCOAPODS: 1.11.2
