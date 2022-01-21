@@ -18,7 +18,7 @@ export const lightColors = {
 export const darkColors = {
   greeting:"Good Night",
   image_background:require("../images/nightbg.jpg"),
-  background: '#000000',
+  background: '#131219',
   primarygreen: '#4E8D5C',
   secondarygreen:'#7E9E3C',
   accentgreen:'#BEDFB9',

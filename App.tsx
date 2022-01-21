@@ -1,48 +1,45 @@
-import 'react-native-gesture-handler';
-import React, {useState, useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import AuthStackNavigator from './assets/routes/AuthStackNavigator';
-import auth from '@react-native-firebase/auth';
+import "react-native-gesture-handler";
+import React, { useState, useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import AuthStackNavigator from "./assets/routes/AuthStackNavigator";
+import auth from "@react-native-firebase/auth";
 import useCachedResources from "./assets/hooks/useCachedResources";
-import AppStackNavigator from './assets/routes/AppStackNavigator';
+import AppStackNavigator from "./assets/routes/AppStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ToastProvider } from 'react-native-toast-notifications';
-import { AppearanceProvider, useColorScheme } from "react-native-appearance";
+import { ToastProvider } from "react-native-toast-notifications";
 import { ThemeProvider } from "./assets/theme/ThemeProvider";
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+	const [currentUser, setCurrentUser] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const isLoadingComplete = useCachedResources();
 
-  const onAuthStateChanged = async (user:any) => {
-    await setCurrentUser(user);
-    setIsLoading(false);
-  };
+	const onAuthStateChanged = async (user: any) => {
+		await setCurrentUser(user);
+		setIsLoading(false);
+	};
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
-  }, []);
+	useEffect(() => {
+		const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+		return subscriber;
+	}, []);
 
-  if (!isLoadingComplete) {
-    return null;
-  } else{
+	if (!isLoadingComplete) {
+		return null;
+	} else {
 		return (
 			<SafeAreaProvider>
 				<ToastProvider>
 					<ThemeProvider>
 						<NavigationContainer>
-						{currentUser ?  <AppStackNavigator />:   <AuthStackNavigator />}
+							{currentUser ? <AppStackNavigator /> : <AuthStackNavigator />}
 						</NavigationContainer>
-						</ThemeProvider>
+					</ThemeProvider>
 				</ToastProvider>
 			</SafeAreaProvider>
 		);
 	}
-
-  
 };
 
 export default App;

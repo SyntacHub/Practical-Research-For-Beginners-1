@@ -38,6 +38,7 @@ const Home:React.FC<Props>  = ({navigation}) => {
 
 	useEffect(() => {
 		navigation.navigate("Modal")
+		toast.show("Login Successful")
 		
     
   }, []);
@@ -253,4 +254,8 @@ const styles = StyleSheet.create({
 
 
 
+
+function newFunction(toast) {
+	toast.show("Hello World");
+}
 

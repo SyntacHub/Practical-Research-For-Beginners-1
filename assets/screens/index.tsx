@@ -5,12 +5,10 @@ import LabtoolsDetail from './LabtoolsDetail';
 import Quiz from './Quiz';
 import About from './About';
 import WelcomeScreen from './WelcomeScreen';
-import SignUpScreen from './SignIn';
-SignInScreen
-import LogInScreen from './SignUp';
+import SignInScreen from './SignIn';
 import PlayQuizScreen from './PlayQuizScreen';
 import Tips from './Tips';
-import SignInScreen from './SignIn';
+import SignUpScreen from './SignUp';
 export {
   Home,
   Labtools,
@@ -21,7 +19,6 @@ export {
   Quiz, 
   PlayQuizScreen,
   WelcomeScreen,
-  LogInScreen,
   SignUpScreen,
   SignInScreen,
   

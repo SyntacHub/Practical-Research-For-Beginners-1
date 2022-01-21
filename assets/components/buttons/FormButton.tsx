@@ -16,7 +16,7 @@ const FormButton = ({
             backgroundColor: isPrimary ? Colors.primary : Colors.white,
             borderWidth: 1,
             borderColor: Colors.primary,
-            borderRadius: 5,
+            borderRadius: 15,
             ...style,
         }}
         activeOpacity={0.9}
@@ -25,7 +25,8 @@ const FormButton = ({
         <Text
             style={{
                 textAlign: 'center',
-                fontSize: 18,
+                fontSize: 20,
+                fontFamily:"Poppins-SemiBold",
                 color: isPrimary ? Colors.white : Colors.primary,
             }}>
             {labelText}
