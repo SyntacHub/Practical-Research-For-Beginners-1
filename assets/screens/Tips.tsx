@@ -1,6 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	Platform,
 	SafeAreaView,
@@ -14,13 +14,34 @@ import {
 	NativeModules,
 } from "react-native";
 import Colors from "../constants/colors";
+import TipsAPI from "../../apis/TipsAPI";
+import TipsCard from "../components/cards/TipsCard";
 import { useTheme } from "../theme/ThemeProvider";
 
 const Tips: React.FC<{}> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
+	const[tips,setTips]= useState([]);
 	const { StatusBarManager } = NativeModules;
 	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+
+	useEffect(()=>{
+		getTipsFromAPI()
+	},[])
+
+	function getTipsFromAPI(){
+		TipsAPI.get('top-headlines?country=us&apiKey=aa6a097fb9fb4509958fdabd1942e6d1')
+		.then(async function (response:any) {
+			setTips(response.data);
+		})
+		.catch(function(err){
+			console.log(err)
+		})
+	}
+
+	if (!tips){
+		return null;
+	}
 	return (
 		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
 			<ScrollView
@@ -67,7 +88,12 @@ const Tips: React.FC<{}> = () => {
 								Research Tips 
 							</Text>
               {/*Content*/}
-              
+							<FlatList data={tips.articles}
+                keyExtractor={(item, index) => 'key' + index}
+                renderItem={({item}) => {
+                    return <TipsCard item = {item}/>
+                }}
+            />
 						</View>
 					</View>
 				</View>
