@@ -108,7 +108,7 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 								fontWeight: "700",
 								fontSize: 15,
 							}}
-							onPress={() => navigation.navigate("SignUpScreen")}
+							onPress={() => navigation.navigate("EULAModal")}
 						>
 							End User License Agreement
 						</Text>

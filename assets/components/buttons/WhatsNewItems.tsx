@@ -2,21 +2,12 @@ import { Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
-	Platform,
-	SafeAreaView,
-	ScrollView,
-	FlatList,
-	TouchableOpacity,
-	StatusBar,
-	StyleSheet,
+
 	Text,
 	View,
-	Image,
-	NativeModules,
-} from "react-native";
-import { color } from "react-native-reanimated";
 
-import Colors from "../../constants/colors";
+} from "react-native";
+
 
 import { useTheme } from "../../theme/ThemeProvider";
 

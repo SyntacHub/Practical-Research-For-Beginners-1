@@ -38,7 +38,7 @@ const Home:React.FC<Props>  = ({navigation}) => {
 
 	useEffect(() => {
 		navigation.navigate("Modal")
-		toast.show("Login Successful")
+		
 		
     
   }, []);
@@ -166,16 +166,8 @@ const Home:React.FC<Props>  = ({navigation}) => {
 								style={{ color: colors.text }}
 								onPress={() => navigation.openDrawer()}
 							/>
-							<Text
-          style={{
-            fontSize: 20,
-            padding: 10,
-            color: Colors.error,
-          }}
-          onPress={signOut}>
-          Logout
-        </Text>
-							<Switch/>
+						
+							
 							
 						</View>
 
