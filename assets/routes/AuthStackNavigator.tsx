@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {WelcomeScreen, SignUpScreen,SignInScreen} from '../screens';
+import {WelcomeScreen,SignInScreen} from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +12,7 @@ const AuthStackNavigator = () => {
       }}>
       <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
       <Stack.Screen name="SignInScreen" component={SignInScreen} />
-      <Stack.Screen name="SignUpScreen" component={SignUpScreen}/>
+     
       
       
     </Stack.Navigator>

@@ -7,6 +7,7 @@ const FormInput = ({
   placeholderText = '',
   onChangeText = null,
   value = null,
+  maxinput = null,
   ...more
 }) => {
   const screenWidth = Dimensions.get("window").width;
@@ -29,6 +30,7 @@ const FormInput = ({
         placeholder={placeholderText}
         onChangeText={onChangeText}
         placeholderTextColor="white"
+        maxLength={maxinput}
         
       
         value={value}

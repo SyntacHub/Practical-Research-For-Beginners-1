@@ -14,6 +14,7 @@ import FormInput from "../components/inputs/FormInput";
 import { Colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { signIn } from "../utils/auth";
+import UserNotFoundModal from "../components/modals/UserNotFoundModal";
 interface Props {
 	navigation: any;
 }
@@ -21,12 +22,14 @@ interface Props {
 const SignInScreen: React.FC<Props> = ({ navigation }) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
 	const screenheight = Dimensions.get("window").height;
 	const screenwidth = Dimensions.get("window").width;
 
 	const handleOnSubmit = () => {
 		if (email != "" && password != "") {
 			signIn(email, password);
+		} else {
 		}
 	};
 
@@ -34,7 +37,12 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 		<SafeAreaView style={{ backgroundColor: "#131219", flex: 1 }}>
 			<StatusBar animated barStyle={"light-content"} />
 			<View style={{ paddingTop: 15, paddingHorizontal: 21 }}>
-				<AntDesign name="arrowleft" size={30} color="white" onPress={() => navigation.goBack()} />
+				<AntDesign
+					name="arrowleft"
+					size={30}
+					color="white"
+					onPress={() => navigation.goBack()}
+				/>
 				<Text
 					style={{
 						color: "white",
@@ -60,33 +68,54 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 
 				{/*Email*/}
 				<FormInput
-					placeholderText="Phone,Email or Username"
+					placeholderText="LRN Email"
 					onChangeText={(value) => setEmail(value)}
 					value={email}
 					keyboardType={"email-address"}
 				/>
-					{/*Password*/}
+				{/*Password*/}
 				<FormInput
 					placeholderText="Password"
 					onChangeText={(value) => setPassword(value)}
 					value={password}
 					secureTextEntry={true}
 				/>
-        
-        {/* Footer */}
-        <View style={{justifyContent:'flex-end'}}>
-      <View style={{flexDirection: 'row', alignItems: 'center' ,padding:20,}}>
-      <Text style={{fontFamily:"Poppins-Light",color:'white',fontSize:15}}>Don't Have an Account?</Text>
-   
-        <Text
-          style={{marginLeft: 4, color: 'white',fontFamily:"Poppins-SemiBold",fontWeight:'700',fontSize:15}}
-          onPress={() => navigation.navigate('SignUpScreen')}>
-          Register Here!
-        </Text>
-      </View>
-				<FormButton labelText="Sign In" handleOnPress={handleOnSubmit} />
+
+				{/* Footer */}
+				<View style={{ justifyContent: "flex-end" }}>
+					<View
+						style={{
+							flexDirection: "column",
+							alignItems: "center",
+							padding: 20,
+						}}
+					>
+						<Text
+							style={{
+								fontFamily: "Poppins-Light",
+								color: "white",
+								fontSize: 15,
+							}}
+						>
+							Before Entering you must agree to the
+						</Text>
+
+						<Text
+							style={{
+								marginLeft: 4,
+								color: "white",
+								fontFamily: "Poppins-SemiBold",
+								fontWeight: "700",
+								fontSize: 15,
+							}}
+							onPress={() => navigation.navigate("SignUpScreen")}
+						>
+							End User License Agreement
+						</Text>
+					</View>
+					<FormButton labelText="Sign In" handleOnPress={handleOnSubmit} />
+				</View>
 			</View>
-      </View>
 		</SafeAreaView>
 	);
 };

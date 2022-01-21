@@ -8,7 +8,7 @@ import WelcomeScreen from './WelcomeScreen';
 import SignInScreen from './SignIn';
 import PlayQuizScreen from './PlayQuizScreen';
 import Tips from './Tips';
-import SignUpScreen from './SignUp';
+
 export {
   Home,
   Labtools,
@@ -19,7 +19,6 @@ export {
   Quiz, 
   PlayQuizScreen,
   WelcomeScreen,
-  SignUpScreen,
   SignInScreen,
   
 
