@@ -84,5 +84,7 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSFaceIDUsageDescription</key>
+<string>Allow $(PRODUCT_NAME) to use FaceID</string>
 </dict>
 </plist>

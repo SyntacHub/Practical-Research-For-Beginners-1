@@ -3,6 +3,7 @@ import React from "react";
 import { Alert, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
+import * as Haptics from 'expo-haptics';
 
 interface Props {}
 
@@ -32,9 +33,10 @@ const ResearchAssistantCardMenu = () => {
 			paddingVertical: 15,
 			paddingHorizontal: 14,
 		}}
-		onPress={() =>
+		onPress={() =>{
+			Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
       console.log("FEATURE UNAVAILABLE")
-    }
+    }}
 		>
 		
 			<View
