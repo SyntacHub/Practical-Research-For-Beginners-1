@@ -3,7 +3,7 @@ import React from "react";
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import {  Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
-
+import * as Haptics from 'expo-haptics';
 interface Props {}
 
 const LabtoolsCardMenu = () => {
@@ -25,9 +25,10 @@ const LabtoolsCardMenu = () => {
       paddingVertical: 15,
       paddingHorizontal: 15,
     }}
-    onPress={() =>
+    onPress={() =>{
       navigation.navigate("Labtools")
-    }
+			Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+    }}
     >
 		
 			<View

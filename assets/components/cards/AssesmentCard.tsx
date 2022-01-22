@@ -1,39 +1,73 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import Colors from "../../constants/colors";
 import { useTheme } from "../../theme/ThemeProvider";
-interface Props {}
+import * as Haptics from 'expo-haptics';
+interface Props {
+	item: any;
+}
 
-const AssesmentCard = () => {
-	const navigation = useNavigation<any>();
+const AssesmentCard: React.FC<Props> = ({}) => {
 	const { colors, isDark } = useTheme();
+	const [Quote, setQuote] = useState("Loading...");
+	const [Author, setAuthor] = useState("Loading...");
+	const [isLoading, setIsLoading] = useState(false);
+
+	const randomQuote = () => {
+    setIsLoading(true);
+    fetch("https://api.quotable.io/random").then(res => res.json()).then(result => {
+      
+      setQuote(result.content);
+      setAuthor(result.author);
+      setIsLoading(false);
+    })
+  }
+
+	useEffect(() => {
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+    randomQuote();
+  }, []);
+
 	return (
-		<View style={{flex: 1,
-			paddingHorizontal: 16,
-			paddingVertical: 5,
-			backgroundColor: colors.primaryteal,
-			borderRadius: 23,
-			marginVertical: 12,}}>
+		<View
+			style={{
+				flex: 1,
+				paddingHorizontal: 16,
+				paddingVertical: 5,
+				backgroundColor: colors.primaryteal,
+				borderRadius: 23,
+				marginVertical: 12,
+			}}
+		>
 			<View style={{ flexDirection: "row", justifyContent: "center" }}>
-				<View style={{ flexDirection: "column", width: "50%", marginTop: 5 }}>
+				<View
+					style={{
+						flexDirection: "column",
+						width: "100%",
+						paddingVertical: 20,
+					}}
+				>
 					<Text
 						style={{
-							width: "100%",
-							paddingVertical: 10,
-							fontFamily: "SFProDisplay-Black",
+							fontFamily: "Poppins-SemiBold",
 							lineHeight: 33,
-							fontSize: 19,
+							fontSize: 20,
 							color: Colors.background,
 						}}
 					>
-						“All the luck in the world, all wished for you.”
+						{Quote}
+					</Text>
+					<Text
+						style={{
+							fontFamily: "Poppins-SemiBold",
+							marginTop: 10,
+							color: "white",
+						}}
+					>
+						{"-"+Author}
 					</Text>
 				</View>
-				<Image
-					style={{ width: "50%" }}
-					source={require("../../images/assesment_image.png")}
-				/>
 			</View>
 		</View>
 	);
@@ -42,7 +76,5 @@ const AssesmentCard = () => {
 export default AssesmentCard;
 
 const styles = StyleSheet.create({
-	container: {
-		
-	},
+	container: {},
 });

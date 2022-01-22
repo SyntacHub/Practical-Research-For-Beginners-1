@@ -1,48 +1,29 @@
-import React, {
-	useState,
-	useEffect,
-	useCallback,
-	useMemo,
-	useRef,
-} from "react";
+import React, { useState, useEffect } from "react";
 import {
 	View,
 	Text,
 	SafeAreaView,
 	StatusBar,
 	FlatList,
-	Modal,
-	Alert,
 	TouchableOpacity,
 	ScrollView,
 	Platform,
-	Image,
 	NativeModules,
 	StyleSheet,
 } from "react-native";
-import BottomSheet, {
-	BottomSheetModal,
-	BottomSheetBackdrop,
-	BottomSheetModalProvider,
-} from "@gorhom/bottom-sheet";
-import TouchID from 'react-native-touch-id';
-import Animated, {
-  useAnimatedStyle,
-  interpolateColor,
-} from "react-native-reanimated";
+
 import { Feather } from "@expo/vector-icons";
 import { getQuizzes } from "../utils/database";
 import AssesmentCard from "../components/cards/AssesmentCard";
 import { useTheme } from "../theme/ThemeProvider";
-interface Props{
-	navigation:any
+import * as Haptics from 'expo-haptics';
+interface Props {
+	navigation: any;
 }
-const Quiz:React.FC<Props> = ({ navigation }) => {
+const Quiz: React.FC<Props> = ({ navigation }) => {
 	const [allQuizzes, setAllQuizzes] = useState([]);
 	const [refreshing, setRefreshing] = useState(false);
 	const { colors, isDark } = useTheme();
-
-	
 
 	const getAllQuizzes = async () => {
 		setRefreshing(true);
@@ -92,16 +73,12 @@ const Quiz:React.FC<Props> = ({ navigation }) => {
 							name="arrow-left"
 							size={24}
 							style={{ color: colors.text }}
-							onPress={() => navigation.goBack()}
+							onPress={() => {{navigation.goBack() 
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}}}
 						/>
 					</TouchableOpacity>
 					<TouchableOpacity>
-						<Feather
-							name="info"
-							size={24}
-							style={{ color: colors.text }}
-
-						/>
+						<Feather name="info" size={24} style={{ color: colors.text }} />
 					</TouchableOpacity>
 				</View>
 
@@ -190,10 +167,11 @@ const Quiz:React.FC<Props> = ({ navigation }) => {
 									borderRadius: 50,
 									backgroundColor: colors.primarygreen + "20",
 								}}
-								onPress={() => {
+								onPress={() => {{
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
 									navigation.navigate("PlayQuiz", {
 										quizId: quiz.id,
-									});
+									})};
 								}}
 							>
 								<Text
@@ -209,17 +187,15 @@ const Quiz:React.FC<Props> = ({ navigation }) => {
 					)}
 				/>
 			</ScrollView>
-			
 		</SafeAreaView>
 	);
 };
 
 const styles = StyleSheet.create({
-
 	textGreetingWrapper: {
 		paddingTop: Platform.OS === "ios" ? 20 : 15,
 	},
-	
+
 	modalContainer: {
 		flex: 1,
 		padding: 24,

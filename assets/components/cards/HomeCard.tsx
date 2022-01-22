@@ -3,6 +3,7 @@ import React from "react";
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 import { useTheme } from "../../theme/ThemeProvider";
+import * as Haptics from 'expo-haptics';
 
 interface Props {}
 
@@ -36,7 +37,10 @@ const HomeCard = () => {
 			<View style={{ flexDirection: "row",overflow:'hidden',width:"60%",alignItems:'center',flex:1 }}>
 				<View style={{flexDirection:'column'}}>
 				<Text style={{fontFamily:"SFProDisplay-Black",fontSize:contentHeadings,color:Colors.white}} >Test your Knowledge in Research</Text>
-				<TouchableOpacity onPress={() => navigation.navigate("Quiz")}>
+				<TouchableOpacity onPress={() => {
+					navigation.navigate("Quiz")
+					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+				}}>
 						<Text style={styles.getStarted}>Get Started</Text>
 					</TouchableOpacity>
 				</View>

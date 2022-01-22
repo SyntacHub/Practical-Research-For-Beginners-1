@@ -11,6 +11,7 @@ import {
 	Image,
 } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import * as Haptics from "expo-haptics";
 
 interface Props {}
 const WelcomeScreen: React.FC<Props> = () => {
@@ -64,7 +65,10 @@ const WelcomeScreen: React.FC<Props> = () => {
 						}}
 					>
 						<TouchableOpacity
-							onPress={() => navigation.navigate("SignInScreen")}
+							onPress={() => {
+								navigation.navigate("SignInScreen");
+								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
+							}}
 						>
 							<Text
 								style={{

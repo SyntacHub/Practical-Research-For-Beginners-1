@@ -17,6 +17,7 @@ import Colors from "../constants/colors";
 import LabToolsCard from "../components/cards/LabtoolsCard";
 import LabToolsData from "../data/LabToolsData";
 import { useTheme } from "../theme/ThemeProvider";
+import * as Haptics from 'expo-haptics';
 interface Props{
 	navigation:any
 }
@@ -30,10 +31,11 @@ const Labtools:React.FC<Props> = ({navigation}) => {
 		return(
 			<TouchableOpacity
 			key={item.id}
-			onPress={() =>
+			onPress={() =>{
+				Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
 				navigation.navigate("LabtoolsDetail", {
 					item: item,
-				})
+				})}
 			}
 		>
 			<View
@@ -129,7 +131,8 @@ const Labtools:React.FC<Props> = ({navigation}) => {
 								name="arrow-left"
 								size={24}
 								style={{ color: colors.text }}
-								onPress={() => navigation.goBack()}
+								onPress={() => {navigation.goBack()
+									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}}
 							/>
 						</TouchableOpacity>
 					</View>

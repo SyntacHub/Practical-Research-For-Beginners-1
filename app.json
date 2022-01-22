@@ -19,7 +19,6 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.icnhs.researchapp",
-      
       "userInterfaceStyle": "automatic"
     },
     "android": {

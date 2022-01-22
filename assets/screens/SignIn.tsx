@@ -15,6 +15,7 @@ import { Colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { signIn } from "../utils/auth";
 import * as LocalAuthentication from 'expo-local-authentication';
+import * as Haptics from 'expo-haptics';
 interface Props {
 	navigation: any;
 }
@@ -27,8 +28,10 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 	const screenwidth = Dimensions.get("window").width;
 
 	const handleOnSubmit = () => {
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
 		if (email != "" && password != "") {
-			LocalAuthentication.authenticateAsync()
+			LocalAuthentication.hasHardwareAsync().then
+			LocalAuthentication.authenticateAsync({}).then
 			signIn(email, password);
 		} else {
 		}
@@ -42,7 +45,10 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 					name="arrowleft"
 					size={30}
 					color="white"
-					onPress={() => navigation.goBack()}
+					onPress={() => {
+						navigation.goBack()
+						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+					}}
 				/>
 				<Text
 					style={{
@@ -109,7 +115,10 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
 								fontWeight: "700",
 								fontSize: 15,
 							}}
-							onPress={() => navigation.navigate("EULAModal")}
+							onPress={() => {
+								navigation.navigate("EULAModal")
+								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+							}}
 						>
 							End User License Agreement
 						</Text>

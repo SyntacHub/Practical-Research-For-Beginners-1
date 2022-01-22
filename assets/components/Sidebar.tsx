@@ -15,6 +15,7 @@ import { useTheme } from "../theme/ThemeProvider";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Switch } from "../components/buttons/ThemeSwitch";
 import Colors from "../constants/colors";
+import * as Haptics from 'expo-haptics';
 import {signOut} from '../utils/auth';
 import { ScrollView } from "react-native-gesture-handler";
 

@@ -15,15 +15,15 @@ import {
 	AsyncStorage,
 } from "react-native";
 import Colors from "../constants/colors";
-import {signOut} from '../utils/auth';
 
+import * as Haptics from 'expo-haptics';
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
 import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
 import { useTheme } from "../theme/ThemeProvider";
 import { useToast } from "react-native-toast-notifications";
-import { Switch } from "../components/buttons/ThemeSwitch";
+
 interface Props {
 	route: any;
 	navigation:any;
@@ -51,11 +51,12 @@ const Home:React.FC<Props>  = ({navigation}) => {
 		return (
 			<TouchableOpacity
 				key={item.id}
-				onPress={() =>
+				onPress={() =>{
+					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
 					navigation.navigate("Lesson", {
 						item: item,
 					})
-				}
+				}}
 			>
 				<View
 					style={{

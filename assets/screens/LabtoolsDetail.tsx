@@ -1,12 +1,14 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Colors from "../constants/colors";
+import Snackbar from "react-native-snackbar"
 import React, { useCallback, useMemo, useRef } from "react";
 import BottomSheet, {
 	BottomSheetBackdrop,
 	BottomSheetModal,
 	BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import * as Haptics from 'expo-haptics';
 import AR from "../components/svg/AR";
 import {
 	Platform,
@@ -67,7 +69,9 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 								name="arrow-left"
 								size={24}
 								style={{ color: colors.text }}
-								onPress={() => navigation.goBack()}
+								onPress={() => {navigation.goBack()
+									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+								}}
 							/>
 						</TouchableOpacity>
 					</View>
@@ -104,7 +108,13 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 						alignItems: "flex-end",
 						paddingHorizontal: 40,
 					}}
-					onPress={() => {
+					onPress={() => {{
+						Snackbar.show({
+							text: 'Initializing Neural Engine...',
+							duration: Snackbar.LENGTH_LONG,
+						});
+						Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+						
 						const url = `${item.labtool_ar_link}`;
 						const localFile = `${RNFS.DocumentDirectoryPath}/${url
 							.split("/")
@@ -122,7 +132,7 @@ const LabtoolsDetail: React.FC<Props> = ({ route }) => {
 							.promise.then(() => FileViewer.open(localFile))
 							.then(() => {})
 							.catch((error) => {});
-					}}
+					}}}
 				>
 					<AR />
 				</TouchableOpacity>
