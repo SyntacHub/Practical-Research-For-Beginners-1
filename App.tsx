@@ -8,38 +8,39 @@ import AppStackNavigator from "./assets/routes/AppStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ToastProvider } from "react-native-toast-notifications";
 import { ThemeProvider } from "./assets/theme/ThemeProvider";
+import { NativeBaseProvider } from "native-base";
 
 const App = () => {
-	const [currentUser, setCurrentUser] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-	const isLoadingComplete = useCachedResources();
+  const isLoadingComplete = useCachedResources();
 
-	const onAuthStateChanged = async (user: any) => {
-		await setCurrentUser(user);
-		setIsLoading(false);
-	};
+  const onAuthStateChanged = async (user: any) => {
+    await setCurrentUser(user);
+    setIsLoading(false);
+  };
 
-	useEffect(() => {
-		const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-		return subscriber;
-	}, []);
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
 
-	if (!isLoadingComplete) {
-		return null;
-	} else {
-		return (
-			<SafeAreaProvider>
-				<ToastProvider>
-					<ThemeProvider>
-						<NavigationContainer>
-							{currentUser ? <AppStackNavigator /> : <AuthStackNavigator />}
-						</NavigationContainer>
-					</ThemeProvider>
-				</ToastProvider>
-			</SafeAreaProvider>
-		);
-	}
+  if (!isLoadingComplete) {
+    return null;
+  } else {
+    return (
+      <SafeAreaProvider>
+        <NativeBaseProvider>
+          <ToastProvider>
+            <ThemeProvider>
+              <NavigationContainer>{currentUser ? <AppStackNavigator /> : <AuthStackNavigator />}</NavigationContainer>
+            </ThemeProvider>
+          </ToastProvider>
+        </NativeBaseProvider>
+      </SafeAreaProvider>
+    );
+  }
 };
 
 export default App;
