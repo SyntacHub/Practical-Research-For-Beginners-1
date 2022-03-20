@@ -13,7 +13,7 @@ interface Props {
   navigation: any;
 }
 
-const Labtools: React.FC<Props> = ({ navigation }) => {
+const LabtoolsScreen: React.FC<Props> = ({ navigation }) => {
   const { colors, isDark } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -118,5 +118,5 @@ const Labtools: React.FC<Props> = ({ navigation }) => {
     </Box>
   );
 };
-export default Labtools;
+export default LabtoolsScreen;
 const styles = StyleSheet.create({});
