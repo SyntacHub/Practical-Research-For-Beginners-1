@@ -1,5 +1,5 @@
 import Home from "./Home";
-import Lesson from "./Lesson";
+import Lesson from "./LessonScreen";
 import Labtools from "./Labtools";
 import LabtoolsDetail from "./LabtoolsDetail";
 import Quiz from "./Quiz";
