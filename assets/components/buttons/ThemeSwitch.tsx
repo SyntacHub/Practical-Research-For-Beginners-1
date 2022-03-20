@@ -1,13 +1,16 @@
+import { Text, useColorMode } from "native-base";
 import * as React from "react";
-import { Switch as RNSwitch } from "react-native";
+import { Switch } from "native-base";
 import { useTheme } from "../../theme/ThemeProvider";
 
-export const Switch: React.FC<{}> = () => {
-  const { setScheme, isDark } = useTheme();
+export const AppearanceSwitch: React.FC<{}> = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
 
-  const toggleScheme = () => {
-    isDark ? setScheme("light") : setScheme("dark");
-  };
-
-  return <RNSwitch value={isDark} onValueChange={toggleScheme} />;
+  return (
+    <Switch
+      isChecked={colorMode === "dark"}
+      onToggle={toggleColorMode}
+      aria-label={colorMode === "light" ? "switch to dark mode" : "switch to light mode"}
+    />
+  );
 };

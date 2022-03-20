@@ -21,7 +21,7 @@ const researchTopics = [
     title: "Identifying Variables",
     courseDesc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, porro.",
     topicIndex: "Quarter 1 Lesson 3",
-    lessonIntro: require("../../assets/images/lessonIntro.png"),
+    lessonIntro: require("../../assets/images/identifying-variable.png"),
   },
 
   {

@@ -1,27 +1,14 @@
 import { Feather } from "@expo/vector-icons";
-import React, { useState, useEffect } from "react";
-import {
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  FlatList,
-  TouchableOpacity,
-  StatusBar,
-  StyleSheet,
-  NativeModules,
-  Dimensions,
-} from "react-native";
-import Colors from "../constants/colors";
-
-import { Box, Text } from "native-base";
-
-import * as Haptics from "expo-haptics";
+import React from "react";
+import { FlatList, TouchableOpacity, StatusBar } from "react-native";
+import { Box, Text, Row, ScrollView, Column, Icon, useColorMode } from "native-base";
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
 import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
-import { useTheme } from "../theme/ThemeProvider";
-import { useToast } from "react-native-toast-notifications";
+
+import * as Haptics from "expo-haptics";
+
 
 interface Props {
   route: any;
@@ -29,192 +16,114 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({ navigation }) => {
-  const [refreshing, setRefreshing] = useState(false);
-  const { colors, isDark } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
 
-  const [isWhatsNewModalVisible, setWhatsNewModalVisible] = useState("");
-
-  useEffect(() => {
-    navigation.navigate("Modal");
-  }, []);
-
-  const renderItem = ({ item }: { item: any }) => {
+  const ItemMenu = ({ item }: { item: any }) => {
     return (
       <TouchableOpacity
         key={item.id}
         onPress={() => {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-          navigation.navigate("Lesson", {
+          navigation.push("Lesson", {
             item: item,
           });
         }}
       >
         <Box
-          style={{
-            flex: 1,
-            paddingHorizontal: 20,
-            paddingVertical: 15,
-            justifyContent: "center",
-            backgroundColor: colors.elevated,
-            borderRadius: 11,
-            marginVertical: 8,
-          }}
+          paddingX={3}
+          paddingY={3}
+          justifyContent={"center"}
+          _light={{ backgroundColor: "gray.200" }}
+          _dark={{ backgroundColor: "gray.800" }}
+          marginY={2}
+          borderRadius={"2xl"}
         >
-          <Box
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Box style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-              <Box
-                style={{
-                  backgroundColor: colors.primarygreen + "20",
-                  borderRadius: 10,
-                  padding: 15,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginVertical: 7,
-                }}
-              >
-                <Feather
-                  style={{
-                    color: colors.primarygreen,
-                  }}
-                  name="book"
-                  size={25}
-                />
-              </Box>
-
-              <Box style={{ flexDirection: "column", marginLeft: 15 }}>
-                <Text
-                  style={{
-                    fontFamily: "SFProDisplay-Bold",
-                    fontSize: 20,
-                    color: colors.text,
-                  }}
-                >
-                  {item.title}
-                </Text>
-                <Text
-                  style={{
-                    marginTop: 5,
-                    fontFamily: "SFProDisplay-Medium",
-                    fontSize: 13,
-                    color: colors.heading5,
-                    marginRight: 20,
-                  }}
-                >
-                  {item.courseDesc}
-                </Text>
-              </Box>
+          <Row alignItems={"center"}>
+            <Box
+              _dark={{ backgroundColor: "emerald.600" }}
+              _light={{ backgroundColor: "emerald.300" }}
+              borderRadius={"xl"}
+              padding={3}
+              justifyContent={"center"}
+            >
+              <Icon
+                as={Feather}
+                name={"book-open"}
+                size="6"
+                _dark={{ color: "emerald.300" }}
+                _light={{ color: "emerald.800" }}
+              />
             </Box>
-          </Box>
+
+            <Column style={{ flexDirection: "column", marginLeft: 15 }}>
+              <Text
+                fontFamily={"SFProDisplay-Bold"}
+                _dark={{ color: "gray.50" }}
+                _light={{ color: "gray.700" }}
+                fontSize={"xl"}
+              >
+                {item.title}
+              </Text>
+              <Text
+                fontFamily={"SFProDisplay-Medium"}
+                fontSize={"sm"}
+                _dark={{ color: "gray.50" }}
+                _light={{ color: "gray.700" }}
+              >
+                {item.courseDesc}
+              </Text>
+            </Column>
+          </Row>
         </Box>
       </TouchableOpacity>
     );
   };
 
-  const { StatusBarManager } = NativeModules;
-  const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-  const screenWidth = Dimensions.get("window").width;
-  let paddingsize = undefined;
-  if (screenWidth >= 768) {
-    paddingsize = 20;
-  }
-
   return (
-    <SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
+    <Box safeAreaTop flex={1} _light={{ backgroundColor: "muted.100" }} _dark={{ backgroundColor: "gray.900" }}>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: colors.background }}
+        _light={{ backgroundColor: "muted.100" }}
+        _dark={{ backgroundColor: "gray.900" }}
       >
-        <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"} />
-        {/* Header */}
-        <Box
-          style={{
-            paddingHorizontal: 21,
-            marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-          }}
-        >
-          <Box>
-            <Box
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Feather name="menu" size={24} style={{ color: colors.text }} onPress={() => navigation.openDrawer()} />
-            </Box>
-
-            <Box style={styles.textGreetingWrapper}>
-              <Text style={styles.textGreeting}>Practical Research Grade 7</Text>
-              <Text
-                style={{
-                  fontFamily: "SFProDisplay-Bold",
-                  color: colors.text,
-                  fontSize: 35,
-                }}
-              >
-                Lesson Dashboard
-              </Text>
-            </Box>
-            <Box style={styles.searchBarWrapper}>
-              {/* Content */}
-
-              <HomeCard />
-              <Box
-                style={{
-                  flex: 1,
-                  alignContent: "space-around",
-                  justifyContent: "center",
-                  paddingHorizontal: paddingsize,
-                  flexDirection: "row",
-                }}
-              >
-                <ResearchAssistantCard />
-                <LabtoolsCard />
-              </Box>
-              <Text
-                style={{
-                  fontFamily: "SFProDisplay-Bold",
-                  fontSize: 18,
-                  marginTop: 30,
-                  color: colors.text,
-                }}
-              >
-                All Research 1 Lessons
-              </Text>
-
-              <FlatList
-                data={researchTopics}
-                renderItem={renderItem}
-                refreshing={refreshing}
-                keyExtractor={(item) => item.id}
-              />
-            </Box>
+        <StatusBar animated barStyle={colorMode === "dark" ? "light-content" : "dark-content"} />
+        <Box width={"90%"} mx={"auto"} my={4}>
+          <Box
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Icon as={Feather} name="menu" size={"md"} onPress={() => navigation.openDrawer()} />
           </Box>
+
+          <Box paddingTop={2}>
+            <Text fontFamily={"SFProDisplay-Medium"} fontSize={"lg"}>
+              Practical Research Grade 7
+            </Text>
+            <Text fontFamily={"SFProDisplay-Bold"} fontSize={"4xl"}>
+              Lesson Dashboard
+            </Text>
+          </Box>
+
+          {/* Content */}
+
+          <HomeCard />
+          <Row flex={1} paddingY={3}>
+            <ResearchAssistantCard />
+            <LabtoolsCard />
+          </Row>
+          <Text fontFamily={"SFProDisplay-Bold"} fontSize={15} paddingTop={7}>
+            All Research 1 Lessons
+          </Text>
+
+          <FlatList data={researchTopics} renderItem={ItemMenu} keyExtractor={(item) => item.id} />
         </Box>
       </ScrollView>
-    </SafeAreaView>
+    </Box>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  textGreetingWrapper: {
-    paddingTop: Platform.OS === "ios" ? 20 : 15,
-  },
-  textGreeting: {
-    fontFamily: "SFProDisplay-Bold",
-    color: Colors.textLight,
-    fontSize: 23,
-  },
-  searchBarWrapper: {
-    paddingTop: 15,
-  },
-});

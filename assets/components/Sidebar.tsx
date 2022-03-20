@@ -3,13 +3,15 @@ import { View, Text, ImageBackground, Image, SafeAreaView, TouchableOpacity } fr
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { useTheme } from "../theme/ThemeProvider";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { Switch } from "../components/buttons/ThemeSwitch";
+import { AppearanceSwitch } from "../components/buttons/ThemeSwitch";
 import Colors from "../constants/colors";
 import { signOut } from "../utils/auth";
 import { ScrollView } from "react-native-gesture-handler";
 
+
 function CustomDrawer(props: any) {
   const { colors, isDark } = useTheme();
+
   const text = isDark ? "Good Night" : "Good Morning";
   const imagebg = isDark ? require("../images/nightbg.jpg") : require("../images/daybg.jpg");
   return (
@@ -65,7 +67,7 @@ function CustomDrawer(props: any) {
       <View style={{ flexDirection: "column" }}>
         <View style={{ padding: 20, flexDirection: "row", alignItems: "center", alignContent: "space-between" }}>
           <Text style={{ color: colors.heading5, fontFamily: "SFProDisplay-Medium" }}>Dark Mode</Text>
-          <Switch />
+          <AppearanceSwitch />
         </View>
         <Text
           style={{

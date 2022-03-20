@@ -1,71 +1,49 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+import { Box, Text, Icon, Pressable } from "native-base";
 import { Entypo } from "@expo/vector-icons";
-import { useTheme } from "../../theme/ThemeProvider";
 import * as Haptics from "expo-haptics";
+import { useNavigation } from "@react-navigation/native";
+
 interface Props {}
-
-const LabtoolsCardMenu = () => {
+const LabtoolsCardMenu: React.FC<Props> = () => {
   const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
-  const screenWidth = Dimensions.get("window").width;
-  let bigCardWidth = screenWidth - 40;
-  if (screenWidth >= 768) {
-    bigCardWidth = (screenWidth - 60) / 2;
-  }
-
   return (
-    <TouchableOpacity
-      style={{
-        flex: 1,
-        backgroundColor: "#C0D88D" + "60",
-        width: screenWidth / 2.5,
-        alignSelf: "flex-start",
-        borderRadius: 15,
-        paddingVertical: 15,
-        paddingHorizontal: 15,
-      }}
+    <Pressable
       onPress={() => {
         navigation.navigate("Labtools");
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       }}
+      borderRadius={"xl"}
+      paddingY={5}
+      paddingX={5}
+      _dark={{ backgroundColor: "green.700" }}
+      _light={{ backgroundColor: "green.300" }}
+      flex={1}
     >
-      <View
-        style={{
-          backgroundColor: colors.elevated,
-          height: "25%",
-          borderRadius: 20 / 2,
-          width: "30%",
-          opacity: 0.4,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Entypo name="lab-flask" size={20} style={{ color: colors.secondarygreen }} />
-      </View>
+      <Box height={"25%"} borderRadius={20 / 2} width={"30%"} justifyContent={"center"} alignItems={"center"}>
+        <Icon as={Entypo} name="lab-flask" size={7} _dark={{ color: "green.400" }} _light={{ color: "green.600" }} />
+      </Box>
       <Text
-        style={{
-          fontFamily: "SFProDisplay-Bold",
-          fontSize: 19,
-          marginTop: 10,
-          color: colors.secondarygreen,
-        }}
+        fontFamily={"SFProDisplay-Bold"}
+        fontSize={"xl"}
+        lineHeight={25}
+        marginTop={1}
+        _dark={{ color: "green.400" }}
+        _light={{ color: "green.600" }}
       >
         Scientific Laboratory Tools
       </Text>
       <Text
-        style={{
-          fontFamily: "SFProDisplay-Regular",
-          fontSize: 12,
-          marginTop: 5,
-          color: colors.heading5,
-          opacity: 0.6,
-        }}
+        fontFamily={"SFProDisplay-Regular"}
+        fontSize={"xs"}
+        lineHeight={16}
+        marginTop={2}
+        _dark={{ color: "green.300" }}
+        _light={{ color: "green.600" }}
       >
         Turn your room into a Science Laboratory
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 export default LabtoolsCardMenu;
