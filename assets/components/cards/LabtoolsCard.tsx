@@ -1,46 +1,21 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Colors from "../../constants/colors";
-import { useTheme } from "../../theme/ThemeProvider";
-
+import { Row } from "native-base";
+import { LabtoolsImage } from "../svgs";
 interface Props {}
 
-const LabToolsCard = () => {
-  const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
+const LabToolsCard: React.FC<Props> = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        paddingHorizontal: 10,
-        paddingVertical: 10,
-        backgroundColor: colors.primaryteal,
-        borderRadius: 23,
-        marginVertical: 12,
-      }}
+    <Row
+      justifyContent={"center"}
+      alignItems={"center"}
+      paddingY={3}
+      marginY={5}
+      borderRadius={"3xl"}
+      _dark={{ backgroundColor: "emerald.400" }}
+      _light={{ backgroundColor: "emerald.200" }}
     >
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flexDirection: "column", width: "50%", marginTop: 15, alignContent: "center" }}>
-          <Text
-            style={{
-              width: "100%",
-              marginLeft: 15,
-              fontFamily: "SFProDisplay-Black",
-              lineHeight: 30,
-              fontSize: 15,
-              color: Colors.background,
-            }}
-          >
-            Explore Research Laboratory Tools using Augmented Reality
-          </Text>
-        </View>
-        <Image
-          style={{ width: "45%", resizeMode: "contain", height: 160, alignContent: "center" }}
-          source={require("../../images/augmented-reality.png")}
-        />
-      </View>
-    </View>
+      <LabtoolsImage width={430} height={155} preserveAspectRatio={"true"} />
+    </Row>
   );
 };
 

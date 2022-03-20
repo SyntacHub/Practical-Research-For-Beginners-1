@@ -40,8 +40,8 @@ const LessonScreen: React.FC<Props> = ({ route }) => {
       >
         <StatusBar animated barStyle={colorMode === "dark" ? "light-content" : "dark-content"} />
         {/* Header */}
-        <Box marginY={5}>
-            <Icon as={Feather} name="arrow-left" size={6} onPress={() => navigation.goBack()} />
+        <Box marginY={4}>
+          <Icon as={Feather} name="arrow-left" size={6} onPress={() => navigation.goBack()} />
         </Box>
 
         <Box>

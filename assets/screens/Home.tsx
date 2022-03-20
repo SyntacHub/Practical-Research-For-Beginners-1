@@ -9,7 +9,6 @@ import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
 
 import * as Haptics from "expo-haptics";
 
-
 interface Props {
   route: any;
   navigation: any;
