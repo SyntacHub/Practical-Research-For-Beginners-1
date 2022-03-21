@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StatusBar,
-  FlatList,
-  Image,
-  TouchableOpacity,
-  Platform,
-  NativeModules,
-  Alert,
-} from "react-native";
+import { Box, Row, Icon, ScrollView, useColorMode, StatusBar, Text, Image, FlatList, Pressable } from "native-base";
 import Colors from "../constants/colors";
 import { getQuestionsByQuizId, getQuizById } from "../utils/database";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -18,8 +7,8 @@ import FormButton from "../components/buttons/FormButton";
 import ResultModal from "../components/modals/ResultModal";
 import AttemptLimitModal from "../components/modals/AttemptLimitModal";
 import { useTheme } from "../theme/ThemeProvider";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
+import { Feather } from "@expo/vector-icons";
 interface Props {
   navigation: any;
   route: any;
@@ -31,7 +20,8 @@ const PlayQuizScreen: React.FC<Props> = ({ navigation, route }) => {
   const [questions, setQuestions] = useState([]);
   const [attempted, setAttempted] = useState(3);
   const [isAttemptLimitModalVisible, setisAttemptLimitModalVisible] = useState(false);
-  const { colors, isDark } = useTheme();
+  const { colors } = useTheme();
+  const { colorMode } = useColorMode();
 
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
@@ -83,308 +73,271 @@ const PlayQuizScreen: React.FC<Props> = ({ navigation, route }) => {
     getQuizAndQuestionDetails();
   }, []);
 
-  const getOptionBgColor = (currentQuestion: any, currentOption: any) => {
-    if (currentQuestion.selectedOption) {
-      if (currentOption == currentQuestion.selectedOption) {
-        if (currentOption == currentQuestion.correct_answer) {
-          return Colors.success;
-        } else {
-          return Colors.error;
-        }
-      } else {
-        return colors.elevated;
-      }
-    } else {
-      return colors.elevated;
-    }
-  };
+  // const getOptionBgColor = (currentQuestion: any, currentOption: any) => {
+  //   if (currentQuestion.selectedOption) {
+  //     if (currentOption == currentQuestion.selectedOption) {
+  //       if (currentOption == currentQuestion.correct_answer) {
+  //         return Colors.success;
+  //       } else {
+  //         return Colors.error;
+  //       }
+  //     } else {
+  //       return ;
+  //     }
+  //   } else {
+  //     return colors.elevated;
+  //   }
+  // };
 
-  const getOptionTextColor = (currentQuestion: any, currentOption: any) => {
-    if (currentQuestion.selectedOption) {
-      if (currentOption == currentQuestion.selectedOption) {
-        return Colors.white;
-      } else {
-        return colors.heading5;
-      }
-    } else {
-      return colors.heading5;
-    }
-  };
-
-  const { StatusBarManager } = NativeModules;
-  const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-  const exitPrompt = () =>
-    Alert.alert("Confirmation", "Do you want to exit the current exam? You will loose 1 Attempt ", [
-      {
-        text: "No",
-        onPress: () => console.log("Cancel Pressed"),
-        style: "cancel",
-      },
-      { text: "Yes", onPress: () => navigation.goBack() },
-    ]);
+  // const getOptionTextColor = (currentQuestion: any, currentOption: any) => {
+  //   if (currentQuestion.selectedOption) {
+  //     if (currentOption == currentQuestion.selectedOption) {
+  //       return Colors.white;
+  //     } else {
+  //       return colors.heading5;
+  //     }
+  //   } else {
+  //     return colors.heading5;
+  //   }
+  // };
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        position: "relative",
-        backgroundColor: colors.background,
-      }}
-    >
-      <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"} />
-      {/* Top Bar */}
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingHorizontal: 21,
-          marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-
-          elevation: 4,
-        }}
-      >
-        {/* Back Icon */}
-        <MaterialIcons name="arrow-back" size={24} style={{ color: colors.text }} onPress={exitPrompt} />
-
-        {/* Correct and incorrect count */}
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {/* Correct */}
-          <View
-            style={{
-              backgroundColor: Colors.success,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingHorizontal: 10,
-              paddingVertical: 4,
-              borderTopLeftRadius: 10,
-              borderBottomLeftRadius: 10,
-            }}
-          >
-            <MaterialIcons name="check" size={14} style={{ color: Colors.white }} />
-            <Text
-              style={{
-                color: Colors.white,
-                marginLeft: 6,
-                fontFamily: "SFProDisplay-Medium",
-              }}
-            >
-              {correctCount}
-            </Text>
-          </View>
-
-          {/* Incorrect */}
-          <View
-            style={{
-              backgroundColor: Colors.error,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingHorizontal: 10,
-              paddingVertical: 4,
-              borderTopRightRadius: 10,
-              borderBottomRightRadius: 10,
-            }}
-          >
-            <MaterialIcons name="close" size={14} style={{ color: Colors.white }} />
-            <Text
-              style={{
-                color: Colors.white,
-                marginLeft: 6,
-                fontFamily: "SFProDisplay-Medium",
-              }}
-            >
-              {incorrectCount}
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Header */}
-      <View style={{ marginHorizontal: 25, marginTop: 20, marginBottom: 15 }}>
-        <Text
-          style={{
-            fontSize: 30,
-            fontFamily: "SFProDisplay-Bold",
-            color: colors.text,
-          }}
-        >
-          {title}
-        </Text>
-        <Text
-          style={{
-            fontFamily: "SFProDisplay-Medium",
-            color: Colors.textLight,
-            fontSize: 18,
-          }}
-        >
-          Quarter 1: Lesson 1
-        </Text>
-      </View>
-
-      {/* Questions and Options list */}
-      <FlatList
-        data={questions}
-        style={{
-          flex: 1,
-          marginHorizontal: 21,
-        }}
+    <Box flex={1} safeAreaTop _light={{ backgroundColor: "muted.100" }} _dark={{ backgroundColor: "gray.900" }}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item.question}
-        renderItem={({ item, index }) => (
-          <View
-            style={{
-              marginTop: 14,
-              marginHorizontal: 10,
-              backgroundColor: colors.elevated,
-              elevation: 2,
-              borderRadius: 10,
-            }}
-          >
-            <View style={{ padding: 20, borderRadius: 10 }}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  fontFamily: "SFProDisplay-Bold",
-                  color: colors.text,
-                }}
-              >
-                {index + 1}. {item.question}
+        width={"90%"}
+        mx={"auto"}
+        _light={{ backgroundColor: "muted.100" }}
+        _dark={{ backgroundColor: "gray.900" }}
+      >
+        <StatusBar animated barStyle={colorMode === "dark" ? "light-content" : "dark-content"} />
+
+        <Row alignItems={"center"} justifyContent={"space-between"} paddingY={4}>
+          <Icon as={Feather} name="arrow-left" size={6} onPress={() => navigation.goBack()} />
+
+          {/* Correct and incorrect count */}
+          <Row alignItems={"center"} justifyContent={"center"}>
+            {/* Correct */}
+            <Row
+              alignItems={"center"}
+              justifyContent={"center"}
+              borderTopLeftRadius={"xl"}
+              borderBottomLeftRadius={"xl"}
+              paddingX={3}
+              paddingY={1}
+              _dark={{ backgroundColor: "emerald.800" }}
+              _light={{ backgroundColor: "emerald.300" }}
+            >
+              <Icon
+                as={MaterialIcons}
+                name="check"
+                size={14}
+                _dark={{ color: "emerald.300" }}
+                _light={{ color: "emerald.800" }}
+              />
+
+              <Text _dark={{ color: "emerald.300" }} _light={{ color: "emerald.800" }} fontFamily={"SFProDisplay-Bold"}>
+                {correctCount}
               </Text>
-              {item.imageUrl != "" ? (
-                <Image
-                  source={{
-                    uri: item.imageUrl,
-                  }}
-                  resizeMode={"contain"}
-                  style={{
-                    width: "80%",
-                    height: 150,
-                    marginTop: 20,
-                    marginLeft: "10%",
-                    borderRadius: 10,
-                  }}
-                />
-              ) : null}
-            </View>
-            {/* Options */}
-            {item.allOptions.map((option, optionIndex) => {
-              return (
-                <TouchableOpacity
-                  key={optionIndex}
-                  style={{
-                    paddingVertical: 14,
-                    paddingHorizontal: 20,
-                    borderTopWidth: 1,
-                    borderColor: colors.heading5,
-                    backgroundColor: getOptionBgColor(item, option),
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  }}
-                  onPress={() => {
-                    if (item.selectedOption) {
-                      return null;
-                    }
-                    // Increase correct/incorrect count
-                    if (option == item.correct_answer) {
-                      setCorrectCount(correctCount + 1);
-                    } else {
-                      setIncorrectCount(incorrectCount + 1);
-                    }
+            </Row>
 
-                    let tempQuestions = [...questions];
-                    tempQuestions[index].selectedOption = option;
-                    setQuestions([...tempQuestions]);
-                  }}
-                >
-                  <Text
-                    style={{
-                      width: 25,
-                      height: 25,
-                      padding: 2,
-                      borderWidth: 1,
-                      borderColor: Colors.border,
-                      textAlign: "center",
-                      marginRight: 16,
-                      borderRadius: 5,
-                      color: getOptionTextColor(item, option),
-                      fontFamily: "SFProDisplay-Medium",
+            {/* Incorrect */}
+            <Row
+              alignItems={"center"}
+              justifyContent={"center"}
+              borderTopRightRadius={"xl"}
+              borderBottomRightRadius={"xl"}
+              paddingX={3}
+              paddingY={1}
+              _dark={{ backgroundColor: "red.800" }}
+              _light={{ backgroundColor: "red.300" }}
+            >
+              <Icon
+                as={MaterialIcons}
+                name="close"
+                size={14}
+                _dark={{ color: "red.300" }}
+                _light={{ color: "red.800" }}
+              />
+              <Text _dark={{ color: "red.300" }} _light={{ color: "red.800" }} fontFamily={"SFProDisplay-Bold"}>
+                {incorrectCount}
+              </Text>
+            </Row>
+          </Row>
+        </Row>
+
+        {/* Header */}
+        <Box paddingY={2}>
+          <Text fontSize={"2xl"} fontFamily={"SFProDisplay-Bold"}>
+            {title}
+          </Text>
+          <Text fontSize={"xl"} fontFamily={"SFProDisplay-Medium"}>
+            Quarter 1: Lesson 1
+          </Text>
+        </Box>
+
+        {/* Questions and Options list */}
+        <FlatList
+          data={questions}
+          style={{
+            flex: 1,
+          }}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.question}
+          renderItem={({ item, index }) => (
+            <Box
+              marginTop={4}
+              borderRadius={"xl"}
+              _light={{ backgroundColor: "gray.200" }}
+              _dark={{ backgroundColor: "gray.800" }}
+            >
+              <Box padding={4} borderRadius={"2xl"}>
+                <Text fontSize={"md"} fontFamily={"SFProDisplay-Bold"}>
+                  {index + 1}. {item.question}
+                </Text>
+                {item.imageUrl != "" ? (
+                  <Image
+                    source={{
+                      uri: item.imageUrl,
                     }}
-                  >
-                    {optionIndex + 1}
-                  </Text>
-                  <Text
-                    style={{
-                      color: getOptionTextColor(item, option),
-                      fontFamily: "SFProDisplay-Medium",
-                    }}
-                  >
-                    {option}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-        )}
-        ListFooterComponent={() => (
-          <FormButton
-            labelText="Submit"
-            style={{ margin: 10 }}
-            handleOnPress={() => {
-              // Show Result modal
-              setAttempted(attempted - 1);
+                    width={"80%"}
+                    height={150}
+                    borderRadius={"xl"}
+                    marginTop={10}
+                    marginLeft={"10%"}
+                    resizeMode={"contain"}
+                  />
+                ) : null}
+              </Box>
+              {/* Options */}
+              {item.allOptions.map(
+                (
+                  option: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined,
+                  optionIndex: React.Key | null | undefined
+                ) => {
+                  return (
+                    <Pressable
+                      key={optionIndex}
+                      paddingY={4}
+                      paddingX={3}
+                      _light={{ backgroundColor: "gray.200" }}
+                      _dark={{ backgroundColor: "gray.800" }}
+                      flexDirection={"row"}
+                      alignItems={"center"}
+                      justifyContent={"flex-start"}
+                      // style={{
+                      //   paddingVertical: 14,
+                      //   paddingHorizontal: 20,
+                      //   borderTopWidth: 1,
+                      //   borderColor: colors.heading5,
+                      //   backgroundColor: getOptionBgColor(item, option),
+                      //   flexDirection: "row",
+                      //   alignItems: "center",
+                      //   justifyContent: "flex-start",
+                      // }}
+                      onPress={() => {
+                        if (item.selectedOption) {
+                          return null;
+                        }
+                        // Increase correct/incorrect count
+                        if (option == item.correct_answer) {
+                          setCorrectCount(correctCount + 1);
+                        } else {
+                          setIncorrectCount(incorrectCount + 1);
+                        }
 
-              if (attempted <= 0) {
-                setisAttemptLimitModalVisible(true);
-              } else {
-                setIsResultModalVisible(true);
-              }
-            }}
-          />
-        )}
-      />
+                        let tempQuestions = [...questions];
+                        tempQuestions[index].selectedOption = option;
+                        setQuestions([...tempQuestions]);
+                      }}
+                    >
+                      <Text
+                        padding={2}
+                        textAlign={"center"}
+                        mr={3}
 
-      {/* Result Modal */}
-      <ResultModal
-        isModalVisible={isResultModalVisible}
-        correctCount={correctCount}
-        incorrectCount={incorrectCount}
-        attemptsLeftCount={attempted}
-        totalCount={questions.length}
-        handleOnClose={() => {
-          setIsResultModalVisible(false);
-        }}
-        handleRetry={() => {
-          setCorrectCount(0);
-          setIncorrectCount(0);
-          getQuizAndQuestionDetails();
-          setIsResultModalVisible(false);
-        }}
-        handleHome={() => {
-          navigation.goBack();
-        }}
-      />
+                        // style={{
+                        //   width: 25,
+                        //   height: 25,
+                        //   padding: 2,
 
-      {/* Result Modal */}
-      <AttemptLimitModal
-        isModalVisible={isAttemptLimitModalVisible}
-        attemptsLeftCount={attempted}
-        handleOnClose={() => {
-          setIsResultModalVisible(false);
-        }}
-        handleHome={() => {
-          setIsResultModalVisible(false);
-        }}
-      />
-    </SafeAreaView>
+                        //   textAlign: "center",
+                        //   marginRight: 16,
+                        //   borderRadius: 5,
+                        //   color: getOptionTextColor(item, option),
+                        //   fontFamily: "SFProDisplay-Medium",
+                        // }}
+                      >
+                        {optionIndex + 1}
+                      </Text>
+                      <Text
+                        fontFamily={"SFProDisplay-Medium"}
+                        // style={{
+                        //   color: getOptionTextColor(item, option),
+                        //   fontFamily: "SFProDisplay-Medium",
+                        // }}
+                      >
+                        {option}
+                      </Text>
+                    </Pressable>
+                  );
+                }
+              )}
+            </Box>
+          )}
+          ListFooterComponent={() => (
+            <FormButton
+              labelText="Submit"
+              style={{ margin: 10 }}
+              handleOnPress={() => {
+                // Show Result modal
+                setAttempted(attempted - 1);
+
+                if (attempted <= 0) {
+                  setisAttemptLimitModalVisible(true);
+                } else {
+                  setIsResultModalVisible(true);
+                }
+              }}
+            />
+          )}
+        />
+
+        {/* Result Modal */}
+        <ResultModal
+          isModalVisible={isResultModalVisible}
+          correctCount={correctCount}
+          incorrectCount={incorrectCount}
+          attemptsLeftCount={attempted}
+          totalCount={questions.length}
+          handleOnClose={() => {
+            setIsResultModalVisible(false);
+          }}
+          handleRetry={() => {
+            setCorrectCount(0);
+            setIncorrectCount(0);
+            getQuizAndQuestionDetails();
+            setIsResultModalVisible(false);
+          }}
+          handleHome={() => {
+            navigation.goBack();
+          }}
+        />
+
+        {/* Result Modal */}
+        <AttemptLimitModal
+          isModalVisible={isAttemptLimitModalVisible}
+          attemptsLeftCount={attempted}
+          handleOnClose={() => {
+            setIsResultModalVisible(false);
+          }}
+          handleHome={() => {
+            setIsResultModalVisible(false);
+          }}
+        />
+      </ScrollView>
+    </Box>
   );
 };
 

@@ -3,7 +3,7 @@ import Lesson from "./LessonScreen";
 import Labtools from "./LabtoolsScreen";
 import LabtoolsDetail from "./LabtoolsDetailScreen";
 import Quiz from "./QuizSelectionScreen";
-import About from "./About";
+import About from "./AboutScreen";
 import WelcomeScreen from "./WelcomeScreen";
 import SignInScreen from "./SignIn";
 import PlayQuizScreen from "./PlayQuizScreen";

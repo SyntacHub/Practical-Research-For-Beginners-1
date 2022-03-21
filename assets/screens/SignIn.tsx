@@ -15,14 +15,13 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const screenheight = Dimensions.get("window").height;
-  const screenwidth = Dimensions.get("window").width;
+
 
   const handleOnSubmit = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     if (email != "" && password != "") {
-      LocalAuthentication.hasHardwareAsync().then;
-      LocalAuthentication.authenticateAsync({}).then;
+      // LocalAuthentication.hasHardwareAsync().then;
+      // LocalAuthentication.authenticateAsync({}).then;
       signIn(email, password);
     } else {
     }
@@ -67,14 +66,14 @@ const SignInScreen: React.FC<Props> = ({ navigation }) => {
         {/*Email*/}
         <FormInput
           placeholderText="LRN Email"
-          onChangeText={(value) => setEmail(value)}
+          onChangeText={(value: React.SetStateAction<string> ) => setEmail(value)}
           value={email}
           keyboardType={"email-address"}
         />
         {/*Password*/}
         <FormInput
           placeholderText="Password"
-          onChangeText={(value) => setPassword(value)}
+          onChangeText={(value: React.SetStateAction<string> ) => setPassword(value)}
           value={password}
           secureTextEntry={true}
         />

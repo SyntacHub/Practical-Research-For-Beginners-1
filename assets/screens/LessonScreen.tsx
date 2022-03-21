@@ -1,22 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../constants/colors";
 import React from "react";
-
-import {
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  StatusBar,
-  Image,
-  FlatList,
-  View,
-  TouchableOpacity,
-  NativeModules,
-} from "react-native";
-import { Box, Text, Icon, ScrollView, useColorMode, Row } from "native-base";
-import researchTopics from "../data/LessonsData";
-import { useTheme } from "../theme/ThemeProvider";
+import { Box, Text, Icon, ScrollView, useColorMode, Row,StatusBar} from "native-base";
 import { LessonCardImage } from "../components/svgs";
 interface Props {
   route: any;
@@ -24,7 +9,7 @@ interface Props {
 
 const LessonScreen: React.FC<Props> = ({ route }) => {
   const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
+
   const { colorMode, toggleColorMode } = useColorMode();
   const { item } = route.params;
 
@@ -92,8 +77,4 @@ const LessonScreen: React.FC<Props> = ({ route }) => {
 
 export default LessonScreen;
 
-const styles = StyleSheet.create({
-  topicImage: {
-    alignSelf: "center",
-  },
-});
+

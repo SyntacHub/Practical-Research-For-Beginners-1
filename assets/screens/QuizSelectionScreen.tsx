@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, SafeAreaView, StatusBar, TouchableOpacity, Platform, NativeModules, StyleSheet } from "react-native";
+import { StatusBar } from "react-native";
 import { Box, Text, Row, ScrollView, FlatList, Icon, Pressable, useColorMode } from "native-base";
-
 import { Feather } from "@expo/vector-icons";
 import { getQuizzes } from "../utils/database";
 import AssesmentCard from "../components/cards/AssesmentCard";
@@ -58,10 +57,6 @@ const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
             Updated on December 23, 2021
           </Text>
         </Box>
-        <AssesmentCard item={undefined} />
-        <Text fontFamily={"SFProDisplay-Bold"} fontSize={15} paddingTop={7}>
-          All Research Assesments
-        </Text>
 
         {/* Quiz list */}
         <FlatList
@@ -87,17 +82,7 @@ const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
                   {quiz.title}
                 </Text>
                 {quiz.description != "" ? (
-                  <Text
-                    mt={2}
-                    fontFamily={"SFProDisplay-Medium"}
-                    fontSize={"xs"}
-                    // style={{
-                    //   opacity: 0.8,
-                    //   marginTop: 5,
-                    //   fontFamily: "SFProDisplay-Medium",
-                    //   color: colors.heading5,
-                    // }}
-                  >
+                  <Text mt={2} fontFamily={"SFProDisplay-Medium"} fontSize={"xs"}>
                     {quiz.description}
                   </Text>
                 ) : null}
@@ -106,12 +91,8 @@ const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
                 paddingY={2}
                 paddingX={8}
                 borderRadius={"2xl"}
-                style={{
-                  paddingVertical: 10,
-                  paddingHorizontal: 30,
-                  borderRadius: 50,
-                  backgroundColor: colors.primarygreen + "20",
-                }}
+                _dark={{ backgroundColor: "emerald.800" }}
+                _light={{ backgroundColor: "emerald.300" }}
                 onPress={() => {
                   {
                     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -122,10 +103,9 @@ const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
                 }}
               >
                 <Text
-                  style={{
-                    color: colors.primarygreen,
-                    fontFamily: "SFProDisplay-Black",
-                  }}
+                  _dark={{ color: "emerald.300" }}
+                  _light={{ color: "emerald.800" }}
+                  fontFamily={"SFProDisplay-Bold"}
                 >
                   Play
                 </Text>
