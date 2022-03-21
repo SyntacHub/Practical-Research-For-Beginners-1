@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StatusBar,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-  Platform,
-  NativeModules,
-  StyleSheet,
-} from "react-native";
+import { View, SafeAreaView, StatusBar, TouchableOpacity, Platform, NativeModules, StyleSheet } from "react-native";
+import { Box, Text, Row, ScrollView, FlatList, Icon, Pressable, useColorMode } from "native-base";
 
 import { Feather } from "@expo/vector-icons";
 import { getQuizzes } from "../utils/database";
@@ -20,21 +10,22 @@ import * as Haptics from "expo-haptics";
 interface Props {
   navigation: any;
 }
-const Quiz: React.FC<Props> = ({ navigation }) => {
+const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const { colors, isDark } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const getAllQuizzes = async () => {
     setRefreshing(true);
     const quizzes = await getQuizzes();
 
     // Transform quiz data
-    let tempQuizzes = [];
+    let tempQuizzes: { id: string }[] = [];
     await quizzes.docs.forEach(async (quiz) => {
       await tempQuizzes.push({ id: quiz.id, ...quiz.data() });
     });
-    await setAllQuizzes([...tempQuizzes]);
+    setAllQuizzes([...tempQuizzes]);
 
     setRefreshing(false);
   };
@@ -42,76 +33,33 @@ const Quiz: React.FC<Props> = ({ navigation }) => {
   useEffect(() => {
     getAllQuizzes();
   }, []);
-  const { StatusBarManager } = NativeModules;
-  const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: colors.background,
-      }}
-    >
-      <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"} />
+    <Box safeAreaTop flex={1} _light={{ backgroundColor: "muted.100" }} _dark={{ backgroundColor: "gray.900" }}>
+      <StatusBar animated barStyle={colorMode === "dark" ? "light-content" : "dark-content"} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
-        style={{ marginLeft: 25, marginRight: 25 }}
+        _light={{ backgroundColor: "muted.100" }}
+        _dark={{ backgroundColor: "gray.900" }}
+        width={"90%"}
+        mx={"auto"}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 15,
-          }}
-        >
-          <TouchableOpacity>
-            <Feather
-              name="arrow-left"
-              size={24}
-              style={{ color: colors.text }}
-              onPress={() => {
-                {
-                  navigation.goBack();
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-                }
-              }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Feather name="info" size={24} style={{ color: colors.text }} />
-          </TouchableOpacity>
-        </View>
+        <Row justifyContent={"space-between"} paddingY={4}>
+          <Icon as={Feather} name="arrow-left" size={6} onPress={() => navigation.goBack()} />
+          <Icon as={Feather} name="info" size={6} onPress={() => navigation.goBack()} />
+        </Row>
 
-        <View style={styles.textGreetingWrapper}>
-          <Text
-            style={{
-              fontFamily: "SFProDisplay-Bold",
-              color: colors.text,
-              fontSize: 30,
-            }}
-          >
-            Research Assesments{" "}
+        <Box py={2}>
+          <Text fontFamily={"SFProDisplay-Bold"} fontSize={"3xl"}>
+            Research Assesments
           </Text>
-          <Text
-            style={{
-              fontFamily: "SFProDisplay-Medium",
-              fontSize: 18,
-              color: colors.text,
-            }}
-          >
+          <Text fontFamily={"SFProDisplay-Medium"} fontSize={"md"}>
             Updated on December 23, 2021
           </Text>
-        </View>
-        <AssesmentCard />
-        <Text
-          style={{
-            fontFamily: "SFProDisplay-Bold",
-            fontSize: 18,
-            marginTop: 15,
-            color: colors.text,
-          }}
-        >
+        </Box>
+        <AssesmentCard item={undefined} />
+        <Text fontFamily={"SFProDisplay-Bold"} fontSize={15} paddingTop={7}>
           All Research Assesments
         </Text>
 
@@ -125,43 +73,39 @@ const Quiz: React.FC<Props> = ({ navigation }) => {
             paddingVertical: 10,
           }}
           renderItem={({ item: quiz }) => (
-            <View
-              style={{
-                padding: 20,
-                borderRadius: 5,
-                marginVertical: 5,
-
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                backgroundColor: colors.elevated,
-                elevation: 2,
-              }}
+            <Row
+              padding={4}
+              borderRadius={"xl"}
+              my={2}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+              _light={{ backgroundColor: "gray.200" }}
+              _dark={{ backgroundColor: "gray.800" }}
             >
-              <View style={{ flex: 1, paddingRight: 10 }}>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    color: colors.text,
-                    fontFamily: "SFProDisplay-Bold",
-                  }}
-                >
+              <Box flex={1}>
+                <Text fontSize={"lg"} fontFamily={"SFProDisplay-Bold"}>
                   {quiz.title}
                 </Text>
                 {quiz.description != "" ? (
                   <Text
-                    style={{
-                      opacity: 0.8,
-                      marginTop: 5,
-                      fontFamily: "SFProDisplay-Medium",
-                      color: colors.heading5,
-                    }}
+                    mt={2}
+                    fontFamily={"SFProDisplay-Medium"}
+                    fontSize={"xs"}
+                    // style={{
+                    //   opacity: 0.8,
+                    //   marginTop: 5,
+                    //   fontFamily: "SFProDisplay-Medium",
+                    //   color: colors.heading5,
+                    // }}
                   >
                     {quiz.description}
                   </Text>
                 ) : null}
-              </View>
-              <TouchableOpacity
+              </Box>
+              <Pressable
+                paddingY={2}
+                paddingX={8}
+                borderRadius={"2xl"}
                 style={{
                   paddingVertical: 10,
                   paddingHorizontal: 30,
@@ -185,26 +129,13 @@ const Quiz: React.FC<Props> = ({ navigation }) => {
                 >
                   Play
                 </Text>
-              </TouchableOpacity>
-            </View>
+              </Pressable>
+            </Row>
           )}
         />
       </ScrollView>
-    </SafeAreaView>
+    </Box>
   );
 };
 
-const styles = StyleSheet.create({
-  textGreetingWrapper: {
-    paddingTop: Platform.OS === "ios" ? 20 : 15,
-  },
-
-  modalContainer: {
-    flex: 1,
-    padding: 24,
-    justifyContent: "center",
-    backgroundColor: "grey",
-  },
-});
-
-export default Quiz;
+export default QuizSelectionScreen;
