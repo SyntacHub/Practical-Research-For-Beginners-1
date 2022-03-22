@@ -1,9 +1,9 @@
 import React from "react";
-import {  TouchableOpacity,Modal } from "react-native";
+import { TouchableOpacity, Modal } from "react-native";
 import Colors from "../../constants/colors";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-import {Box,Text} from 'native-base';
+import { Box, Text, Row } from "native-base";
 
 const ResultModal = ({
   isModalVisible,
@@ -14,9 +14,16 @@ const ResultModal = ({
   handleRetry,
   attemptsLeftCount,
   handleHome,
+}: {
+  isModalVisible: boolean;
+  correctCount: number;
+  totalCount: number;
+  incorrectCount: number;
+  handleOnClose: any;
+  handleRetry: any;
+  attemptsLeftCount: number;
+  handleHome: any;
 }) => {
-
-  console.log(totalCount);
   return (
     <Modal
       animationType={"slide"}
@@ -25,51 +32,36 @@ const ResultModal = ({
       visible={isModalVisible}
       onRequestClose={handleOnClose}
     >
-      <Box
-        style={{
-          flex: 1,
-          backgroundColor: Colors.black + "90",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          style={{
-        
-            width: "90%",
-            borderRadius: 10,
-            padding: 40,
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontSize: 28,  fontFamily: "SFProDisplay-Bold", justifyContent: "center" }}>
+      <Box flex={1} backgroundColor={Colors.white} justifyContent={"center"} alignItems={"center"}>
+        <Box width={"90%"} borderRadius={"xl"} padding={12}>
+          <Text fontSize={"2xl"} fontFamily={"SFProDisplay-Bold"} textAlign={"center"}>
             Assesment Results
           </Text>
-          <Box
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box style={{ alignItems: "center", padding: 20 }}>
-              <Text style={{ color: Colors.success, fontSize: 30, fontFamily: "SFProDisplay-Bold" }}>
+          <Row alignItems={"center"} justifyContent={"center"}>
+            <Box alignItems={"center"} padding={10}>
+              <Text color={Colors.success} fontSize={"2xl"} fontFamily={"SFProDisplay-Bold"}>
                 {correctCount}
               </Text>
-              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold",  }}>Correct</Text>
+              <Text fontFamily={"SFProDisplay-Bold"} fontSize={"md"}>
+                Correct
+              </Text>
             </Box>
-            <Box style={{ alignItems: "center", padding: 20 }}>
-              <Text style={{ color: Colors.error, fontSize: 30, fontFamily: "SFProDisplay-Bold" }}>
+            <Box alignItems={"center"} padding={3}>
+              <Text fontSize={"2xl"} fontFamily={"SFProDisplay-Bold"} color={Colors.error}>
                 {incorrectCount}
               </Text>
-              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold" }}>Incorrect</Text>
-              <Text style={{ color: Colors.success, fontSize: 30, fontFamily: "SFProDisplay-Bold" }}>
+              <Text fontSize={"md"} fontFamily={"SFProDisplay-Bold"}>
+                Incorrect
+              </Text>
+              <Text fontSize={"2xl"} fontFamily={"SFProDisplay-Bold"}>
                 {(correctCount / totalCount) * 100 + "%"}
               </Text>
-              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold" }}>Percentage</Text>
+              <Text fontSize={"md"} fontFamily={"SFProDisplay-Bold"}>
+                Percentage
+              </Text>
             </Box>
-          </Box>
-          <Text style={{ opacity: 0.8, fontFamily: "SFProDisplay-Medium" }}>
+          </Row>
+          <Text textAlign={"center"} fontFamily={"SFProDisplay-Bold"}>
             {attemptsLeftCount} Attempts Left
           </Text>
 

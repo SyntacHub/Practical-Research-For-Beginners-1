@@ -2,10 +2,10 @@ import React from "react";
 import { Modal, TouchableOpacity } from "react-native";
 import Colors from "../../constants/colors";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import {Box,Text} from 'native-base';
+import { Box, Text } from "native-base";
 
-const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, handleHome }) => {
 
+const AttemptLimitModal = ({ isModalVisible , handleOnClose, attemptsLeftCount, handleHome }:{isModalVisible:any,handleOnClose:any,attemptsLeftCount:any,handleHome:any}) => {
   return (
     <Modal
       animationType={"slide"}
@@ -14,41 +14,35 @@ const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, h
       visible={isModalVisible}
       onRequestClose={handleOnClose}
     >
-      <Box
-        style={{
-          flex: 1,
-          backgroundColor: Colors.black + "90",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Box flex={1} backgroundColor={Colors.black + "90"} justifyContent={"center"} alignItems={"center"}>
         <Box
-          style={{
-            width: "90%",
-            borderRadius: 10,
-            padding: 40,
-            alignItems: "center",
-          }}
+          width={"90%"}
+          borderRadius={"xl"}
+          padding={4}
+          alignItems={"center"}
+          // style={{
+          //   width: "90%",
+          //   borderRadius: 10,
+          //   padding: 40,
+          //   alignItems: "center",
+          // }}
         >
           <Text
-            style={{
-              fontSize: 28,
-              color: Colors.black,
-              fontFamily: "SFProDisplay-Bold",
-              justifyContent: "center",
-              textAlign: "center",
-            }}
+            fontFamily={"SFProDisplay-Bold"}
+            justifyContent={"center"}
+            textAlign={'center'}
+            // style={{
+            //   fontSize: 28,
+            //   color: Colors.black,
+            //   fontFamily: "SFProDisplay-Bold",
+            //   justifyContent: "center",
+            //   textAlign: "center",
+            // }}
           >
             Attempt Limit Reached!
           </Text>
-          <Box
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          ></Box>
-          <Text style={{ opacity: 0.8, fontFamily: "SFProDisplay-Medium" }}>{attemptsLeftCount} Attempts Left</Text>
+          
+          <Text fontFamily={"SFProDisplay-Medium"} >{attemptsLeftCount} Attempts Left</Text>
 
           {/* Try agian */}
 
@@ -68,12 +62,15 @@ const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, h
           >
             <MaterialIcons name="home" style={{ color: Colors.primary }} />
             <Text
-              style={{
-                textAlign: "center",
-                color: Colors.primary,
-                marginLeft: 10,
-                fontFamily: "SFProDisplay-Medium",
-              }}
+            textAlign={'center'}
+            ml={1}
+            fontFamily={"SFProDisplay-Medium"}
+              // style={{
+              //   textAlign: "center",
+              //   color: Colors.primary,
+              //   marginLeft: 10,
+              //   fontFamily: "SFProDisplay-Medium",
+              // }}
             >
               Go Home
             </Text>
