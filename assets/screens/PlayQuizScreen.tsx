@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Row, Icon, ScrollView, useColorMode, StatusBar, Text, Image, FlatList, Pressable } from "native-base";
-import Colors from "../constants/colors";
+import { Box, Row, Icon, ScrollView, useColorMode, StatusBar, Text, Image, FlatList, Pressable} from "native-base";
 import { getQuestionsByQuizId, getQuizById } from "../utils/database";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FormButton from "../components/buttons/FormButton";

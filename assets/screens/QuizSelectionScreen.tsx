@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { StatusBar } from "react-native";
-import { Box, Text, Row, ScrollView, FlatList, Icon, Pressable, useColorMode } from "native-base";
+import { Box, Text, Row, ScrollView, FlatList, Icon, Pressable, useColorMode,StatusBar } from "native-base";
 import { Feather } from "@expo/vector-icons";
 import { getQuizzes } from "../utils/database";
-import AssesmentCard from "../components/cards/AssesmentCard";
-import { useTheme } from "../theme/ThemeProvider";
 import * as Haptics from "expo-haptics";
 interface Props {
   navigation: any;
@@ -12,7 +9,6 @@ interface Props {
 const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const { colors, isDark } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
 
   const getAllQuizzes = async () => {

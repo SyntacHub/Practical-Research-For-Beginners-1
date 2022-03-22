@@ -1,7 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { FlatList, TouchableOpacity, StatusBar } from "react-native";
-import { Box, Text, Row, ScrollView, Column, Icon, useColorMode } from "native-base";
+import { FlatList, TouchableOpacity} from "react-native";
+import { Box, Text, Row, ScrollView, Column, Icon, useColorMode,StatusBar } from "native-base";
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
 import ResearchAssistantCard from "../components/cards/AssistantCardMenu";

@@ -1,9 +1,9 @@
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React  from "react";
 
-import { Platform, FlatList, TouchableOpacity, StatusBar, StyleSheet, NativeModules } from "react-native";
-import { Box, Text, Row, Icon, ScrollView, Column, useColorMode } from "native-base";
+import {  FlatList, TouchableOpacity, StyleSheet, NativeModules } from "react-native";
+import { Box, Text, Row, Icon, ScrollView, Column, useColorMode ,StatusBar} from "native-base";
 import Colors from "../constants/colors";
 import LabToolsCard from "../components/cards/LabtoolsCard";
 import LabToolsData from "../data/LabToolsData";
@@ -119,4 +119,4 @@ const LabtoolsScreen: React.FC<Props> = ({ navigation }) => {
   );
 };
 export default LabtoolsScreen;
-const styles = StyleSheet.create({});
+

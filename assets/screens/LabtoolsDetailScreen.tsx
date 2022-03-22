@@ -5,8 +5,7 @@ import Snackbar from "react-native-snackbar";
 import React from "react";
 import * as Haptics from "expo-haptics";
 import AR from "../images/svgs/AR";
-import { StatusBar } from "react-native";
-import { Box, Icon, Text, ScrollView, useColorMode, Pressable } from "native-base";
+import { Box, Icon, Text, ScrollView, useColorMode, Pressable,StatusBar } from "native-base";
 import RNFS from "react-native-fs";
 import FileViewer from "react-native-file-viewer";
 
