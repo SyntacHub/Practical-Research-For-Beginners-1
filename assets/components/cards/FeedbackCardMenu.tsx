@@ -1,78 +1,54 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Dimensions, Image, Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, Linking, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Box, Text, Pressable, Icon } from "native-base";
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useTheme } from "../../theme/ThemeProvider";
-
+import * as Haptics from "expo-haptics";
 interface Props {}
 
-const FeedbackCardMenu = () => {
-  const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
-  const screenWidth = Dimensions.get("window").width;
-  let bigCardWidth = screenWidth - 40;
-  let smallCardWidth = screenWidth - 20;
-  if (screenWidth >= 768) {
-    bigCardWidth = (screenWidth - 60) / 2;
-  }
-  if (screenWidth > -1024) {
-    bigCardWidth = (screenWidth - 80) / 2;
-  }
-  if (smallCardWidth >= 768) {
-    smallCardWidth = screenWidth / 2.5;
-  }
+const FeedbackCardMenu: React.FC<Props> = () => {
   return (
-    <TouchableOpacity
-      style={{
-        backgroundColor: colors.primaryteal + "60",
-        borderRadius: 15,
-        width: screenWidth / 2.5,
-        alignSelf: "flex-start",
-        marginRight: 15,
-        paddingVertical: 15,
-        paddingHorizontal: 14,
-      }}
-      onPress={() =>
+    <Pressable
+      onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
         Linking.openURL(
           "mailto:tannyencina@gmail.com?subject=Practical Research For Beginners Feedback Report&body=My Feedback Report"
         )
-      }
+      }}
+     
+      borderRadius={"xl"}
+      paddingY={5}
+      marginRight={3}
+      paddingX={5}
+      _dark={{ backgroundColor: "teal.600" }}
+      _light={{ backgroundColor: "teal.300" }}
+      flex={1}
     >
-      <View
-        style={{
-          backgroundColor: colors.elevated,
-          height: "25%",
-          borderRadius: 20 / 2,
-          width: "30%",
-          opacity: 0.4,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Entypo name="light-bulb" size={20} style={{ color: colors.primarygreen, opacity: 1 }} />
-      </View>
+      <Box height={"20%"} borderRadius={"2xl"} width={"30%"} justifyContent={"center"} alignItems={"center"}>
+        <Icon as={Entypo} name="chat" size={7} _dark={{ color: "teal.300" }} _light={{ color: "teal.600" }} />
+      </Box>
       <Text
-        style={{
-          fontFamily: "SFProDisplay-Bold",
-          fontSize: 19,
-          marginTop: 10,
-          color: colors.primaryteal,
-        }}
+        fontFamily={"SFProDisplay-Bold"}
+        fontSize={"xl"}
+        lineHeight={25}
+        marginTop={1}
+        _dark={{ color: "teal.300" }}
+        _light={{ color: "teal.600" }}
       >
-        Feedback & Report
+        Feedback & Bug Report
       </Text>
       <Text
-        style={{
-          fontFamily: "SFProDisplay-Regular",
-          fontSize: 12,
-          marginTop: 5,
-          color: colors.heading5,
-          opacity: 0.6,
-        }}
+        fontFamily={"SFProDisplay-Regular"}
+        fontSize={"xs"}
+        lineHeight={16}
+        marginTop={2}
+        _dark={{ color: "teal.300" }}
+        _light={{ color: "teal.600" }}
       >
-        Send your feedback and reports in our email
+        Send your Feedback and Reports in our Email
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 export default FeedbackCardMenu;

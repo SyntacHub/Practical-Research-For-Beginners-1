@@ -10,7 +10,6 @@ const researchTopics = [
     id: "2",
     title: "Science Process Skills",
     courseDesc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, porro.",
-
     topicIndex: "Quarter 1 Lesson 2",
   },
 

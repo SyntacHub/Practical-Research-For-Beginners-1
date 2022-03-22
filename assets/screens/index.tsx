@@ -1,6 +1,6 @@
 import Home from "./Home";
 import Lesson from "./LessonScreen";
-import Labtools from "./LabtoolsScreen";
+import Labtools from "./LabtoolsSelectionScreen";
 import LabtoolsDetail from "./LabtoolsDetailScreen";
 import Quiz from "./QuizSelectionScreen";
 import About from "./AboutScreen";

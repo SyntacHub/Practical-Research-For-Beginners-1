@@ -1,71 +1,50 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Feather, Entypo } from "@expo/vector-icons";
-import { useTheme } from "../../theme/ThemeProvider";
 
-const FaqCardMenu = () => {
-  const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
-  const screenWidth = Dimensions.get("window").width;
-  let bigCardWidth = screenWidth - 40;
-  let smallCardWidth = screenWidth - 20;
-  if (screenWidth >= 768) {
-    bigCardWidth = (screenWidth - 60) / 2;
-  }
-  if (screenWidth > -1024) {
-    bigCardWidth = (screenWidth - 80) / 2;
-  }
-  if (smallCardWidth >= 768) {
-    smallCardWidth = screenWidth / 2.5;
-  }
+import React from "react";
+import { Entypo } from "@expo/vector-icons";
+import {Box,Text,Pressable,Icon} from 'native-base'
+
+import * as Haptics from "expo-haptics";
+interface Props{}
+
+const FaqCardMenu:React.FC<Props> = () => {
+  
   return (
-    <TouchableOpacity
-      style={{
-        backgroundColor: colors.primarypurple + "60",
-        borderRadius: 15,
-        width: screenWidth / 2.5,
-        alignSelf: "flex-start",
-        paddingVertical: 15,
-        paddingHorizontal: 14,
+    <Pressable
+      onPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       }}
-      onPress={() => navigation.navigate("Modal")}
+      borderRadius={"xl"}
+      paddingY={5}
+      marginRight={3}
+      paddingX={5}
+      _dark={{ backgroundColor: "violet.600" }}
+      _light={{ backgroundColor: "violet.300" }}
+      flex={1}
     >
-      <View
-        style={{
-          backgroundColor: colors.elevated,
-          height: "25%",
-          borderRadius: 20 / 2,
-          width: "30%",
-          opacity: 0.4,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Entypo name="chat" size={20} style={{ color: colors.primarypurple, opacity: 1 }} />
-      </View>
+      <Box height={"20%"} borderRadius={"2xl"} width={"30%"} justifyContent={"center"} alignItems={"center"}>
+        <Icon as={Entypo} name="chat" size={7} _dark={{ color: "violet.300" }} _light={{ color: "violet.600" }} />
+      </Box>
       <Text
-        style={{
-          fontFamily: "SFProDisplay-Bold",
-          fontSize: 19,
-          marginTop: 10,
-          color: colors.primarypurple,
-        }}
+        fontFamily={"SFProDisplay-Bold"}
+        fontSize={"xl"}
+        lineHeight={25}
+        marginTop={1}
+        _dark={{ color: "violet.300" }}
+        _light={{ color: "violet.600" }}
       >
-        FAQs and Queries
+        FAQs & Queries
       </Text>
       <Text
-        style={{
-          fontFamily: "SFProDisplay-Regular",
-          fontSize: 12,
-          marginTop: 5,
-          color: colors.heading5,
-          opacity: 0.6,
-        }}
+        fontFamily={"SFProDisplay-Regular"}
+        fontSize={"xs"}
+        lineHeight={16}
+        marginTop={2}
+        _dark={{ color: "violet.300" }}
+        _light={{ color: "violet.600" }}
       >
         View Frequently Asked Questions
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 export default FaqCardMenu;
