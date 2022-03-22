@@ -7,7 +7,6 @@ import useCachedResources from "./hooks/useCachedResources";
 import AppStackNavigator from "./navigation/AppStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ToastProvider } from "react-native-toast-notifications";
-import { ThemeProvider } from "./theme/ThemeProvider";
 import { NativeBaseProvider } from "native-base";
 
 const App = () => {
@@ -33,9 +32,9 @@ const App = () => {
       <SafeAreaProvider>
         <NativeBaseProvider>
           <ToastProvider>
-            <ThemeProvider>
+    
               <NavigationContainer>{currentUser ? <AppStackNavigator /> : <AuthStackNavigator />}</NavigationContainer>
-            </ThemeProvider>
+       
           </ToastProvider>
         </NativeBaseProvider>
       </SafeAreaProvider>

@@ -5,14 +5,14 @@ import {  FlatList, TouchableOpacity, StyleSheet, NativeModules } from "react-na
 import { Box, Text, Row, Icon, ScrollView, Column, useColorMode ,StatusBar} from "native-base";
 import LabToolsCard from "../components/cards/LabtoolsCard";
 import LabToolsData from "../data/LabToolsData";
-import { useTheme } from "../theme/ThemeProvider";
+
 import * as Haptics from "expo-haptics";
 interface Props {
   navigation: any;
 }
 
 const LabtoolsScreen: React.FC<Props> = ({ navigation }) => {
-  const { colors, isDark } = useTheme();
+
   const { colorMode, toggleColorMode } = useColorMode();
 
   const renderItem = ({ item }: { item: any }) => {

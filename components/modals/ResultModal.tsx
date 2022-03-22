@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, Modal, TouchableOpacity } from "react-native";
+import {  TouchableOpacity,Modal } from "react-native";
 import Colors from "../../constants/colors";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { useTheme } from "../../theme/ThemeProvider";
-import { color } from "react-native-reanimated";
+
+import {Box,Text} from 'native-base';
 
 const ResultModal = ({
   isModalVisible,
@@ -15,7 +15,7 @@ const ResultModal = ({
   attemptsLeftCount,
   handleHome,
 }) => {
-  const { colors, isDark } = useTheme();
+
   console.log(totalCount);
   return (
     <Modal
@@ -25,7 +25,7 @@ const ResultModal = ({
       visible={isModalVisible}
       onRequestClose={handleOnClose}
     >
-      <View
+      <Box
         style={{
           flex: 1,
           backgroundColor: Colors.black + "90",
@@ -33,43 +33,43 @@ const ResultModal = ({
           alignItems: "center",
         }}
       >
-        <View
+        <Box
           style={{
-            backgroundColor: colors.elevated,
+        
             width: "90%",
             borderRadius: 10,
             padding: 40,
             alignItems: "center",
           }}
         >
-          <Text style={{ fontSize: 28, color: colors.text, fontFamily: "SFProDisplay-Bold", justifyContent: "center" }}>
+          <Text style={{ fontSize: 28,  fontFamily: "SFProDisplay-Bold", justifyContent: "center" }}>
             Assesment Results
           </Text>
-          <View
+          <Box
             style={{
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
             }}
           >
-            <View style={{ alignItems: "center", padding: 20 }}>
+            <Box style={{ alignItems: "center", padding: 20 }}>
               <Text style={{ color: Colors.success, fontSize: 30, fontFamily: "SFProDisplay-Bold" }}>
                 {correctCount}
               </Text>
-              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold", color: colors.heading5 }}>Correct</Text>
-            </View>
-            <View style={{ alignItems: "center", padding: 20 }}>
+              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold",  }}>Correct</Text>
+            </Box>
+            <Box style={{ alignItems: "center", padding: 20 }}>
               <Text style={{ color: Colors.error, fontSize: 30, fontFamily: "SFProDisplay-Bold" }}>
                 {incorrectCount}
               </Text>
-              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold", color: colors.heading5 }}>Incorrect</Text>
+              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold" }}>Incorrect</Text>
               <Text style={{ color: Colors.success, fontSize: 30, fontFamily: "SFProDisplay-Bold" }}>
                 {(correctCount / totalCount) * 100 + "%"}
               </Text>
-              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold", color: colors.heading5 }}>Percentage</Text>
-            </View>
-          </View>
-          <Text style={{ opacity: 0.8, fontFamily: "SFProDisplay-Medium", color: colors.heading5 }}>
+              <Text style={{ fontSize: 16, fontFamily: "SFProDisplay-Bold" }}>Percentage</Text>
+            </Box>
+          </Box>
+          <Text style={{ opacity: 0.8, fontFamily: "SFProDisplay-Medium" }}>
             {attemptsLeftCount} Attempts Left
           </Text>
 
@@ -125,8 +125,8 @@ const ResultModal = ({
               Go Home
             </Text>
           </TouchableOpacity>
-        </View>
-      </View>
+        </Box>
+      </Box>
     </Modal>
   );
 };

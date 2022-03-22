@@ -5,7 +5,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import FormButton from "../components/buttons/FormButton";
 import ResultModal from "../components/modals/ResultModal";
 import AttemptLimitModal from "../components/modals/AttemptLimitModal";
-import { useTheme } from "../theme/ThemeProvider";
+
 import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
 import { Feather } from "@expo/vector-icons";
 interface Props {
@@ -19,7 +19,7 @@ const PlayQuizScreen: React.FC<Props> = ({ navigation, route }) => {
   const [questions, setQuestions] = useState([]);
   const [attempted, setAttempted] = useState(3);
   const [isAttemptLimitModalVisible, setisAttemptLimitModalVisible] = useState(false);
-  const { colors } = useTheme();
+
   const { colorMode } = useColorMode();
 
   const [correctCount, setCorrectCount] = useState(0);

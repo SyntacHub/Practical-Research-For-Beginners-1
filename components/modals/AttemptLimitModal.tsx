@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text, Modal, TouchableOpacity } from "react-native";
+import { Modal, TouchableOpacity } from "react-native";
 import Colors from "../../constants/colors";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { useTheme } from "../../theme/ThemeProvider";
+import {Box,Text} from 'native-base';
 
 const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, handleHome }) => {
-  const { colors, isDark } = useTheme();
+
   return (
     <Modal
       animationType={"slide"}
@@ -14,7 +14,7 @@ const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, h
       visible={isModalVisible}
       onRequestClose={handleOnClose}
     >
-      <View
+      <Box
         style={{
           flex: 1,
           backgroundColor: Colors.black + "90",
@@ -22,9 +22,8 @@ const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, h
           alignItems: "center",
         }}
       >
-        <View
+        <Box
           style={{
-            backgroundColor: colors.background,
             width: "90%",
             borderRadius: 10,
             padding: 40,
@@ -42,13 +41,13 @@ const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, h
           >
             Attempt Limit Reached!
           </Text>
-          <View
+          <Box
             style={{
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
             }}
-          ></View>
+          ></Box>
           <Text style={{ opacity: 0.8, fontFamily: "SFProDisplay-Medium" }}>{attemptsLeftCount} Attempts Left</Text>
 
           {/* Try agian */}
@@ -79,8 +78,8 @@ const AttemptLimitModal = ({ isModalVisible, handleOnClose, attemptsLeftCount, h
               Go Home
             </Text>
           </TouchableOpacity>
-        </View>
-      </View>
+        </Box>
+      </Box>
     </Modal>
   );
 };

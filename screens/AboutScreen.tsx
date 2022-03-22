@@ -5,7 +5,6 @@ import { Box, Text, Icon, FlatList, Row, Column, ScrollView, useColorMode, Statu
 import AboutCard from "../components/cards/AboutCard";
 import Acknowledgements from "../data/AcknowledgementsData";
 import Others from "../data/OthersData";
-import { useTheme } from "../theme/ThemeProvider";
 import FeedbackCardMenu from "../components/cards/FeedbackCardMenu";
 import FaqCardMenu from "../components/cards/FaqCardMenu";
 
@@ -13,7 +12,6 @@ interface Props {}
 
 const About: React.FC<Props> = () => {
   const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
 
   const renderItem = ({ item }: { item: any }) => {
@@ -155,10 +153,10 @@ const About: React.FC<Props> = () => {
               <FlatList data={Others} renderItem={renderOthersItem} keyExtractor={(item) => item.id} />
             </Box>
             <Box style={{ alignItems: "center", paddingVertical: 30 }}>
-              <Text style={{ color: colors.text, fontFamily: "SFProDisplay-Bold", opacity: 0.5 }}>
+              <Text fontFamily={'SFProDisplay-Bold'} fontSize={"xl"}>
                 Iligan City National High School
               </Text>
-              <Text style={{ color: colors.text, fontFamily: "SFProDisplay-Bold", opacity: 0.3 }}>Copyright 2022</Text>
+              <Text fontFamily={'SFProDisplay-Bold'} fontSize={"md"}>Copyright 2022</Text>
             </Box>
           </Box>
         </Box>

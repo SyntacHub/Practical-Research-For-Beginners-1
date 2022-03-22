@@ -1,29 +1,23 @@
 import { Feather, Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, View, Image } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Box, Text, Row, ScrollView } from "native-base";
 import Colors from "../../constants/colors";
-
-import { useTheme } from "../../theme/ThemeProvider";
 
 const EULAModal = (props: any) => {
   const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: colors.elevated,
-        alignItems: "center",
-        justifyContent: "flex-start",
-        paddingHorizontal: 30,
-      }}
+    <Box
+      flex={1}
+      alignItems={"center"}
+      paddingX={2}
+      _light={{ backgroundColor: "gray.200" }}
+      _dark={{ backgroundColor: "gray.800" }}
     >
       <ScrollView>
-        <View
+        <Box
           style={{
             alignItems: "center",
             flexDirection: "column",
@@ -34,7 +28,6 @@ const EULAModal = (props: any) => {
               fontFamily: "SFProDisplay-Bold",
               fontSize: 30,
               marginTop: 50,
-              color: colors.text,
             }}
           >
             End User
@@ -45,7 +38,6 @@ const EULAModal = (props: any) => {
               fontFamily: "SFProDisplay-Bold",
               textAlign: "center",
               fontSize: 30,
-              color: colors.text,
             }}
           >
             Licence Agreement
@@ -66,11 +58,7 @@ const EULAModal = (props: any) => {
             DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
             CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           </Text>
-          <TouchableOpacity
-            onPress={() => {
-              
-            }}
-          >
+          <TouchableOpacity onPress={() => {}}>
             <Text
               style={{
                 paddingHorizontal: 30,
@@ -86,9 +74,9 @@ const EULAModal = (props: any) => {
               I Understand{" "}
             </Text>
           </TouchableOpacity>
-        </View>
+        </Box>
       </ScrollView>
-    </View>
+    </Box>
   );
 };
 export default EULAModal;

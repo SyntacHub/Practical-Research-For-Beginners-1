@@ -9,7 +9,7 @@ import { Box, Icon, Text, ScrollView, useColorMode, Pressable,StatusBar } from "
 import RNFS from "react-native-fs";
 import FileViewer from "react-native-file-viewer";
 
-import { useTheme } from "../theme/ThemeProvider";
+
 import { LessonCardImage } from "../components/svgs";
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
 
 const LabtoolsDetail: React.FC<Props> = ({ route }) => {
   const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
+
   const { item } = route.params;
   const { colorMode, toggleColorMode } = useColorMode();
 

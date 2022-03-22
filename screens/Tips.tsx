@@ -14,20 +14,20 @@ import {
   NativeModules,
 } from "react-native";
 import Colors from "../constants/colors";
-import { useTheme } from "../theme/ThemeProvider";
+
 
 const Tips: React.FC<{}> = () => {
   const navigation = useNavigation<any>();
-  const { colors, isDark } = useTheme();
+
   
   return (
-    <SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
+    <SafeAreaView style={{  flex: 1 }}>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
-        style={{ backgroundColor: colors.background }}
+
       >
-        <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"} />
+        {/* <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"} /> */}
         {/* Header */}
         <View
           style={{
@@ -43,7 +43,7 @@ const Tips: React.FC<{}> = () => {
                 justifyContent: "space-between",
               }}
             >
-              <Feather name="menu" size={24} style={{ color: colors.text }} onPress={() => navigation.openDrawer()} />
+              <Feather name="menu" size={24}  onPress={() => navigation.openDrawer()} />
             </View>
 
             <View style={styles.textGreetingWrapper}>
@@ -51,7 +51,7 @@ const Tips: React.FC<{}> = () => {
               <Text
                 style={{
                   fontFamily: "SFProDisplay-Bold",
-                  color: colors.text,
+               
                   fontSize: 35,
                 }}
               >
