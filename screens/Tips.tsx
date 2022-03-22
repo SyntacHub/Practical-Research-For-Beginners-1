@@ -14,8 +14,6 @@ import {
   NativeModules,
 } from "react-native";
 import Colors from "../constants/colors";
-
-import TipsCard from "../components/cards/TipsCard";
 import { useTheme } from "../theme/ThemeProvider";
 
 const Tips: React.FC<{}> = () => {

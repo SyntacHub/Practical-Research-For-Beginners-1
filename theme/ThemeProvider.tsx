@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useColorScheme } from "react-native-appearance";
-import { lightColors, darkColors, Colors } from "../theme/ColorThemes";
+import { lightColors, darkColors, Colors } from "./ColorThemes";
 
 export interface Theme {
   isDark: boolean;

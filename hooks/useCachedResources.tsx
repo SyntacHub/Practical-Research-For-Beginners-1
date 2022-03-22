@@ -15,12 +15,12 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Feather.font,
-          "SFProDisplay-Regular": require("../fonts/SFProDisplay-Regular.ttf"),
-          "SFProDisplay-Bold": require("../fonts/SFProDisplay-Bold.ttf"),
-          "SFProDisplay-Medium": require("../fonts/SFProDisplay-Medium.ttf"),
-          "SFProDisplay-Black": require("../fonts/SFProDisplay-Black.ttf"),
-          "Poppins-Light": require("../fonts/Poppins-Light.ttf"),
-          "Poppins-SemiBold": require("../fonts/Poppins-SemiBold.ttf"),
+          "SFProDisplay-Regular": require("../assets/fonts/SFProDisplay-Regular.ttf"),
+          "SFProDisplay-Bold": require("../assets/fonts/SFProDisplay-Bold.ttf"),
+          "SFProDisplay-Medium": require("../assets/fonts/SFProDisplay-Medium.ttf"),
+          "SFProDisplay-Black": require("../assets/fonts/SFProDisplay-Black.ttf"),
+          "Poppins-Light": require("../assets/fonts/Poppins-Light.ttf"),
+          "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

@@ -1,7 +1,6 @@
 // Light theme colors
 export const lightColors = {
   greeting: "Good Morning",
-  image_background: require("../images/daybg.jpg"),
   background: "#FFFFFF",
   primarygreen: "#3E6647",
   secondarygreen: "#5E7D1D",
@@ -17,7 +16,7 @@ export const lightColors = {
 // Dark theme colors
 export const darkColors = {
   greeting: "Good Night",
-  image_background: require("../images/nightbg.jpg"),
+
   background: "#131219",
   primarygreen: "#4E8D5C",
   secondarygreen: "#7E9E3C",

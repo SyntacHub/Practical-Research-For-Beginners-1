@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, BackHandler, Image, StyleSheet, Text, TouchableOpacity, Dimensions, View } from "react-native";
+import { Alert,Image, StyleSheet, Text, TouchableOpacity, Dimensions, View } from "react-native";
 import Colors from "../../constants/colors";
 
 interface Props {}
@@ -50,7 +50,7 @@ const AboutCard: React.FC<Props> = () => {
         </View>
         <Image
           style={{ borderRadius: 20, flex: 1 }}
-          source={require("../../images/app_icon.png")}
+          source={require("../../assets/images/app_icon.png")}
           resizeMode="contain"
         />
       </View>

@@ -2,7 +2,7 @@ import React from "react";
 import * as Icon from "react-native-feather";
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import { Home, Quiz, Tips, About, Lesson, Labtools, LabtoolsDetail, PlayQuizScreen } from "../screens";
-import { RootStackParamList } from "../../types";
+import { RootStackParamList } from "../types";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "../components/Sidebar";
 

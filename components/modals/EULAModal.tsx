@@ -68,7 +68,7 @@ const EULAModal = (props: any) => {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              set;
+              
             }}
           >
             <Text

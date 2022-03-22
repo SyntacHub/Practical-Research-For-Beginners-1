@@ -1,13 +1,13 @@
 import "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import AuthStackNavigator from "./assets/routes/AuthStackNavigator";
+import AuthStackNavigator from "./navigation/AuthStackNavigator";
 import auth from "@react-native-firebase/auth";
-import useCachedResources from "./assets/hooks/useCachedResources";
-import AppStackNavigator from "./assets/routes/AppStackNavigator";
+import useCachedResources from "./hooks/useCachedResources";
+import AppStackNavigator from "./navigation/AppStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ToastProvider } from "react-native-toast-notifications";
-import { ThemeProvider } from "./assets/theme/ThemeProvider";
+import { ThemeProvider } from "./theme/ThemeProvider";
 import { NativeBaseProvider } from "native-base";
 
 const App = () => {

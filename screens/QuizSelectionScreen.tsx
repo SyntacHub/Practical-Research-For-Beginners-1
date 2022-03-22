@@ -9,7 +9,7 @@ interface Props {
 const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   const getAllQuizzes = async () => {
     setRefreshing(true);
@@ -60,9 +60,7 @@ const QuizSelectionScreen: React.FC<Props> = ({ navigation }) => {
           onRefresh={getAllQuizzes}
           refreshing={refreshing}
           showsVerticalScrollIndicator={false}
-          style={{
-            paddingVertical: 10,
-          }}
+          
           renderItem={({ item: quiz }) => (
             <Row
               padding={4}

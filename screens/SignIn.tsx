@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, SafeAreaView, ImageBackground, Dimensions, StyleSheet, StatusBar, Image } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, StatusBar, } from "react-native";
 import FormButton from "../components/buttons/FormButton";
 import FormInput from "../components/inputs/FormInput";
-import { Colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { signIn } from "../utils/auth";
-import * as LocalAuthentication from "expo-local-authentication";
+
 import * as Haptics from "expo-haptics";
 interface Props {
   navigation: any;

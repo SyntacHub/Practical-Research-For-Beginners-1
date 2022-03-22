@@ -1,26 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
-import { TouchableOpacity, StatusBar, StyleSheet, SafeAreaView, Text, View, Dimensions, Image } from "react-native";
+import React from "react";
+import { TouchableOpacity, StatusBar, SafeAreaView, Text, View, Image } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import * as Haptics from "expo-haptics";
 
 interface Props {}
 const WelcomeScreen: React.FC<Props> = () => {
-  const imagebg = require("../images/onboarding/heder.png");
   const navigation = useNavigation<any>();
-  const screenheight = Dimensions.get("window").height;
-  const screenwidth = Dimensions.get("window").width;
 
   return (
     <SafeAreaView style={{ backgroundColor: "#131219", flex: 1, justifyContent: "center" }}>
       <StatusBar animated barStyle={"light-content"} />
       <View style={{ paddingTop: 15, paddingHorizontal: 21 }}>
-        <Image
-          source={imagebg}
-          width={10}
-          resizeMode="contain"
-          style={{ aspectRatio: 1.6, alignSelf: "center", flex: 1 }}
-        />
         <Text
           style={{
             color: "white",

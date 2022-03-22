@@ -1,10 +1,8 @@
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import React  from "react";
-
 import {  FlatList, TouchableOpacity, StyleSheet, NativeModules } from "react-native";
 import { Box, Text, Row, Icon, ScrollView, Column, useColorMode ,StatusBar} from "native-base";
-import Colors from "../constants/colors";
 import LabToolsCard from "../components/cards/LabtoolsCard";
 import LabToolsData from "../data/LabToolsData";
 import { useTheme } from "../theme/ThemeProvider";
