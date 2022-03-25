@@ -1,13 +1,15 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { FlatList, TouchableOpacity} from "react-native";
-import { Box, Text, Row, ScrollView, Column, Icon, useColorMode,StatusBar } from "native-base";
+import { FlatList, TouchableOpacity } from "react-native";
+import { Box, Text, Row, ScrollView, Column, Icon, useColorMode, StatusBar } from "native-base";
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
 import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
 import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
 
 import * as Haptics from "expo-haptics";
+import BaseScreen from "../components/BaseScreen";
+import ScreenHeader from "../components/header/ScreenHeader";
 
 interface Props {
   route: any;
@@ -79,35 +81,19 @@ const Home: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <Box safeAreaTop flex={1} _light={{ backgroundColor: "muted.100" }} _dark={{ backgroundColor: "gray.900" }}>
+    <BaseScreen>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
         _light={{ backgroundColor: "muted.100" }}
         _dark={{ backgroundColor: "gray.900" }}
       >
-        <StatusBar animated barStyle={colorMode === "dark" ? "light-content" : "dark-content"} />
-        <Box width={"90%"} mx={"auto"} my={4}>
-          <Box
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Icon as={Feather} name="menu" size={"md"} onPress={() => navigation.openDrawer()} />
-          </Box>
-
-          <Box paddingTop={2}>
-            <Text fontFamily={"SFProDisplay-Medium"} fontSize={"lg"}>
-              Practical Research Grade 7
-            </Text>
-            <Text fontFamily={"SFProDisplay-Bold"} fontSize={"4xl"}>
-              Lesson Dashboard
-            </Text>
-          </Box>
-
-          {/* Content */}
+        <Box width={"90%"} mx={"auto"} my={3}>
+          <ScreenHeader
+            title="Practical Research Grade 7"
+            leftButtonOptions={{ type: "drawer" }}
+            secondary_title={"Lesson Dashboard"}
+          />
 
           <HomeCard />
           <Row flex={1} paddingY={3}>
@@ -121,7 +107,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
           <FlatList data={researchTopics} renderItem={ItemMenu} keyExtractor={(item) => item.id} />
         </Box>
       </ScrollView>
-    </Box>
+    </BaseScreen>
   );
 };
 

@@ -110,7 +110,7 @@ const About: React.FC<Props> = () => {
         <StatusBar animated barStyle={colorMode === "dark" ? "light-content" : "dark-content"} />
         {/* Header */}
         <Box width={"90%"} mx={"auto"}>
-          <Icon as={Feather} name="menu" size={"md"} onPress={() => navigation.openDrawer()} />
+          <Icon as={Feather} name="menu" size={7} onPress={() => navigation.openDrawer()} />
           <Box paddingY={5}>
             <Text fontFamily={"SFProDisplay-Bold"} fontSize={"4xl"}>
               About Us
