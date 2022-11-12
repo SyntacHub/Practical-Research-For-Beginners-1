@@ -1,213 +1,116 @@
-import { Feather} from "@expo/vector-icons";
-import React, { useState,useEffect} from "react";
-import {
-	Platform,
-	SafeAreaView,
-	ScrollView,
-	FlatList,
-	TouchableOpacity,
-	StatusBar,
-	StyleSheet,
-	Text,
-	View,
-	NativeModules,
-	Dimensions,
-	AsyncStorage,
-} from "react-native";
-import Colors from "../constants/colors";
-
-import * as Haptics from 'expo-haptics';
+import { Feather } from "@expo/vector-icons";
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import { Text, FlatList, Box, ScrollView, Row, Column } from "native-base";
+import * as Haptics from "expo-haptics";
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
-import ResearchAssistantCard from "../components/cards/AssistantCardMenu";
-import LabtoolsCard from "../components/cards/LabtoolsCardMenu";
-import { useTheme } from "../theme/ThemeProvider";
-import { useToast } from "react-native-toast-notifications";
-
 interface Props {
 	route: any;
-	navigation:any;
+	navigation: any;
 }
 
-
-const Home:React.FC<Props>  = ({navigation}) => {
-	const [refreshing, setRefreshing] = useState(false);
-	const { colors, isDark } = useTheme();
-	const toast = useToast();
-	const [isWhatsNewModalVisible, setWhatsNewModalVisible] = useState("");
-
-	useEffect(() => {
-		navigation.navigate("Modal")
-		
-		
-    
-  }, []);
-
-	
-
-	
-	
+const Home: React.FC<Props> = ({ navigation }) => {
 	const renderItem = ({ item }: { item: any }) => {
 		return (
 			<TouchableOpacity
 				key={item.id}
-				onPress={() =>{
-					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+				onPress={() => {
+					Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 					navigation.navigate("Lesson", {
 						item: item,
-					})
+					});
 				}}
 			>
-				<View
-					style={{
-						flex: 1,
-						paddingHorizontal: 20,
-						paddingVertical: 15,
-						justifyContent:'center',
-						backgroundColor: colors.elevated,
-						borderRadius: 11,
-						marginVertical: 8,
-					}}
+				<Box
+					flex={1}
+					px={4}
+					py={3}
+					justifyContent="center"
+					borderRadius={10}
+					my={2}
+					bgColor={"light.100"}
 				>
-					<View
-						style={{
-							flexDirection: "row",
-							justifyContent: "space-between",
-							alignItems: "center",
-						}}
+					<Column
+						justifyContent={"space-between"}
+						alignItems={"center"}
+						space={4}
 					>
-						<View style={{ flexDirection: "row",justifyContent:'center',alignItems:'center' }}>
-							<View
-								style={{
-									backgroundColor: colors.primarygreen + "20",
-									borderRadius: 10,
-									padding:15,
-									justifyContent: "center",
-									alignItems: "center",
-									marginVertical: 7,
-								}}
-							>
-								<Feather
-									style={{
-										color: colors.primarygreen,
-									}}
-									name="book"
-									size={25}
-								/>
-							</View>
-
-							<View style={{ flexDirection: "column", marginLeft: 15 }}>
+						<Row justifyContent={"center"} alignItems={"center"}>
+							<Box>
 								<Text
-									style={{
-										fontFamily: "SFProDisplay-Bold",
-										fontSize: 20,
-										color: colors.text,
-									}}
+									fontFamily={"SFProDisplay-Bold"}
+									fontSize={20}
+									color={"gray.900"}
 								>
 									{item.title}
 								</Text>
 								<Text
-									style={{
-										marginTop: 5,
-										fontFamily: "SFProDisplay-Medium",
-										fontSize: 13,
-										color: colors.heading5,
-										marginRight: 20,
-									}}
+									fontFamily={"SFProDisplay-Medium"}
+									color={"gray.500"}
+									fontSize={13}
+									mr={2}
 								>
 									{item.courseDesc}
 								</Text>
-							</View>
-						</View>
-					</View>
-				</View>
+							</Box>
+						</Row>
+					</Column>
+				</Box>
 			</TouchableOpacity>
 		);
 	};
 
-	const { StatusBarManager } = NativeModules;
-	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-	const screenWidth = Dimensions.get("window").width;
-	let paddingsize = undefined;
-	if (screenWidth>=768){
-	 paddingsize= 20
-	}
-	
-		
-
 	return (
-		<SafeAreaView style={{ backgroundColor: colors.background, flex: 1 }}>
+		<Box safeArea bgColor="light.50">
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
-				style={{ backgroundColor: colors.background }}
 			>
-				<StatusBar
-					animated
-					barStyle={isDark ? "light-content" : "dark-content"}
-				/>
-				{/* Header */}
-				<View
-					style={{
-						paddingHorizontal: 21,
-						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-					}}
-				>
-					<View>
-						<View
+				<Box width={"90%"} mx={"auto"}>
+					<Box>
+						<Box
 							style={{
-								flexDirection: "row",
+								flexDirection: "row-reverse",
 								alignItems: "center",
 								justifyContent: "space-between",
 							}}
 						>
 							<Feather
-								name="menu"
-								size={24}
-								style={{ color: colors.text }}
-								onPress={() => navigation.openDrawer()}
+								name="settings"
+								size={25}
+								onPress={() => navigation.navigate("About")}
 							/>
-						
-							
-							
-						</View>
+						</Box>
 
-						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Practical Research Grade 7</Text>
+						<Box flexDirection={"column"} my={3}>
 							<Text
-								style={{
-									fontFamily: "SFProDisplay-Bold",
-									color: colors.text,
-									fontSize: 35,
-								}}
+								fontFamily={"SFProDisplay-Bold"}
+								color={"gray.500"}
+								fontSize={20}
+							>
+								Hello Student!!
+							</Text>
+							<Text
+								fontFamily={"SFProDisplay-Bold"}
+								color={"black"}
+								fontSize={35}
 							>
 								Lesson Dashboard
 							</Text>
-						</View>
-						<View style={styles.searchBarWrapper}>
+						</Box>
+						<Box>
 							{/* Content */}
 
 							<HomeCard />
-							<View
-								style={{
-									flex:1,
-									alignContent:'space-around',
-									justifyContent:'center',
-									paddingHorizontal:paddingsize,
-									flexDirection: "row",
-									
-								}}
-							>
-								<ResearchAssistantCard />
-								<LabtoolsCard />
-							</View>
+							<Box>
+								{/* <ResearchAssistantCard />
+								<LabtoolsCard /> */}
+							</Box>
 							<Text
-								style={{
-									fontFamily: "SFProDisplay-Bold",
-									fontSize: 18,
-									marginTop: 30,
-									color: colors.text,
-								}}
+								fontFamily={"SFProDisplay-Bold"}
+								fontSize={20}
+								color={"gray.500"}
 							>
 								All Research 1 Lessons
 							</Text>
@@ -215,40 +118,14 @@ const Home:React.FC<Props>  = ({navigation}) => {
 							<FlatList
 								data={researchTopics}
 								renderItem={renderItem}
-								refreshing={refreshing}
 								keyExtractor={(item) => item.id}
 							/>
-						</View>
-					</View>
-				</View>
+						</Box>
+					</Box>
+				</Box>
 			</ScrollView>
-		</SafeAreaView>
+		</Box>
 	);
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-	textGreetingWrapper: {
-		paddingTop: Platform.OS === "ios" ? 20 : 15,
-	},
-	textGreeting: {
-		fontFamily: "SFProDisplay-Bold",
-		color: Colors.textLight,
-		fontSize: 23,
-	},
-	searchBarWrapper: {
-		paddingTop: 15,
-	
-	},
-
-
-});
-
-
-
-
-function newFunction(toast) {
-	toast.show("Hello World");
-}
-

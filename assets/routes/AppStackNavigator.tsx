@@ -14,6 +14,7 @@ import {
 	Labtools,
 	LabtoolsDetail,
 	PlayQuizScreen,
+	ComingSoonScreen,
 } from "../screens";
 import WhatsNewModal from "../components/modals/WhatsNewModal";
 import { RootStackParamList } from "../../types";
@@ -23,7 +24,7 @@ import CustomDrawer from "../components/Sidebar";
 const Stack = createStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator();
 
-function Root() {
+function AppStackNavigator() {
 	return (
 		<Stack.Navigator
 			initialRouteName="Root"
@@ -37,7 +38,9 @@ function Root() {
 		>
 			<Stack.Screen name="Home" component={Home} />
 			<Stack.Screen name="Lesson" component={Lesson} />
+			<Stack.Screen name="About" component={About} />
 			<Stack.Screen name="Labtools" component={Labtools} />
+			<Stack.Screen name="ComingSoon" component={ComingSoonScreen} />
 			<Stack.Screen name="LabtoolsDetail" component={LabtoolsDetail} />
 			<Stack.Screen name="Quiz" component={Quiz} />
 			<Stack.Screen name="PlayQuiz" component={PlayQuizScreen} />
@@ -50,36 +53,6 @@ function Root() {
 	);
 }
 
-const AppStackNavigator = () => {
-	return (
-		<Drawer.Navigator
-			initialRouteName="Root"
-      screenOptions={{ headerShown: false }}
-      drawerContent={(props) => <CustomDrawer {...props} />}
-		
-		>
-			<Drawer.Screen
-				name="Home"
-				component={Root}
-        options={{
-         
-        }}
-				
-			/>
 
-			<Drawer.Screen
-				name="Tips"
-				component={Tips}
-				
-			/>
-
-			<Drawer.Screen
-				name="About"
-				component={About}
-				
-			/>
-		</Drawer.Navigator>
-	);
-};
 
 export default AppStackNavigator;

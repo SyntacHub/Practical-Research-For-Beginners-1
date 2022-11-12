@@ -35,7 +35,7 @@ const ResearchAssistantCardMenu = () => {
 		}}
 		onPress={() =>{
 			Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy)
-      console.log("FEATURE UNAVAILABLE")
+      navigation.navigate("ComingSoon")
     }}
 		>
 		

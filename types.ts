@@ -13,6 +13,7 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<DrawerStackParamList>;
+  ComingSoon: undefined;
   Home: undefined;
   Login:undefined;
   SignUp:undefined;
@@ -23,6 +24,7 @@ export type RootStackParamList = {
   LabtoolsDetail:undefined;
   Assistant:undefined;
   Modal:undefined;
+  About:undefined;
   
  
 };

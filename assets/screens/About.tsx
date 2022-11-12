@@ -3,22 +3,14 @@ import { useNavigation } from "@react-navigation/native";
 import Colors from "../constants/colors";
 import * as React from "react";
 import {
-	Platform,
-	SafeAreaView,
-	ScrollView,
-	StatusBar,
 	StyleSheet,
-	Text,
-	FlatList,
 	TouchableOpacity,
-	View,
 	NativeModules,
-	Dimensions,
+	SafeAreaView,
 } from "react-native";
 import AboutCard from "../components/cards/AboutCard";
 import Acknowledgements from "../data/AcknowledgementsData";
-import FeedbackCardMenu from "../components/cards/FeedbackCardMenu";
-import FaqCardMenu from "../components/cards/FaqCardMenu";
+import { Text, Box, ScrollView, FlatList, Column, Icon } from "native-base";
 import Others from "../data/OthersData";
 import { useTheme } from "../theme/ThemeProvider";
 
@@ -27,45 +19,68 @@ interface Props {}
 const About: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
 	const { colors, isDark } = useTheme();
-	let paddingsize = undefined;
-	const screenWidth = Dimensions.get("window").width;
-	if (screenWidth>=768){
-	 paddingsize= 20
-	}
 	const renderItem = ({ item }: { item: any }) => {
 		return (
-			<TouchableOpacity >
-				<View
+			<Box style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
+				<Box bgColor={"emerald.50"} borderRadius={15} p={3}>
+					<Icon as={Feather} name="user" size={6} color={"emerald.700"} />
+				</Box>
+
+				<Column mx={3}>
+					<Text
+					fontFamily={"SFProDisplay-Bold"}
+					fontSize={20}
+					color={"gray.900"}
+				
+					>
+						{item.person}
+					</Text>
+					<Text
+						style={{
+							fontFamily: "SFProDisplay-Medium",
+							marginTop: 5,
+							color: colors.heading5,
+						}}
+						numberOfLines={2}
+						ellipsizeMode="tail"
+					>
+						{item.contrib}
+					</Text>
+				</Column>
+			</Box>
+		);
+	};
+	const renderOthersItem = ({ item }: { item: any }) => {
+		return (
+			<TouchableOpacity>
+				<Box
 					style={{
 						flexDirection: "row",
-
+						overflow: "hidden",
 					}}
 				>
-					<View style={{ flexDirection: "column", marginVertical:5, }}>
-						<View
-							style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}
-						>
-							<View
+					<Box style={{ flexDirection: "column", marginTop: 5 }}>
+						<Box style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
+							<Box
 								style={{
 									backgroundColor: colors.primarygreen + "20",
 									borderRadius: 10,
-									justifyContent:'center',
-									alignItems:'center',
-									padding:10,
+									justifyContent: "center",
+									alignItems: "center",
+									padding: 15,
 								}}
 							>
 								<Feather
-									name="user"
-									size={30}
-									color="black"
+									name="book"
+									size={24}
 									style={{
 										color: colors.primarygreen,
-						
+										alignItems: "center",
 									}}
 								/>
-							</View>
+							</Box>
 
-							<View style={{ flexDirection: "column", marginLeft: 15 }}>
+							<Box style={{ flexDirection: "column", marginLeft: 15 }}>
 								<Text
 									style={{
 										fontFamily: "SFProDisplay-Bold",
@@ -73,61 +88,6 @@ const About: React.FC<Props> = () => {
 										color: colors.text,
 									}}
 								>
-									{item.person}
-								</Text>
-								<Text
-									style={{
-										fontFamily: "SFProDisplay-Medium",
-										marginTop: 5,
-										color: colors.heading5,
-									}}
-									numberOfLines={2}
-									ellipsizeMode="tail"
-								>
-									{item.contrib}
-								</Text>
-							</View>
-						</View>
-					</View>
-				</View>
-			</TouchableOpacity>
-		);
-	};
-	const renderOthersItem = ({ item }: { item: any }) => {
-		return (
-			<TouchableOpacity>
-				<View
-					style={{
-						flexDirection: "row",
-						overflow: "hidden",
-					}}
-				>
-					<View style={{ flexDirection: "column", marginTop: 5 }}>
-						<View
-							style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}
-						>
-							<View
-								style={{
-									backgroundColor: colors.primarygreen + "20",
-									borderRadius: 10,
-									justifyContent:'center',
-									alignItems:'center',
-								padding:15
-								}}
-							>
-								<Feather
-									name="book"
-									size={24}
-								
-									style={{
-										color: colors.primarygreen,
-										alignItems: "center",
-									}}
-								/>
-							</View>
-
-							<View style={{ flexDirection: "column", marginLeft: 15 }}>
-								<Text style={{ fontFamily: "SFProDisplay-Bold", fontSize: 18,color:colors.text }}>
 									{item.title}
 								</Text>
 								<Text
@@ -141,42 +101,32 @@ const About: React.FC<Props> = () => {
 								>
 									{item.desc}
 								</Text>
-							</View>
-						</View>
-					</View>
-				</View>
+							</Box>
+						</Box>
+					</Box>
+				</Box>
 			</TouchableOpacity>
 		);
 	};
 
-	const { StatusBarManager } = NativeModules;
-	const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
 			>
-				<StatusBar
-					animated
-					barStyle={isDark ? "light-content" : "dark-content"}
-				/>
-				{/* Header */}
-				<View
-					style={{
-						marginHorizontal:21,
-						marginTop: Platform.OS === "ios" ? 15 : STATUSBAR_HEIGHT,
-					}}
+				<Box
+					width={"90%"}
+					mx={"auto"}
 				>
-					<View>
+					<Box>
 						<Feather
-							name="menu"
-							size={24}
+							name="arrow-left"
+							size={30}
 							style={{ color: colors.text }}
-							onPress={() => navigation.openDrawer()}
+							onPress={() => navigation.goBack()}
 						/>
-						<View style={styles.textGreetingWrapper}>
-							<Text style={styles.textGreeting}>Acknowledgements &</Text>
+						<Box style={styles.textGreetingWrapper}>
 							<Text
 								style={{
 									fontFamily: "SFProDisplay-Bold",
@@ -186,30 +136,30 @@ const About: React.FC<Props> = () => {
 							>
 								About
 							</Text>
-						</View>
-						<View>
+						</Box>
+						<Box>
 							{/* Content */}
 
 							<AboutCard />
-							<View
+							{/* <Box
 								style={{
 									flex:1,
 									alignContent:'space-around',
 									marginVertical:15,
 									justifyContent:'center',
-									paddingHorizontal:paddingsize,
+									paddingHorizontal:10,
 									flexDirection: "row",
 									
 								}}
 							>
 								<FeedbackCardMenu />
 								<FaqCardMenu/>
-							</View>
-							<View
+							</Box> */}
+							<Box
 								style={{
 									backgroundColor: colors.elevated,
 									paddingVertical: 5,
-									justifyContent:'center',
+									justifyContent: "center",
 									paddingHorizontal: 10,
 									borderRadius: 15,
 									marginTop: 5,
@@ -221,7 +171,7 @@ const About: React.FC<Props> = () => {
 
 										fontFamily: "SFProDisplay-Bold",
 										fontSize: 14,
-										marginTop:15,
+										marginTop: 15,
 										color: colors.text,
 									}}
 								>
@@ -232,9 +182,9 @@ const About: React.FC<Props> = () => {
 									renderItem={renderItem}
 									keyExtractor={(item) => item.id}
 								/>
-							</View>
+							</Box>
 
-							<View
+							<Box
 								style={{
 									backgroundColor: colors.elevated,
 									paddingVertical: 20,
@@ -258,15 +208,30 @@ const About: React.FC<Props> = () => {
 									renderItem={renderOthersItem}
 									keyExtractor={(item) => item.id}
 								/>
-							</View>
-							<View style={{alignItems:"center",paddingVertical:30}}>
-							<Text style={{color:colors.text,fontFamily:"SFProDisplay-Bold",opacity:0.5}}>Iligan City National High School</Text>
-							<Text style={{color:colors.text,fontFamily:"SFProDisplay-Bold",opacity:0.3}}>Copyright 2022</Text>
-							</View>
-							
-						</View>
-					</View>
-				</View>
+							</Box>
+							<Box style={{ alignItems: "center", paddingVertical: 30 }}>
+								<Text
+									style={{
+										color: colors.text,
+										fontFamily: "SFProDisplay-Bold",
+										opacity: 0.5,
+									}}
+								>
+									Iligan City National High School
+								</Text>
+								<Text
+									style={{
+										color: colors.text,
+										fontFamily: "SFProDisplay-Bold",
+										opacity: 0.3,
+									}}
+								>
+									Copyright 2022
+								</Text>
+							</Box>
+						</Box>
+					</Box>
+				</Box>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -276,7 +241,7 @@ export default About;
 
 const styles = StyleSheet.create({
 	textGreetingWrapper: {
-		paddingTop: Platform.OS === "ios" ? 20 : 15,
+		paddingTop: 20,
 	},
 	textGreeting: {
 		fontFamily: "SFProDisplay-Bold",

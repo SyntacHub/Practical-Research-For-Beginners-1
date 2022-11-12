@@ -8,6 +8,7 @@ import WelcomeScreen from './WelcomeScreen';
 import SignInScreen from './SignIn';
 import PlayQuizScreen from './PlayQuizScreen';
 import Tips from './Tips';
+import ComingSoonScreen from './ComingSoonScreen';
 
 export {
   Home,
@@ -20,6 +21,7 @@ export {
   PlayQuizScreen,
   WelcomeScreen,
   SignInScreen,
+  ComingSoonScreen,
   
 
 };
