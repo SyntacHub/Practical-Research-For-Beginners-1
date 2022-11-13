@@ -17,7 +17,7 @@ const HomeCard = (props: Props) => {
 			px={2}
 			py={6}
 			borderRadius={15}
-			bgColor={"emerald.100"}
+			_light={{ bg: "emerald.100" }} _dark={{ bg: "emerald.800" }}
 		>
 			<Row
 				overflow={"hidden"}
@@ -29,7 +29,7 @@ const HomeCard = (props: Props) => {
 				<Column space={2} width={"70%"}>
 					<Text
 						fontFamily={"SFProDisplay-Bold"}
-						color={"emerald.900"}
+						_light={{ color: "emerald.900" }} _dark={{ color: "emerald.100" }}
 						fontSize={20}
 					>
 						{props.title}
@@ -39,13 +39,13 @@ const HomeCard = (props: Props) => {
 						<Text fontSize={20}>{props.shortDescription}</Text>
 					)}
 
-					<Box bgColor={'emerald.700'} px={3} py={2} rounded={"lg"} alignItems={"center"} width={"70%"}>
-						<Text fontSize={12} fontFamily={"SFProDisplay-Bold"} color={"muted.50"}>Submit Feedback</Text>
+					<Box _light={{ bg: "emerald.200" }} _dark={{ bg: "emerald.700" }} px={3} py={2} rounded={"lg"} alignItems={"center"} width={"70%"}>
+						<Text fontSize={12} fontFamily={"SFProDisplay-Bold"} _light={{ color: "emerald.900" }} _dark={{ color: "emerald.100" }}>Submit Feedback</Text>
 					</Box>
 				</Column>
 
 				<Box alignItems={"flex-end"}>
-					<Icon as={Feather} name="download" size={75} color="emerald.900" />
+					<Icon as={Feather} name="download" size={75} _light={{ color: "emerald.900" }} _dark={{ color: "emerald.100" }} />
 				</Box>
 			</Row>
 		</Box>
