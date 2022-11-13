@@ -3,25 +3,20 @@ import { useNavigation } from "@react-navigation/native";
 import Colors from "../constants/colors";
 import * as React from "react";
 import {
-	StyleSheet,
+
 	TouchableOpacity,
-	NativeModules,
 	SafeAreaView,
 } from "react-native";
-import AboutCard from "../components/cards/AboutCard";
 import Acknowledgements from "../data/AcknowledgementsData";
-import { Text, Box, ScrollView, FlatList, Column, Icon } from "native-base";
-import Others from "../data/OthersData";
-import { useTheme } from "../theme/ThemeProvider";
+import { Text, Box, ScrollView, FlatList, Column, Icon, Row } from "native-base";
 
 interface Props {}
 
 const About: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
-	const { colors, isDark } = useTheme();
 	const renderItem = ({ item }: { item: any }) => {
 		return (
-			<Box style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
+			<Row ml={5} mt={5} style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
 				<Box bgColor={"emerald.50"} borderRadius={15} p={3}>
 					<Icon as={Feather} name="user" size={6} color={"emerald.700"} />
 				</Box>
@@ -39,7 +34,7 @@ const About: React.FC<Props> = () => {
 						style={{
 							fontFamily: "SFProDisplay-Medium",
 							marginTop: 5,
-							color: colors.heading5,
+							color: "black",
 						}}
 						numberOfLines={2}
 						ellipsizeMode="tail"
@@ -47,7 +42,7 @@ const About: React.FC<Props> = () => {
 						{item.contrib}
 					</Text>
 				</Column>
-			</Box>
+			</Row>
 		);
 	};
 	const renderOthersItem = ({ item }: { item: any }) => {
@@ -63,7 +58,7 @@ const About: React.FC<Props> = () => {
 						<Box style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
 							<Box
 								style={{
-									backgroundColor: colors.primarygreen + "20",
+									backgroundColor: "green",
 									borderRadius: 10,
 									justifyContent: "center",
 									alignItems: "center",
@@ -74,7 +69,7 @@ const About: React.FC<Props> = () => {
 									name="book"
 									size={24}
 									style={{
-										color: colors.primarygreen,
+										color:  "white",
 										alignItems: "center",
 									}}
 								/>
@@ -85,7 +80,6 @@ const About: React.FC<Props> = () => {
 									style={{
 										fontFamily: "SFProDisplay-Bold",
 										fontSize: 18,
-										color: colors.text,
 									}}
 								>
 									{item.title}
@@ -110,7 +104,7 @@ const About: React.FC<Props> = () => {
 	};
 
 	return (
-		<SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
@@ -123,7 +117,6 @@ const About: React.FC<Props> = () => {
 						<Feather
 							name="arrow-left"
 							size={30}
-							style={{ color: colors.text }}
 							onPress={() => navigation.goBack()}
 						/>
 						<Box my={3}>
@@ -132,14 +125,13 @@ const About: React.FC<Props> = () => {
 							fontSize={35}
 							color={"gray.900"}
 							>
-								Settings
+								About
 							</Text>
 						</Box>
 						<Box>
 							
 							<Box
 								style={{
-									backgroundColor: colors.elevated,
 									paddingVertical: 5,
 									justifyContent: "center",
 									paddingHorizontal: 10,
@@ -154,7 +146,6 @@ const About: React.FC<Props> = () => {
 										fontFamily: "SFProDisplay-Bold",
 										fontSize: 14,
 										marginTop: 15,
-										color: colors.text,
 									}}
 								>
 									Acknowledgements
@@ -170,7 +161,7 @@ const About: React.FC<Props> = () => {
 							<Box style={{ alignItems: "center", paddingVertical: 30 }}>
 								<Text
 									style={{
-										color: colors.text,
+									
 										fontFamily: "SFProDisplay-Bold",
 										opacity: 0.5,
 									}}
@@ -179,7 +170,7 @@ const About: React.FC<Props> = () => {
 								</Text>
 								<Text
 									style={{
-										color: colors.text,
+							
 										fontFamily: "SFProDisplay-Bold",
 										opacity: 0.3,
 									}}
@@ -191,7 +182,6 @@ const About: React.FC<Props> = () => {
 					</Box>
 				</Box>
 			</ScrollView>
-		</SafeAreaView>
 	);
 };
 

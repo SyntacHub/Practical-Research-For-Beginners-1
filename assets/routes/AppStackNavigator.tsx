@@ -5,12 +5,8 @@ import {
 } from "@react-navigation/stack";
 import {
 	Home,
-	Quiz,
 	About,
 	Lesson,
-	LabtoolsDetail,
-	PlayQuizScreen,
-	ComingSoonScreen,
 } from "../screens";
 import { RootStackParamList } from "../../types";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -33,10 +29,6 @@ function AppStackNavigator() {
 			<Stack.Screen name="Home" component={Home} />
 			<Stack.Screen name="Lesson" component={Lesson} />
 			<Stack.Screen name="About" component={About} />
-			<Stack.Screen name="ComingSoon" component={ComingSoonScreen} />
-			<Stack.Screen name="LabtoolsDetail" component={LabtoolsDetail} />
-			<Stack.Screen name="Quiz" component={Quiz} />
-			<Stack.Screen name="PlayQuiz" component={PlayQuizScreen} />
 			{/* <Stack.Screen
 				name="Modal"
 				component={WhatsNewModal}

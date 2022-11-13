@@ -1,7 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { Text, FlatList, Box, ScrollView, Row, Column } from "native-base";
+import { Text, FlatList, Box, ScrollView, Row, Column, Switch } from "native-base";
 import * as Haptics from "expo-haptics";
 import HomeCard from "../components/cards/HomeCard";
 import researchTopics from "../data/LessonsData";
@@ -69,19 +69,20 @@ const Home: React.FC<Props> = ({ navigation }) => {
 			>
 				<Box width={"90%"} mx={"auto"}>
 					<Box>
-						<Box
-							style={{
-								flexDirection: "row-reverse",
-								alignItems: "center",
-								justifyContent: "space-between",
-							}}
+						<Row
+						flexDirection={"row-reverse"}
+						alignItems={"center"}
+						space={3}
+							
 						>
+							
 							<Feather
-								name="settings"
+								name="info"
 								size={25}
 								onPress={() => navigation.navigate("About")}
 							/>
-						</Box>
+							<Switch/> 
+						</Row>
 
 						<Box flexDirection={"column"} my={3}>
 							<Text
@@ -102,12 +103,12 @@ const Home: React.FC<Props> = ({ navigation }) => {
 						<Box>
 							{/* Content */}
 
-							<HomeCard />
+							<HomeCard
+								title={"Thank you for participating the Developer Beta Testing"}
+							/>
 							<Box>
-								{/* <ResearchAssistantCard />
-								<LabtoolsCard /> */}
 							</Box>
-							
+
 							<FlatList
 								data={researchTopics}
 								renderItem={renderItem}
