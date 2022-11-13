@@ -10,6 +10,7 @@ import { ToastProvider } from "react-native-toast-notifications";
 import { NativeBaseProvider } from "native-base";
 
 
+
 const App = () => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +35,8 @@ const App = () => {
 				<NativeBaseProvider>
 				<ToastProvider>
 						<NavigationContainer>
-							{currentUser ? <AppStackNavigator /> : <AuthStackNavigator />}
+							{/* {currentUser ? <AppStackNavigator /> : <AuthStackNavigator />} */}
+							<AppStackNavigator />
 						</NavigationContainer>
 				</ToastProvider>
 				</NativeBaseProvider>

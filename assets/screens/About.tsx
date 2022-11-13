@@ -126,35 +126,17 @@ const About: React.FC<Props> = () => {
 							style={{ color: colors.text }}
 							onPress={() => navigation.goBack()}
 						/>
-						<Box style={styles.textGreetingWrapper}>
+						<Box my={3}>
 							<Text
-								style={{
-									fontFamily: "SFProDisplay-Bold",
-									color: colors.text,
-									fontSize: 36,
-								}}
+							fontFamily={"SFProDisplay-Bold"}
+							fontSize={35}
+							color={"gray.900"}
 							>
-								About
+								Settings
 							</Text>
 						</Box>
 						<Box>
-							{/* Content */}
-
-							<AboutCard />
-							{/* <Box
-								style={{
-									flex:1,
-									alignContent:'space-around',
-									marginVertical:15,
-									justifyContent:'center',
-									paddingHorizontal:10,
-									flexDirection: "row",
-									
-								}}
-							>
-								<FeedbackCardMenu />
-								<FaqCardMenu/>
-							</Box> */}
+							
 							<Box
 								style={{
 									backgroundColor: colors.elevated,
@@ -184,31 +166,7 @@ const About: React.FC<Props> = () => {
 								/>
 							</Box>
 
-							<Box
-								style={{
-									backgroundColor: colors.elevated,
-									paddingVertical: 20,
-									paddingHorizontal: 10,
-									borderRadius: 15,
-									marginTop: 15,
-								}}
-							>
-								<Text
-									style={{
-										paddingHorizontal: 10,
-										fontFamily: "SFProDisplay-Bold",
-										fontSize: 14,
-										color: colors.text,
-									}}
-								>
-									Opensource License and Local Agreements
-								</Text>
-								<FlatList
-									data={Others}
-									renderItem={renderOthersItem}
-									keyExtractor={(item) => item.id}
-								/>
-							</Box>
+						
 							<Box style={{ alignItems: "center", paddingVertical: 30 }}>
 								<Text
 									style={{
@@ -239,13 +197,3 @@ const About: React.FC<Props> = () => {
 
 export default About;
 
-const styles = StyleSheet.create({
-	textGreetingWrapper: {
-		paddingTop: 20,
-	},
-	textGreeting: {
-		fontFamily: "SFProDisplay-Bold",
-		color: Colors.textLight,
-		fontSize: 24,
-	},
-});

@@ -14,7 +14,6 @@ import {
 
 import { Feather } from "@expo/vector-icons";
 import { getQuizzes } from "../utils/database";
-import AssesmentCard from "../components/cards/AssesmentCard";
 import { useTheme } from "../theme/ThemeProvider";
 import * as Haptics from 'expo-haptics';
 interface Props {
@@ -102,7 +101,6 @@ const Quiz: React.FC<Props> = ({ navigation }) => {
 						Updated on December 23, 2021
 					</Text>
 				</View>
-				<AssesmentCard />
 				<Text
 					style={{
 						fontFamily: "SFProDisplay-Bold",

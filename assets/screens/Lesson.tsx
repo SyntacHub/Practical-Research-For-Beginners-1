@@ -113,26 +113,6 @@ const Lesson:React.FC<Props> = ({ route }) => {
 					</View>
 				</View>
 
-				{/*Content*/}
-				<View
-					style={{
-						flexDirection: "row",
-						justifyContent: "center",
-						alignItems: "center",
-						backgroundColor: colors.primaryteal,
-						marginHorizontal: 20,
-						marginVertical: 20,
-						borderRadius: 15,
-					}}
-				>
-					<Image
-						source={item.topicImage}
-						style={{ resizeMode: "contain", width: "75%" }}
-					/>
-				</View>
-
-				{/*Content 2*/}
-
 				<Text
 					style={{
 						marginTop: 15,

@@ -107,14 +107,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
 								{/* <ResearchAssistantCard />
 								<LabtoolsCard /> */}
 							</Box>
-							<Text
-								fontFamily={"SFProDisplay-Bold"}
-								fontSize={20}
-								color={"gray.500"}
-							>
-								All Research 1 Lessons
-							</Text>
-
+							
 							<FlatList
 								data={researchTopics}
 								renderItem={renderItem}
