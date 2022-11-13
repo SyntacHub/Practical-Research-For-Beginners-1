@@ -1,14 +1,19 @@
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Colors from "../constants/colors";
 import * as React from "react";
-import {
-
-	TouchableOpacity,
-	SafeAreaView,
-} from "react-native";
 import Acknowledgements from "../data/AcknowledgementsData";
-import { Text, Box, ScrollView, FlatList, Column, Icon, Row } from "native-base";
+import {
+	Text,
+	Box,
+	ScrollView,
+	FlatList,
+	Column,
+	Icon,
+	Row,
+} from "native-base";
+import ICNHS from "../components/svg/icnhs";
+import SSG from "../components/svg/ssg";
+import Electrobotz from "../components/svg/electrobotz";
 
 interface Props {}
 
@@ -16,28 +21,31 @@ const About: React.FC<Props> = () => {
 	const navigation = useNavigation<any>();
 	const renderItem = ({ item }: { item: any }) => {
 		return (
-			<Row ml={5} mt={5} style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
-				<Box bgColor={"emerald.50"} borderRadius={15} p={3}>
-					<Icon as={Feather} name="user" size={6} color={"emerald.700"} />
+			<Row mx={2} my={2} borderRadius={10}>
+				<Box
+					p={2.5}
+					_light={{ bg: "emerald.100" }}
+					_dark={{ bg: "emerald.800" }}
+					borderRadius={10}
+				>
+					<Icon
+						as={Feather}
+						name="user"
+						size={7}
+						_light={{ color: "emerald.900" }}
+						_dark={{ color: "emerald.100" }}
+						onPress={() => navigation.navigate("About")}
+					/>
 				</Box>
 
-				<Column mx={3}>
-					<Text
-					fontFamily={"SFProDisplay-Bold"}
-					fontSize={20}
-					color={"gray.900"}
-				
-					>
+				<Column mx={2}>
+					<Text fontFamily={"SFProDisplay-Bold"} fontSize={20}>
 						{item.person}
 					</Text>
 					<Text
 						style={{
 							fontFamily: "SFProDisplay-Medium",
-							marginTop: 5,
-							color: "black",
 						}}
-						numberOfLines={2}
-						ellipsizeMode="tail"
 					>
 						{item.contrib}
 					</Text>
@@ -45,100 +53,57 @@ const About: React.FC<Props> = () => {
 			</Row>
 		);
 	};
-	const renderOthersItem = ({ item }: { item: any }) => {
-		return (
-			<TouchableOpacity>
-				<Box
-					style={{
-						flexDirection: "row",
-						overflow: "hidden",
-					}}
-				>
-					<Box style={{ flexDirection: "column", marginTop: 5 }}>
-						<Box style={{ flexDirection: "row", marginLeft: 5, marginTop: 15 }}>
-							<Box
-								style={{
-									backgroundColor: "green",
-									borderRadius: 10,
-									justifyContent: "center",
-									alignItems: "center",
-									padding: 15,
-								}}
-							>
-								<Feather
-									name="book"
-									size={24}
-									style={{
-										color:  "white",
-										alignItems: "center",
-									}}
-								/>
-							</Box>
-
-							<Box style={{ flexDirection: "column", marginLeft: 15 }}>
-								<Text
-									style={{
-										fontFamily: "SFProDisplay-Bold",
-										fontSize: 18,
-									}}
-								>
-									{item.title}
-								</Text>
-								<Text
-									style={{
-										fontFamily: "SFProDisplay-Medium",
-										marginTop: 5,
-										color: Colors.textLighterGray,
-									}}
-									numberOfLines={2}
-									ellipsizeMode="tail"
-								>
-									{item.desc}
-								</Text>
-							</Box>
-						</Box>
-					</Box>
-				</Box>
-			</TouchableOpacity>
-		);
-	};
 
 	return (
-
+		<Box
+			safeArea
+			_light={{ bg: "light.50" }}
+			_dark={{ bg: "dark.50" }}
+			height={"100%"}
+		>
 			<ScrollView
 				contentInsetAdjustmentBehavior="automatic"
 				showsVerticalScrollIndicator={false}
 			>
-				<Box
-					width={"90%"}
-					mx={"auto"}
-				>
+				<Box width={"90%"} mx={"auto"}>
 					<Box>
-						<Feather
-							name="arrow-left"
-							size={30}
-							onPress={() => navigation.goBack()}
-						/>
-						<Box my={3}>
-							<Text
-							fontFamily={"SFProDisplay-Bold"}
-							fontSize={35}
-							color={"gray.900"}
+						<Row alignItems={"center"} space={3}>
+							<Box
+								p={2.5}
+								_light={{ bg: "emerald.100" }}
+								_dark={{ bg: "emerald.800" }}
+								rounded={"lg"}
 							>
+								<Icon
+									as={Feather}
+									name="arrow-left"
+									size={6}
+									_light={{ color: "emerald.900" }}
+									_dark={{ color: "emerald.100" }}
+									onPress={() => navigation.goBack()}
+								/>
+							</Box>
+						</Row>
+						<Box my={3}>
+							<Text fontFamily={"SFProDisplay-Bold"} fontSize={35}>
 								About
 							</Text>
 						</Box>
 						<Box>
-							
 							<Box
-								style={{
-									paddingVertical: 5,
-									justifyContent: "center",
-									paddingHorizontal: 10,
-									borderRadius: 15,
-									marginTop: 5,
-								}}
+								_light={{ bg: "light.100" }}
+								_dark={{ bg: "dark.100" }}
+								py={2}
+								justifyContent={"center"}
+								px={3}
+								rounded={"lg"}
+								mt={2}
 							>
+								<Row space={2} alignSelf={'center'} justifyContent={'center'}>
+									{/* <SSG/> */}
+									<ICNHS/>
+									{/* <Electrobotz/> */}
+								</Row>
 								<Text
 									style={{
 										paddingHorizontal: 10,
@@ -157,11 +122,9 @@ const About: React.FC<Props> = () => {
 								/>
 							</Box>
 
-						
 							<Box style={{ alignItems: "center", paddingVertical: 30 }}>
 								<Text
 									style={{
-									
 										fontFamily: "SFProDisplay-Bold",
 										opacity: 0.5,
 									}}
@@ -170,7 +133,6 @@ const About: React.FC<Props> = () => {
 								</Text>
 								<Text
 									style={{
-							
 										fontFamily: "SFProDisplay-Bold",
 										opacity: 0.3,
 									}}
@@ -182,8 +144,8 @@ const About: React.FC<Props> = () => {
 					</Box>
 				</Box>
 			</ScrollView>
+		</Box>
 	);
 };
 
 export default About;
-

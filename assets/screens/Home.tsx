@@ -14,8 +14,9 @@ import {
 	StatusBar,
 } from "native-base";
 import * as Haptics from "expo-haptics";
-import HomeCard from "../components/cards/HomeCard";
+import HomeCard from "../components/cards/HeadingCard";
 import researchTopics from "../data/LessonsData";
+import OptionCard from "../components/cards/OptionCard";
 interface Props {
 	route: any;
 	navigation: any;
@@ -88,12 +89,21 @@ const Home: React.FC<Props> = ({ navigation }) => {
 				<Box width={"90%"} mx={"auto"}>
 					<Box>
 						<Row flexDirection={"row-reverse"} alignItems={"center"} space={3}>
-							<Icon
-								as={Feather}
-								name="info"
-								size={25}
-								onPress={() => navigation.navigate("About")}
-							/>
+						<Box
+								p={2.5}
+								_light={{ bg: "emerald.100" }}
+								_dark={{ bg: "emerald.800" }}
+								borderRadius={10}
+							>
+								<Icon
+									as={Feather}
+									name="info"
+									size={6}
+									_light={{ color: "emerald.900" }}
+									_dark={{ color: "emerald.100" }}
+									onPress={() => navigation.navigate("About")}
+								/>
+							</Box>
 							<Switch
 								isChecked={colorMode === "light" ? false : true}
 								onToggle={toggleColorMode}
@@ -107,7 +117,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
 
 						<Box flexDirection={"column"} my={3}>
 							<Text fontFamily={"SFProDisplay-Bold"} fontSize={20}>
-								Welcome to the
+								Welcome to
 							</Text>
 							<Text fontFamily={"SFProDisplay-Bold"} fontSize={35}>
 								Research eModule
@@ -117,7 +127,12 @@ const Home: React.FC<Props> = ({ navigation }) => {
 							<HomeCard
 								title={"Thank you for participating the Developer Beta Testing"}
 							/>
-							<Box></Box>
+							<Row my={3} space={3}  justifyContent={'center'}>
+								<OptionCard title="Scientific Laboratory Tools & Apparatus"/>
+								<OptionCard title="Famous Scientists and their Contributions"/>
+							</Row>
+
+							<Text mx={1} mt={3} fontFamily={"SFProDisplay-Bold"} fontSize={15}>All Lessons</Text>
 
 							<FlatList
 								data={researchTopics}

@@ -38,39 +38,61 @@ const Lesson: React.FC<Props> = ({ route }) => {
 				<Box width={"90%"} mx={"auto"}>
 					<Row justifyContent={"space-between"}>
 						<TouchableOpacity>
-							<Icon as={Feather} name="arrow-left" size={7} color="black" />
+						<Box
+								p={2.5}
+								_light={{ bg: "emerald.100" }}
+								_dark={{ bg: "emerald.800" }}
+								borderRadius={10}
+							>
+								<Icon
+									as={Feather}
+									name="arrow-left"
+									size={6}
+									_light={{ color: "emerald.900" }}
+									_dark={{ color: "emerald.100" }}
+									onPress={() => navigation.goBack()}
+								/>
+							</Box>
 						</TouchableOpacity>
 						<TouchableOpacity>
-							<Icon as={Feather} name="book" color={"black"} size={7} />
+						<Box
+								p={2.5}
+								_light={{ bg: "emerald.100" }}
+								_dark={{ bg: "emerald.800" }}
+								borderRadius={10}
+							
+							>
+								<Icon
+									as={Feather}
+									name="book"
+									size={6}
+									_light={{ color: "emerald.900" }}
+									_dark={{ color: "emerald.100" }}
+									onPress={() => navigation.goBack()}
+							
+								/>
+							</Box>
 						</TouchableOpacity>
 					</Row>
-
-					<Box>
-						<Text fontFamily={"SFProDisplay-Bold"} fontSize={30}>
-							{item.title}
-						</Text>
-						<Text fontFamily={"SFProDisplay-Bold"} fontSize={15}>
-							{item.topicIndex}
-						</Text>
+					<Box my={4}>
+					<Text fontFamily={"SFProDisplay-Bold"} fontSize={30}>
+						{item.title}
+					</Text>
+					<Text fontFamily={"SFProDisplay-Bold"} fontSize={15}>
+						{item.topicIndex}
+					</Text>
+					<Text fontFamily={"SFProDisplay-Bold"}  fontSize={20}>
+						Topic Title
+					</Text>
+					<Text fontFamily={"SFProDisplay-Regular"}  fontSize={15}>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+						voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
+						libero optio deserunt, cum quae quaerat maxime rem amet quas?
+						Accusantium, dolores.
+					</Text>
 					</Box>
+					
 				</Box>
-
-				<Text fontFamily={"SFProDisplay-Bold"} mx={2} fontSize={20}>
-					Topic Title
-				</Text>
-				<Text
-					style={{
-						marginTop: 10,
-						paddingHorizontal: 20,
-						fontFamily: "SFProDisplay-Regular",
-						fontSize: 15,
-					}}
-				>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-					voluptates aperiam repellat eius vero itaque. Eligendi minus vitae
-					libero optio deserunt, cum quae quaerat maxime rem amet quas?
-					Accusantium, dolores.
-				</Text>
 			</ScrollView>
 		</Box>
 	);
