@@ -1,8 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import AuthStackNavigator from "./assets/routes/AuthStackNavigator";
-import auth from "@react-native-firebase/auth";
 import useCachedResources from "./assets/hooks/useCachedResources";
 import AppStackNavigator from "./assets/routes/AppStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -22,10 +20,7 @@ const App = () => {
 		setIsLoading(false);
 	};
 
-	useEffect(() => {
-		const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-		return subscriber;
-	}, []);
+
 
 	if (!isLoadingComplete) {
 		return null;
@@ -35,7 +30,6 @@ const App = () => {
 				<NativeBaseProvider>
 				<ToastProvider>
 						<NavigationContainer>
-							{/* {currentUser ? <AppStackNavigator /> : <AuthStackNavigator />} */}
 							<AppStackNavigator />
 						</NavigationContainer>
 				</ToastProvider>
