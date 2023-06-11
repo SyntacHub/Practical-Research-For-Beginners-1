@@ -11,11 +11,43 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		634222822A34C6CE00AF480D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634222812A34C6CE00AF480D /* WidgetKit.framework */; };
+		634222842A34C6CE00AF480D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634222832A34C6CE00AF480D /* SwiftUI.framework */; };
+		634222872A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634222862A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsBundle.swift */; };
+		634222892A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634222882A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsLiveActivity.swift */; };
+		6342228B2A34C6CE00AF480D /* ICNHSResearchGrade7_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342228A2A34C6CE00AF480D /* ICNHSResearchGrade7_Widgets.swift */; };
+		6342228D2A34C6CE00AF480D /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342228C2A34C6CE00AF480D /* AppIntent.swift */; };
+		6342228F2A34C6D000AF480D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6342228E2A34C6D000AF480D /* Assets.xcassets */; };
+		634222932A34C6D000AF480D /* ICNHSResearchGrade7-WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 634222802A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96905EF65AED1B983A6B3ABC /* libPods-ICNHSResearchGrade7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-ICNHSResearchGrade7.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F0E02770A3C84F75AA704C27 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279D18478EC473692812CC8 /* noop-file.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		634222912A34C6D000AF480D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6342227F2A34C6CE00AF480D;
+			remoteInfo = "ICNHSResearchGrade7-WidgetsExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		634222972A34C6D000AF480D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				634222932A34C6D000AF480D /* ICNHSResearchGrade7-WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -26,6 +58,15 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ICNHSResearchGrade7/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ICNHSResearchGrade7/main.m; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-ICNHSResearchGrade7.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ICNHSResearchGrade7.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		634222802A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ICNHSResearchGrade7-WidgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		634222812A34C6CE00AF480D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		634222832A34C6CE00AF480D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		634222862A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICNHSResearchGrade7_WidgetsBundle.swift; sourceTree = "<group>"; };
+		634222882A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICNHSResearchGrade7_WidgetsLiveActivity.swift; sourceTree = "<group>"; };
+		6342228A2A34C6CE00AF480D /* ICNHSResearchGrade7_Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICNHSResearchGrade7_Widgets.swift; sourceTree = "<group>"; };
+		6342228C2A34C6CE00AF480D /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		6342228E2A34C6D000AF480D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		634222902A34C6D000AF480D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-ICNHSResearchGrade7.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICNHSResearchGrade7.debug.xcconfig"; path = "Target Support Files/Pods-ICNHSResearchGrade7/Pods-ICNHSResearchGrade7.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-ICNHSResearchGrade7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ICNHSResearchGrade7.release.xcconfig"; path = "Target Support Files/Pods-ICNHSResearchGrade7/Pods-ICNHSResearchGrade7.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ICNHSResearchGrade7/SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +82,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				96905EF65AED1B983A6B3ABC /* libPods-ICNHSResearchGrade7.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6342227D2A34C6CE00AF480D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				634222842A34C6CE00AF480D /* SwiftUI.framework in Frameworks */,
+				634222822A34C6CE00AF480D /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,8 +118,23 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-ICNHSResearchGrade7.a */,
+				634222812A34C6CE00AF480D /* WidgetKit.framework */,
+				634222832A34C6CE00AF480D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		634222852A34C6CE00AF480D /* ICNHSResearchGrade7-Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				634222862A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsBundle.swift */,
+				634222882A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsLiveActivity.swift */,
+				6342228A2A34C6CE00AF480D /* ICNHSResearchGrade7_Widgets.swift */,
+				6342228C2A34C6CE00AF480D /* AppIntent.swift */,
+				6342228E2A34C6D000AF480D /* Assets.xcassets */,
+				634222902A34C6D000AF480D /* Info.plist */,
+			);
+			path = "ICNHSResearchGrade7-Widgets";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -84,6 +149,7 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* ICNHSResearchGrade7 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				634222852A34C6CE00AF480D /* ICNHSResearchGrade7-Widgets */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
@@ -98,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* ICNHSResearchGrade7.app */,
+				634222802A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,15 +217,34 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
+				634222972A34C6D000AF480D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				634222922A34C6D000AF480D /* PBXTargetDependency */,
 			);
 			name = ICNHSResearchGrade7;
 			productName = ICNHSResearchGrade7;
 			productReference = 13B07F961A680F5B00A75B9A /* ICNHSResearchGrade7.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6342227F2A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 634222942A34C6D000AF480D /* Build configuration list for PBXNativeTarget "ICNHSResearchGrade7-WidgetsExtension" */;
+			buildPhases = (
+				6342227C2A34C6CE00AF480D /* Sources */,
+				6342227D2A34C6CE00AF480D /* Frameworks */,
+				6342227E2A34C6CE00AF480D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ICNHSResearchGrade7-WidgetsExtension";
+			productName = "ICNHSResearchGrade7-WidgetsExtension";
+			productReference = 634222802A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -166,11 +252,17 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = NSA2PC5U28;
 						LastSwiftMigration = 1250;
+					};
+					6342227F2A34C6CE00AF480D = {
+						CreatedOnToolsVersion = 15.0;
+						DevelopmentTeam = NSA2PC5U28;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -188,6 +280,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* ICNHSResearchGrade7 */,
+				6342227F2A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +293,14 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6342227E2A34C6CE00AF480D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6342228F2A34C6D000AF480D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,13 +430,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6342227C2A34C6CE00AF480D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				634222872A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsBundle.swift in Sources */,
+				6342228D2A34C6CE00AF480D /* AppIntent.swift in Sources */,
+				634222892A34C6CE00AF480D /* ICNHSResearchGrade7_WidgetsLiveActivity.swift in Sources */,
+				6342228B2A34C6CE00AF480D /* ICNHSResearchGrade7_Widgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		634222922A34C6D000AF480D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6342227F2A34C6CE00AF480D /* ICNHSResearchGrade7-WidgetsExtension */;
+			targetProxy = 634222912A34C6D000AF480D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-ICNHSResearchGrade7.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ICNHSResearchGrade7/ICNHSResearchGrade7.entitlements;
@@ -369,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-ICNHSResearchGrade7.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ICNHSResearchGrade7/ICNHSResearchGrade7.entitlements;
@@ -389,6 +511,85 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		634222952A34C6D000AF480D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NSA2PC5U28;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ICNHSResearchGrade7-Widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ICNHSResearchGrade7-Widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.icnhs.researchapp.ICNHSResearchGrade7-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		634222962A34C6D000AF480D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NSA2PC5U28;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ICNHSResearchGrade7-Widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ICNHSResearchGrade7-Widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.icnhs.researchapp.ICNHSResearchGrade7-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -509,6 +710,15 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		634222942A34C6D000AF480D /* Build configuration list for PBXNativeTarget "ICNHSResearchGrade7-WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				634222952A34C6D000AF480D /* Debug */,
+				634222962A34C6D000AF480D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
