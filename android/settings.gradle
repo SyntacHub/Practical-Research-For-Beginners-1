@@ -8,6 +8,7 @@ project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../no
 include ':react-native-file-viewer'
 project(':react-native-file-viewer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-file-viewer/android')
 
+
 apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
 useExpoModules()
 

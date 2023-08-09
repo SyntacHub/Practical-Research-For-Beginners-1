@@ -6,9 +6,5 @@ import About from './About';
 export {
   Home,
   About,
-
   Lesson,
-
-  
-
 };

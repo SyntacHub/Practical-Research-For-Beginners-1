@@ -108,21 +108,6 @@ const Home: React.FC<Props> = ({ navigation }) => {
         <Box width={"90%"} mx={"auto"}>
           <Box>
             <Row flexDirection={"row-reverse"} alignItems={"center"} space={3}>
-              <Box
-                p={2.5}
-                _light={{ bg: "emerald.100" }}
-                _dark={{ bg: "emerald.800" }}
-                borderRadius={10}
-              >
-                <Icon
-                  as={Feather}
-                  name="info"
-                  size={6}
-                  _light={{ color: "emerald.900" }}
-                  _dark={{ color: "emerald.100" }}
-                  onPress={() => navigation.navigate("About")}
-                />
-              </Box>
               <Switch
                 isChecked={colorMode === "light" ? false : true}
                 onToggle={toggleColorMode}
@@ -134,20 +119,19 @@ const Home: React.FC<Props> = ({ navigation }) => {
               />
             </Row>
 
-            <Box flexDirection={"column"} my={3}>
-              <Text fontFamily={"SFProDisplay-Bold"} fontSize={20}>
+            <Column flexDirection={"column"}>
+              <Text fontFamily={"SFProDisplay-SemiBold"} fontSize={20}>
                 Welcome to
               </Text>
-              <Text fontFamily={"SFProDisplay-Bold"} fontSize={35}>
+              <Text fontFamily={"SFProDisplay-Bold"} fontSize={34}>
                 Research eModule
               </Text>
-            </Box>
+              <Text fontSize={13}>
+                This is a research eModule for the University of the West
+              </Text>
+            </Column>
             <Box>
-              <HomeCard title={"Thank you for participating in the Developer Beta Testing"} />
-              <Row my={3} space={3} justifyContent={'center'}>
-                <OptionCard title="Scientific Laboratory Tools & Apparatus" />
-                <OptionCard title="Famous Scientists and their Contributions" />
-              </Row>
+
 
               <Text mx={1} mt={3} fontFamily={"SFProDisplay-Bold"} fontSize={15}>
                 All Lessons
