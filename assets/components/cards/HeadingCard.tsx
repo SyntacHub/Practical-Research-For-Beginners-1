@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { PropsWithChildren } from "react";
-import { Text, Box, Icon, Row, Code, Column } from "native-base";
+import { Text, Box, Icon, Row, Column } from "@gluestack-ui/themed-native-base";
 import { Feather } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
 

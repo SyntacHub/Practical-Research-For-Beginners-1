@@ -5,11 +5,20 @@ import useCachedResources from "./assets/hooks/useCachedResources";
 import AppStackNavigator from "./assets/routes/AppStackNavigator";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ToastProvider } from "react-native-toast-notifications";
-import { NativeBaseProvider } from "native-base";
-
-
+import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config";
+import { useFonts } from "expo-font";
+import { Feather } from "@expo/vector-icons";
 
 const App = () => {
+	const [loaded] = useFonts({
+		Feather: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Feather.ttf"),
+	});
+
+	if (!loaded) {
+		return null;
+	}
+
 	const [currentUser, setCurrentUser] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -20,20 +29,18 @@ const App = () => {
 		setIsLoading(false);
 	};
 
-
-
 	if (!isLoadingComplete) {
 		return null;
 	} else {
 		return (
 			<SafeAreaProvider>
-				<NativeBaseProvider>
-				<ToastProvider>
+				<GluestackUIProvider config={config}>
+					<ToastProvider>
 						<NavigationContainer>
 							<AppStackNavigator />
 						</NavigationContainer>
-				</ToastProvider>
-				</NativeBaseProvider>
+					</ToastProvider>
+				</GluestackUIProvider>
 			</SafeAreaProvider>
 		);
 	}
